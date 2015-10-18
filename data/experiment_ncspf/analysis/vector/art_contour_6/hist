@@ -1,0 +1,3 @@
+COMMAND: r.contour input="art_dem_6" output="art_contour_6" step=5 cut=0
+GISDBASE: C:\Users\Brendan\Documents\grassdata
+LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Wed Oct 14 18:29:03 2015

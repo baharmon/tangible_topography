@@ -1,0 +1,3 @@
+COMMAND: r.random -d -b input="newby_dem_3" npoints="4000" vector="newby_points_3"
+GISDBASE: C:\Users\Brendan\Documents\grassdata
+LOCATION: experiment_ncspf MAPSET: reinterpolation USER: Brendan DATE: Wed Oct 14 18:17:00 2015

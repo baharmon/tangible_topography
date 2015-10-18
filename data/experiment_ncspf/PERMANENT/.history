@@ -1,0 +1,308 @@
+#+1195960402
+g.list rast
+#+1195960423
+d.mon x0
+#+1195960438
+d.rast IMGNCFlood792
+#+1195960467
+g.region rast=IMGNCFlood792 -p
+#+1195960482
+d.erase
+#+1195960489
+d.rast IMGNCFlood792
+#+1195960607
+g.list vect
+#+1195960617
+g.mapsets add=helena
+#+1195960621
+g.list vect
+#+1195960630
+d.vect P079215
+#+1195960635
+d.zoom
+#+1195960753
+d.zoom
+#+1195960838
+g.list vect
+#+1195960851
+d.vect P079216 co=red
+#+1195960868
+d.vect P079219 co=green
+#+1195960899
+d.vect P079220 co=blue
+#+1195960926
+ls
+#+1195960930
+cd ..
+#+1195960930
+ls
+#+1195960933
+cd indata
+#+1195960934
+ls
+#+1195960942
+cd lindata0304/indata
+#+1195960943
+ls
+#+1195960949
+cd lncosgeo
+#+1195960950
+ls
+#+1195960969
+cd ncstpft
+#+1195960971
+ls
+#+1195960987
+g.list vect
+#+1195961208
+pwd
+#+1195961320
+g.remove vect=hillbreakli,hilloutline,lwchannel,lwculvert,lwdams,lwsamplers
+#+1195961411
+ls
+#+1195961421
+rm POP_PLACES.txt
+#+1195961441
+g.list vect
+#+1195961448
+ls P*
+#+1195961470
+v.in.dxf P079214.DXF out=P079214
+#+1195961486
+d.vect P079214 co=yellow
+#+1195961520
+v.in.dxf help
+#+1195961582
+v.in.dxf -1 P079214.DXF out=P079214 --o
+#+1195961594
+d.vect P079214 co=yellow
+#+1195961627
+g.list vect
+#+1195961642
+d.vect P079215 co=yellow
+#+1195961668
+d.vect P079219 co=yellow
+#+1195961694
+ls P*
+#+1195961717
+v.in.dxf -1 P079218.DXF out=P079218 --o
+#+1195961737
+d.vect P079218 co=yellow
+#+1195961777
+g.list vect
+#+1195961795
+g.copy vect=P079215,P079215
+#+1195961812
+g.copy vect=P079219,P079219
+#+1195961839
+g.copy vect=P079216,P079216
+#+1195961898
+d.vect buildings79215 co=orange
+#+1195961933
+d.vect propertysw co=white
+#+1195961957
+d.vect w0792_004
+#+1195962013
+g.mapsets -l
+#+1195962026
+g.list vect
+#+1195962048
+d.vect wzoning co=green
+#+1195962060
+g.remove vect=wzoning
+#+1195962078
+d.vect wzipcodes type=boundary
+#+1195962132
+g.remove vect=wcensus2000,wzipcodes,
+#+1195962137
+g.list vect
+#+1195962151
+d.vect lid79200_pts siz=1
+#+1195962213
+d.vect wfootprints co=green
+#+1195962233
+g.remove vect=wfootprints
+#+1195962246
+d.vect whydroareas co=blue
+#+1195962276
+d.vect whydrolines co=aqua
+#+1195962320
+d.vect wsoils type=boundary co=white
+#+1195962337
+d.vect wsoils type=boundary co=brown
+#+1195962365
+d.vect wstreets co=green
+#+1195962382
+g.list rast
+#+1195962399
+r.info IMGNCFlood792
+#+1195962427
+ls I*
+#+1195962431
+ls
+#+1195962439
+cd ..
+#+1195962439
+ls
+#+1195962463
+more IMG3720079200P20040216.tfw.orig
+#+1195962480
+r.info IMGNCFlood792
+#+1195962501
+ls
+#+1195962521
+more IMG3720079200P20040216.tfwmf
+#+1195962556
+more IMG3720079200P20040216.tfw
+#+1195962627
+r.info IMGNCFlood792
+#+1195962696
+r.in.gdal -o input="IMG3720079200P20040216.tif" output="IMG_airBW_79200WC_3ft"
+#+1195962707
+d.erase
+#+1195962718
+g.region rast=IMG_airBW_79200WC_3ft
+#+1195962722
+d.erase
+#+1195962731
+r.info IMG_airBW_79200WC_3ft
+#+1195962815
+d.rast IMG_airBW_79200WC_3ft
+#+1195962827
+g.region -p
+#+1195962853
+more IMG3720079200P20040216.tfw
+#+1195962897
+r.in.tiff IMG3720079200P20040216 out=IMG3720079200P20040216_test
+#+1195962905
+r.in.tif
+#+1195962912
+g.list vect
+#+1195962943
+g.remove vect=lid79200_pts,wschools,wsoils,wstreets
+#+1195962949
+g.list vect
+#+1195962995
+g.remove vect=whydrolines
+#+1195963003
+g.list rast
+#+1195963038
+d.rast IMGNCFlood792
+#+1195963060
+r.in.gdal help
+#+1195963091
+g.list rast
+#+1195963100
+g.mremove help
+#+1195963125
+g.mremove rast="hhtest*"
+#+1195963141
+g.mremove rast="hhtest*" -f
+#+1195963147
+g.list rast
+#+1195963162
+g.mremove rast="qtest*" -f
+#+1195963200
+g.mremove rast="d*"
+#+1195963208
+g.mremove rast="d*" -f
+#+1195963212
+g.list rast
+#+1195963243
+g.mremove rast="e*" -f
+#+1195963257
+g.mremove rast="t*" -f
+#+1195963265
+g.mremove rast="w*" -f
+#+1195963270
+g.list rast
+#+1195963279
+g.mremove rast="s*" -f
+#+1195963289
+g.mremove rast="a*" -f
+#+1195963294
+g.list rast
+#+1195963324
+g.remove rast=IMGNCFlood792,flux.test,infil0,man05,rain01
+#+1195963329
+g.list rast
+#+1195963335
+g.list vect
+#+1195963358
+g.mapsets -l
+#+1195963375
+g.mapsets add=vetncsu,art
+#+1195963381
+g.list vect
+#+1195963457
+g.list rast
+#+1195963666
+exit
+#+1195964139
+g.list rast
+#+1195964144
+g.list vect
+#+1195964165
+g.mapsets -l
+#+1195964178
+g.remove vect=whydroareas
+#+1195964184
+exit
+#+1195964412
+r.info IMG_airBW_79200WC_3ft
+#+1195964500
+g.region res=3.2808 w=2090001.5153999997000000 s=729998.2379999999000000 -a
+#+1195964506
+g.region -p
+#+1195964567
+g.region res=3.2808 w=2090001.5153999997000000 n=729998.2379999999000000 s=720000 -ap
+#+1195964621
+g.region res=3.2808 w=2090001.5153999997000000 n=729998.2379999999000000 -ap
+#+1195964704
+g.region res=3.2808 w=2090001.5153999997000000 n=729998.2379999999000000
+#+1195964710
+g.region -p
+#+1195964889
+g.region s=719998.3596 -p
+#+1195964962
+g.region e=2100001.393 -p
+#+1195965041
+g.region e=2100001.3938 -p
+#+1195965052
+history
+#+1195965082
+r.in.gdal -o input="IMG3720079200P20040216.tif" output="IMG_airBW_79200WC_3ftn"
+#+1195965113
+d.mon x0
+#+1195965131
+d.rast IMG_airBW_79200WC_3ftn
+#+1195965148
+r.info IMG_airBW_79200WC_3ftn
+#+1195965193
+g.list rast
+#+1195965216
+g.remove rast=IMG_airBW_79200WC_3ft
+#+1195965235
+g.rename rast=IMG_airBW_79200WC_3ftn,IMG_airBW_79200WC_3ft
+#+1195965244
+g.list vect
+#+1195965258
+d.vect P079214 co=yellow
+#+1195965265
+d.vect P079215 co=yellow
+#+1195965271
+d.vect P079216 co=yellow
+#+1195965294
+d.zoom
+#+1195965309
+d.rast IMG_airBW_79200WC_3ft
+#+1195965321
+d.vect P079215 co=yellow
+#+1195965329
+d.vect P079216 co=yellow
+#+1195965333
+d.zoom
+#+1195965398
+g.region rast=IMG_airBW_79200WC_3ft -p
+#+1195965424
+exit

@@ -1,0 +1,3 @@
+COMMAND: r.contour input="magallanes_dem_2" output="magallanes_contour_2" step=5 cut=0
+GISDBASE: C:\Users\Brendan\Documents\grassdata
+LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Wed Oct 14 18:39:02 2015
