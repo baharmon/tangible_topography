@@ -1,3 +1,0 @@
-COMMAND: r.random -d -b input="magallanes_dem_5" npoints="4000" vector="magallanes_points_5"
-GISDBASE: C:\Users\Brendan\Documents\grassdata
-LOCATION: experiment_ncspf MAPSET: reinterpolation USER: Brendan DATE: Wed Oct 14 18:19:43 2015
