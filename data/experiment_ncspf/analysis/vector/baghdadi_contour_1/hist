@@ -1,3 +1,0 @@
-COMMAND: r.contour input="baghdadi_dem_1" output="baghdadi_contour_1" step=5 cut=0
-GISDBASE: C:\Users\Brendan\Documents\grassdata
-LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Sat Nov 21 09:42:36 2015
