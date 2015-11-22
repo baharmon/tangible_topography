@@ -25,6 +25,9 @@ gscript.run_command('g.remove', flags='f', type='raster', pattern='*mean*')
 # set rendering directory
 render = os.path.normpath("C:/Users/Brendan/Documents/grassdata/results/univar/")
 
+# set paramters
+overwrite = True
+
 # assign regions
 regions = ["dem_1","dem_1","dem_2","dem_3","dem_4","dem_1","dem_4"]
 
@@ -56,5 +59,5 @@ for x in categories:
 
         # plot means
         plt.plot(range(len(covar)) , covar)
-        plt.savefig(save_covar, transparent=True)
+        plt.savefig(save_covar, transparent=overwrite)
         plt.close()

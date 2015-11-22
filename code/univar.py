@@ -27,6 +27,9 @@ render = os.path.normpath("C:/Users/Brendan/Documents/grassdata/results/univar/"
 save_means = os.path.join(render,"mean.png")
 save_absmeans = os.path.join(render,"asbvalmean.png")
 
+# set paramters
+overwrite = True
+
 # assign regions
 regions = ["dem_1","dem_1","dem_2","dem_3","dem_4","dem_1","dem_4"]
 
@@ -59,10 +62,10 @@ for x in categories:
 
 # plot means
 plt.plot(range(len(means)) , means)
-plt.savefig(save_means, transparent=True)
+plt.savefig(save_means, transparent=overwrite)
 plt.close()
 
 # plot absolute value of means
 plt.plot(range(len(absmeans)) , absmeans)
-plt.savefig(save_absmeans, transparent=True)
+plt.savefig(save_absmeans, transparent=overwrite)
 plt.close()

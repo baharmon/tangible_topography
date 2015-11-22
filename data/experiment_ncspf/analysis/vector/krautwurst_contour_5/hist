@@ -1,3 +1,3 @@
 COMMAND: r.contour input="krautwurst_dem_5" output="krautwurst_contour_5" step=5 cut=0
 GISDBASE: C:\Users\Brendan\Documents\grassdata
-LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Wed Oct 14 18:36:50 2015
+LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Sat Nov 21 10:02:24 2015

@@ -4,9 +4,9 @@ north:      733400
 south:      732700
 east:       2093350
 west:       2092650
-cols:       234
-rows:       234
-e-w resol:  2.99145299
-n-s resol:  2.99145299
+cols:       233
+rows:       233
+e-w resol:  3.00429185
+n-s resol:  3.00429185
 format:     -1
 compressed: 2

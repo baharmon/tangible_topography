@@ -21,6 +21,9 @@ driver = "cairo"
 # set rendering directory
 render = os.path.normpath("C:/Users/Brendan/Documents/grassdata/results/series/")
 
+# set paramters
+overwrite = True
+
 # assign regions
 regions = ["dem_1","dem_1","dem_2","dem_3","dem_4","dem_1","dem_4"]
 
@@ -48,28 +51,36 @@ for x in categories:
         # set region
         gscript.run_command('g.region', rast=region)
 
+        # driver settings
+        info = gscript.parse_command('r.info', map=region, flags='g')
+        width=int(info.cols)+int(info.cols)/2
+        height=int(info.rows)
+
         # compute standard deviation
-        gscript.run_command('r.series', input=series, output=stddev, method="stddev", overwrite=True)
-        gscript.run_command('d.mon', start=driver, output=os.path.join(render,stddev+".png"), overwrite=True)
+        gscript.run_command('r.series', input=series, output=stddev, method="stddev", overwrite=overwrite)
+        gscript.run_command('r.colors', map=stddev, color="bcyr")
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stddev+".png"), overwrite=overwrite)
         gscript.run_command('d.shade', shade=relief, color=stddev, brighten=75)
         gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=stddev)
+        gscript.run_command('d.legend', raster=stddev, fontsize=10, at=(10,90,1,4))
         gscript.run_command('d.mon', stop=driver)
 
         # compute variance
-        gscript.run_command('r.series', input=series, output=variance, method="variance", overwrite=True)
-        gscript.run_command('d.mon', start=driver, output=os.path.join(render,variance+".png"), overwrite=True)
+        gscript.run_command('r.series', input=series, output=variance, method="variance", overwrite=overwrite)
+        gscript.run_command('r.colors', map=variance, color="bcyr")
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,variance+".png"), overwrite=overwrite)
         gscript.run_command('d.shade', shade=relief, color=variance, brighten=75)
         gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=variance)
+        gscript.run_command('d.legend', raster=variance, fontsize=10, at=(10,90,1,4))
         gscript.run_command('d.mon', stop=driver)
 
         # compute coefficient of variation
         # stddev / mean * 100 = percentage of variation
-        gscript.run_command('d.mon', start=driver, output=os.path.join(render,coeff+".png"), overwrite=True)
-        gscript.run_command('r.series', input=series, output=mean, method="average", overwrite=True)
-        gscript.run_command('r.mapcalc', expression='{coeff} = {stddev} / {mean} * 100'.format(coeff=coeff,stddev=stddev,mean=mean), overwrite=True)
+        gscript.run_command('r.series', input=series, output=mean, method="average", overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{coeff} = {stddev} / {mean} * 100'.format(coeff=coeff,stddev=stddev,mean=mean), overwrite=overwrite)
+        gscript.run_command('r.colors', map=coeff, color="bcyr")
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,coeff+".png"), overwrite=overwrite)
         gscript.run_command('d.shade', shade=relief, color=coeff, brighten=75)
         gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=coeff)
+        gscript.run_command('d.legend', raster=coeff, fontsize=10, at=(10,90,1,4))
         gscript.run_command('d.mon', stop=driver)

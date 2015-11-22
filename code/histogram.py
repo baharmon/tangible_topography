@@ -21,6 +21,9 @@ driver = "cairo"
 # set rendering directory
 histogram_dir = os.path.normpath("C:/Users/Brendan/Documents/grassdata/results/histogram/")
 
+# set paramters
+overwrite = True
+
 # assign regions
 regions = ["dem_1","dem_1","dem_2","dem_3","dem_4","dem_1","dem_4"]
 
@@ -34,7 +37,7 @@ for diff in diffs:
     histogram = diff.replace("diff","diff_hist")
 
     # set graphics output
-    gscript.run_command('d.mon', start=driver, output=os.path.join(histogram_dir,histogram+".png"), overwrite=True)
+    gscript.run_command('d.mon', start=driver, output=os.path.join(histogram_dir,histogram+".png"), overwrite=overwrite)
 
     # set region
     key_value=int(diff[-1:])-1
@@ -57,7 +60,7 @@ for dem in dems:
     histogram = dem.replace("dem","dem_hist")
 
     # set graphics output
-    gscript.run_command('d.mon', start=driver, output=os.path.join(histogram_dir,histogram+".png"), overwrite=True)
+    gscript.run_command('d.mon', start=driver, output=os.path.join(histogram_dir,histogram+".png"), overwrite=overwrite)
 
     # set region
     key_value=int(dem[-1:])-1

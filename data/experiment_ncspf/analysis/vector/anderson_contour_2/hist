@@ -1,3 +1,3 @@
 COMMAND: r.contour input="anderson_dem_2" output="anderson_contour_2" step=5 cut=0
 GISDBASE: C:\Users\Brendan\Documents\grassdata
-LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Wed Oct 14 18:26:57 2015
+LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Sat Nov 21 09:32:45 2015
