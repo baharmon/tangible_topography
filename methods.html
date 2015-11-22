@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <title>Tangible Topography</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="layout.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+
+<body>
+
+<div id="outercontainer">
+<div id="container">
+
+<header>
+<div id="header-image"><p>Tangible Topography</p></div>
+<nav>
+<ul class="nav">
+<li><a href="index.html">Introduction</a></li>
+<li><a href="methods.html">Methodology</a></li>
+<li><a href="analyses.html">Analyses</a></li>
+<!--<li><a href="findings.html">Findings</a></li>-->
+</ul>
+</nav>
+</header>
+
+<main>
+
+<h3>Methodology</h3>
+<p>
+We have conducted a rigorous experiment using geospatial analytics
+to compare spatial performance in analog modeling by
+hand, in tangible computing using Tangible Landscape, and
+in visual computing using 3D modeling programs via a GUI.
+Tangible Landscape is a continuous shape display tightly integrated
+with GRASS GIS that was designed to intuitively 3D
+sketch landscapes. Conceptually, Tangible Landscape
+couples a physical model with a digital model in a
+real-time feedback cycle of 3D scanning, geospatial modeling
+and simulation, and projection.
+We tested our hypotheses using quantitative and qualitative
+methods. We studied applied spatial cognitive processes using the
+metrics and parameters of the given application. We studied
+how participants perform in a series of time constrained terrain
+modeling exercises using analog modeling, visual computing,
+and tangible computing. We assessed their
+performance with each technology using spatial statistics, topographic
+parameters, morphology, process-form interactions,
+and differencing. We used a fast, fluid, iterative process as a proxy
+for creative thinking that can be assessed using these methods.
+</p>
+
+<h5>Terrain modeling experiment</h5>
+
+<p>
+The 1st exercise tests spatial performance in analog modeling
+to establish the baseline spatial ability of each participant. In
+this exercise participants sculpt a given terrain in polymeric
+sand using their hands with a CNC routed model for reference.
+The 2nd exercise tests spatial performance in projection augmented
+analog modeling to establish a baseline for spatial
+performance in tangible computing. In this exercise participants
+sculpt a given terrain in polymeric sand using a projected
+map of the given elevation and contours as a guide.
+The 3rd-5th exercises test spatial performance in tangible computing
+augmented with different analytics. In the 3rd exercise
+participants use Tangible Landscape to sculpt a given terrain
+in polymeric sand using the given and scanned contours as a
+guide. In the 4th exercise participants use Tangible Landscape
+to sculpt a given terrain in polymeric sand using the difference
+between the given and the scanned landscape as a guide. In
+the 5th exercise participants use Tangible Landscape to sculpt
+a given terrain in polymeric sand using the simulated water
+flow over the scanned landscape as a guide in order to study
+4D thinking. The 6th and 7th exercises test spatial performance in visual
+computing. In the 6th exercise participants digitally sculpt a
+given terrain in Rhinoceros, a 3D modeling program, using the
+given 3D contours as a guide. In the 7th exercise participants
+digitally sculpt a given terrain in VUE, a 3D modeling program
+designed for intuitive terrain sculpting, with a CNC routed
+model for reference.
+</p>
+<h5>Exercises</h5>
+<figure>
+<img src="images/methods/magallanes_1.jpg" width=300px>
+<figcaption>Exercise 1: modeling by hand</figcaption>
+</figure>
+<br>
+
+<figure>
+<img src="images/methods/art_2.jpg" width=300px>
+<figcaption>Exercise 2: projection augmented modeling by hand</figcaption>
+</figure>
+<br>
+
+<figure>
+<img src="images/methods/art_3.jpg" width=300px>
+<figcaption>Exercise 3: modeling with Tangible Landscape using the contour analytic</figcaption>
+</figure>
+<br>
+
+<figure>
+<img src="images/methods/art_4.jpg" width=300px>
+<figcaption>Exercise 4: modeling with Tangible Landscape using the differencing analytic</figcaption>
+</figure>
+<br>
+
+<figure>
+<img src="images/methods/art_5.jpg" width=300px>
+<figcaption>Exercise 5: modeling with Tangible Landscape using the water flow analytic</figcaption>
+</figure>
+<br>
+
+<figure>
+<img src="images/methods/anderson_6.jpg" width=300px>
+<figcaption>Exercise 6: digital modeling with Rhino</figcaption>
+</figure>
+<br>
+
+<figure>
+<img src="images/methods/anderson_7.jpg" width=300px>
+<figcaption>Exercise 7: digital modeling with Vue</figcaption>
+</figure>
+<br>
+    
+<h5>Data collection and analysis</h5>
+
+<p>
+In the 1st-5th exercises the resulting physical models are 3D
+scanned, imported into GRASS GIS as point clouds, and interpolated
+as DEMs for analysis. In the 6th and 7th exercises the
+resulting digital models are exported as point clouds, imported
+into GRASS GIS, and interpolated as DEMs for analysis. For
+each model I compute the elevation and its histogram and bivariate
+scatterplot, the slope, the difference and its histogram,
+the simulated water flow, and morphology. For each exercise
+I compute a map of the coefficient of variance of all the of
+DEMs, bivariate scatterplots of the covariance and correlation
+matrix of all the of DEMs, and the mean and the absolute
+value of the mean of the differences between the the reference
+terrain and the modeled terrain.
+</p>
+
+<p>
+During the experiment the participants creative processes were
+observed and documented with photographs and notes. Semistructured
+interviews were conducted with select participants
+after the experiment. The interviews were focused on the
+intuitiveness and affordances of each technology, strategies
+and modes of representation, participants’ understanding of
+space in a given medium, and their creative process.
+</p> 
+<br/>
+</main>
+
+<footer>
+<nav>
+<ul>
+<li>
+<a href="https://github.com/baharmon/tangible_topography" title="Fork on GitHub">
+<img src="images/style/github_logo.png" alt="GitHub Octocat logo">
+</a>
+</li>
+<li title="Copyright and license (not applicable to linked materials)">
+&copy; 2015
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+<a href="http://geospatial.ncsu.edu/osgeorel/">NCSU OSGeoREL</a>
+</li>
+</ul>
+</nav>
+</footer>
+</body>
+</html>
