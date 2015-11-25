@@ -108,6 +108,9 @@ def main():
     # temporary region
     gscript.use_temp_region()
 
+    # set build directory
+    directory = os.path.normpath("C:\\Users\\Brendan\\tangible_topography\\build")
+
     # set image directory
     images = "results\\render"
 
@@ -118,7 +121,8 @@ def main():
     reference_dir = "results\\reference"
 
     # html file
-    html = "analyses.html"
+    html_file = "analyses.html"
+    fullpath_html = os.path.join(directory,html_file)
 
     # initialize a dictionary for each name
     d = defaultdict(lambda: defaultdict(lambda: defaultdict(str)))
@@ -156,7 +160,7 @@ def main():
     title = "Analyses"
 
     # write to an html file using templates
-    with open(html, 'w') as output:
+    with open(fullpath_html, 'w') as output:
 
             # write html header
             output.write(start_template.format(title=title))
