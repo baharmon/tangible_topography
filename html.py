@@ -49,6 +49,10 @@ reference_template="""
 <img src="{fullpath_depth}.png" width="300px">
 <img src="{fullpath_form}.png" width="300px">
 </figure>
+<details>
+<summary style="font-size:12px"><i>Statistics</i></summary>
+<img src="{fullpath_histogram}.png" width="300px">
+</details>
 <br/>
 """
 
@@ -172,18 +176,22 @@ def main():
                 # write html heading
                 output.write(heading_template.format(n=str(n+1)))
 
-                # write reference images to html
+                # set reference paths
                 ref_dem = "dem_"+str(n+1)
                 ref_slope = "slope_"+str(n+1)
                 ref_diff = "diff_"+str(n+1)
                 ref_depth = "depth_"+str(n+1)
                 ref_form = "form_"+str(n+1)
+                ref_hist = "dem_hist_"+str(n+1)
                 fullpath_dem = os.path.join(reference_dir,ref_dem)
                 fullpath_slope = os.path.join(reference_dir,ref_slope)
                 fullpath_diff = os.path.join(reference_dir,ref_diff)
                 fullpath_depth = os.path.join(reference_dir,ref_depth)
                 fullpath_form = os.path.join(reference_dir,ref_form)
-                output.write(reference_template.format(n=str(n+1), fullpath_dem=fullpath_dem, fullpath_slope=fullpath_slope, fullpath_diff=fullpath_diff, fullpath_depth=fullpath_depth, fullpath_form=fullpath_form))
+                fullpath_histogram = os.path.join(reference_dir,ref_hist)
+
+                # write reference images to html
+                output.write(reference_template.format(n=str(n+1), fullpath_dem=fullpath_dem, fullpath_slope=fullpath_slope, fullpath_diff=fullpath_diff, fullpath_depth=fullpath_depth, fullpath_form=fullpath_form, fullpath_histogram=fullpath_histogram))
 
                 # loop through participants
                 for name in name_list:
