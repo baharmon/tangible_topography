@@ -112,21 +112,17 @@ def main():
     directory = os.path.normpath("C:\\Users\\Brendan\\tangible_topography\\build")
 
     # set image directory
-    image_dir = "results\\render"
-    images = os.path.join(directory,image_dir)
+    images = "results\\render"
 
     # set histogram directory
-    histogram_dir = "results\\anonymous"
-    histogram = os.path.join(directory,histogram_dir)
+    histogram = "results\\anonymous"
 
     # set reference image directory
-    ref_image_dir = "results\\reference"
-    reference_dir = os.path.join(directory,ref_image_dir)
+    reference_dir = "results\\reference"
 
     # html file
     html_file = "analyses.html"
     fullpath_html = os.path.join(directory,html_file)
-
 
     # initialize a dictionary for each name
     d = defaultdict(lambda: defaultdict(lambda: defaultdict(str)))
