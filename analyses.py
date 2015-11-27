@@ -17,13 +17,6 @@ import grass.script as gscript
 # temporary region
 gscript.use_temp_region()
 
-# remove temporary maps
-gscript.run_command('g.remove', flags='f', type='raster', pattern='*stddev*')
-gscript.run_command('g.remove', flags='f', type='raster', pattern='*variance*')
-gscript.run_command('g.remove', flags='f', type='raster', pattern='*coeff*')
-gscript.run_command('g.remove', flags='f', type='raster', pattern='*mean*')
-gscript.run_command('g.remove', flags='f', type='raster', pattern='*mean*')
-
 # set graphics driver
 driver = "cairo"
 

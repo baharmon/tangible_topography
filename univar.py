@@ -25,7 +25,7 @@ gscript.run_command('g.remove', flags='f', type='raster', pattern='*mean*')
 # set rendering directory
 render = os.path.normpath("C:/Users/Brendan/Documents/grassdata/results/univar/")
 save_means = os.path.join(render,"mean.png")
-save_absmeans = os.path.join(render,"asbvalmean.png")
+save_absmeans = os.path.join(render,"absvalmean.png")
 
 # set paramters
 overwrite = True
