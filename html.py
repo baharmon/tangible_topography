@@ -26,17 +26,33 @@ start_template = """
 <li><a href="index.html">Introduction</a></li>
 <li><a href="methods.html">Methodology</a></li>
 <li><a href="analyses.html">Analyses</a></li>
+<li><a href="summary.html">Summary Statistics</a></li>
 <!--<li><a href="findings.html">Findings</a></li>-->
 </ul>
 </nav>
 </header>
 <main>
 <h2>Analyses</h2>
+<p>
+<a href="#1">Exercise 1</a>
+|
+<a href="#2">Exercise 2</a>
+|
+<a href="#3">Exercise 3</a>
+|
+<a href="#4">Exercise 4</a>
+|
+<a href="#5">Exercise 5</a>
+|
+<a href="#6">Exercise 6</a>
+|
+<a href="#7">Exercise 7</a>
+</p>
 """
 
 # HTML template for a heading
 heading_template="""
-<h3>Experiment {n}</h3>
+<h3 id="{n}">Exercise {n}</h3>
 """
 
 # HTML template for reference images
@@ -138,7 +154,7 @@ def main():
     categories = ["dem","slope","diff","depth","form"]
 
     # get list of rasters
-    rasters = gscript.list_strings('raster', pattern="a*")
+    rasters = gscript.list_grouped('raster', pattern="*")['analysis']
 
     for raster in rasters:
 
