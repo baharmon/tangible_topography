@@ -136,13 +136,13 @@ def main():
     directory = os.path.normpath("C:\\Users\\Brendan\\tangible_topography\\build")
 
     # set image directory
-    images = "results\\render"
+    images = "results/render"
 
     # set histogram directory
-    histogram = "results\\anonymous"
+    histogram = "results/anonymous"
 
     # set reference image directory
-    reference_dir = "results\\reference"
+    reference_dir = "results/reference"
 
     authors = ["", "brendan", "helena", "anna", "vaclav"]
     for author in authors:
@@ -212,12 +212,12 @@ def main():
                     ref_depth = "depth_"+str(n+1)
                     ref_form = "form_"+str(n+1)
                     ref_hist = "dem_hist_"+str(n+1)
-                    fullpath_dem = os.path.join(reference_dir,ref_dem)
-                    fullpath_slope = os.path.join(reference_dir,ref_slope)
-                    fullpath_diff = os.path.join(reference_dir,ref_diff)
-                    fullpath_depth = os.path.join(reference_dir,ref_depth)
-                    fullpath_form = os.path.join(reference_dir,ref_form)
-                    fullpath_histogram = os.path.join(reference_dir,ref_hist)
+                    fullpath_dem = "/".join([reference_dir,ref_dem])
+                    fullpath_slope = "/".join([reference_dir,ref_slope])
+                    fullpath_diff = "/".join([reference_dir,ref_diff])
+                    fullpath_depth = "/".join([reference_dir,ref_depth])
+                    fullpath_form = "/".join([reference_dir,ref_form])
+                    fullpath_histogram = "/".join([reference_dir,ref_hist])
 
                     # write reference images to html
                     output.write(reference_template.format(n=str(n+1), fullpath_dem=fullpath_dem, fullpath_slope=fullpath_slope, fullpath_diff=fullpath_diff, fullpath_depth=fullpath_depth, fullpath_form=fullpath_form, fullpath_histogram=fullpath_histogram))
@@ -244,7 +244,7 @@ def main():
 
                             #set path
                             raster_name = name + "_" + cat + "_" + str(n+1)
-                            fullpath_name = os.path.join(images,raster_name)
+                            fullpath_name = "/".join([images,raster_name])
 
                             # write raster to html
                             output.write(raster_template.format(
@@ -254,7 +254,7 @@ def main():
                         output.write(end_figure_template)
 
                         # write stats to html
-                        histogram_path = os.path.join(histogram,participant)
+                        histogram_path = "/".join([histogram,participant])
                         output.write(stats_template.format(
                         n=str(n+1),raster_title=raster, name=histogram_path))
                         #min=stat['min'], max=stat['max'], mean=stat['mean'], var=stat['variance']
