@@ -74,7 +74,8 @@ for dem in dems:
 
     # compute slope
     gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,slope+".png"), overwrite=overwrite)
-    gscript.run_command('r.param.scale', input=dem, output=slope, size=9, method="slope", overwrite=overwrite)    
+    gscript.run_command('r.param.scale', input=dem, output=slope, size=9, method="slope", overwrite=overwrite)
+    gscript.run_command('r.colors', map=slope, color="slope")
     gscript.run_command('d.shade', shade=relief, color=slope, brighten=75)
     gscript.run_command('d.vect', map=contour, display='shape')
     gscript.run_command('d.legend', raster=slope, fontsize=10, at=(10,90,1,4))
