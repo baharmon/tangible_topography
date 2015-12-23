@@ -114,10 +114,10 @@ def main():
     directory = os.path.normpath("C:\\Users\\Brendan\\tangible_topography\\build")
 
     # set image directory
-    series = "results\\series"
+    series = "results/series"
 
     # set histogram directory
-    univar = "results\\univar"
+    univar = "results/univar"
 
     # html file
     html_file = "summary.html"
@@ -159,7 +159,7 @@ def main():
 
                         #set path
                         raster_name = analytic + "_" + stat + "_" + num
-                        fullpath_name = os.path.join(series,raster_name)
+                        fullpath_name = "/".join([series,raster_name])
 
                         # write raster to html
                         output.write(raster_template.format(
@@ -171,13 +171,13 @@ def main():
             # write univariate statistics to html
             mean = os.path.join(univar,"mean")
             absvalmean = os.path.join(univar,"absvalmean")
-            covar_1 = os.path.join(univar,"covar_1")
-            covar_2 = os.path.join(univar,"covar_2")
-            covar_3 = os.path.join(univar,"covar_3")
-            covar_4 = os.path.join(univar,"covar_4")
-            covar_5 = os.path.join(univar,"covar_5")
-            covar_6 = os.path.join(univar,"covar_6")
-            covar_7 = os.path.join(univar,"covar_7")
+            covar_1 = "/".join([univar,"covar_1"])
+            covar_2 = "/".join([univar,"covar_2"])
+            covar_3 = "/".join([univar,"covar_3"])
+            covar_4 = "/".join([univar,"covar_4"])
+            covar_5 = "/".join([univar,"covar_5"])
+            covar_6 = "/".join([univar,"covar_6"])
+            covar_7 = "/".join([univar,"covar_7"])
             output.write(univar_template.format(mean=mean, absvalmean=absvalmean, covar_1=covar_1, covar_2=covar_2, covar_3=covar_3, covar_4=covar_4, covar_5=covar_5, covar_6=covar_6, covar_7=covar_7))
 
             # write html footer

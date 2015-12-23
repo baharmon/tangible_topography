@@ -3,6 +3,7 @@
 import grass.script as gscript
 from collections import defaultdict
 import os
+import random
 
 # set global variables
 
@@ -125,6 +126,9 @@ end_template = """
 
 def main():
 
+    # set random seed
+    random.seed(100)
+
     # temporary region
     gscript.use_temp_region()
 
@@ -132,122 +136,134 @@ def main():
     directory = os.path.normpath("C:\\Users\\Brendan\\tangible_topography\\build")
 
     # set image directory
-    images = "results\\render"
+    images = "results/render"
 
     # set histogram directory
-    histogram = "results\\anonymous"
+    histogram = "results/anonymous"
 
     # set reference image directory
-    reference_dir = "results\\reference"
+    reference_dir = "results/reference"
 
-    # html file
-    html_file = "analyses.html"
-    fullpath_html = os.path.join(directory,html_file)
+    authors = ["", "brendan", "helena", "anna", "vaclav"]
+    for author in authors:
+        if not author:
+            html_file = "analyses.html"
+        else:
+            html_file = "analyses_{}.html".format(author)
 
-    # initialize a dictionary for each name
-    d = defaultdict(lambda: defaultdict(lambda: defaultdict(str)))
+        # html file
+        fullpath_html = os.path.join(directory,html_file)
 
-    # initialize a list for participants' names
-    name_list = []
+        # initialize a dictionary for each name
+        d = defaultdict(lambda: defaultdict(lambda: defaultdict(str)))
 
-    # initialize a list of categories
-    categories = ["dem","slope","diff","depth","form"]
+        # initialize a list for participants' names
+        name_list = []
 
-    # get list of rasters
-    rasters = gscript.list_grouped('raster', pattern="*")['analysis']
+        # initialize a list of categories
+        categories = ["dem","slope","diff","depth","form"]
 
-    for raster in rasters:
+        # get list of rasters
+        rasters = gscript.list_grouped('raster', pattern="*")['analysis']
 
-        raster_name, separator, mapset = raster.partition('@')
+        for raster in rasters:
 
-        name, separator, cat_number = raster_name.partition('_')
+            raster_name, separator, mapset = raster.partition('@')
 
-        cat, separator, number = cat_number.partition('_')
+            name, separator, cat_number = raster_name.partition('_')
 
-        name_list.append(name)    
+            cat, separator, number = cat_number.partition('_')
 
-        # add values to dictionary
-        d[name][number][cat] = raster 
+            name_list.append(name)    
 
-    # remove duplicates
-    name_list = set(name_list)
+            # add values to dictionary
+            d[name][number][cat] = raster 
 
-    # anonymize list of participants
-    participants = {v: k for k,v in enumerate(name_list)}
-    # participants = dict((v,k) for k,v in enumerate(name_list))
+        # remove duplicates
+        name_list = list(set(name_list))
 
-    # template variables
-    title = "Analyses"
+        # shuffle list of participants
+        random.shuffle(name_list)
 
-    # write to an html file using templates
-    with open(fullpath_html, 'w') as output:
+        # anonymize list of participants
+        participants = {v: k for k,v in enumerate(name_list)}
+        # participants = dict((v,k) for k,v in enumerate(name_list))
 
-            # write html header
-            output.write(start_template.format(title=title))
+        # template variables
+        title = "Analyses"
 
-            # loop through experiments
-            max_experiments=7
-            for n in range(max_experiments):
+        # write to an html file using templates
+        with open(fullpath_html, 'w') as output:
 
-                # write html heading
-                output.write(heading_template.format(n=str(n+1)))
+                # write html header
+                output.write(start_template.format(title=title))
 
-                # set reference paths
-                ref_dem = "dem_"+str(n+1)
-                ref_slope = "slope_"+str(n+1)
-                ref_diff = "diff_"+str(n+1)
-                ref_depth = "depth_"+str(n+1)
-                ref_form = "form_"+str(n+1)
-                ref_hist = "dem_hist_"+str(n+1)
-                fullpath_dem = os.path.join(reference_dir,ref_dem)
-                fullpath_slope = os.path.join(reference_dir,ref_slope)
-                fullpath_diff = os.path.join(reference_dir,ref_diff)
-                fullpath_depth = os.path.join(reference_dir,ref_depth)
-                fullpath_form = os.path.join(reference_dir,ref_form)
-                fullpath_histogram = os.path.join(reference_dir,ref_hist)
+                # loop through experiments
+                max_experiments=7
+                for n in range(max_experiments):
 
-                # write reference images to html
-                output.write(reference_template.format(n=str(n+1), fullpath_dem=fullpath_dem, fullpath_slope=fullpath_slope, fullpath_diff=fullpath_diff, fullpath_depth=fullpath_depth, fullpath_form=fullpath_form, fullpath_histogram=fullpath_histogram))
+                    # write html heading
+                    output.write(heading_template.format(n=str(n+1)))
 
-                # loop through participants
-                for name in name_list:
+                    # set reference paths
+                    ref_dem = "dem_"+str(n+1)
+                    ref_slope = "slope_"+str(n+1)
+                    ref_diff = "diff_"+str(n+1)
+                    ref_depth = "depth_"+str(n+1)
+                    ref_form = "form_"+str(n+1)
+                    ref_hist = "dem_hist_"+str(n+1)
+                    fullpath_dem = "/".join([reference_dir,ref_dem])
+                    fullpath_slope = "/".join([reference_dir,ref_slope])
+                    fullpath_diff = "/".join([reference_dir,ref_diff])
+                    fullpath_depth = "/".join([reference_dir,ref_depth])
+                    fullpath_form = "/".join([reference_dir,ref_form])
+                    fullpath_histogram = "/".join([reference_dir,ref_hist])
 
-                    # start figure
-                    participant = str(int(participants[name])+1)
-                    output.write(start_figure_template.format(participant=participant))
+                    # write reference images to html
+                    output.write(reference_template.format(n=str(n+1), fullpath_dem=fullpath_dem, fullpath_slope=fullpath_slope, fullpath_diff=fullpath_diff, fullpath_depth=fullpath_depth, fullpath_form=fullpath_form, fullpath_histogram=fullpath_histogram))
 
-                    # loop through categories
-                    for cat in categories:
+                    # loop through participants
+                    for name in name_list:
 
-                        raster = d[name][str(n+1)][cat]
-                        if not raster:
-                            continue
+                        # start figure
+                        participant = str(int(participants[name])+1)
+                        output.write(start_figure_template.format(participant=participant))
 
-                        # set region
-                        gscript.run_command('g.region', rast=raster)
+                        # loop through categories
+                        for cat in categories:
 
-                        # compute univariate statistics                    
-                        #stat = gscript.parse_command('r.univar', map=raster, flags='g')
+                            raster = d[name][str(n+1)][cat]
+                            if not raster:
+                                continue
 
-                        #set path
-                        raster_name = name + "_" + cat + "_" + str(n+1)
-                        fullpath_name = os.path.join(images,raster_name)
+                            # set region
+                            gscript.run_command('g.region', rast=raster)
 
-                        # write raster to html
-                        output.write(raster_template.format(
-                        raster_title=raster, name=fullpath_name)) 
+                            # compute univariate statistics                    
+                            #stat = gscript.parse_command('r.univar', map=raster, flags='g')
 
-                    # end figure      
-                    output.write(end_figure_template)
+                            #set path
+                            raster_name = name + "_" + cat + "_" + str(n+1)
+                            fullpath_name = "/".join([images,raster_name])
 
-                    # write stats to html
-                    histogram_path = os.path.join(histogram,participant)
-                    output.write(stats_template.format(
-                    n=str(n+1),raster_title=raster, name=histogram_path))
-                    #min=stat['min'], max=stat['max'], mean=stat['mean'], var=stat['variance']
+                            # write raster to html
+                            output.write(raster_template.format(
+                            raster_title=raster, name=fullpath_name)) 
 
-            # write html footer
-            output.write(end_template)
+                        # end figure      
+                        output.write(end_figure_template)
+
+                        # write stats to html
+                        histogram_path = "/".join([histogram,participant])
+                        output.write(stats_template.format(
+                        n=str(n+1),raster_title=raster, name=histogram_path))
+                        #min=stat['min'], max=stat['max'], mean=stat['mean'], var=stat['variance']
+
+                # save randomized order of participants                
+                output.write("<!--\n{}\n-->".format(participants))
+
+                # write html footer
+                output.write(end_template)
 
 if __name__ == "__main__":
     main()
