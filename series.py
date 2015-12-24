@@ -48,7 +48,7 @@ def main():
             key_value=i-1
             region=regions[key_value]
             contour = "contour_"+region[-1:]
-            relief = "relief_"+region[-1:]
+            relief = "relief_"+region[-1:]+"@PERMANENT"
             stddev = x+"_stddev_"+str(i)
             variance = x+"_variance_"+str(i)
             mean = x+"_mean_"+str(i)
