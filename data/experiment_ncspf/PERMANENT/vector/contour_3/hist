@@ -1,3 +1,0 @@
-COMMAND: r.contour input="dem_3@PERMANENT" output="contour_3" step=5 cut=0
-GISDBASE: C:\Users\Brendan\Documents\grassdata
-LOCATION: experiment_ncspf MAPSET: PERMANENT USER: Brendan DATE: Tue Sep 15 11:54:14 2015

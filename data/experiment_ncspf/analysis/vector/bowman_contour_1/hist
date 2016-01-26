@@ -1,3 +1,0 @@
-COMMAND: r.contour input="bowman_dem_1" output="bowman_contour_1" step=5 cut=0
-GISDBASE: C:\Users\Brendan\Documents\grassdata
-LOCATION: experiment_ncspf MAPSET: analysis USER: Brendan DATE: Wed Oct 14 18:30:39 2015
