@@ -9,7 +9,7 @@
 % Steps to compile: latex, bibtex, latex, latex
 
 
-\documentclass[prodmode,acmtecs]{acmsmall} % Aptara syntax
+\documentclass[prodmode,acmtochi]{acmsmall} % Aptara syntax
 
 % Package to generate and customize Algorithm as per ACM style
 \usepackage[ruled]{algorithm2e}
@@ -49,7 +49,7 @@
 \markboth{B. Harmon et al.}{Embodied Spatial Cognition in Tangible Computing}
 
 % Title portion
-\title{Embodied Spatial Cognition in Tangible Computing}
+\title{Embodied Spatial Cognition in Tangible Computing} % Spatial Performance in Tangible Computing 
 \author{BRENDAN ALEXANDER HARMON
 \affil{North Carolina State University}
 ANNA PETRASOVA
@@ -63,6 +63,14 @@ ROSS ​KENDALL MEENTEMEYER
 
 \begin{abstract}
 \ldots
+
+
+% embodied cognition
+% tangible interaction
+% improve spatial performance
+% design of tangible landscape
+% experiments to test spatial performance
+
 \end{abstract}
 
 %
@@ -91,7 +99,7 @@ ROSS ​KENDALL MEENTEMEYER
 % End generated code
 %
 
-\keywords{Tangible user interfaces, tangible interaction, embodied cognition, spatial thinking, geospatial modeling}
+\keywords{Human-computer interaction, tangible interfaces, interaction design, physical computation, embodied cognition, spatial thinking, geospatial modeling}
 
 \acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, and Ross K. Meentemeyer, 2016. Embodied Spatial Cognition in Tangible Computing.}
 % At a minimum you need to supply the author names, year and a title.
@@ -106,8 +114,6 @@ ROSS ​KENDALL MEENTEMEYER
 % The remaining information (journal title, volume, article number, date, etc.) is 'auto-generated'.
 
 \begin{bottomstuff}
-%This work is supported by the National Science Foundation, under grant...
-%
 Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University.
 % ; G. H. Bressler, Department of Landscape Architecture, North Carolina State University.
 \end{bottomstuff}
@@ -117,82 +123,172 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 
 \section{Introduction}
 
-% Theory
-git co
-% Embodied cognition
+We have designed Tangible Landscape -- a tangible interface powered by a geographic information system (GIS) -- 
+that gives spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it.
+%
+Our aim was to iteratively design and empirically test a tangible interface that augments spatial thinking and improves spatial performance. 
+%
+Spatial thinking can be embodied -- people can functionally think about space with their bodies by cognitively grasping objects and physically simulating it \cite{Kirsh2013}.
+%
+Theoretically tangible interfaces should improve spatial performance through embodied cognition by enabling natural modes of interaction \cite{Dourish2001}, offloading cognitive processes onto the body \cite{Kirsh2013}, and computationally augmenting spatial thinking \cite{Dror2008}. 
+%
+We designed Tangible Landscape to physically manifest digital data so that users can cognitively grasp the data as an extension of their bodies and automatically, immediately, and subconsciously interact with it. 
+%
+We conducted a series of experiments using quantitative methods including geospatial modeling, analysis, simulation, and statistics and qualitative methods including semi-structured interviews and direct observation
+to test whether tangible interfaces can improve spatial performance. 
+%
+We also explored how users approached spatial problem solving using Tangible Landscape in a serious gaming event.
 
-Cognition can be embodied -- it can be embedded in the body and based on bodily experience. 
-Higher cognitive processes, the traditional realm of cognitive science, 
-can rely on lower level processes such as emotion and sensorimotor processes that link perception and action. 
-Thus feeling, action, and perception can be functionally integral to thought \cite{Hardy-Vallee2008}. 
-We can for example physically simulate cognitive processes, offloading cognition onto action to functionally `think with our bodies' \cite{Kirsh2013}. 
-We can cognitively grasp objects, temporarily, contingently incorporating tools into our body schema \cite{Kirsh2013}.
+% Concept diagram / illustration
+
+\pagebreak
+
+\subsection{Spatial thinking}
+
+Spatial thinking -- `the mental processes of representing, analyzing, and drawing inferences from spatial relations' \cite{Uttal2013} -- is used pervasively in everyday life % at a personal scale 
+for tasks like recognizing things, manipulating things, interacting with others, and way-finding. 
+%
+Spatial thinking is also used extensively in science, technology, engineering, the arts, and math 
+for tasks like 
+simulating physical processes,
+mapping and manipulating molecules,
+designing circuits, 
+designing buildings, 
+shaping sculpture,
+and studying topology. 
+%
+Given the importance of spatial thinking -- personally, academically, and professionally -- %how can we improve it? 
+how can we effectively improve our spatial performance, our ability to perform tasks that require spatial thinking? 
+% how can spatial performance, our ability to perform tasks that require spatial thinking, effectively be improved?
+
+Many spatial tasks can be performed computationally 
+enabling us to efficiently store, model, and analyze large sets of spatial data 
+and solve complex spatiotemporal problems.
+%
+In engineering, design, and the arts 
+computer-aided design (CAD) and 3D modeling software are used to interactively, computationally model, analyze, and animate complex spatial forms. 
+%
+In scientific computing spatial patterns and processes can be mathematically modeled, simulated, and optimized. 
+%
+Geographic information systems, for example, can be used to computationally store, model, analyze, simulate, and represent geospatial patterns and processes. 
+%
+The open source project GRASS GIS for example supports 
+`geospatial data management and analysis, image processing, graphics and maps production, spatial modeling, and visualization' \cite{GRASS}. 
+%\footnote{\url{https://grass.osgeo.org/}} 
+%
+% add more citations
+
+Computing mediates and transforms spatial thinking, expanding, but also constraining what is possible.
+%
+While spatial computing can augment spatial thinking 
+-- distributing or offloading cognitive processes through digital computation -- 
+the logic of implementation,
+the limits of what is computationally possible, 
+and the modes of input and output
+constrain how we reason. % citations
+%
+Furthermore, 
+when it is difficult to interact with a computer, 
+to input commands and parse the resulting output, 
+one has to think harder and risks frustration and demotivation. % citations
+% these cognitive costs and risks...
+%
+%Furthermore, 
+%difficulty in interacting with a computer
+%-- in inputing commands and parsing the resulting output --
+%can add cognitive costs, generate frustration, and sap motivation. 
+
+Unintuitive modes of human-computer interaction constrain how we think and add cognitive and emotional costs. 
+%
+The paradigmatic modes for interacting with computers today 
+-- command line interfaces (CLI) and
+graphical user interfaces (GUI)
+%including touch interfaces
+ -- 
+require physical input from devices like mice, keyboards, digitizing pens, and touch screens, but
+output %present %render
+data visually as text or graphics. 
+
+
+
+% disconnect between intention, action, and feedback
+
+...\\
+
+Imagine sculpting a volume in a 3D modeling program.
+
+When sculpting a volume
+
+There is a disconnect between intention, action, and feedback when one imagines a change, clicks with a mouse, and then sees the change on a display. 
+
+% LIMITED TO VISUAL FEEDBACK
+
+% CHALLENGES IN VISUALIZING COMPLEX FORMS/PATTERNS
+
+% the disconnect between intention, action, and feedback -- 
+%the disjunction between ones idea, it expression constrained by the input device (such as a mouse and keyboard, a touch screen, or a digitizing pen), and the graphical representation \cite{Dourish2001,Ishii2008}. 
+
+
+...\\
+
+
+% Parsing visual data
+% ... presented graphically using a graphical user interface (GUI) and require sophisticated spatial thinking to parse and understand. 
+%%% citations and examples: mental rotation, stem learning
+%
+%Furthermore it can be challenging to interact with these computational models using a GUI 
+%due to the high cognitive load of visualizing multidimensional space (and time) % citation
 
 
 
 
-% Spatial cognition
-Many conceptions and studies of spatial thinking focus on a visual, semantic understanding of space. 
-Embodied cognition, however, highlights the importance of a kinaesthetic, pragmatic understanding of space
-and the enaction of spatial transformation -- for the act of transforming an object changes how we think about space. 
-As \cite{Kirsh2013} argues, sometimes `we know more by doing than by seeing' \cite{Kirsh2013}.
+% digital technologies mediate spatial thinking
+
+% how do they affect spatial performance?
+
+% what technologies are most effective?
 
 
-\cite{Uttal2013} defined spatial thinking as 
-`the mental processes of representing, analyzing, and drawing inferences from spatial relations' \cite{Uttal2013}. 
-This definition is based on a semantic rather than pragmatic understanding of space, an understanding based on visual rather haptic, kinaesthetic feedback. 
-In this paradigm space is imagined rather than felt and spatial transformation is imagined rather than enacted. 
-Psychometric tests of spatial ability -- the application of spatial thinking -- for example study spatial visualization and mental rotation \cite{Uttal2013,Uttal2013a,Ormand2014}.
-We, however, do not just see space -- we also feel it; we use our bodies to feel size, shape, and volume. 
-Space need not be imagined to be transformed -- haptic feedback about space informs subconscious pragmatic representations that rapidly generate action \cite{Jeannerod1997}. Spatial thinking can be embodied.
-%%% Definition: spatial cognition
 
-%%% learning about space
-Spatial thinking is malleable and can be improved with training. 
-The effects of spatial training can be durable -- persisting for months -- and transferable -- training in a given spatial task improves performance in other untrained spatial tasks \cite{Uttal2013}. 
-How can spatial training integrate domain specific knowledge? And could such applied training more effectively improve performance in a given discipline? \cite{Uttal2013} 
+% Tangible interaction
+\subsection{Tangible interaction}
 
-Embodied spatial thinking may lead to improvements in performance by reducing cognitive loads with pragmatic representations and physical simulation and by enhancing perception with visual and haptic feedback. 
+... \\
+	%Affordance
 
-Since spatial thinking is mediated by technology the effectiveness of training methods will depend upon their implementation, upon the technology used. 
-Computer gaming has been shown to improve spatial thinking and technologies like geographic information systems (GIS) can be used to integrate domain specific knowledge \cite{Uttal2013}.
-Unintuitive human-computer interaction, however, may constrain spatial thinking and add cognitive costs thus reducing the effectiveness of digitally implemented training methods. 
-Embodied and computationally enriched cognition may enhance spatial thinking in novel ways
-enabling and encouraging coupled creative and analytic thinking.
+	%Cognitive offloading through physical simulation
+
+% Embodied spatial thinking
+
+	%Understanding space with ones body
+
+	%What is embodied spatial thinking?
 
 
-% Computational spatial modeling
+% Diagram of disconnect between intention, action, and feedback in GUI
+% VS coupling of intention, action, and feedback in a TUI
 
-% Digital disembodiment
 
-% Tangible interfaces (to embody spatial cognition) (affordance, feedback, intuition)
-Tangible computing aims to embody computing 
-by coupling physical and digital data \cite{Dourish2001} -- 
-by physically manifesting digital data so that we can cognitively grasp and absorb it,
-so that we can think with it rather than about it \cite{Kirsh2013}. 
-\cite{Ishii1997} envisioned that TUIs would  `take advantage of natural physical affordances to achieve a heightened legibility and seamlessness of interaction between people and information' \cite{Ishii1997}. 
+%
+%% embodied spatial thinking
+%
+%% embodied cognition
+%Embodied cognition highlights the importance of a kinaesthetic, pragmatic understanding of space
+%and the enaction of spatial transformation -- for the act of transforming an object changes how we think about space. 
+%As Kirsh argues, sometimes `we know more by doing than by seeing' \cite{Kirsh2013}.
+%%
+%% embodiment in STEM
+%Embodied spatial thinking may lead to improvements in STEM performance by reducing cognitive loads with pragmatic representations and physical simulation and by enhancing perception with visual and haptic feedback. 
+%%
+%Embodied and computationally enriched cognition may enhance spatial thinking in novel ways
+%enabling and encouraging coupled creative and analytic thinking.
+%
+%
 
-To understand how computing transforms cognition we need to study
-`the complex coordination between external and internal simulation, between doing things internally and doing things externally' \cite{Kirsh2013}. % Research question!
 
-% A brief history of tangible computing?
 
-Theoretically tangible interaction should offload cognitive processes through bodily action, physical simulation, and digital computation.
-
-Should improve spatial performance.
-
-Research questions: 
-Can tangible interfaces improve spatial performance?
-Which tangible analytics improve spatial performance the most?
-
-Aim: Improve spatial performance
-
-A comparative study of 3D spatial performance with hand modeling, digital modeling, and tangible interaction.
-
-Two experiments.
 
 \section{Methodology}
-
 \subsection{Tangible Landscape}
 
 % Concept
@@ -214,7 +310,7 @@ Tangible Landscape is designed to make scientific data, models, and simulations 
 Figure~\ref{fig:system_schema} \ldots 
 % Figure
 \begin{figure}
-\centerline{\includegraphics{images/system_schema.png}}
+\centerline{\includegraphics{images/system_schema_2.pdf}}
 \caption{Caption.}
 \label{fig:system_schema}
 \end{figure}
@@ -229,6 +325,10 @@ Figure~\ref{fig:system_schema} \ldots
 
 \subsection{Coupling experiment}
 
+%Psychometric tests of spatial ability -- the application of spatial thinking -- for example study spatial visualization and mental rotation \citep{Uttal2013,Uttal2013a,Ormand2014}.
+%We, however, do not just see space -- we also feel it; we use our bodies to feel size, shape, and volume. 
+%Space need not be imagined to be transformed -- haptic feedback about space informs subconscious pragmatic representations that rapidly generate action \citep{Jeannerod1997}. Spatial thinking can be embodied.
+
 
 \subsection{Analytics experiment}
 
@@ -237,12 +337,6 @@ Figure~\ref{fig:system_schema} \ldots
 %Coffee \& Viz
 Coffee \& Viz.
 Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
-
-\subsection{Coupling experiment}
-
-\subsection{Analytics experiment}
-
-\subsection{Case studies}
 
 \section{Results}
 
