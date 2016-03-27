@@ -19,38 +19,38 @@ from grass.exceptions import CalledModuleError
 driver = "cairo"
 
 def cleanup():
-    try:    
+    try:
         gscript.run_command('d.mon', stop=driver)
     except CalledModuleError:
         pass
 
 def main():
-    
+
     # switch between png and cairo driver
-    
+
     # temporary region
     gscript.use_temp_region()
 
     # set grass data directory
     grassdata = os.path.normpath("C:/Users/Brendan/Documents/grassdata/")
-    
+
     # set rendering directory
     render_dir = os.path.normpath("results/reference/")
     render = os.path.join(grassdata,render_dir)
-    
+
     # set color rule directory
     diff_dir = os.path.normpath("experiment_ncspf/difference_rule.txt")
     difference_rule = os.path.join(grassdata,diff_dir)
-    
+
     # set paramters
     overwrite = True
-    
+
     # list scanned DEMs
     dems = gscript.list_grouped('rast', pattern="dem_*")['reference']
-    
+
     # iterate through scanned DEMs
     for dem in dems:
-    
+
         # variables
         region=dem
         relief=dem.replace("dem","relief")
@@ -62,26 +62,25 @@ def main():
         after=dem
         regression=dem.replace("dem","regress")
         difference=dem.replace("dem","diff")
-    
+
         # set region
         gscript.run_command('g.region', rast=region, res=3)
-    
+
         # render DEM
         info = gscript.parse_command('r.info', map=dem, flags='g')
         width=int(info.cols)+int(info.cols)/2
         height=int(info.rows)
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,dem+".png"), overwrite=overwrite)
         gscript.run_command('r.colors', map=dem, color="elevation")
-        gscript.run_command('g.region', rast="dem")        
-        #gscript.run_command('r.relief', input=dem, output=relief, zscale=1, units="intl", overwrite=overwrite)
-        gscript.parse_command('r.skyview', input=dem, output=relief, ndir=16, overwrite=True)
-        gscript.run_command('g.region', rast=region)     
+        gscript.run_command('g.region', rast="dem")
+        gscript.run_command('r.relief', input=dem, output=relief, altitude=60, azimuth=45, zscale=1, units="intl", overwrite=overwrite)
+        gscript.run_command('g.region', rast=region)
         gscript.run_command('r.contour', input=dem, output=contour, step=5, overwrite=overwrite)
         gscript.run_command('d.shade', shade=relief, color=dem, brighten=75)
         gscript.run_command('d.vect', map=contour, display="shape")
         gscript.run_command('d.legend', raster=dem, fontsize=10, at=(10,70,1,4))
         gscript.run_command('d.mon', stop=driver)
-    
+
         # compute slope
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,slope+".png"), overwrite=overwrite)
         gscript.run_command('r.param.scale', input=dem, output=slope, size=9, method="slope", overwrite=overwrite)
@@ -90,7 +89,7 @@ def main():
         gscript.run_command('d.vect', map=contour, display='shape')
         gscript.run_command('d.legend', raster=slope, fontsize=10, at=(10,90,1,4))
         gscript.run_command('d.mon', stop=driver)
-    
+
         #compute geomorphon
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,forms+".png"), overwrite=overwrite)
         gscript.run_command('r.geomorphon', dem=dem, forms=forms, search=9, skip=6, overwrite=overwrite)
@@ -98,7 +97,7 @@ def main():
         gscript.run_command('d.vect', map=contour, display='shape')
         #gscript.run_command('d.legend', raster=forms)
         gscript.run_command('d.mon', stop=driver)
-    
+
         # simulate water flow
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,depth+".png"), overwrite=overwrite)
         gscript.run_command('r.slope.aspect', elevation=dem, dx='dx', dy='dy', overwrite=overwrite)
@@ -108,7 +107,7 @@ def main():
         gscript.run_command('d.vect', map=contour, display='shape')
         gscript.run_command('d.legend', raster=depth, fontsize=10, at=(10,90,1,4))
         gscript.run_command('d.mon', stop=driver)
-    
+
         # compute difference
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,difference+".png"), overwrite=overwrite)
         regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=before, mapy=after, overwrite=overwrite)
