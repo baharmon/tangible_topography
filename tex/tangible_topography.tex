@@ -20,6 +20,14 @@
 \SetAlCapHSkip{0pt}
 \IncMargin{-\parindent}
 
+% Packages
+\usepackage[super]{nth}
+\usepackage[inline]{enumitem}
+\usepackage{moreenum}
+\usepackage{booktabs}
+\newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
+\newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
+
 % Metadata Information
 \acmVolume{9}
 \acmNumber{4}
@@ -120,11 +128,20 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 
 \maketitle
 
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=0.3\textwidth]{images/tl_sequence_1.jpg}
+		\includegraphics[width=0.3\textwidth]{images/tl_sequence_2.jpg}
+		\includegraphics[width=0.3\textwidth]{images/tl_sequence_3.jpg}
+	\caption{Tangibly modeling the flow of water with Tangible Landscape}
+	\label{fig:tl_flow}
+\end{center}
+\end{figure*}
 
 \section{Introduction}
 
 We have designed Tangible Landscape -- a tangible interface powered by a geographic information system (GIS) -- 
-that gives spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it.
+that gives spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it (Fig.~\ref{fig:tl_flow}).
 %
 Our aim was to iteratively design and empirically test a tangible interface that augments spatial thinking and improves spatial performance. 
 %
@@ -174,7 +191,9 @@ In scientific computing spatial patterns and processes can be mathematically mod
 %
 Geographic information systems, for example, can be used to computationally store, model, analyze, simulate, and represent geospatial patterns and processes. 
 %
-The open source project GRASS GIS for example supports 
+The open source 
+Geographic Resource Analysis Support System (GRASS) GIS
+for example supports 
 `geospatial data management and analysis, image processing, graphics and maps production, spatial modeling, and visualization' \cite{GRASS}. 
 %\footnote{\url{https://grass.osgeo.org/}} 
 %
@@ -269,27 +288,22 @@ Distance and physical properties like size, shape, volume, weight, hardness, and
 By affording physical feedback tangible interfaces should, therefore, reduce the cognitive load needed to judge spatial distances, relationships, patterns, and forms. 
 %%%
 
+
+\ldots
+\cite{Maravita2004}
+
 Furthermore, some cognitive processes can be physically simulated, offloading the cognitive work onto the body \cite{Kirsh2013}. 
 %
 % Examples of physical simulation
 %
-Dancers for example use marking 
--- a simplified, abstraction of a dance phrase -- to learn and practice elements or aspects of the phrase. 
-
-Marking is 
-
-
-a model 
-a sketch-through-action
+%Dancers for example use marking 
+%-- a simplified, abstraction of a dance phrase -- to learn and practice elements or aspects of the phrase. 
+%Marking is 
+%a model 
+%a sketch-through-action
+%\cite{Kirsh2013}
 
 
-
-\cite{Kirsh2013}
-
-
-
-
-...
 
 %
 Architects massing models
@@ -301,9 +315,20 @@ or Frank Gehry's creative process of thinking through the movement of gestural d
 \cite{Gehry2004,Pollack2006}
 %
 
+Professionals like designers develop creative ideas through `reflection-in-action,' 
+an iterative, exploratory process 
+of framing the problem, ideation or making, and critical reflection \cite{Schon1983}.
+This exploratory process may unfold in an instant in action, 
+repeated continually through acts like drawing or model making. 
+%
+Frank Gehry for example develops his designs through exploratory form finding with massing models
+and by thinking through the movement of gestural drawing
+\cite{Gehry2004,Pollack2006}.
 
-
-...
+An ethnography of the Office of Metropolitan Architecture
+showed that architects in the firm used practices like reuse, adaption, and exploratory modeling
+to develop designs through iterative processes \cite{Yaneva2009}. 
+The architects, for example, explored form by carving foam massing models with hot-wire cutters, reflecting on each model as they carved, while building up a library of forms. Ideas and forms set aside and unused in one project might show up in other projects, recycled and adapted \cite{Yaneva2009}.
 
 
 %
@@ -336,6 +361,11 @@ Such interaction should be highly intuitive, drawing on existing motor schema an
 %simply by affording kinaesthetic, physical feedback as well as visual feedback 
 %
 % discuss creative design process & computationally enhanced creative design process (later perhaps?)
+
+
+%In a seminal paper Ishii and Ullmer envisioned tangible user interfaces that would 
+%`bridge the gap between cyberspace and the physical environment by making digital information (bits) tangible' \cite{Ishii1997}.
+%They described `tangible bits' as `the coupling of bits with graspable physical objects' \cite{Ishii1997}. 
 
 
 % embodied cognition
@@ -385,43 +415,225 @@ Such interaction should be highly intuitive, drawing on existing motor schema an
 %
 %
 
+\subsection {Aim and objectives}
+%OR
+\subsection{Research questions}
 
 \pagebreak
+
 
 \section{Methodology}
 \subsection{Tangible Landscape}
 
-% Concept
 \paragraph{Concept}
-A tangible user interface powered by open source GIS. 
-Coupling a digital and physical model of a landscape so that you can intuitively feel and shape it with your hands. 
-Near-real time interaction. 
+%
+Tangible interfaces for GIS 
+should ease the cognitive burden of 
+visualizing, interacting with, reasoning about space
+by giving spatial data an interactive, physical form 
+that users can cognitively grasp and kinaesthetically explore. 
+%
+Tangible Landscape -- a tangible user interface for GRASS GIS --
+couples a physical and digital model of a landscape through a continuous cycle of 3D scanning, geospatial modeling, and projection
+so that users can intuitively interact with the modeled landscape in near real-time.
+%
+Conceptually Tangible Landscape physically manifests geospatial data 
+so that users can hold a GIS in their hands -- 
+so that they can, for example, feel the shape of the earth, sculpt its topography, and direct the flow of water with their hands.
+%
+It enables users to 3D sketch -- 
+to naturally model forms such as topography, 
+draw points and polygons, 
+and interact with simulated physical processes -- 
+in a rapid, iterative process 
+of observation, hypothesis generation and testing, and inference. 
+%
+Tangible Landscape is meant to fluidly, seamlessly combine
+computational science with exploratory modes of creative thinking.
 
-% Evolution
 \paragraph{Evolution}
-An evolution of Illuminating Clay and the Tangible Geospatial Modeling System.
+%
+Tangible Landscape evolved from 
+Illuminating Clay \cite{Piper2002a} and 
+the Tangible Geospatial Modeling System (TanGeoMS) \cite{Tateosian2010}. 
+%
+% Illuminating Clay
+Illuminating Clay coupled a clay model and digital model of landscape 
+through a cycle of laser scanning, spatial modeling, and projection.
+%
+By enriching physical models of urban spaces and landscapes 
+with spatial analyses  
+such as 
+elevation, aspect, slope, cast shadow, profile, curvature, 
+viewsheds, solar irradiation, and water direction
+it enabled
+intuitive form-finding, 
+streamlined analog and digital workflows, 
+and enabled multiple users to simultaneously interact in a natural way \cite{Ratti2004}. 
+%
+Illuminating Clay had a very limited library of custom implemented spatial analyses. 
+%
+Since many of analyses were adapted 
+from the open source GRASS GIS project \cite{Piper2002a} 
+there was a call to integrate it with GRASS GIS 
+in order to draw on GRASS GIS's extensive libraries 
+for spatial computation \cite{Piper2002b}. 
+%
+The effort to couple a physical landscape model with GRASS GIS \cite{Mitasova2006} 
+led to the development of 
+TanGeoMS \cite{Tateosian2010}.
+%and then Tangible Landscape  \cite{Petrasova2014,Petrasova2015}.
+%
+% Tangible Geospatial Modeling System
+TanGeoMS coupled a physical model and GIS model of a landscape 
+through a cycle of laser scanning, geospatial computation in GRASS GIS, and projection
+giving developers and users assess to 
+%drawing on 
+a sophisticated library for 
+spatial modeling, simulation, visualization, databasing.
+%
+It enriched freeform hand modeling with geospatial simulations like diffusive water flow and erosion-deposition 
+so that users could easily explore how 
+changes in topographic form affect landscape processes. 
+%
+% Augmented Reality Sandbox
+Tangible Landscape -- the next generation of this system -- was inspired by
+the open source Augmented Reality Sandbox \cite{Kreylos2012}
+which couples a sandbox with a digital model of a landscape 
+through a real-time cycle of 3D scanning with a Kinect sensor, spatial modeling and simulation, and projection.
+%
+% TL
+While TanGeoMS used an expensive terrestrial lidar scanner for 3D scanning \cite{Tateosian2010}, 
+Tangible Landscape uses a low-cost 3D sensor like the Kinect 
+for real-time depth and color sensing. 
+%
+The \nth{1} generation of Tangible Landscape \cite{Petrasova2014} 
+used the \nth{1} generation Kinect with structured light sensing \cite{Smisek2011}, 
+and the \nth{2} generation of Tangible Landscape \cite{Petrasova2015} 
+used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015} . 
 
-% Design
 \paragraph{Design}
-Tangible Landscape couples a digital and a physical model through a continuous cycle of 3D scanning, geospatial modeling, and projection.
-Intuitive scientific modeling with Tangible Landscape.
-Tangible Landscape is designed to make scientific data, models, and simulations exploratory, engaging, and fun.
+Tangible Landscape was designed to let users naturally explore 
+spatial data, models, and simulations in an engaging, playful way
+by 3D sketching (Fig.~\ref{fig:subsurface}).
+%
+As users sculpt the physical model
+the model is 3D scanned as a point cloud, georeferenced, imported into GIS, 
+and either binned or interpolated as a digital elevation model. 
+The digital elevation model is used to compute 
+geospatial analyses, models, and simulations, 
+which are then projected back onto the physical model 
+-- all in near real-time (Fig.~\ref{fig:system_schema}). 
+%
+This enables users to tangibly interact with digital models and simulations
+either by shaping topography with their hands or 
+by placing markers that are identified through object detection. 
+%
+As the digital models and simulations update
+the results are projected back onto the model for the users to see. 
 
-Figure~\ref{fig:system_schema} \ldots 
-% Figure
-\begin{figure}
-\centerline{\includegraphics{images/system_schema.pdf}}
-\caption{Caption.}
-\label{fig:system_schema}
+Because the model is continually scanned
+users hands will be digitized as they sculpt or place objects. 
+%
+Scanning users' hands as topography can be distracting; 
+it also, however, helps users understand how the system works
+-- by seeing how direct interaction is --
+and encourages play. 
+Users can, for example, cup their hands over the model 
+and see them fill with simulated water. 
+
+% implementation
+
+%Tangible Landscape was implemented as a plugin for GRASS GIS...
+% get text from Anna?
+
+
+\begin{figure}[h!]
+\begin{center}
+		\includegraphics{images/system_schema.pdf}
+	\caption{How Tangible Landscape works: a near real-time feedback cycle of interaction, 3D scanning, point cloud processing, geospatial computation, and projection}
+	\label{fig:system_schema}
+\end{center}
 \end{figure}
 
-% Modes of interaction
-\paragraph{Modes of interaction}
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[height=65px]{images/subsurface_1.jpg}
+		\includegraphics[height=65px]{images/subsurface_2.jpg}
+		\includegraphics[height=65px]{images/subsurface_3.jpg}
+	\caption{Naturally exploring subsurface soil moisture and soil types with Tangible Landscape}
+	\label{fig:subsurface}
+\end{center}
+\end{figure*}
+
+%-------------BOOK-------------------
+%was designed to intuitively 3D sketch landscapes.
+%This continuous shape display is more tightly integrated with
+%GRASS GIS and has new modes of interaction based on
+%object recognition so that users cannot only sculpt,
+%but also sketch in 3D -- rapidly exploring ideas while learning from near real-time feedback.
+%Tangible Landscape is more affordable than its predecessors because it uses
+%a Kinect sensor to 3D scan physical models.
+%As a continuous shape display with object recognition a wide range of media can be used
+%such as polymer-enriched sand, clay, 3D prints, CNC-machined models, and architectural models.
+%It is more tightly integrated with GIS, using a GRASS GIS plugin to automatically scan, process,
+%georeference, import, and analyze the model.
+%Because it is so tightly integrated with GRASS GIS users can also use the GUI, the command line,
+%and scripting as advanced controls for tasks not suited to
+%a tangible user interface.
+
+
+
+
+\paragraph{Fabrication}
 
 % Fabrication and materiality
+The physical model is often made of polymer-enriched sand so that users can easily sculpt forms in a medium that will hold its shape, has good plasticity, and has a familiar feel and aesthetic. 
+% model making, digital fabrication, CNC, 3D printing, molding and casting, etc
+
+
+
+% materiality
+
+%
+Tangible Landscape 
+typically uses familiar, everyday materials -- like sand and wooden blocks -- for modeling. 
+%
+Interactions -- sculpting sand and moving wooden blocks -- 
+are analogous to everyday tasks
+so users should subconsciously knows what to do and how to do it, 
+leveraging existing sensorimotor schemas. 
+%
+The materiality -- the feel, look, and physics -- of the media matters. 
+The choice of material can afford different interactions
+and mediate meaning, emotion, and motivation. 
+%
+We typically use a polymer-enriched sand for the physical model
+so that users can easily sculpt forms in a medium 
+that will hold its shape, has good plasticity, and has a familiar feel and aesthetic. 
+%
+Because polymeric sand can easily be cast in molds and will be hold its form, 
+we use computer-numeric control (CNC) machined or 3D printed molds to
+cast polymeric sand into precise models (Fig.~\ref{fig:casting}.
+
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=0.3\textwidth]{images/3d_print_1.jpg}
+		\includegraphics[width=0.3\textwidth]{images/3d_print_2.jpg}
+		\includegraphics[width=0.3\textwidth]{images/3d_print_3.jpg}
+	\caption{Casting polymeric sand with 3D printed molds}
+	\label{fig:casting}
+\end{center}
+\end{figure*}
+
 
 % Applications
 \paragraph{Applications}
+Landscape planning applications include stormwater management, flood control, landscape management and erosion control, trail planning, viewshed analysis, the assessment of solar potential, and subsurface visualization. 
+%
+Landscape change applications including urban planning, sea level rise adaption, wildfire management, disease management, and invasive species management \cite{Petrasova2015}.
+%
+These applications draw upon GRASS GIS's libraries of sophisticated models and simulations such as the FUTure Urban -- Regional Environment Simulation -- a patch-based, stochastic, multi-level land change modeling framework \cite{Meentemeyer2013,Petrasova2016}.
 
 \subsection{Coupling experiment}
 
@@ -435,12 +647,68 @@ Figure~\ref{fig:system_schema} \ldots
 \subsection{Case studies}
 
 %Coffee \& Viz
-Coffee \& Viz.
-Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
+%Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
+
+We hosted a participatory modeling workshop using Tangible Landscape 
+as part of North Carolina State University Library's Coffee \& Viz series. 
+%
+In this interactive seminar participants 
+explored complex environmental problems 
+by playing serious games. 
+%
+In the games
+participants used simple tangible interactions 
+to computationally steer simulations, 
+to drive simulated environmental processes. 
+%
+In one game participants managed the spread of termites across a city by treating city blocks. 
+To treat a city block they placed wooden cubes representing preventive treatments on the game board 
+leveraging basic motor skills from childhood play 
+(Fig.~\ref{fig:termite_game}).
+%
+In the other game participants tried to save houses from coastal flooding by building coastal defenses. 
+To build defenses they sculpted dunes out of polymeric sand
+again leveraging motor skills from childhood play
+(Fig.~\ref{fig:coastal_game}). 
+%
+Participants were able to naturally 
+interact with a statistical epidemiological model 
+and a flood simulation. 
+Because the interactions were so simple % yet afforded so much
+they were able to iteratively 
+explore the behavior of multidimensional environmental processes
+unfolding in time and space. 
+
+
+
+(Fig.~\ref{fig:termites})
+
+\begin{figure*}[ht!]
+\begin{center}
+		\includegraphics[width=0.3\textwidth]{images/termite_game_1.jpg}
+		\includegraphics[width=0.3\textwidth]{images/termite_game_2.jpg}
+		\includegraphics[width=0.3\textwidth]{images/termite_game_3.jpg}
+	\caption{Managing the simulated spread of termites through a city with Tangible Landscape}
+	\label{fig:termites}
+\end{center}
+\end{figure*}
+
+\begin{figure*}[ht!]
+\begin{center}
+		\includegraphics[width=0.3\textwidth]{images/tl_coastal_1s.png}
+		\includegraphics[width=0.3\textwidth]{images/tl_coastal_3s.png}
+		\includegraphics[width=0.3\textwidth]{images/tl_coastal_4s.png}
+	\caption{...}
+	\label{fig:coastal}
+\end{center}
+\end{figure*}
 
 \section{Results}
 
 \section{Discussion}
+
+\subsection{Design guidelines}
+\cite{Wilson2014}
 
 \section{Future work}
 
