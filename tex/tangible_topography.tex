@@ -24,6 +24,7 @@
 \usepackage[super]{nth}
 \usepackage[inline]{enumitem}
 \usepackage{moreenum}
+\usepackage{tabu}
 \usepackage{booktabs}
 \newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
 \newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
@@ -733,6 +734,7 @@ Figure~\ref{fig:system_schema_land} \ldots
 
 
 
+
 %\section{...}
 %% label
 %\label{sec:examples}
@@ -811,9 +813,74 @@ In this appendix \ldots
 
 \medskip
 
-\section{...}
+\section{How-to-build}
 
-\ldots
+\subsection{Hardware}
+\begin{table}[hp!] \footnotesize \center
+\caption{Hardware}
+{\tabulinesep=1.2mm
+\begin{tabu}{l l l}
+\toprule
+Type & Product & Cost\\
+\midrule
+Computer & System 76 Oryx Pro & \$1500\\
+Projector & Optoma ML750 WXGA 700 DLP LED & \$500\\
+3D sensor & Xbox One Kinect & \$100\\
+& Kinect Adapter for Windows & \$50\\
+Stand & Avenger 40-Inch C-Stand with Grip Kit & \$200\\
+& Avenger 40-Inch C-Stand with Grip Kit & \$200\\
+& Avenger F800 3-Inch Baby Wall Plate & \$10\\
+& Avenger F800 3-Inch Baby Wall Plate & \$10\\
+Peripherals & HDMI cable & \$10\\
+& Extension cord & \$10\\
+Modeling media & Waba Fun Kinetic Sand 11 Lbs & \$50\\
+\bottomrule
+\end{tabu}}
+\label{table:hardware} 
+\end{table}
+
+
+\subsection{Data sources}
+\begin{table}[hp!] \footnotesize \center
+\caption{Data sources}
+{\tabulinesep=1.2mm
+\begin{tabu}{l l l}
+\toprule
+Data type & Data source & Link\\
+\midrule
+Lidar & United States Interagency Elevation Inventory & http://coast.noaa.gov/inventory/\\
+& Earth Explorer & http://earthexplorer.usgs.gov/\\
+& Digital Coast & http://coast.noaa.gov/dataviewer/\\
+& Open Topography & http://www.opentopography.org/\\
+Digital Elevation Models & National Elevation Dataset & http://viewer.nationalmap.gov/viewer/\\
+Orthoimagery & USGS EROS Orthoimagery WMS & http://raster.nationalmap.gov/\\
+\bottomrule
+\end{tabu}}
+\label{table:data_sources} 
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
 
