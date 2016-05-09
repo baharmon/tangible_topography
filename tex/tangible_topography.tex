@@ -68,18 +68,42 @@ VACLAV PETRAS
 HELENA MITASOVA
 \affil{North Carolina State University}
 ROSS ​KENDALL MEENTEMEYER
+\affil{North Carolina State University}
+EUGENE BRESSLER
+\affil{North Carolina State University}
+ART RICE
 \affil{North Carolina State University}}
 
 \begin{abstract}
-\ldots
-
-
-% embodied cognition
-% tangible interaction
-% improve spatial performance
-% design of tangible landscape
-% experiments to test spatial performance
-
+%
+We have designed Tangible Landscape -- a tangible interface powered by a geographic information system -- 
+that gives spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it.
+%
+Our aim was to iteratively design and empirically test a tangible interface that augments spatial thinking and improves spatial performance. 
+%
+Spatial thinking can be embodied -- people can functionally think about space with their bodies by cognitively grasping objects and physically simulating spatial transformations.
+%
+Tangible interfaces enable embodied cognition so that 
+interaction will be natural and intuitive,
+cognitive processes can be offloaded onto the body,
+and cognitive processes can be computationally augmented.
+%
+We designed Tangible Landscape to physically manifest geographic data %digital data
+so that users can cognitively grasp the data as an extension of their bodies 
+and automatically, immediately, and subconsciously interact with it. 
+%
+We conducted a series of experiments using quantitative methods including geospatial modeling, analysis, and simulation and qualitative methods including semi-structured interviews and direct observation
+to study how tangible interfaces mediate spatial performance. 
+%
+% EXPERIMENT RESULTS AND FINDINGS
+%
+Then as a case study we ran a serious gaming event 
+in which attendees used Tangible Landscape to solve complex spatial problems. 
+%
+As they played the games
+attendees naturally steered sophisticated simulations of environmental processes,
+iteratively exploring and learning how the processes behave. 
+%
 \end{abstract}
 
 %
@@ -110,7 +134,7 @@ ROSS ​KENDALL MEENTEMEYER
 
 \keywords{Human-computer interaction, tangible interfaces, interaction design, physical computation, embodied cognition, spatial thinking, geospatial modeling}
 
-\acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, and Ross K. Meentemeyer, 2016. Embodied Spatial Cognition in Tangible Computing.}
+\acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, Ross K. Meentemeyer, Eugene H. Bressler, and Art Rice, 2016. Embodied Spatial Cognition in Tangible Computing.}
 % At a minimum you need to supply the author names, year and a title.
 % IMPORTANT:
 % Full first names whenever they are known, surname last, followed by a period.
@@ -123,43 +147,70 @@ ROSS ​KENDALL MEENTEMEYER
 % The remaining information (journal title, volume, article number, date, etc.) is 'auto-generated'.
 
 \begin{bottomstuff}
-Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University.
-% ; G. H. Bressler, Department of Landscape Architecture, North Carolina State University.
+Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University; B. A. Harmon, E. H. Bressler {and} A. Rice, Department of Landscape Architecture, North Carolina State University.
 \end{bottomstuff}
+
 
 \maketitle
 
+\pagebreak
+
+\section{Introduction}
+
 \begin{figure*}[h!]
 \begin{center}
-		\includegraphics[width=0.3\textwidth]{images/tl_sequence_1.jpg}
-		\includegraphics[width=0.3\textwidth]{images/tl_sequence_2.jpg}
-		\includegraphics[width=0.3\textwidth]{images/tl_sequence_3.jpg}
+		\includegraphics[width=0.32\textwidth]{images/tl_sequence_1.jpg}
+		\includegraphics[width=0.32\textwidth]{images/tl_sequence_2.jpg}
+		\includegraphics[width=0.32\textwidth]{images/tl_sequence_3.jpg}
 	\caption{Tangibly modeling the flow of water with Tangible Landscape}
 	\label{fig:tl_flow}
 \end{center}
 \end{figure*}
 
-\section{Introduction}
+% A brief intro to TL
 
-We have designed Tangible Landscape -- a tangible interface powered by a geographic information system (GIS) -- 
-that gives spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it (Fig.~\ref{fig:tl_flow}).
+We present Tangible Landscape -- 
+a tangible interface for geographic information systems (GIS). 
 %
-Our aim was to iteratively design and empirically test a tangible interface that augments spatial thinking and improves spatial performance. 
+% challenge
+Spatial thinking can be challenging --
+it is multidimensional and 
+can involve vast amounts of data. 
+% computation
+Spatial analyses and simulations, however, 
+can be computed efficiently in GIS. 
 %
-Spatial thinking can be embodied -- people can functionally think about space with their bodies by cognitively grasping objects and physically simulating it \cite{Kirsh2013}.
+% challenge of hci
+
+\ldots
+
+% tangible interaction
+Tangible interfaces are designed to enable natural interaction with computers 
+by physically manifesting data 
+so that users can feel and manipulate it with their bodies. 
 %
-Theoretically tangible interfaces should improve spatial performance through embodied cognition by enabling natural modes of interaction \cite{Dourish2001}, offloading cognitive processes onto the body \cite{Kirsh2013}, and computationally augmenting spatial thinking \cite{Dror2008}. 
+This means that people with little or no computer experience 
+can intuitively, collaboratively explore data and scientific models and 
+rapidly test ideas while learning from computational feedback. 
 %
-We designed Tangible Landscape to physically manifest digital data so that users can cognitively grasp the data as an extension of their bodies and automatically, immediately, and subconsciously interact with it. 
+Through tangible interaction with GIS 
+users can simulate, learn about, and design complex spatiotemporal processes naturally with their bodies while being situated in a collaborative, social context.
 %
-We conducted a series of experiments using quantitative methods including geospatial modeling, analysis, simulation, and statistics and qualitative methods including semi-structured interviews and direct observation
-to test whether tangible interfaces can improve spatial performance. 
+Tangible interfaces for GIS 
+have the potential to fluidly, seamlessly combine
+computational science with exploratory modes of creative thinking.
 %
-We also explored how users approached spatial problem solving using Tangible Landscape in a serious gaming event.
+
+
+\ldots
+
+(Fig.~\ref{fig:tl_flow})
+
+
 
 % Concept diagram / illustration
 
-\pagebreak
+
 
 \subsection{Spatial thinking and computation}
 
@@ -242,10 +293,7 @@ Spatial data -- especially 3D spatial data -- presented graphically can require 
 
 % what technologies are most effective?
 
-\pagebreak
 
-
-% Tangible interaction
 \subsection{Tangible interaction}
 
 Tangible interfaces -- interfaces that couple physical and digital data \cite{Dourish2001} -- 
@@ -287,11 +335,6 @@ It can be challenging and cognitively taxing to visually perceive and parse spac
 Distance and physical properties like size, shape, volume, weight, hardness, and texture, however, can be automatically and subconsciously assessed kinaesthetically with the body \cite{Jeannerod1997}. 
 %
 By affording physical feedback tangible interfaces should, therefore, reduce the cognitive load needed to judge spatial distances, relationships, patterns, and forms. 
-%%%
-
-
-\ldots
-\cite{Maravita2004}
 
 Furthermore, some cognitive processes can be physically simulated, offloading the cognitive work onto the body \cite{Kirsh2013}. 
 %
@@ -681,16 +724,13 @@ explore the behavior of multidimensional environmental processes
 unfolding in time and space. 
 
 
-
-(Fig.~\ref{fig:termites})
-
 \begin{figure*}[ht!]
 \begin{center}
 		\includegraphics[width=0.3\textwidth]{images/termite_game_1.jpg}
 		\includegraphics[width=0.3\textwidth]{images/termite_game_2.jpg}
 		\includegraphics[width=0.3\textwidth]{images/termite_game_3.jpg}
 	\caption{Managing the simulated spread of termites through a city with Tangible Landscape}
-	\label{fig:termites}
+	\label{fig:termite_game}
 \end{center}
 \end{figure*}
 
@@ -700,7 +740,7 @@ unfolding in time and space.
 		\includegraphics[width=0.3\textwidth]{images/tl_coastal_3s.png}
 		\includegraphics[width=0.3\textwidth]{images/tl_coastal_4s.png}
 	\caption{...}
-	\label{fig:coastal}
+	\label{fig:coastal_game}
 \end{center}
 \end{figure*}
 
