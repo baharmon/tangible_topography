@@ -485,7 +485,7 @@ The effort to couple a physical landscape model with GRASS GIS \cite{Mitasova200
 led to the development of 
 TanGeoMS \cite{Tateosian2010}.
 %and then Tangible Landscape  \cite{Petrasova2014,Petrasova2015}.
-%
+
 % Tangible Geospatial Modeling System
 TanGeoMS coupled a physical model and GIS model of a landscape 
 through a cycle of laser scanning, geospatial computation in GRASS GIS, and projection
@@ -497,7 +497,7 @@ spatial modeling, simulation, visualization, databasing.
 It enriched freeform hand modeling with geospatial simulations like diffusive water flow and erosion-deposition 
 so that users could easily explore how 
 changes in topographic form affect landscape processes. 
-%
+
 % Augmented Reality Sandbox
 Tangible Landscape -- the next generation of this system -- was inspired by
 the open source Augmented Reality Sandbox \cite{Kreylos2012}
@@ -517,6 +517,7 @@ used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015} 
 % REVIEW OF RESEARCH ON SIMILAR SYSTEMS
 % see ARL Sand Table lit review
 % as a table
+
 
 \paragraph{Design}
 Tangible Landscape was designed to let users naturally explore 
@@ -539,7 +540,7 @@ Users can also for example use a laser pointer to draw polylines or polygons
 that will be detected based on light intensity.
 %
 As the digital models and simulations update
-the results are projected back onto the model for the users to see. 
+the results are projected back onto the model for users to see. 
 
 Because the model is continually scanned
 users hands will be digitized as they sculpt or place objects. 
@@ -550,30 +551,6 @@ it also, however, helps users understand how the system works
 and encourages play. 
 Users can, for example, cup their hands over the model 
 and see them fill with simulated water. 
-
-\paragraph{Implementation}
-\ldots
-%Tangible Landscape was implemented as a plugin for GRASS GIS...
-% get text from Anna?
-
-
-
-
-% components
-%r.in.kinect and grass-tangible-landscape plugin
-
-% depdendencies
-
-%libfreenect2
-%Drivers for Kinect v2
-
-%PCL
-%Point cloud processing
-
-%GRASS GIS 7
-%Geographic information system
-
-
 
 \begin{figure}[h!]
 \begin{center}
@@ -593,36 +570,34 @@ and see them fill with simulated water.
 \end{center}
 \end{figure*}
 
-%-------------BOOK-------------------
-%was designed to intuitively 3D sketch landscapes.
-%This continuous shape display is more tightly integrated with
-%GRASS GIS and has new modes of interaction based on
-%object recognition so that users cannot only sculpt,
-%but also sketch in 3D -- rapidly exploring ideas while learning from near real-time feedback.
-%Tangible Landscape is more affordable than its predecessors because it uses
-%a Kinect sensor to 3D scan physical models.
-%As a continuous shape display with object recognition a wide range of media can be used
-%such as polymer-enriched sand, clay, 3D prints, CNC-machined models, and architectural models.
-%It is more tightly integrated with GIS, using a GRASS GIS plugin to automatically scan, process,
-%georeference, import, and analyze the model.
-%Because it is so tightly integrated with GRASS GIS users can also use the GUI, the command line,
-%and scripting as advanced controls for tasks not suited to
-%a tangible user interface.
-
-
-
+\paragraph{Implementation}
+Tangible Landscape has been implemented as a set of components 
+-- the r.in.kinect add-on module 
+\footnote{\url{https://github.com/ncsu-osgeorel/r.in.kinect}}
+and the grass-tangible-landscape plugin 
+\footnote{\url{https://github.com/ncsu-osgeorel/grass-tangible-landscape}} --
+for the active development version of GRASS GIS. 
+%
+The r.in.kinect add-on module imports point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
+It has been implemented as a separate component so that it can easily be used for other applications.
+%
+The grass-tangible-landscape plugin provides 
+utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
+%
+Users can develop new analyses using the
+% GRASS GIS Python API
+GRASS GIS Python Scripting Library. 
+%
+Because Tangible Landscape has been implemented 
+as a set of extensions for GRASS GIS
+users can use the GUI, CLI, and scripting 
+for tasks that are not well suited for tangible interaction.
+%
+Dependencies include the Point Cloud Library, OpenKinect's libfreenect2, OpenCV,  watchdog, and GRASS GIS.
+%
+Tangible Landscape currently runs on Linux and Mac OSX with an unsupported branch for Windows. 
 
 \paragraph{Fabrication}
-
-% Fabrication and materiality
-The physical model is often made of polymer-enriched sand so that users can easily sculpt forms in a medium that will hold its shape, has good plasticity, and has a familiar feel and aesthetic. 
-% model making, digital fabrication, CNC, 3D printing, molding and casting, etc
-
-
-
-% materiality
-
-%
 Tangible Landscape 
 typically uses familiar, everyday materials -- like sand and wooden blocks -- for modeling. 
 %
@@ -636,12 +611,36 @@ The choice of material can afford different interactions
 and mediate meaning, emotion, and motivation. 
 %
 We typically use a polymer-enriched sand for the physical model
-so that users can easily sculpt forms in a medium 
+so that users can easily sculpt forms in a deformable medium 
 that will hold its shape, has good plasticity, and has a familiar feel and aesthetic. 
 %
 Because polymeric sand can easily be cast in molds and will be hold its form, 
-we use computer-numeric control (CNC) machined or 3D printed molds to
+we often use computer-numeric control (CNC) machined or 3D printed molds to
 cast polymeric sand into precise models (Fig.~\ref{fig:casting}.
+%
+
+%CNC machining can also be used to directly 
+
+%%A 3-axis CNC milling machine to model a landscape in polymer-enriched sand using a plunge cut
+
+
+%When we use Tangible Landscape with object detection 
+%to 3D sketch cells, points, polylines, or polygons 
+%we use...
+
+%on hand-sculpted sand models, cast sand models, CNC machines sand model 
+
+%When you are using Tangible Landscape for object detection you can use hard, rigid models such as 3D prints.
+
+%You can easily sculpt a model with polymer enriched sand using Tangible Landscape. Project a digital elevation model and the derived contours onto the table. Use this as a guide for sculpting. You can also use Tangible Landscape to compute the difference between the scanned model that you have sculpted and the original digital elevation model. Project the color coded difference (i.e. cut/fill) for a real-time guide of where to add or remove sand. You can also vertically rescale and translate the scanned raster to match the original DEM using the module r.regression.line.
+
+%You can build precise physical models using digital fabrication technologies like computer numerically controlled (CNC) manufacturing or 3D printing. You can use CNC milled and 3D printed models as molds for casting polymer enriched sand into precise yet malleable models. Cast models can precisely represent complex forms that are too challenging to model by hand. You can reset your sand model by simply by casting it again.
+
+
+
+
+
+
 
 \begin{figure*}[h!]
 \begin{center}
