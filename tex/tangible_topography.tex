@@ -135,16 +135,6 @@ iteratively exploring and learning how the processes behave.
 \keywords{Human-computer interaction, tangible interfaces, interaction design, physical computation, embodied cognition, spatial thinking, geospatial modeling}
 
 \acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, Ross K. Meentemeyer, Eugene H. Bressler, and Art Rice, 2016. Embodied Spatial Cognition in Tangible Computing.}
-% At a minimum you need to supply the author names, year and a title.
-% IMPORTANT:
-% Full first names whenever they are known, surname last, followed by a period.
-% In the case of two authors, 'and' is placed between them.
-% In the case of three or more authors, the serial comma is used, that is, all author names
-% except the last one but including the penultimate author's name are followed by a comma,
-% and then 'and' is placed before the final author's name.
-% If only first and middle initials are known, then each initial
-% is followed by a period and they are separated by a space.
-% The remaining information (journal title, volume, article number, date, etc.) is 'auto-generated'.
 
 \begin{bottomstuff}
 Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University; B. A. Harmon, E. H. Bressler {and} A. Rice, Department of Landscape Architecture, North Carolina State University.
@@ -543,7 +533,7 @@ As the digital models and simulations update
 the results are projected back onto the model for users to see. 
 
 Because the model is continually scanned
-users hands will be digitized as they sculpt or place objects. 
+users' hands will be digitized as they sculpt or place objects. 
 %
 Scanning users' hands as topography can be distracting; 
 it also, however, helps users understand how the system works
@@ -584,63 +574,65 @@ It has been implemented as a separate component so that it can easily be used fo
 The grass-tangible-landscape plugin provides 
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
 %
-Users can develop new analyses using the
-% GRASS GIS Python API
-GRASS GIS Python Scripting Library. 
+Users can develop new analyses for Tangible Landscape 
+using the GRASS GIS Python Scripting Library.  %GRASS GIS Python API
 %
-Because Tangible Landscape has been implemented 
-as a set of extensions for GRASS GIS
-users can use the GUI, CLI, and scripting 
-for tasks that are not well suited for tangible interaction.
+Since many tasks in GIS are not appropriate for tangible interaction
+Tangible Landscape was designed to supplement, 
+not replace GRASS GIS's GUI, CLI, and scripting API. 
+
+Tangible Landscape currently runs on Linux and Mac OSX 
+with an unsupported branch for Windows. 
 %
-Dependencies include the Point Cloud Library, OpenKinect's libfreenect2, OpenCV,  watchdog, and GRASS GIS.
-%
-Tangible Landscape currently runs on Linux and Mac OSX with an unsupported branch for Windows. 
+Dependencies include the Point Cloud Library, OpenKinect's libfreenect2, 
+OpenCV,  watchdog, and GRASS GIS.
 
 \paragraph{Fabrication}
-Tangible Landscape 
-typically uses familiar, everyday materials -- like sand and wooden blocks -- for modeling. 
+We typically use familiar, everyday materials 
+-- like sand and wooden blocks -- 
+for modeling with Tangible Landscape. 
 %
 Interactions -- sculpting sand and moving wooden blocks -- 
 are analogous to everyday tasks
-so users should subconsciously knows what to do and how to do it, 
+so users should subconsciously know what to do and how to do it, 
 leveraging existing sensorimotor schemas. 
 %
 The materiality -- the feel, look, and physics -- of the media matters. 
 The choice of material can afford different interactions
 and mediate meaning, emotion, and motivation. 
 %
-We typically use a polymer-enriched sand for the physical model
+We typically use a polymer-enriched sand for the physical terrain model
 so that users can easily sculpt forms in a deformable medium 
 that will hold its shape, has good plasticity, and has a familiar feel and aesthetic. 
 %
-Because polymeric sand can easily be cast in molds and will be hold its form, 
-we often use computer-numeric control (CNC) machined or 3D printed molds to
-cast polymeric sand into precise models (Fig.~\ref{fig:casting}.
+%Polymer-enriched sand can easily be cast in molds and will be hold its form 
+%so we often use computer numeric control (CNC) machined or 3D printed molds to
+%cast the sand into precise models (Fig.~\ref{fig:casting}.
 %
+Digital fabrication technologies 
+like computer numeric control (CNC) manufacturing and 3D printing
+can be used to create molds for casting polymer-enriched sand 
+into precise yet deformable models (Fig.~\ref{fig:casting}. 
+%
+Cast sand models can precisely represent complex forms 
+that are challenging to model by hand 
+and can easily be re-cast after use.
 
-%CNC machining can also be used to directly 
-
-%%A 3-axis CNC milling machine to model a landscape in polymer-enriched sand using a plunge cut
-
-
-%When we use Tangible Landscape with object detection 
-%to 3D sketch cells, points, polylines, or polygons 
-%we use...
-
-%on hand-sculpted sand models, cast sand models, CNC machines sand model 
-
-%When you are using Tangible Landscape for object detection you can use hard, rigid models such as 3D prints.
-
-%You can easily sculpt a model with polymer enriched sand using Tangible Landscape. Project a digital elevation model and the derived contours onto the table. Use this as a guide for sculpting. You can also use Tangible Landscape to compute the difference between the scanned model that you have sculpted and the original digital elevation model. Project the color coded difference (i.e. cut/fill) for a real-time guide of where to add or remove sand. You can also vertically rescale and translate the scanned raster to match the original DEM using the module r.regression.line.
-
-%You can build precise physical models using digital fabrication technologies like computer numerically controlled (CNC) manufacturing or 3D printing. You can use CNC milled and 3D printed models as molds for casting polymer enriched sand into precise yet malleable models. Cast models can precisely represent complex forms that are too challenging to model by hand. You can reset your sand model by simply by casting it again.
-
-
-
-
-
-
+Tangible Landscape can be also be used as a modeling aid for sculpting.
+%
+Static projections or dynamic analytics like differencing or water flow 
+can be used as guides for hand sculpting terrain models. 
+%
+Users can project their target digital elevation model and contours 
+over their polymeric sand model as a static guide for sculpting. 
+%
+Tangible Landscape can also dynamically compute the difference -- i.e.\ cut and fill --
+between the scanned model that has been sculpted and the target digital elevation model. 
+%
+The difference can provide a real-time guide 
+where to add or remove sand in order to match the target digital elevation model. 
+%
+% Vertically rescale and translate the scanned raster to match the original DEM using the module r.regression.line.
 
 \begin{figure*}[h!]
 \begin{center}
@@ -652,38 +644,104 @@ cast polymeric sand into precise models (Fig.~\ref{fig:casting}.
 \end{center}
 \end{figure*}
 
+% Difference figure <----------------------- ADD
 
 % Applications
 \paragraph{Applications}
-Landscape planning applications include stormwater management, flood control, landscape management and erosion control, trail planning, viewshed analysis, the assessment of solar potential, and subsurface visualization. 
+Using GRASS GIS's extensive libraries for geospatial modeling, analysis, and simulation 
+we have developed a wide range of applications for Tangible Landscape.
+%for disciplines including education, ecology, geomorphology, landscape architecture, urban planning, civil engineering, and disaster management. 
 %
-Landscape change applications including urban planning, sea level rise adaption, wildfire management, disease management, and invasive species management \cite{Petrasova2015}.
+Design and planning applications include
+grading, cut and fill analysis, stormwater management, erosion control, 
+trail planning, viewshed analysis, and the assessment of solar potential. 
 %
-These applications draw upon GRASS GIS's libraries of sophisticated models and simulations such as the FUTure Urban -- Regional Environment Simulation -- a patch-based, stochastic, multi-level land change modeling framework \cite{Meentemeyer2013,Petrasova2016}.
+Scientific applications include
+subsurface visualization, disease management, and invasive species management.
+%
+Disaster management applications include 
+flood control, wildfire management, and coastal change and adaptation. 
+%
+Educational applications include
+spatial training and serious gaming.
 
-% Add figures with examples
-
-
-
-
-
-
+%\begin{figure*}[h!]
+%\begin{center}
+%		\includegraphics[width=\textwidth]{images/walking_route_view.png}
+%	\caption{...}
+%	\label{fig:applications}
+%\end{center}
+%\end{figure*}
 
 
 \subsection{Coupling experiment}
+We conducted an experiment to study how coupling digital and physical models of topography mediates spatial performance. 
+%
+In this experiment % x 
+participants tried to accurately model a given study landscape 
+digitally, by hand, and with Tangible Landscape. 
 
-%Psychometric tests of spatial ability -- the application of spatial thinking -- for example study spatial visualization and mental rotation \citep{Uttal2013,Uttal2013a,Ormand2014}.
-%We, however, do not just see space -- we also feel it; we use our bodies to feel size, shape, and volume. 
-%Space need not be imagined to be transformed -- haptic feedback about space informs subconscious pragmatic representations that rapidly generate action \citep{Jeannerod1997}. Spatial thinking can be embodied.
+% study landscape
+\paragraph{Study landscape}
+We used a region of Lake Raleigh Woods in Raleigh, North Carolina 
+as the study landscape for this experiment. 
+%
+We used a real landscape because computer generated landscapes 
+often look surreal and may lack distinct landforms and clearly defined streams. 
+%
+We selected a region with distinctive, 
+clearly defined landforms -- a valley, flanked by ridges, sloping towards the lake.
+%(see Fig.~\ref{fig:study_area}). 
+%
+The digital elevation model for this region was derived from a 2013 airborne lidar survey using the regularized spline with tension interpolation method \cite{Mitasova2005}. 
 
+
+\paragraph{Digital modeling}
+
+
+
+
+
+\paragraph{Hand modeling}
+
+
+\paragraph{Projection augmented modeling}
+
+
+\paragraph{Data analysis}
+
+% digitally modeled the landscape in Rhino, a NURBs-based 3D modeling program. 
+
+
+\begin{enumerate}[label=\arabic*),font=\itshape]
+\item \ldots
+\end{enumerate}
+
+
+\begin{enumerate*}[label=\arabic*),font=\itshape]
+\item \ldots
+\end{enumerate*}
+
+
+
+
+% comparison of Rhino and Vue
 
 \subsection{Analytics experiment}
+We also conducted an experiment to study how different geospatial analytics mediate spatial performance when using a tangible interface for GIS.
+
+% difference
+
+% water flow
+
+	% only compare against reference
+
 
 \subsection{Case studies}
 
 %Coffee \& Viz
 %Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
-
+% as spatial training / education: exploring scientific models / simulations
 We hosted a participatory modeling workshop using Tangible Landscape 
 as part of North Carolina State University Library's Coffee \& Viz series. 
 %
@@ -715,6 +773,8 @@ explore the behavior of multidimensional environmental processes
 unfolding in time and space. 
 
 
+% Also SIMWE at SECREF: unstructured play, freeform/open exploration of simulation
+
 \begin{figure*}[ht!]
 \begin{center}
 		\includegraphics[width=0.3\textwidth]{images/termite_game_1.jpg}
@@ -738,12 +798,33 @@ unfolding in time and space.
 \section{Results}
 
 \section{Discussion}
+
+
+% How did the experiment address these research questions?
+
+% DESIGN
+% How can we design an effective tangible interface for GIS?
+	% Experiment results and case study -> tested and informed design -> iterative process
+		% describe realizing need for serious games
+		% describe refinement of differencing
+
+% COUPLING
+% Can coupling a physical and digital model of topography improve spatial performance?
+
+% ANALYTICS
+% How do different geospatial analytics mediate users' spatial performance when using a tangible interface for GIS?
+
+
+
+
+
+
 % Iterative design process
 	% TLv2 w/ PCL + OpenKinect
 	% New analyses for experiment
 	
-\subsection{Design guidelines}
-\cite{Wilson2014}
+%\subsection{Design guidelines}
+%\cite{Wilson2014}
 
 \subsection{Open science}
 % Call for collaboration with TL and experiment
@@ -860,7 +941,7 @@ In this appendix \ldots
 
 \medskip
 
-\section{How-to-build}
+\section{How to build Tangible Landscape}
 
 \subsection{Hardware}
 \begin{table}[hp!] \footnotesize \center
@@ -886,25 +967,34 @@ Modeling media & Waba Fun Kinetic Sand 11 Lbs & \$50\\
 \label{table:hardware} 
 \end{table}
 
+\subsection{Setup}
 
-\subsection{Data sources}
-\begin{table}[hp!] \footnotesize \center
-\caption{Data sources}
-{\tabulinesep=1.2mm
-\begin{tabu}{l l l}
-\toprule
-Data type & Data source & Link\\
-\midrule
-Lidar & United States Interagency Elevation Inventory & http://coast.noaa.gov/inventory/\\
-& Earth Explorer & http://earthexplorer.usgs.gov/\\
-& Digital Coast & http://coast.noaa.gov/dataviewer/\\
-& Open Topography & http://www.opentopography.org/\\
-Digital Elevation Models & National Elevation Dataset & http://viewer.nationalmap.gov/viewer/\\
-Orthoimagery & USGS EROS Orthoimagery WMS & http://raster.nationalmap.gov/\\
-\bottomrule
-\end{tabu}}
-\label{table:data_sources} 
-\end{table}
+
+\section{Setting up the experiment}
+
+
+
+
+
+
+%\subsection{Data sources}
+%\begin{table}[hp!] \footnotesize \center
+%\caption{Data sources}
+%{\tabulinesep=1.2mm
+%\begin{tabu}{l l l}
+%\toprule
+%Data type & Data source & Link\\
+%\midrule
+%Lidar & United States Interagency Elevation Inventory & http://coast.noaa.gov/inventory/\\
+%& Earth Explorer & http://earthexplorer.usgs.gov/\\
+%& Digital Coast & http://coast.noaa.gov/dataviewer/\\
+%& Open Topography & http://www.opentopography.org/\\
+%Digital Elevation Models & National Elevation Dataset & http://viewer.nationalmap.gov/viewer/\\
+%Orthoimagery & USGS EROS Orthoimagery WMS & http://raster.nationalmap.gov/\\
+%\bottomrule
+%\end{tabu}}
+%\label{table:data_sources} 
+%\end{table}
 
 
 
