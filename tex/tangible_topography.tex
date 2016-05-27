@@ -612,7 +612,7 @@ that will hold its shape, has good plasticity, and has a familiar feel and aesth
 Digital fabrication technologies 
 like computer numeric control (CNC) manufacturing and 3D printing
 can be used to create molds for casting polymer-enriched sand 
-into precise yet deformable models (Fig.~\ref{fig:casting}. 
+into precise yet deformable models (Fig.~\ref{fig:casting}). 
 %
 Cast sand models can precisely represent complex forms 
 that are challenging to model by hand 
@@ -630,21 +630,31 @@ Tangible Landscape can also dynamically compute the difference -- i.e.\ cut and 
 between the scanned model that has been sculpted and the target digital elevation model. 
 %
 The difference can provide a real-time guide 
-where to add or remove sand in order to match the target digital elevation model. 
+where to add or remove sand in order to match the target digital elevation model (Fig.~\ref{fig:difference_sequence}). 
 %
 % Vertically rescale and translate the scanned raster to match the original DEM using the module r.regression.line.
 
 \begin{figure*}[h!]
 \begin{center}
-		\includegraphics[width=0.3\textwidth]{images/3d_print_1.jpg}
-		\includegraphics[width=0.3\textwidth]{images/3d_print_2.jpg}
-		\includegraphics[width=0.3\textwidth]{images/3d_print_3.jpg}
+		\includegraphics[width=0.32\textwidth]{images/3d_print/3d_print_1.jpg}
+		\includegraphics[width=0.32\textwidth]{images/3d_print/3d_print_2.jpg}
+		\includegraphics[width=0.32\textwidth]{images/3d_print/3d_print_3.jpg}
 	\caption{Casting polymeric sand with 3D printed molds}
 	\label{fig:casting}
 \end{center}
 \end{figure*}
 
-% Difference figure <----------------------- ADD
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
+		
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
+	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
+	\label{fig:difference_sequence}
+\end{center}
+\end{figure*}
 
 % Applications
 \paragraph{Applications}
