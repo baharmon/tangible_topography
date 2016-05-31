@@ -116,26 +116,26 @@ def main():
     valley_distance = []
 
     # run functions
-    reference(ref_flow_cells,
-              ref_depression_cells,
-              ref_peak_cells,
-              ref_pit_cells,
-              ref_ridge_cells,
-              ref_valley_cells)
+    # reference(ref_flow_cells,
+    #           ref_depression_cells,
+    #           ref_peak_cells,
+    #           ref_pit_cells,
+    #           ref_ridge_cells,
+    #           ref_valley_cells)
+    #
+    # analysis(flow_cells,
+    #          depression_cells,
+    #          peak_cells,
+    #          pit_cells,
+    #          ridge_cells,
+    #          valley_cells,
+    #          flow_distance,
+    #          peak_distance,
+    #          pit_distance,
+    #          ridge_distance,
+    #          valley_distance)
 
-    analysis(flow_cells,
-             depression_cells,
-             peak_cells,
-             pit_cells,
-             ridge_cells,
-             valley_cells,
-             flow_distance,
-             peak_distance,
-             pit_distance,
-             ridge_distance,
-             valley_distance)
-
-    render_3d()
+    render_3d_images()
 
     write_results(ref_flow_cells,
                  ref_depression_cells,
@@ -1042,15 +1042,21 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
         except CalledModuleError:
             pass
 
-def render_3d():
+def render_3d_images():
     """3D rendering with nviz"""
+
+    print "3D RUNNING"
 
     # list scanned DEMs
     dems = gscript.list_grouped('rast',
                                 pattern='dem_*')['PERMANENT']
 
+    print dems
+
     # iterate through scanned DEMs
     for dem in dems:
+
+        print dem
 
         # variables
         region = dem
@@ -1095,36 +1101,35 @@ def render_3d():
         mean_valley_points = dem.replace("dem","mean_valley_points")
         valley_lines = dem.replace("dem","valley_lines")
 
+        print region
+
         # set region
         gscript.run_command('g.region',
                             rast=region,
                             res=res)
-
         # 3D render elevation
-        try:
-            gscript.write_command('r.colors',
-                                map=dem,
-                                rules='-',
-                                stdin=dem_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=dem,
-                            #color=color_3d,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, dem),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+                            map=dem,
+                            rules='-',
+                            stdin=dem_colors_3d)
+        gscript.run_command('m.nviz.image',
+                        elevation_map=dem,
+                        color_map=dem,
+                        #color=color_3d,
+                        resolution_fine=res_3d,
+                        height=height_3d,
+                        perspective=perspective,
+                        light_position=light_position,
+                        fringe=fringe,
+                        fringe_color=color_3d,
+                        fringe_elevation=fringe_elevation,
+                        #arrow_position=arrow_position,
+                        #arrow_size=arrow_size,
+                        output=os.path.join(render_3d, dem),
+                        format=format_3d,
+                        size=size_3d,
+                        errors='ignore'
+                        )
 
         # 3D render slope
         try:

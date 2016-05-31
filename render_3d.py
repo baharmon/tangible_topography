@@ -52,7 +52,16 @@ vline_color = "black"
 # arrow_size = 100
 
 # 3d color rules with null values and default set to light gray
-dem_colors_3d = '0% 0:191:191\n20% 0:255:0\n40% 255:255:0\n60% 255:127:0\n80% 191:127:63\n100% 200:200:200\nnv 192:192:192\ndefault 192:192:192'
+dem_colors_3d = """\
+0% 0:191:191
+20% 0:255:0
+40% 255:255:0
+60% 255:127:0
+80% 191:127:63
+100% 200:200:200
+nv 192:192:192
+default 192:192:192
+"""
 slope_colors_3d = '0 192:192:192\n2 255:255:0\n5 0:255:0\n10 0:255:255\n15 0:0:255\n30 255:0:255\n50 255:0:0\n90 0:0:0\nnv 192:192:192\ndefault 192:192:192'
 depressions_colors_3d = '0% aqua\n100% blue\nnv 192:192:192\ndefault 192:192:192'
 depth_colors_3d = '0 192:192:192\n0.001 255:255:0\n0.05 0:255:255\n0.1 0:127:255\n0.5 0:0:255\n100% 0:0:0\nnv 192:192:192\ndefault 192:192:192'
@@ -149,30 +158,30 @@ for dem in dems:
                         res=res)
 
     # 3D render elevation
-    try:
-        gscript.write_command('r.colors',
-                            map=dem,
-                            rules='-',
-                            stdin=dem_colors_3d)
-        gscript.run_command('m.nviz.image',
-                        elevation_map=dem,
-                        color_map=dem,
-                        #color=color_3d,
-                        resolution_fine=res_3d,
-                        height=height_3d,
-                        perspective=perspective,
-                        light_position=light_position,
-                        fringe=fringe,
-                        fringe_color=color_3d,
-                        fringe_elevation=fringe_elevation,
-                        #arrow_position=arrow_position,
-                        #arrow_size=arrow_size,
-                        output=os.path.join(render_3d, dem),
-                        format=format_3d,
-                        size=size_3d,
-                        )
-    except:
-        pass
+
+    gscript.write_command('r.colors',
+                        map=dem,
+                        rules='-',
+                        stdin=dem_colors_3d)
+    gscript.run_command('m.nviz.image',
+                    elevation_map=dem,
+                    color_map=dem,
+                    #color=color_3d,
+                    resolution_fine=res_3d,
+                    height=height_3d,
+                    perspective=perspective,
+                    light_position=light_position,
+                    fringe=fringe,
+                    fringe_color=color_3d,
+                    fringe_elevation=fringe_elevation,
+                    #arrow_position=arrow_position,
+                    #arrow_size=arrow_size,
+                    output=os.path.join(render_3d, dem),
+                    format=format_3d,
+                    size=size_3d,
+                    errors='ignore'
+                    )
+
 
     # 3D render slope
     try:
