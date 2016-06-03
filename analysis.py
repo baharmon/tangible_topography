@@ -16,7 +16,7 @@ import csv
 import atexit
 import grass.script as gscript
 from grass.exceptions import CalledModuleError
-#import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # set graphics driver
 driver = "cairo"
@@ -40,22 +40,22 @@ render = os.path.join(gisdbase, location, 'results')
 render_3d = os.path.join(gisdbase, location, 'render_3d')
 
 # csv path
-cells = os.path.join(render,'cells.csv')
+cells = os.path.join(render, 'cells.csv')
 
 # set variables
-res = 3 # resolution of the region
-npoints = "100%" # percent of points for random resampling
-rain_value = 300 # rain in mm/hr for r.sim.water
-niterations = 4 # number of iterations for r.sim.water
-nwalkers = 5000 # number of walkers for r.sim.water
-step = 5 # contour interval
-search = 9 # search size for r.geomorphon
-skip = 6 # skip distance for r.geomorphon
-size = 9 # moving window size for r.param.scale
-brighten = 75 # percent brightness of shaded relief
-render_multiplier = 3 # multiplier for rendering size
-fontsize = 9 * render_multiplier # legend font size
-legend_coord = (10, 50, 1, 4) # legend display coordinates
+res = 3  # resolution of the region
+npoints = "100%"  # percent of points for random resampling
+rain_value = 300  # rain in mm/hr for r.sim.water
+niterations = 4  # number of iterations for r.sim.water
+nwalkers = 5000  # number of walkers for r.sim.water
+step = 5  # contour interval
+search = 9  # search size for r.geomorphon
+skip = 6  # skip distance for r.geomorphon
+size = 9  # moving window size for r.param.scale
+brighten = 75  # percent brightness of shaded relief
+render_multiplier = 3  # multiplier for rendering size
+fontsize = 9 * render_multiplier  # legend font size
+legend_coord = (10, 50, 1, 4)  # legend display coordinates
 
 # 3d variables
 color_3d = "192:192:192"
@@ -65,7 +65,6 @@ perspective = 25
 light_position = (0.68, -0.68, 0.95)
 fringe = "ne"
 fringe_elevation = 250
-stdev_fringe = 25
 format_3d = "tif"
 size_3d = (1000, 1000)
 vpoint_size = 4
@@ -97,9 +96,7 @@ dem_difference_colors_3d = '-40 blue\n0 192:192:192\n40 red\nnv 192:192:192\ndef
 flow_difference_colors_3d = '-0.5 blue\n0 192:192:192\n0.5 red\nnv 192:192:192\ndefault 192:192:192'
 slope_difference_colors_3d = '-30 blue\n0 192:192:192\n30 red\nnv 192:192:192\ndefault 192:192:192'
 forms_difference_colors_3d = '-10 blue\n0 192:192:192\n10 red\nnv 192:192:192\ndefault 192:192:192'
-stdev_dem_difference_colors_3d = '250 blue\n0 white\n350 red\nnv 192:192:192\ndefault 192:192:192'
-stdev_dem_regression_difference_colors_3d = '-11 blue\n0 white\n11 red\nnv 192:192:192\ndefault 192:192:192'
-stdev_slope_difference_colors_3d = '-40 blue\n0 white\n40 red\nnv 192:192:192\ndefault 192:192:192'
+url="http://soliton.vm.bytemark.co.uk/pub/cpt-city/mpl/viridis.cpt" # http://soliton.vm.bytemark.co.uk/pub/cpt-city/mpl/inferno.cpt
 
 def main():
 
@@ -670,9 +667,11 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         mean_forms_before = forms
         mean_forms_after = mean_forms
         mean_forms_difference = dem.replace("dem","mean_forms_difference")
+        mean_forms_regression = dem.replace("dem","mean_forms_regression")
         mean_depth_before = depth
         mean_depth_after = mean_depth
         mean_depth_difference = dem.replace("dem","mean_depth_difference")
+        mean_depth_regression = dem.replace("dem","mean_depth_regression")
         mean_depressions = dem.replace("dem","mean_depressions")
         mean_concentrated_flow = dem.replace("dem","mean_concentrated_flow")
         mean_concentrated_points = dem.replace("dem","mean_concentrated_points")
@@ -748,6 +747,14 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('d.legend', raster=mean_forms, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
+        #compute landforms for linearly regressed mean elevation
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_forms_regression+".png"), overwrite=overwrite)
+        gscript.run_command('r.geomorphon', dem=mean_dem_regression, forms=mean_forms_regression, search=search, skip=skip, overwrite=overwrite)
+        gscript.run_command('d.rast', map=mean_forms_regression)
+        gscript.run_command('d.vect', map=mean_contour, display='shape')
+        gscript.run_command('d.legend', raster=mean_forms_regression, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
         # simulate water flow
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_depth+".png"), overwrite=overwrite)
         gscript.run_command('r.slope.aspect', elevation=mean_dem, dx='dx', dy='dy', overwrite=overwrite)
@@ -756,6 +763,16 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('d.shade', shade=mean_relief, color=mean_depth, brighten=brighten)
         gscript.run_command('d.vect', map=mean_contour, display='shape')
         gscript.run_command('d.legend', raster=mean_depth, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # simulate water flow for linearly regressed mean elevation
+        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_depth_regression+".png"), overwrite=overwrite)
+        gscript.run_command('r.slope.aspect', elevation=mean_dem_regression, dx='dx', dy='dy', overwrite=overwrite)
+        gscript.run_command('r.sim.water', elevation=mean_dem_regression, dx='dx', dy='dy', rain_value=rain_value, depth=mean_depth_regression, nwalkers=nwalkers, niterations=niterations, overwrite=overwrite)
+        gscript.run_command('g.remove', flags='f', type='raster', name=['dx', 'dy'])
+        gscript.run_command('d.shade', shade=mean_relief, color=mean_depth_regression, brighten=brighten)
+        gscript.run_command('d.vect', map=mean_contour, display='shape')
+        gscript.run_command('d.legend', raster=mean_depth_regression, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
         # identify mean depressions
@@ -1163,7 +1180,10 @@ def stdev_analysis(stdev_flow_cells, stdev_depression_cells, stdev_peak_cells, s
 
         # compute stdev elevation
         gscript.run_command('r.series', input=dem_list, output=stdev_dem, method="stddev", overwrite=overwrite)
-        gscript.run_command('r.colors', map=stdev_dem, color="elevation")
+        gscript.run_command('r.cpt2grass',
+            map=stdev_dem,
+            url=url,
+            flags="s")
         gscript.run_command('r.relief', input=stdev_dem, output=stdev_relief, altitude=90, azimuth=45, zscale=1, units="intl", overwrite=overwrite)
         gscript.run_command('r.contour', input=stdev_dem, output=stdev_contour, step=step, overwrite=overwrite)
         info = gscript.parse_command('r.info', map=dem, flags='g')
@@ -1175,7 +1195,7 @@ def stdev_analysis(stdev_flow_cells, stdev_depression_cells, stdev_peak_cells, s
         gscript.run_command('d.legend', raster=stdev_dem, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        # compute linear regression of mean elevation
+        # compute linear regression of stdev elevation
         regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=stdev_dem_before, mapy=stdev_dem_after, overwrite=overwrite)
         gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=stdev_dem_before, regression=stdev_dem_regression), overwrite=overwrite)
         gscript.run_command('r.colors', map=stdev_dem_regression, color="elevation")
@@ -1595,6 +1615,8 @@ def render_3d_images():
         mean_valleys = dem.replace("dem", "mean_valleys")
         mean_valley_points = dem.replace("dem", "mean_valley_points")
         valley_lines = dem.replace("dem", "valley_lines")
+        mean_forms_regression = dem.replace("dem","mean_forms_regression")
+        mean_depth_regression = dem.replace("dem","mean_depth_regression")
 
         # stdev variables
         stdev_dem = dem.replace("dem", "stdev_dem")
@@ -2295,13 +2317,60 @@ def render_3d_images():
             errors='ignore'
             )
 
-        # 3D render stdev elevation
+        # 3D render mean regressed forms
         gscript.write_command('r.colors',
-            map=stdev_dem,
+            map=mean_forms_regression,
             rules='-',
-            stdin=dem_colors_3d)
+            stdin=forms_colors_3d)
         gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
+            elevation_map=mean_dem_regression,
+            color_map=mean_forms_regression,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_forms_regression),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render mean regressed depth
+        gscript.write_command('r.colors',
+            map=mean_depth_regression,
+            rules='-',
+            stdin=depth_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem_regression,
+            color_map=mean_depth_regression,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_depth_regression),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev elevation
+        gscript.run_command('r.cpt2grass',
+            map=stdev_dem,
+            url=url,
+            flags="s")
+
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
             color_map=stdev_dem,
             resolution_fine=res_3d,
             height=height_3d,
@@ -2309,240 +2378,10 @@ def render_3d_images():
             light_position=light_position,
             fringe=fringe,
             fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
+            fringe_elevation=fringe_elevation,
             #arrow_position=arrow_position,
             #arrow_size=arrow_size,
             output=os.path.join(render_3d, stdev_dem),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev slope
-        gscript.write_command('r.colors',
-            map=stdev_slope,
-            rules='-',
-            stdin=slope_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_slope,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_slope),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev forms
-        gscript.write_command('r.colors',
-            map=stdev_forms,
-            rules='-',
-            stdin=forms_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_forms,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_forms),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev depth
-        gscript.write_command('r.colors',
-            map=stdev_depth,
-            rules='-',
-            stdin=depth_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_depth,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_depth),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev dem difference
-        gscript.write_command('r.colors',
-            map=stdev_dem_difference,
-            rules='-',
-            stdin=stdev_dem_difference_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_dem_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_dem_difference),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev dem regression
-        gscript.write_command('r.colors',
-            map=stdev_dem_regression,
-            rules='-',
-            stdin=dem_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem_regression,
-            color_map=stdev_dem_regression,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_dem_regression),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev dem regression difference
-        gscript.write_command('r.colors',
-            map=stdev_dem_regression_difference,
-            rules='-',
-            stdin=stdev_dem_regression_difference_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem_regression,
-            color_map=stdev_dem_regression_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_dem_regression_difference),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev slope difference
-        gscript.write_command('r.colors',
-            map=stdev_slope_difference,
-            rules='-',
-            stdin=stdev_slope_difference_colors_3d )
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_slope_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_slope_difference),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev slope regression difference
-        gscript.write_command('r.colors',
-            map=stdev_slope_regression_difference,
-            rules='-',
-            stdin=stdev_slope_difference_colors_3d )
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem_regression,
-            color_map=stdev_slope_regression_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_slope_regression_difference),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev depth difference
-        gscript.write_command('r.colors',
-            map=stdev_depth_difference,
-            rules='-',
-            stdin=flow_difference_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_depth_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_depth_difference),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render stdev forms difference
-        gscript.write_command('r.colors',
-            map=stdev_forms_difference,
-            rules='-',
-            stdin=forms_difference_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=stdev_dem,
-            color_map=stdev_forms_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=stdev_fringe,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, stdev_forms_difference),
             format=format_3d,
             size=size_3d,
             errors='ignore'
