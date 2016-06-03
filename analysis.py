@@ -62,9 +62,10 @@ color_3d = "192:192:192"
 res_3d = 1
 height_3d = 2000
 perspective = 25
-light_position = (0.68, -0.68 ,0.95)
+light_position = (0.68, -0.68, 0.95)
 fringe = "ne"
 fringe_elevation = 250
+stdev_fringe = 25
 format_3d = "tif"
 size_3d = (1000, 1000)
 vpoint_size = 4
@@ -80,8 +81,11 @@ depressions_colors = '0% aqua\n100% blue'
 depth_colors = '0 255:255:255\n0.001 255:255:0\n0.05 0:255:255\n0.1 0:127:255\n0.5 0:0:255\n100% 0:0:0'
 dem_difference_colors = '-40 blue\n0 white\n40 red' # '0% blue\n0 white\n100% red'
 flow_difference_colors = '-0.5 blue\n0 white\n0.5 red'
-slope_difference_colors = '-30 blue\n0 white\n30 red' # '0% blue\n0 white\n100% red'
+slope_difference_colors = '-30 blue\n0 white\n30 red'
 forms_difference_colors = '-10 blue\n0 white\n10 red'
+stdev_dem_difference_colors = '250 blue\n0 white\n350 red'
+stdev_dem_regression_difference_colors = '-11 blue\n0 white\n11 red'
+stdev_slope_difference_colors = '-40 blue\n0 white\n40 red'
 
 # 3d color rules with zeroes, null values, and default set to light gray
 dem_colors_3d = '0% 0:191:191\n20% 0:255:0\n40% 255:255:0\n60% 255:127:0\n80% 191:127:63\n100% 200:200:200\nnv 192:192:192\ndefault 192:192:192'
@@ -93,10 +97,12 @@ dem_difference_colors_3d = '-40 blue\n0 192:192:192\n40 red\nnv 192:192:192\ndef
 flow_difference_colors_3d = '-0.5 blue\n0 192:192:192\n0.5 red\nnv 192:192:192\ndefault 192:192:192'
 slope_difference_colors_3d = '-30 blue\n0 192:192:192\n30 red\nnv 192:192:192\ndefault 192:192:192'
 forms_difference_colors_3d = '-10 blue\n0 192:192:192\n10 red\nnv 192:192:192\ndefault 192:192:192'
+stdev_dem_difference_colors_3d = '250 blue\n0 white\n350 red\nnv 192:192:192\ndefault 192:192:192'
+stdev_dem_regression_difference_colors_3d = '-11 blue\n0 white\n11 red\nnv 192:192:192\ndefault 192:192:192'
+stdev_slope_difference_colors_3d = '-40 blue\n0 white\n40 red\nnv 192:192:192\ndefault 192:192:192'
 
 def main():
 
-    # initialize list
     ref_flow_cells = []
     ref_depression_cells = []
     ref_peak_cells = []
@@ -109,51 +115,84 @@ def main():
     pit_cells = []
     ridge_cells = []
     valley_cells = []
+    stdev_flow_cells = []
+    stdev_depression_cells = []
+    stdev_peak_cells = []
+    stdev_pit_cells = []
+    stdev_ridge_cells = []
+    stdev_valley_cells = []
     flow_distance = []
     peak_distance = []
     pit_distance = []
     ridge_distance = []
     valley_distance = []
+    stdev_flow_distance = []
+    stdev_peak_distance = []
+    stdev_pit_distance = []
+    stdev_ridge_distance = []
+    stdev_valley_distance = []
 
-    # run functions
-    # reference(ref_flow_cells,
-    #           ref_depression_cells,
-    #           ref_peak_cells,
-    #           ref_pit_cells,
-    #           ref_ridge_cells,
-    #           ref_valley_cells)
-    #
-    # analysis(flow_cells,
-    #          depression_cells,
-    #          peak_cells,
-    #          pit_cells,
-    #          ridge_cells,
-    #          valley_cells,
-    #          flow_distance,
-    #          peak_distance,
-    #          pit_distance,
-    #          ridge_distance,
-    #          valley_distance)
+    reference(ref_flow_cells,
+        ref_depression_cells,
+        ref_peak_cells,
+        ref_pit_cells,
+        ref_ridge_cells,
+        ref_valley_cells)
+
+    mean_analysis(flow_cells,
+        depression_cells,
+        peak_cells,
+        pit_cells,
+        ridge_cells,
+        valley_cells,
+        flow_distance,
+        peak_distance,
+        pit_distance,
+        ridge_distance,
+        valley_distance)
+
+    stdev_analysis(stdev_flow_cells,
+        stdev_depression_cells,
+        stdev_peak_cells,
+        stdev_pit_cells,
+        stdev_ridge_cells,
+        stdev_valley_cells,
+        stdev_flow_distance,
+        stdev_peak_distance,
+        stdev_pit_distance,
+        stdev_ridge_distance,
+        stdev_valley_distance)
 
     render_3d_images()
 
     write_results(ref_flow_cells,
-                 ref_depression_cells,
-                 ref_peak_cells,
-                 ref_pit_cells,
-                 ref_ridge_cells,
-                 ref_valley_cells,
-                 flow_cells,
-                 depression_cells,
-                 peak_cells,
-                 pit_cells,
-                 ridge_cells,
-                 valley_cells,
-                 flow_distance,
-                 peak_distance,
-                 pit_distance,
-                 ridge_distance,
-                 valley_distance)
+        ref_depression_cells,
+        ref_peak_cells,
+        ref_pit_cells,
+        ref_ridge_cells,
+        ref_valley_cells,
+        flow_cells,
+        depression_cells,
+        peak_cells,
+        pit_cells,
+        ridge_cells,
+        valley_cells,
+        flow_distance,
+        peak_distance,
+        pit_distance,
+        ridge_distance,
+        valley_distance,
+        stdev_flow_cells,
+        stdev_depression_cells,
+        stdev_peak_cells,
+        stdev_pit_cells,
+        stdev_ridge_cells,
+        stdev_valley_cells,
+        stdev_flow_distance,
+        stdev_peak_distance,
+        stdev_pit_distance,
+        stdev_ridge_distance,
+        stdev_valley_distance)
 
     atexit.register(cleanup)
     sys.exit(0)
@@ -592,7 +631,7 @@ def reference(ref_flow_cells, ref_depression_cells, ref_peak_cells, ref_pit_cell
         except CalledModuleError:
             pass
 
-def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, valley_cells, flow_distance, peak_distance, pit_distance, ridge_distance, valley_distance):
+def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, valley_cells, flow_distance, peak_distance, pit_distance, ridge_distance, valley_distance):
     """compute the difference, water flow, depressions, and concentrated flow for each series of models"""
 
     # list reference DEMs
@@ -664,11 +703,6 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
         # set region
         gscript.run_command('g.region', rast=region, res=res)
 
-        # check if mask needed
-        find_mask = gscript.find_file(mask, element = 'cell')
-        if find_mask['name']:
-            gscript.run_command('r.mask', raster=mask, overwrite=overwrite)
-
         # compute mean elevation
         gscript.run_command('r.series', input=dem_list, output=mean_dem, method="average", overwrite=overwrite)
         gscript.run_command('r.colors', map=mean_dem, color="elevation")
@@ -682,6 +716,20 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
         gscript.run_command('d.vect', map=mean_contour, display="shape")
         gscript.run_command('d.legend', raster=mean_dem, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
+
+        # compute linear regression of mean elevation
+        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=mean_dem_before, mapy=mean_dem_after, overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=mean_dem_before, regression=mean_dem_regression), overwrite=overwrite)
+        gscript.run_command('r.colors', map=mean_dem_regression, color="elevation")
+        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_dem_regression+".png"), overwrite=overwrite)
+        gscript.run_command('d.rast', map=mean_dem_regression)
+        gscript.run_command('d.legend', raster=mean_dem_regression, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # check if mask needed
+        find_mask = gscript.find_file(mask, element = 'cell')
+        if find_mask['name']:
+            gscript.run_command('r.mask', raster=mask, overwrite=overwrite)
 
         # compute mean slope
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_slope+".png"), overwrite=overwrite)
@@ -715,7 +763,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
         gscript.run_command('r.mapcalc', expression='{depressions} = if({depressionless_dem} - {dem} > {depth}, {depressionless_dem} - {dem}, null())'.format(depressions=mean_depressions, depressionless_dem='depressionless_dem', dem=mean_dem, depth=0), overwrite=overwrite)
         gscript.write_command('r.colors', map=mean_depressions, rules='-', stdin=depressions_colors)
         gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_depressions+".png"), overwrite=overwrite)
-        gscript.run_command('d.shade', shade=mean_relief, color=mean_depressions, brighten=brighten)
+        gscript.run_command('d.rast', map=mean_depressions)
         gscript.run_command('d.vect', map=mean_contour, display='shape')
         gscript.run_command('d.legend', raster=mean_depressions, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
@@ -731,8 +779,6 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
 
         # compute the linearly regressed difference between the modeled and reference elevation
         gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, mean_dem_regression_difference+".png"), overwrite=overwrite)
-        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=mean_dem_before, mapy=mean_dem_after, overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=mean_dem_before, regression=mean_dem_regression), overwrite=overwrite)
         gscript.run_command('r.mapcalc', expression='{difference} = {regression} - {after}'.format(regression=mean_dem_regression, after=mean_dem_after, difference=mean_dem_regression_difference), overwrite=overwrite)
         gscript.write_command('r.colors', map=mean_dem_regression_difference, rules='-', stdin=dem_difference_colors)
         gscript.run_command('d.rast', map=mean_dem_regression_difference)
@@ -822,7 +868,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
             print 'mean of min flow distance in ' + dem +': ' + str(mean_dist)
             # render
             gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_concentrated_flow+".png"), overwrite=overwrite)
-            gscript.run_command('d.shade', shade=mean_relief, color=mean_depth_difference, brighten=brighten)
+            gscript.run_command('d.rast', map=mean_depth_difference)
             gscript.run_command('d.vect', map=mean_contour, display='shape')
             gscript.run_command('d.vect', map=concentrated_points, display='shape', color='blue')
             gscript.run_command('d.vect', map=mean_concentrated_points, display='shape', color='red')
@@ -852,7 +898,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
             print 'mean of min peak distance in ' + dem + ': ' + str(mean_dist)
             # render
             gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_peaks+".png"), overwrite=overwrite)
-            gscript.run_command('d.shade', shade=mean_relief, color=mean_peaks, brighten=brighten)
+            gscript.run_command('d.rast', map=mean_peaks)
             gscript.run_command('d.vect', map=mean_contour, display='shape')
             gscript.run_command('d.vect', map=peak_points, display='shape', color='blue')
             gscript.run_command('d.vect', map=mean_peak_points, display='shape', color='red')
@@ -882,7 +928,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
             print 'mean of min pit distance in ' + dem + ': ' + str(mean_dist)
             # render
             gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_pits+".png"), overwrite=overwrite)
-            gscript.run_command('d.shade', shade=relief, color=mean_pits, brighten=brighten)
+            gscript.run_command('d.rast', map=mean_pits)
             gscript.run_command('d.vect', map=contour, display='shape')
             gscript.run_command('d.vect', map=pit_points, display='shape', color='blue')
             gscript.run_command('d.vect', map=mean_pit_points, display='shape', color='red')
@@ -912,7 +958,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
             print 'mean of min ridge distance in ' + dem + ': ' + str(mean_dist)
             # render
             gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_ridges+".png"), overwrite=overwrite)
-            gscript.run_command('d.shade', shade=mean_relief, color=mean_ridges, brighten=brighten)
+            gscript.run_command('d.rast', map=mean_ridges)
             gscript.run_command('d.vect', map=mean_contour, display='shape')
             gscript.run_command('d.vect', map=ridge_points, display='shape', color='blue')
             gscript.run_command('d.vect', map=mean_ridge_points, display='shape', color='red')
@@ -942,7 +988,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
             print 'mean of min valley distance in ' + dem + ': ' + str(mean_dist)
             # render
             gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_valleys+".png"), overwrite=overwrite)
-            gscript.run_command('d.shade', shade=mean_relief, color=mean_valleys, brighten=brighten)
+            gscript.run_command('d.rast', map=mean_valleys)
             gscript.run_command('d.vect', map=mean_contour, display='shape')
             gscript.run_command('d.vect', map=valley_points, display='shape', color='blue')
             gscript.run_command('d.vect', map=mean_valley_points, display='shape', color='red')
@@ -1020,6 +1066,7 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
             print 'cells with ridges in ' + dem + ': ' + str(non_null_count)
             print 'percent cells with ridges in ' + dem + ': ' + str(percent)
         else:
+            ridge_cells.append(0)
             print 'no cells with ridges exist in ' + dem
 
         # compute number of cells with mean valleys
@@ -1042,25 +1089,472 @@ def analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cells, v
         except CalledModuleError:
             pass
 
+def stdev_analysis(stdev_flow_cells, stdev_depression_cells, stdev_peak_cells, stdev_pit_cells, stdev_ridge_cells, stdev_valley_cells, stdev_flow_distance, stdev_peak_distance, stdev_pit_distance, stdev_ridge_distance, stdev_valley_distance):
+    """compute the difference, water flow, depressions, and concentrated flow for each series of models"""
+
+    # list reference DEMs
+    dems = gscript.list_grouped('rast', pattern='dem_*')['PERMANENT']
+
+    # iterate through reference DEMs
+    for dem in dems:
+
+        # list scanned DEMs
+        dem_list = gscript.list_grouped('rast', pattern='*'+dem)[mapset]
+
+        # variables
+        region = dem
+        relief = "relief"
+        mask = dem.replace("dem","mask")
+        contour = dem.replace("dem","contour")
+        slope = dem.replace("dem","slope")
+        forms = dem.replace("dem","forms")
+        depth = dem.replace("dem","depth")
+        stdev_dem = dem.replace("dem","stdev_dem")
+        stdev_relief = dem.replace("dem","stdev_relief")
+        stdev_contour = dem.replace("dem","stdev_contour")
+        stdev_slope = dem.replace("dem","stdev_slope")
+        stdev_forms = dem.replace("dem","stdev_forms")
+        stdev_depth = dem.replace("dem","stdev_depth")
+        stdev_dem_before = dem
+        stdev_dem_after = stdev_dem
+        stdev_dem_difference = dem.replace("dem","stdev_dem_difference")
+        stdev_dem_regression = dem.replace("dem", "stdev_dem_regression")
+        stdev_dem_regression_difference = dem.replace("dem", "stdev_dem_regression_difference")
+        stdev_slope_before = slope
+        stdev_slope_after = stdev_slope
+        stdev_slope_difference = dem.replace("dem","stdev_slope_difference")
+        stdev_slope_regression = dem.replace("dem", "stdev_slope_regression")
+        stdev_slope_regression_difference = dem.replace("dem", "stdev_slope_regression_difference")
+        stdev_forms_before = forms
+        stdev_forms_after = stdev_forms
+        stdev_forms_difference = dem.replace("dem","stdev_forms_difference")
+        stdev_depth_before = depth
+        stdev_depth_after = stdev_depth
+        stdev_depth_difference = dem.replace("dem","stdev_depth_difference")
+        stdev_depressions = dem.replace("dem","stdev_depressions")
+        stdev_concentrated_flow = dem.replace("dem","stdev_concentrated_flow")
+        stdev_concentrated_points = dem.replace("dem","stdev_concentrated_points")
+        concentrated_points = dem.replace("dem","concentrated_points")
+        copied_concentrated_points = dem.replace("dem","copied_concentrated_points")
+        flow_lines = dem.replace("dem","stdev_flow_lines")
+        stdev_peaks = dem.replace("dem","stdev_peaks")
+        stdev_peak_points = dem.replace("dem","stdev_peak_points")
+        peak_points = dem.replace("dem","peak_points")
+        copied_peak_points = dem.replace("dem","copied_peak_points")
+        peak_lines= dem.replace("dem","stdev_peak_lines")
+        stdev_pits = dem.replace("dem","stdev_pits")
+        stdev_pit_points = dem.replace("dem","stdev_pit_points")
+        pit_points = dem.replace("dem","pit_points")
+        copied_pit_points = dem.replace("dem","copied_pit_points")
+        pit_lines = dem.replace("dem","stdev_pit_lines")
+        stdev_ridges = dem.replace("dem","stdev_ridges")
+        stdev_ridge_points = dem.replace("dem","stdev_ridge_points")
+        ridge_points = dem.replace("dem","ridge_points")
+        copied_ridge_points = dem.replace("dem","copied_ridge_points")
+        ridge_lines = dem.replace("dem","stdev_ridge_lines")
+        stdev_valleys = dem.replace("dem","stdev_valleys")
+        stdev_valley_points = dem.replace("dem","stdev_valley_points")
+        valley_points = dem.replace("dem","valley_points")
+        copied_valley_points = dem.replace("dem","copied_valley_points")
+        valley_lines = dem.replace("dem","stdev_valley_lines")
+
+        # set region
+        gscript.run_command('g.region', rast=region, res=res)
+
+        # compute stdev elevation
+        gscript.run_command('r.series', input=dem_list, output=stdev_dem, method="stddev", overwrite=overwrite)
+        gscript.run_command('r.colors', map=stdev_dem, color="elevation")
+        gscript.run_command('r.relief', input=stdev_dem, output=stdev_relief, altitude=90, azimuth=45, zscale=1, units="intl", overwrite=overwrite)
+        gscript.run_command('r.contour', input=stdev_dem, output=stdev_contour, step=step, overwrite=overwrite)
+        info = gscript.parse_command('r.info', map=dem, flags='g')
+        width=int(info.cols)+int(info.cols)/2*render_multiplier
+        height=int(info.rows)*render_multiplier
+        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_dem+".png"), overwrite=overwrite)
+        gscript.run_command('d.shade', shade=stdev_relief, color=stdev_dem, brighten=brighten)
+        gscript.run_command('d.vect', map=stdev_contour, display="shape")
+        gscript.run_command('d.legend', raster=stdev_dem, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute linear regression of mean elevation
+        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=stdev_dem_before, mapy=stdev_dem_after, overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=stdev_dem_before, regression=stdev_dem_regression), overwrite=overwrite)
+        gscript.run_command('r.colors', map=stdev_dem_regression, color="elevation")
+        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_dem_regression+".png"), overwrite=overwrite)
+        gscript.run_command('d.rast', map=stdev_dem_regression)
+        gscript.run_command('d.legend', raster=stdev_dem_regression, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # check if mask needed
+        find_mask = gscript.find_file(mask, element = 'cell')
+        if find_mask['name']:
+            gscript.run_command('r.mask', raster=mask, overwrite=overwrite)
+
+        # compute stdev slope
+        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_slope+".png"), overwrite=overwrite)
+        gscript.run_command('r.param.scale', input=stdev_dem, output=stdev_slope, size=size, method="slope", overwrite=overwrite)
+        gscript.run_command('r.colors', map=stdev_slope, color="slope")
+        gscript.run_command('d.rast', map=stdev_slope)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_slope, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        #compute stdev landforms
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_forms+".png"), overwrite=overwrite)
+        gscript.run_command('r.geomorphon', dem=stdev_dem, forms=stdev_forms, search=search, skip=skip, overwrite=overwrite)
+        gscript.run_command('d.rast', map=stdev_forms)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # simulate water flow
+        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_depth+".png"), overwrite=overwrite)
+        gscript.run_command('r.slope.aspect', elevation=stdev_dem, dx='dx', dy='dy', overwrite=overwrite)
+        gscript.run_command('r.sim.water', elevation=stdev_dem, dx='dx', dy='dy', rain_value=rain_value, depth=stdev_depth, nwalkers=nwalkers, niterations=niterations, overwrite=overwrite)
+        gscript.run_command('g.remove', flags='f', type='raster', name=['dx', 'dy'])
+        gscript.run_command('d.rast', map=stdev_depth)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_depth, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # identify stdev depressions
+        gscript.run_command('r.fill.dir', input=stdev_dem, output='depressionless_dem', direction='flow_dir',overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{depressions} = if({depressionless_dem} - {dem} > {depth}, {depressionless_dem} - {dem}, null())'.format(depressions=stdev_depressions, depressionless_dem='depressionless_dem', dem=stdev_dem, depth=0), overwrite=overwrite)
+        gscript.write_command('r.colors', map=stdev_depressions, rules='-', stdin=depressions_colors)
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_depressions+".png"), overwrite=overwrite)
+        gscript.run_command('d.rast', map=stdev_depressions)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_depressions, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the stdev and reference elevation
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_dem_difference+".png"), overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_dem_before,after=stdev_dem_after,difference=stdev_dem_difference), overwrite=overwrite)
+        gscript.write_command('r.colors', map=stdev_dem_difference, rules='-', stdin=stdev_dem_difference_colors)
+        gscript.run_command('d.rast', map=stdev_dem_difference)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_dem_difference, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the linearly regressed difference between the modeled and reference elevation
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_dem_regression_difference+".png"), overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{difference} = {regression} - {after}'.format(regression=stdev_dem_regression, after=stdev_dem_after, difference=stdev_dem_regression_difference), overwrite=overwrite)
+        gscript.write_command('r.colors', map=stdev_dem_regression_difference, rules='-', stdin=stdev_dem_regression_difference_colors)
+        gscript.run_command('d.rast', map=stdev_dem_regression_difference)
+        gscript.run_command('d.legend', raster=stdev_dem_regression_difference, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the stdev and reference slope
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_slope_difference+".png"), overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_slope_before,after=stdev_slope_after,difference=stdev_slope_difference), overwrite=overwrite)
+        gscript.write_command('r.colors', map=stdev_slope_difference, rules='-', stdin=stdev_slope_difference_colors)
+        gscript.run_command('d.rast', map=stdev_slope_difference)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_slope_difference, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the modeled and reference slope of the regressed stdev elevation
+        gscript.run_command('r.param.scale',
+                            input=stdev_dem_regression, output=stdev_slope_regression,
+                            size=size,
+                            method="slope",
+                            overwrite=overwrite)
+        gscript.run_command('r.colors',
+                            map=stdev_slope_regression,
+                            color="slope")
+        gscript.run_command('d.mon',
+                            start=driver,
+                            width=width,
+                            height=height,
+                            output=os.path.join(render, stdev_slope_regression_difference+".png"),
+                            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+                            expression='{difference} = {before} - {after}'.format(
+                            before=stdev_slope_before,
+                            after=stdev_slope_regression,
+                            difference=stdev_slope_regression_difference),
+                            overwrite=overwrite)
+        gscript.write_command('r.colors',
+                              map=stdev_slope_regression_difference,
+                              rules='-',
+                              stdin=stdev_slope_difference_colors)
+        gscript.run_command('d.rast',
+                            map=stdev_slope_regression_difference)
+        gscript.run_command('d.legend',
+                            raster=stdev_slope_regression_difference,
+                            fontsize=fontsize,
+                            at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the stdev and reference landorms
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_forms_difference+".png"), overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_forms_before,after=stdev_forms_after,difference=stdev_forms_difference), overwrite=overwrite)
+        gscript.write_command('r.colors', map=stdev_forms_difference, rules='-', stdin=forms_difference_colors)
+        gscript.run_command('d.rast', map=stdev_forms_difference)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_forms_difference, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the stdev and reference flow depth
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_depth_difference+".png"), overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_depth_before,after=stdev_depth_after,difference=stdev_depth_difference), overwrite=overwrite)
+        gscript.write_command('r.colors', map=stdev_depth_difference, rules='-', stdin=flow_difference_colors)
+        gscript.run_command('d.rast', map=stdev_depth_difference)
+        gscript.run_command('d.vect', map=stdev_contour, display='shape')
+        gscript.run_command('d.legend', raster=stdev_depth_difference, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # stdev concentrated flow
+        try:
+            # extract stdev concentrated flow
+            gscript.run_command('r.mapcalc', expression='{concentrated_flow} = if({depth}>=0.05,{depth},null())'.format(depth=stdev_depth,concentrated_flow=stdev_concentrated_flow), overwrite=overwrite)
+            gscript.write_command('r.colors', map=stdev_concentrated_flow, rules='-', stdin=depth_colors)
+            gscript.run_command('r.random', input=stdev_concentrated_flow, npoints=npoints, vector=stdev_concentrated_points, overwrite=overwrite)
+            # distance from reference
+            gscript.run_command('g.copy', vector=[concentrated_points, copied_concentrated_points], overwrite=overwrite)
+            gscript.run_command('v.db.addcolumn', map=copied_concentrated_points, columns='distance INTEGER', overwrite=overwrite)
+            gscript.run_command('v.distance', from_=copied_concentrated_points, to=stdev_concentrated_points, upload='dist', column='distance', output=flow_lines, separator='newline', overwrite=overwrite)
+            univar_distance = gscript.parse_command('v.db.univar', map=copied_concentrated_points, column='distance', flags='g', overwrite=overwrite)
+            # collect stats
+            dist = float(univar_distance['sum'])
+            stdev_flow_distance.append(dist)
+            print 'sum of min flow distance in ' + dem + ': ' + str(dist)
+            stdev_dist = float(univar_distance['stddev'])
+            print 'stdev of min flow distance in ' + dem +': ' + str(stdev_dist)
+            # render
+            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_concentrated_flow+".png"), overwrite=overwrite)
+            gscript.run_command('d.rast', map=stdev_depth_difference)
+            gscript.run_command('d.vect', map=stdev_contour, display='shape')
+            gscript.run_command('d.vect', map=concentrated_points, display='shape', color='blue')
+            gscript.run_command('d.vect', map=stdev_concentrated_points, display='shape', color='red')
+            gscript.run_command('d.vect', map=flow_lines, display='shape')
+            gscript.run_command('d.legend', raster=stdev_depth_difference, fontsize=fontsize, at=legend_coord)
+            gscript.run_command('d.mon', stop=driver)
+        except CalledModuleError:
+            stdev_flow_distance.append(0)
+            print "no concentrated flow exist in " + dem
+
+        # stdev peaks
+        try:
+            # extract stdev peaks
+            gscript.run_command('r.mapcalc', expression='{peaks} = if({forms}==2,2,null())'.format(peaks=stdev_peaks,forms=stdev_forms), overwrite=overwrite)
+            gscript.run_command('r.colors', map=stdev_peaks, raster=stdev_forms)
+            gscript.run_command('r.random', input=stdev_peaks, npoints=npoints, vector=stdev_peak_points, overwrite=overwrite)
+            # distance from reference
+            gscript.run_command('g.copy', vector=[peak_points, copied_peak_points], overwrite=overwrite)
+            gscript.run_command('v.db.addcolumn', map=copied_peak_points, columns='distance INTEGER', overwrite=overwrite)
+            gscript.run_command('v.distance', from_=copied_peak_points, to=stdev_peak_points, upload='dist', column='distance', output=peak_lines, separator='newline', overwrite=overwrite)
+            univar_distance = gscript.parse_command('v.db.univar', map=copied_peak_points, column='distance', flags='g', overwrite=overwrite)
+            # collect stats
+            dist = float(univar_distance['sum'])
+            stdev_peak_distance.append(dist)
+            print 'sum of min peak distance in ' + dem + ': ' + str(dist)
+            stdev_dist = float(univar_distance['stddev'])
+            print 'stdev of min peak distance in ' + dem + ': ' + str(stdev_dist)
+            # render
+            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_peaks+".png"), overwrite=overwrite)
+            gscript.run_command('d.rast', map=stdev_peaks)
+            gscript.run_command('d.vect', map=stdev_contour, display='shape')
+            gscript.run_command('d.vect', map=peak_points, display='shape', color='blue')
+            gscript.run_command('d.vect', map=stdev_peak_points, display='shape', color='red')
+            gscript.run_command('d.vect', map=peak_lines, display='shape')
+            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
+            gscript.run_command('d.mon', stop=driver)
+        except CalledModuleError:
+            stdev_peak_distance.append(0)
+            print "no peaks exist in " + dem
+
+        # stdev pits
+        try:
+            #extract stdev pits
+            gscript.run_command('r.mapcalc', expression='{pits} = if({forms}==10,10,null())'.format(pits=stdev_pits,forms=stdev_forms), overwrite=overwrite)
+            gscript.run_command('r.colors', map=stdev_pits, raster=stdev_forms)
+            gscript.run_command('r.random', input=stdev_pits, npoints=npoints, vector=stdev_pit_points, overwrite=overwrite)
+            # distance from reference
+            gscript.run_command('g.copy', vector=[pit_points, copied_pit_points], overwrite=overwrite)
+            gscript.run_command('v.db.addcolumn', map=copied_pit_points, columns='distance INTEGER', overwrite=overwrite)
+            gscript.run_command('v.distance', from_=copied_pit_points, to=stdev_pit_points, upload='dist', column='distance', output=pit_lines, separator='newline', overwrite=overwrite)
+            univar_distance = gscript.parse_command('v.db.univar', map=copied_pit_points, column='distance', flags='g', overwrite=overwrite)
+            # collect stats
+            dist = float(univar_distance['sum'])
+            stdev_pit_distance.append(dist)
+            print 'sum of min pit distance in ' + dem + ': ' + str(dist)
+            stdev_dist = float(univar_distance['stddev'])
+            print 'stdev of min pit distance in ' + dem + ': ' + str(stdev_dist)
+            # render
+            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_pits+".png"), overwrite=overwrite)
+            gscript.run_command('d.rast', map=stdev_pits)
+            gscript.run_command('d.vect', map=contour, display='shape')
+            gscript.run_command('d.vect', map=pit_points, display='shape', color='blue')
+            gscript.run_command('d.vect', map=stdev_pit_points, display='shape', color='red')
+            gscript.run_command('d.vect', map=pit_lines, display='shape')
+            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
+            gscript.run_command('d.mon', stop=driver)
+        except CalledModuleError:
+            stdev_pit_distance.append(0)
+            print "no pits exist in " + dem
+
+        # stdev ridges
+        try:
+            # extract stdev ridges
+            gscript.run_command('r.mapcalc', expression='{ridges} = if({forms}==3,3,null())'.format(ridges=stdev_ridges,forms=stdev_forms), overwrite=overwrite)
+            gscript.run_command('r.colors', map=stdev_ridges, raster=stdev_forms)
+            gscript.run_command('r.random', input=stdev_ridges, npoints=npoints, vector=stdev_ridge_points, overwrite=overwrite)
+            # distance from reference
+            gscript.run_command('g.copy', vector=[ridge_points, copied_ridge_points], overwrite=overwrite)
+            gscript.run_command('v.db.addcolumn', map=copied_ridge_points, columns='distance INTEGER', overwrite=overwrite)
+            gscript.run_command('v.distance', from_=copied_ridge_points, to=stdev_ridge_points, upload='dist', column='distance', output=ridge_lines, separator='newline', overwrite=overwrite)
+            univar_distance = gscript.parse_command('v.db.univar', map=copied_ridge_points, column='distance', flags='g', overwrite=overwrite)
+            # collect stats
+            dist = float(univar_distance['sum'])
+            stdev_ridge_distance.append(dist)
+            print 'sum of min ridge distance in ' + dem + ': ' + str(dist)
+            stdev_dist = float(univar_distance['stddev'])
+            print 'stdev of min ridge distance in ' + dem + ': ' + str(stdev_dist)
+            # render
+            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_ridges+".png"), overwrite=overwrite)
+            gscript.run_command('d.rast', map=stdev_ridges)
+            gscript.run_command('d.vect', map=stdev_contour, display='shape')
+            gscript.run_command('d.vect', map=ridge_points, display='shape', color='blue')
+            gscript.run_command('d.vect', map=stdev_ridge_points, display='shape', color='red')
+            gscript.run_command('d.vect', map=ridge_lines, display='shape')
+            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
+            gscript.run_command('d.mon', stop=driver)
+        except CalledModuleError:
+            stdev_ridge_distance.append(0)
+            print "no ridges exist in " + dem
+
+        # stdev valleys
+        try:
+            # extract stdev valleys
+            gscript.run_command('r.mapcalc', expression='{valleys} = if({forms}==9,9,null())'.format(valleys=stdev_valleys,forms=stdev_forms), overwrite=overwrite)
+            gscript.run_command('r.colors', map=stdev_valleys, raster=stdev_forms)
+            gscript.run_command('r.random', input=stdev_valleys, npoints=npoints, vector=stdev_valley_points, overwrite=overwrite)
+            # distance from reference
+            gscript.run_command('g.copy', vector=[valley_points, copied_valley_points], overwrite=overwrite)
+            gscript.run_command('v.db.addcolumn', map=copied_valley_points, columns='distance INTEGER', overwrite=overwrite)
+            gscript.run_command('v.distance', from_=copied_valley_points, to=stdev_valley_points, upload='dist', column='distance', output=valley_lines, separator='newline', overwrite=overwrite)
+            univar_distance = gscript.parse_command('v.db.univar', map=copied_valley_points, column='distance', flags='g', overwrite=overwrite)
+            # collect stats
+            dist = float(univar_distance['sum'])
+            stdev_valley_distance.append(dist)
+            print 'sum of min valley distance in ' + dem + ': ' + str(dist)
+            stdev_dist = float(univar_distance['stddev'])
+            print 'stdev of min valley distance in ' + dem + ': ' + str(stdev_dist)
+            # render
+            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_valleys+".png"), overwrite=overwrite)
+            gscript.run_command('d.rast', map=stdev_valleys)
+            gscript.run_command('d.vect', map=stdev_contour, display='shape')
+            gscript.run_command('d.vect', map=valley_points, display='shape', color='blue')
+            gscript.run_command('d.vect', map=stdev_valley_points, display='shape', color='red')
+            gscript.run_command('d.vect', map=valley_lines, display='shape')
+            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
+            gscript.run_command('d.mon', stop=driver)
+        except CalledModuleError:
+            stdev_valley_distance.append(0)
+            print "no valleys exist in " + dem
+
+        # compute number of cells with stdev depressions
+        univar = gscript.parse_command('r.univar', map=stdev_depressions, separator='newline', flags='g')
+        if 'cells' in univar:
+            total_count = float(univar['cells'])
+            null_count = float(univar['null_cells'])
+            non_null_count = total_count - null_count
+            percent = non_null_count/total_count*100
+            stdev_depression_cells.append(percent)
+            print 'cells in ' + dem + ' with depressions: ' + str(non_null_count)
+            print 'percent cells in ' + dem + ' with depressions: ' + str(percent)
+        else:
+            stdev_depression_cells.append(0)
+            print 'no cells in ' + dem
+
+        # compute number of cells with concentrated flow
+        univar = gscript.parse_command('r.univar', map=stdev_concentrated_flow, separator='newline', flags='g')
+        if 'cells' in univar:
+            total_count = float(univar['cells'])
+            null_count = float(univar['null_cells'])
+            non_null_count = total_count - null_count
+            percent = non_null_count/total_count*100
+            stdev_flow_cells.append(percent)
+            print 'cells in ' + dem + ' with concentrated flow: ' + str(non_null_count)
+            print 'percent cells in ' + dem + ' with concentrated flow: ' + str(percent)
+        else:
+            stdev_flow_cells.append(0)
+            print 'no cells in ' + dem
+
+        # compute number of cells with stdev peaks
+        univar = gscript.parse_command('r.univar', map=stdev_peaks, separator='newline', flags='g')
+        if 'cells' in univar:
+            total_count = float(univar['cells'])
+            null_count = float(univar['null_cells'])
+            non_null_count = total_count - null_count
+            percent = non_null_count/total_count*100
+            stdev_peak_cells.append(percent)
+            print 'cells with peaks in ' + dem + ': ' + str(non_null_count)
+            print 'percent cells with peaks in ' + dem + ': ' + str(percent)
+        else:
+            stdev_peak_cells.append(0)
+            print 'no cells with peaks exist in ' + dem
+
+        # compute number of cells with stdev pits
+        univar = gscript.parse_command('r.univar', map=stdev_pits, separator='newline', flags='g')
+        if 'cells' in univar:
+            total_count = float(univar['cells'])
+            null_count = float(univar['null_cells'])
+            non_null_count = total_count - null_count
+            percent = non_null_count/total_count*100
+            stdev_pit_cells.append(percent)
+            print 'cells with pits in ' + dem + ': ' + str(non_null_count)
+            print 'percent cells with pits in ' + dem + ': ' + str(percent)
+        else:
+            stdev_pit_cells.append(0)
+            print 'no cells with pits exist in ' + dem
+
+        # compute number of cells with stdev ridges
+        univar = gscript.parse_command('r.univar', map=stdev_ridges, separator='newline', flags='g')
+        if 'cells' in univar:
+            total_count = float(univar['cells'])
+            null_count = float(univar['null_cells'])
+            non_null_count = total_count - null_count
+            percent = non_null_count/total_count*100
+            stdev_ridge_cells.append(percent)
+            print 'cells with ridges in ' + dem + ': ' + str(non_null_count)
+            print 'percent cells with ridges in ' + dem + ': ' + str(percent)
+        else:
+            stdev_ridge_cells.append(0)
+            print 'no cells with ridges exist in ' + dem
+
+        # compute number of cells with stdev valleys
+        univar = gscript.parse_command('r.univar', map=stdev_valleys, separator='newline', flags='g')
+        if 'cells' in univar:
+            total_count = float(univar['cells'])
+            null_count = float(univar['null_cells'])
+            non_null_count = total_count - null_count
+            percent = non_null_count/total_count*100
+            stdev_valley_cells.append(percent)
+            print 'cells with valleys in ' + dem + ': ' + str(non_null_count)
+            print 'percent cells with valleys in ' + dem + ': ' + str(percent)
+        else:
+            stdev_valley_cells.append(0)
+            print 'no cells with valleys exist in ' + dem
+
+        # try to remove mask
+        try:
+            gscript.run_command('r.mask', flags='r')
+        except CalledModuleError:
+            pass
+
 def render_3d_images():
     """3D rendering with nviz"""
-
-    print "3D RUNNING"
 
     # list scanned DEMs
     dems = gscript.list_grouped('rast',
                                 pattern='dem_*')['PERMANENT']
 
-    print dems
-
     # iterate through scanned DEMs
     for dem in dems:
 
-        print dem
-
-        # variables
+        # reference variables
         region = dem
-        contour = dem.replace("dem", "contour")
         slope = dem.replace("dem", "slope")
         forms = dem.replace("dem", "forms")
         depth = dem.replace("dem", "depth")
@@ -1071,719 +1565,1017 @@ def render_3d_images():
         pits = dem.replace("dem", "pits")
         ridges = dem.replace("dem", "ridges")
         valleys = dem.replace("dem", "valleys")
-        mean_dem = dem.replace("dem","mean_dem")
-        mean_contour = dem.replace("dem","mean_contour")
-        mean_slope = dem.replace("dem","mean_slope")
-        mean_forms = dem.replace("dem","mean_forms")
-        mean_depth = dem.replace("dem","mean_depth")
-        mean_dem_difference = dem.replace("dem","mean_dem_difference")
+
+        # mean variables
+        mean_dem = dem.replace("dem", "mean_dem")
+        mean_slope = dem.replace("dem", "mean_slope")
+        mean_forms = dem.replace("dem", "mean_forms")
+        mean_depth = dem.replace("dem", "mean_depth")
+        mean_dem_difference = dem.replace("dem", "mean_dem_difference")
         mean_dem_regression = dem.replace("dem", "mean_dem_regression")
         mean_dem_regression_difference = dem.replace("dem", "mean_dem_regression_difference")
-        mean_slope_difference = dem.replace("dem","mean_slope_difference")
+        mean_slope_difference = dem.replace("dem", "mean_slope_difference")
         mean_slope_regression = dem.replace("dem", "mean_slope_regression")
         mean_slope_regression_difference = dem.replace("dem", "mean_slope_regression_difference")
-        mean_forms_difference = dem.replace("dem","mean_forms_difference")
-        mean_depth_difference = dem.replace("dem","mean_depth_difference")
-        mean_depressions = dem.replace("dem","mean_depressions")
-        mean_concentrated_flow = dem.replace("dem","mean_concentrated_flow")
-        mean_concentrated_points = dem.replace("dem","mean_concentrated_points")
-        flow_lines = dem.replace("dem","flow_lines")
-        mean_peaks = dem.replace("dem","mean_peaks")
-        mean_peak_points = dem.replace("dem","mean_peak_points")
-        peak_lines= dem.replace("dem","peak_lines")
-        mean_pits = dem.replace("dem","mean_pits")
-        mean_pit_points = dem.replace("dem","mean_pit_points")
-        pit_lines = dem.replace("dem","pit_lines")
-        mean_ridges = dem.replace("dem","mean_ridges")
-        mean_ridge_points = dem.replace("dem","mean_ridge_points")
-        ridge_lines = dem.replace("dem","ridge_lines")
-        mean_valleys = dem.replace("dem","mean_valleys")
-        mean_valley_points = dem.replace("dem","mean_valley_points")
-        valley_lines = dem.replace("dem","valley_lines")
+        mean_forms_difference = dem.replace("dem", "mean_forms_difference")
+        mean_depth_difference = dem.replace("dem", "mean_depth_difference")
+        mean_depressions = dem.replace("dem", "mean_depressions")
+        mean_concentrated_flow = dem.replace("dem", "mean_concentrated_flow")
+        mean_concentrated_points = dem.replace("dem", "mean_concentrated_points")
+        flow_lines = dem.replace("dem", "flow_lines")
+        mean_peaks = dem.replace("dem", "mean_peaks")
+        mean_peak_points = dem.replace("dem", "mean_peak_points")
+        peak_lines = dem.replace("dem", "peak_lines")
+        mean_pits = dem.replace("dem", "mean_pits")
+        mean_pit_points = dem.replace("dem", "mean_pit_points")
+        pit_lines = dem.replace("dem", "pit_lines")
+        mean_ridges = dem.replace("dem", "mean_ridges")
+        mean_ridge_points = dem.replace("dem", "mean_ridge_points")
+        ridge_lines = dem.replace("dem", "ridge_lines")
+        mean_valleys = dem.replace("dem", "mean_valleys")
+        mean_valley_points = dem.replace("dem", "mean_valley_points")
+        valley_lines = dem.replace("dem", "valley_lines")
 
-        print region
+        # stdev variables
+        stdev_dem = dem.replace("dem", "stdev_dem")
+        stdev_slope = dem.replace("dem", "stdev_slope")
+        stdev_forms = dem.replace("dem", "stdev_forms")
+        stdev_depth = dem.replace("dem", "stdev_depth")
+        stdev_dem_difference = dem.replace("dem", "stdev_dem_difference")
+        stdev_dem_regression = dem.replace("dem", "stdev_dem_regression")
+        stdev_dem_regression_difference = dem.replace("dem", "stdev_dem_regression_difference")
+        stdev_slope_difference = dem.replace("dem", "stdev_slope_difference")
+        stdev_slope_regression = dem.replace("dem", "stdev_slope_regression")
+        stdev_slope_regression_difference = dem.replace("dem", "stdev_slope_regression_difference")
+        stdev_forms_difference = dem.replace("dem", "stdev_forms_difference")
+        stdev_depth_difference = dem.replace("dem", "stdev_depth_difference")
+        stdev_depressions = dem.replace("dem", "stdev_depressions")
 
         # set region
         gscript.run_command('g.region',
                             rast=region,
                             res=res)
+
         # 3D render elevation
         gscript.write_command('r.colors',
-                            map=dem,
-                            rules='-',
-                            stdin=dem_colors_3d)
+            map=dem,
+            rules='-',
+            stdin=dem_colors_3d)
         gscript.run_command('m.nviz.image',
-                        elevation_map=dem,
-                        color_map=dem,
-                        #color=color_3d,
-                        resolution_fine=res_3d,
-                        height=height_3d,
-                        perspective=perspective,
-                        light_position=light_position,
-                        fringe=fringe,
-                        fringe_color=color_3d,
-                        fringe_elevation=fringe_elevation,
-                        #arrow_position=arrow_position,
-                        #arrow_size=arrow_size,
-                        output=os.path.join(render_3d, dem),
-                        format=format_3d,
-                        size=size_3d,
-                        errors='ignore'
-                        )
+            elevation_map=dem,
+            color_map=dem,
+            #color=color_3d,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, dem),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render slope
-        try:
-            gscript.write_command('r.colors',
-                                map=slope,
-                                rules='-',
-                                stdin=slope_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=slope,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, slope),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=slope,
+            rules='-',
+            stdin=slope_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=slope,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, slope),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render landforms
-        try:
-            gscript.write_command('r.colors',
-                                map=forms,
-                                rules='-',
-                                stdin=forms_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=forms,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, forms),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=forms,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=forms,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, forms),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render water flow
-        try:
-            gscript.write_command('r.colors',
-                                map=depth,
-                                rules='-',
-                                stdin=depth_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=depth,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, depth),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=depth,
+            rules='-',
+            stdin=depth_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=depth,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, depth),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render depressions
-        try:
-            gscript.write_command('r.colors',
-                                map=depressions,
-                                rules='-',
-                                stdin=depressions_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=depressions,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, depressions),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=depressions,
+            rules='-',
+            stdin=depressions_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=depressions,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, depressions),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render difference
-        try:
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color=color_3d,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, dem_difference),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color=color_3d,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, dem_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render concentrated flow
-        try:
-            gscript.write_command('r.colors',
-                                map=concentrated_flow,
-                                rules='-',
-                                stdin=depth_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=concentrated_flow,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, concentrated_flow),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=concentrated_flow,
+            rules='-',
+            stdin=depth_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=concentrated_flow,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, concentrated_flow),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render peaks
-        try:
-            gscript.write_command('r.colors',
-                                map=peaks,
-                                rules='-',
-                                stdin=forms_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=peaks,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, peaks),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=peaks,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=peaks,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, peaks),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render pits
-        try:
-            gscript.write_command('r.colors',
-                                map=pits,
-                                rules='-',
-                                stdin=forms_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=pits,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, pits),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=pits,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=pits,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, pits),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render ridges
-        try:
-            gscript.write_command('r.colors',
-                                map=ridges,
-                                rules='-',
-                                stdin=forms_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=ridges,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, ridges),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=ridges,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=ridges,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, ridges),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render valleys
-        try:
-            gscript.write_command('r.colors',
-                                map=valleys,
-                                rules='-',
-                                stdin=forms_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=dem,
-                            color_map=valleys,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, valleys),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=valleys,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=valleys,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, valleys),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean elevation
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_dem,
-                                rules='-',
-                                stdin=dem_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_dem,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_dem),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_dem,
+            rules='-',
+            stdin=dem_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_dem,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_dem),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean slope
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_slope,
-                                rules='-',
-                                stdin=slope_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_slope,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_slope),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_slope,
+            rules='-',
+            stdin=slope_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_slope,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_slope),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean landforms
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_forms,
-                                rules='-',
-                                stdin=forms_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_forms,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_forms),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_forms,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_forms,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_forms),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean water flow
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_depth,
-                                rules='-',
-                                stdin=depth_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_depth,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_depth),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_depth,
+            rules='-',
+            stdin=depth_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_depth,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_depth),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean depressions
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_depressions,
-                                rules='-',
-                                stdin=depressions_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_depressions,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_depressions),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_depressions,
+            rules='-',
+            stdin=depressions_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_depressions,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_depressions),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean elevation difference
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_dem_difference,
-                                rules='-',
-                                stdin=dem_difference_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_dem_difference,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_dem_difference),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_dem_difference,
+            rules='-',
+            stdin=dem_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_dem_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_dem_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render mean forms difference
+        gscript.write_command('r.colors',
+            map=mean_forms_difference,
+            rules='-',
+            stdin=forms_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_forms_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_forms_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render mean regressed elevation
+        gscript.write_command('r.colors',
+            map=mean_dem_regression,
+            rules='-',
+            stdin=dem_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem_regression,
+            color_map=mean_dem_regression,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_dem_regression),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean regressed elevation difference
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_dem_regression_difference,
-                                rules='-',
-                                stdin=dem_difference_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_dem_regression_difference,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_dem_regression_difference),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_dem_regression_difference,
+            rules='-',
+            stdin=dem_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem_regression,
+            color_map=mean_dem_regression_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_dem_regression_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean slope difference
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_slope_difference,
-                                rules='-',
-                                stdin=slope_difference_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_slope_difference,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_slope_difference),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_slope_difference,
+            rules='-',
+            stdin=slope_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_slope_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_slope_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render mean regressed slope
+        gscript.write_command('r.colors',
+            map=mean_slope_regression,
+            rules='-',
+            stdin=slope_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem_regression,
+            color_map=mean_slope_regression,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_slope_regression),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean regressed slope difference
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_slope_regression_difference,
-                                rules='-',
-                                stdin=slope_difference_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_slope_regression_difference,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_slope_regression_difference),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_slope_regression_difference,
+            rules='-',
+            stdin=slope_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem_regression,
+            color_map=mean_slope_regression_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_slope_regression_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean flow difference
-        try:
-            gscript.write_command('r.colors',
-                                map=mean_depth_difference,
-                                rules='-',
-                                stdin=flow_difference_colors_3d)
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_depth_difference,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_depth_difference),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.write_command('r.colors',
+            map=mean_depth_difference,
+            rules='-',
+            stdin=flow_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_depth_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_depth_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean flow distance
-        try:
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color_map=mean_depth_difference,
-                            vpoint=mean_concentrated_points,
-                            vpoint_size=vpoint_size,
-                            vpoint_marker=vpoint_marker,
-                            vpoint_color=vpoint_color,
-                            vline=flow_lines,
-                            vline_width=vline_width,
-                            vline_color=vline_color,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_concentrated_flow),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color_map=mean_depth_difference,
+            vpoint=mean_concentrated_points,
+            vpoint_size=vpoint_size,
+            vpoint_marker=vpoint_marker,
+            vpoint_color=vpoint_color,
+            vline=flow_lines,
+            vline_width=vline_width,
+            vline_color=vline_color,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_concentrated_flow),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean peak distance
-        try:
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color=color_3d,
-                            vpoint=mean_peak_points,
-                            vpoint_size=vpoint_size,
-                            vpoint_marker=vpoint_marker,
-                            vpoint_color=vpoint_color,
-                            vline=peak_lines,
-                            vline_width=vline_width,
-                            vline_color=vline_color,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_peaks),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color=color_3d,
+            vpoint=mean_peak_points,
+            vpoint_size=vpoint_size,
+            vpoint_marker=vpoint_marker,
+            vpoint_color=vpoint_color,
+            vline=peak_lines,
+            vline_width=vline_width,
+            vline_color=vline_color,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_peaks),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean pit distance
-        try:
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color=color_3d,
-                            vpoint=mean_pit_points,
-                            vpoint_size=vpoint_size,
-                            vpoint_marker=vpoint_marker,
-                            vpoint_color=vpoint_color,
-                            vline=pit_lines,
-                            vline_width=vline_width,
-                            vline_color=vline_color,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_pits),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color=color_3d,
+            vpoint=mean_pit_points,
+            vpoint_size=vpoint_size,
+            vpoint_marker=vpoint_marker,
+            vpoint_color=vpoint_color,
+            vline=pit_lines,
+            vline_width=vline_width,
+            vline_color=vline_color,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_pits),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean ridge distance
-        try:
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color=color_3d,
-                            vpoint=mean_ridge_points,
-                            vpoint_size=vpoint_size,
-                            vpoint_marker=vpoint_marker,
-                            vpoint_color=vpoint_color,
-                            vline=ridge_lines,
-                            vline_width=vline_width,
-                            vline_color=vline_color,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_ridges),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color=color_3d,
+            vpoint=mean_ridge_points,
+            vpoint_size=vpoint_size,
+            vpoint_marker=vpoint_marker,
+            vpoint_color=vpoint_color,
+            vline=ridge_lines,
+            vline_width=vline_width,
+            vline_color=vline_color,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_ridges),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
         # 3D render mean valley distance
-        try:
-            gscript.run_command('m.nviz.image',
-                            elevation_map=mean_dem,
-                            color=color_3d,
-                            vpoint=mean_valley_points,
-                            vpoint_size=vpoint_size,
-                            vpoint_marker=vpoint_marker,
-                            vpoint_color=vpoint_color,
-                            vline=valley_lines,
-                            vline_width=vline_width,
-                            vline_color=vline_color,
-                            resolution_fine=res_3d,
-                            height=height_3d,
-                            perspective=perspective,
-                            light_position=light_position,
-                            fringe=fringe,
-                            fringe_color=color_3d,
-                            fringe_elevation=fringe_elevation,
-                            #arrow_position=arrow_position,
-                            #arrow_size=arrow_size,
-                            output=os.path.join(render_3d, mean_valleys),
-                            format=format_3d,
-                            size=size_3d,
-                            )
-        except:
-            pass
+        gscript.run_command('m.nviz.image',
+            elevation_map=mean_dem,
+            color=color_3d,
+            vpoint=mean_valley_points,
+            vpoint_size=vpoint_size,
+            vpoint_marker=vpoint_marker,
+            vpoint_color=vpoint_color,
+            vline=valley_lines,
+            vline_width=vline_width,
+            vline_color=vline_color,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, mean_valleys),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev elevation
+        gscript.write_command('r.colors',
+            map=stdev_dem,
+            rules='-',
+            stdin=dem_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_dem,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_dem),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev slope
+        gscript.write_command('r.colors',
+            map=stdev_slope,
+            rules='-',
+            stdin=slope_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_slope,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_slope),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev forms
+        gscript.write_command('r.colors',
+            map=stdev_forms,
+            rules='-',
+            stdin=forms_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_forms,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_forms),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev depth
+        gscript.write_command('r.colors',
+            map=stdev_depth,
+            rules='-',
+            stdin=depth_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_depth,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_depth),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev dem difference
+        gscript.write_command('r.colors',
+            map=stdev_dem_difference,
+            rules='-',
+            stdin=stdev_dem_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_dem_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_dem_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev dem regression
+        gscript.write_command('r.colors',
+            map=stdev_dem_regression,
+            rules='-',
+            stdin=dem_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem_regression,
+            color_map=stdev_dem_regression,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_dem_regression),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev dem regression difference
+        gscript.write_command('r.colors',
+            map=stdev_dem_regression_difference,
+            rules='-',
+            stdin=stdev_dem_regression_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem_regression,
+            color_map=stdev_dem_regression_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_dem_regression_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev slope difference
+        gscript.write_command('r.colors',
+            map=stdev_slope_difference,
+            rules='-',
+            stdin=stdev_slope_difference_colors_3d )
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_slope_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_slope_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev slope regression difference
+        gscript.write_command('r.colors',
+            map=stdev_slope_regression_difference,
+            rules='-',
+            stdin=stdev_slope_difference_colors_3d )
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem_regression,
+            color_map=stdev_slope_regression_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_slope_regression_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev depth difference
+        gscript.write_command('r.colors',
+            map=stdev_depth_difference,
+            rules='-',
+            stdin=flow_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_depth_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_depth_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev forms difference
+        gscript.write_command('r.colors',
+            map=stdev_forms_difference,
+            rules='-',
+            stdin=forms_difference_colors_3d)
+        gscript.run_command('m.nviz.image',
+            elevation_map=stdev_dem,
+            color_map=stdev_forms_difference,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=stdev_fringe,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d, stdev_forms_difference),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
 
 def write_results(ref_flow_cells,
-                  ref_depression_cells,
-                  ref_peak_cells,
-                  ref_pit_cells,
-                  ref_ridge_cells,
-                  ref_valley_cells,
-                  flow_cells,
-                  depression_cells,
-                  peak_cells,
-                  pit_cells,
-                  ridge_cells,
-                  valley_cells,
-                  flow_distance,
-                  peak_distance,
-                  pit_distance,
-                  ridge_distance,
-                  valley_distance):
+    ref_depression_cells,
+    ref_peak_cells,
+    ref_pit_cells,
+    ref_ridge_cells,
+    ref_valley_cells,
+    flow_cells,
+    depression_cells,
+    peak_cells,
+    pit_cells,
+    ridge_cells,
+    valley_cells,
+    flow_distance,
+    peak_distance,
+    pit_distance,
+    ridge_distance,
+    valley_distance,
+    stdev_flow_cells,
+    stdev_depression_cells,
+    stdev_peak_cells,
+    stdev_pit_cells,
+    stdev_ridge_cells,
+    stdev_valley_cells,
+    stdev_flow_distance,
+    stdev_peak_distance,
+    stdev_pit_distance,
+    stdev_ridge_distance,
+    stdev_valley_distance):
     """plot the percent of cells with depressions and the minumum distance of mean concentrated flow points from the reference for each experiment"""
 
     # count number of dems
@@ -1796,33 +2588,49 @@ def write_results(ref_flow_cells,
     # print
     for x in xrange(i):
         print x
+        # reference cells
         print 'ref flow cells: ' + str(ref_flow_cells[x])
         print 'ref depression cells: ' + str(ref_depression_cells[x])
         print 'ref peak cells: ' + str(ref_peak_cells[x])
         print 'ref pit cells: ' + str(ref_pit_cells[x])
         print 'ref ridge cells: ' + str(ref_ridge_cells[x])
         print 'ref valley cells: ' + str(ref_valley_cells[x])
+        # mean cells
         print 'mean flow cells: ' + str(flow_cells[x])
         print 'mean depression cells: ' + str(depression_cells[x])
         print 'mean peak cells: ' + str(peak_cells[x])
         print 'mean pit cells: ' + str(pit_cells[x])
         print 'mean ridge cells: ' + str(ridge_cells[x])
         print 'mean valley cells: ' + str(valley_cells[x])
+        # stdev cells
+        print 'stdev flow cells: ' + str(stdev_flow_cells[x])
+        print 'stdev depression cells: ' + str(stdev_depression_cells[x])
+        print 'stdev peak cells: ' + str(stdev_peak_cells[x])
+        print 'stdev pit cells: ' + str(stdev_pit_cells[x])
+        print 'stdev ridge cells: ' + str(stdev_ridge_cells[x])
+        print 'stdev valley cells: ' + str(stdev_valley_cells[x])
+        # mean distance
         print 'flow distance: ' + str(flow_distance[x])
         print 'peak distance: ' + str(peak_distance[x])
         print 'pit distance: ' + str(pit_distance[x])
         print 'ridge distance: ' + str(ridge_distance[x])
         print 'valley distance: ' + str(valley_distance[x])
+        # stdev distance
+        print 'stdev flow distance: ' + str(stdev_flow_distance[x])
+        print 'stdev peak distance: ' + str(stdev_peak_distance[x])
+        print 'stdev pit distance: ' + str(stdev_pit_distance[x])
+        print 'stdev ridge distance: ' + str(stdev_ridge_distance[x])
+        print 'stdev valley distance: ' + str(stdev_valley_distance[x])
 
     # write to csv file
     with open(cells, 'wb') as csvfile:
         cells_writer = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        cells_writer.writerow(['ref_flow_cells', 'ref_depression_cells', 'ref_peak_cells', 'ref_pit_cells', 'ref_ridge_cells', 'ref_valley_cells', 'flow_cells', 'depression_cells', 'peak_cells', 'pit_cells', 'ridge_cells', 'valley_cells'])
+        cells_writer.writerow(['ref_flow_cells', 'ref_depression_cells', 'ref_peak_cells', 'ref_pit_cells', 'ref_ridge_cells', 'ref_valley_cells', 'flow_cells', 'depression_cells', 'peak_cells', 'pit_cells', 'ridge_cells', 'valley_cells', 'stdev_flow_cells', 'stdev_depression_cells', 'stdev_peak_cells', 'stdev_pit_cells', 'stdev_ridge_cells', 'stdev_valley_cells', 'flow_distance', 'peak_distance', 'pit_distance', 'ridge_distance', 'valley_distance', 'stdev_flow_distance', 'stdev_peak_distance', 'stdev_pit_distance', 'stdev_ridge_distance', 'stdev_valley_distance'])
 
         for x in xrange(i):
-            cells_writer.writerow([ref_flow_cells[x], ref_depression_cells[x], ref_peak_cells[x], ref_pit_cells[x], ref_ridge_cells[x], ref_valley_cells[x], flow_cells[x], depression_cells[x], peak_cells[x], pit_cells[x], ridge_cells[x], valley_cells[x]])
+            cells_writer.writerow([ref_flow_cells[x], ref_depression_cells[x], ref_peak_cells[x], ref_pit_cells[x], ref_ridge_cells[x], ref_valley_cells[x], flow_cells[x], depression_cells[x], peak_cells[x], pit_cells[x], ridge_cells[x], valley_cells[x], stdev_flow_cells[x], stdev_depression_cells[x], stdev_peak_cells[x], stdev_pit_cells[x], stdev_ridge_cells[x], stdev_valley_cells[x], flow_distance[x], peak_distance[x], pit_distance[x], ridge_distance[x], valley_distance[x], stdev_flow_distance[x], stdev_peak_distance[x], stdev_pit_distance[x], stdev_ridge_distance[x], stdev_valley_distance[x]])
 
 
 if __name__ == "__main__":
