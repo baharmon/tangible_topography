@@ -54,6 +54,7 @@ skip = 6  # skip distance for r.geomorphon
 size = 9  # moving window size for r.param.scale
 brighten = 75  # percent brightness of shaded relief
 render_multiplier = 3  # multiplier for rendering size
+whitespace = 3
 fontsize = 9 * render_multiplier  # legend font size
 legend_coord = (10, 50, 1, 4)  # legend display coordinates
 
@@ -112,22 +113,11 @@ def main():
     pit_cells = []
     ridge_cells = []
     valley_cells = []
-    stdev_flow_cells = []
-    stdev_depression_cells = []
-    stdev_peak_cells = []
-    stdev_pit_cells = []
-    stdev_ridge_cells = []
-    stdev_valley_cells = []
     flow_distance = []
     peak_distance = []
     pit_distance = []
     ridge_distance = []
     valley_distance = []
-    stdev_flow_distance = []
-    stdev_peak_distance = []
-    stdev_pit_distance = []
-    stdev_ridge_distance = []
-    stdev_valley_distance = []
 
     reference(ref_flow_cells,
         ref_depression_cells,
@@ -148,17 +138,7 @@ def main():
         ridge_distance,
         valley_distance)
 
-    stdev_analysis(stdev_flow_cells,
-        stdev_depression_cells,
-        stdev_peak_cells,
-        stdev_pit_cells,
-        stdev_ridge_cells,
-        stdev_valley_cells,
-        stdev_flow_distance,
-        stdev_peak_distance,
-        stdev_pit_distance,
-        stdev_ridge_distance,
-        stdev_valley_distance)
+    stdev_analysis()
 
     render_3d_images()
 
@@ -178,18 +158,7 @@ def main():
         peak_distance,
         pit_distance,
         ridge_distance,
-        valley_distance,
-        stdev_flow_cells,
-        stdev_depression_cells,
-        stdev_peak_cells,
-        stdev_pit_cells,
-        stdev_ridge_cells,
-        stdev_valley_cells,
-        stdev_flow_distance,
-        stdev_peak_distance,
-        stdev_pit_distance,
-        stdev_ridge_distance,
-        stdev_valley_distance)
+        valley_distance)
 
     atexit.register(cleanup)
     sys.exit(0)
@@ -199,9 +168,9 @@ def cleanup():
     try:
         # remove temporary maps
         gscript.run_command('g.remove',
-                            type='raster',
-                            name=['depressionless_dem', 'flow_dir', 'dx', 'dy'],
-                            flags='f')
+            type='raster',
+            name=['depressionless_dem', 'flow_dir', 'dx', 'dy', 'a', 'b', 'regression'],
+            flags='f')
     except CalledModuleError:
         pass
 
@@ -217,20 +186,20 @@ def reference(ref_flow_cells, ref_depression_cells, ref_peak_cells, ref_pit_cell
     # compute shaded relief
     relief = 'relief'
     gscript.run_command('g.region',
-                        rast='dem@PERMANENT',
-                        res=res)
+        rast='dem@PERMANENT',
+        res=res)
     gscript.run_command('r.relief',
-                        input='dem@PERMANENT',
-                        output=relief,
-                        altitude=90,
-                        azimuth=45,
-                        zscale=1,
-                        units="intl",
-                        overwrite=overwrite)
+        input='dem@PERMANENT',
+        output=relief,
+        altitude=90,
+        azimuth=45,
+        zscale=1,
+        units="intl",
+        overwrite=overwrite)
 
     # list scanned DEMs
     dems = gscript.list_grouped('rast',
-                                pattern='dem_*')['PERMANENT']
+        pattern='dem_*')['PERMANENT']
 
     # iterate through scanned DEMs
     for dem in dems:
@@ -250,8 +219,6 @@ def reference(ref_flow_cells, ref_depression_cells, ref_peak_cells, ref_pit_cell
         slope_before = slope
         slope_after = slope
         slope_difference = dem.replace("dem", "slope_difference")
-        slope_regression = dem.replace("dem", "slope_regression")
-        slope_regression_difference = dem.replace("dem", "slope_regression_difference")
         forms_before = forms
         forms_after = forms
         forms_difference = dem.replace("dem", "forms_difference")
@@ -272,77 +239,140 @@ def reference(ref_flow_cells, ref_depression_cells, ref_peak_cells, ref_pit_cell
 
         # set region
         gscript.run_command('g.region',
-                            rast=region,
-                            res=res)
-
-        # check if mask needed
-        find_mask = gscript.find_file(mask,
-                                      element='cell')
-        if find_mask['name']:
-            gscript.run_command('r.mask',
-                                raster=mask,
-                                overwrite=overwrite)
+            rast=region,
+            res=res)
 
         # render elevation
         info = gscript.parse_command('r.info',
-                                     map=dem,
-                                     flags='g')
-        width = int(info.cols)+int(info.cols)/2*render_multiplier
+            map=dem,
+            flags='g')
+        width = int(info.cols)+int(info.cols)/2*render_multiplier*whitespace
         height = int(info.rows)*render_multiplier
         gscript.run_command('d.mon',
-                            start=driver,
-                            width=width,
-                            height=height,
-                            output=os.path.join(render, dem+".png"),
-                            overwrite=overwrite)
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render, dem+".png"),
+            overwrite=overwrite)
         gscript.run_command('r.colors',
-                            map=dem,
-                            color="elevation")
+            map=dem,
+            color="elevation")
         gscript.run_command('r.contour',
-                            input=dem,
-                            output=contour,
-                            step=step,
-                            overwrite=overwrite)
+            input=dem,
+            output=contour,
+            step=step,
+            overwrite=overwrite)
         gscript.run_command('d.shade',
-                            shade=relief,
-                            color=dem,
-                            brighten=brighten)
-        gscript.run_command('d.vect',
-                            map=contour,
-                            display="shape")
+            shade=relief,
+            color=dem,
+            brighten=brighten)
+        gscript.run_command('d.vect', map=contour, display="shape")
         gscript.run_command('d.legend',
-                            raster=dem,
-                            fontsize=fontsize,
-                            at=legend_coord)
+            raster=dem,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the modeled and reference elevation
         gscript.run_command('d.mon',
-                            stop=driver)
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render, dem_difference+".png"),
+            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+            expression='{difference} = {before} - {after}'.format(before=dem_before,
+                after=dem_after,
+                difference=dem_difference),
+            overwrite=overwrite)
+        gscript.write_command('r.colors',
+            map=dem_difference,
+            rules='-',
+            stdin=dem_difference_colors)
+        gscript.run_command('d.vect', map=contour, display='shape')
+        gscript.run_command('d.legend',
+            raster=dem_difference,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the modeled and reference elevation with linear regression
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render, dem_regression_difference+".png"),
+            overwrite=overwrite)
+        regression_params = gscript.parse_command('r.regression.line',
+            flags='g',
+            mapx=dem_before,
+            mapy=dem_after,
+            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+            expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'],
+                b=regression_params['b'],
+                before=dem_before,
+                regression=dem_regression),
+            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+            expression='{difference} = {regression} - {after}'.format(regression=dem_regression,
+                after=dem_after,
+                difference=dem_regression_difference),
+            overwrite=overwrite)
+        gscript.write_command('r.colors',
+            map=dem_regression_difference,
+            rules='-',
+            stdin=dem_difference_colors)
+        gscript.run_command('d.vect', map=contour, display='shape')
+        gscript.run_command('d.legend',
+            raster=dem_regression_difference,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.mon',
+            stop=driver)
+
+        # check if mask needed
+        find_mask = gscript.find_file(mask,
+            element='cell')
+        if find_mask['name']:
+            gscript.run_command('r.mask',
+                raster=mask,
+                overwrite=overwrite)
 
         # compute slope
         gscript.run_command('d.mon',
-                            start=driver,
-                            width=width,
-                            height=height,
-                            output=os.path.join(render, slope+".png"),
-                            overwrite=overwrite)
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render, slope+".png"),
+            overwrite=overwrite)
         gscript.run_command('r.param.scale',
-                            input=dem, output=slope,
-                            size=size,
-                            method="slope",
-                            overwrite=overwrite)
+            input=dem, output=slope,
+            size=size,
+            method="slope",
+            overwrite=overwrite)
         gscript.run_command('r.colors',
-                            map=slope,
-                            color="slope")
+            map=slope,
+            color="slope")
         gscript.run_command('d.shade',
-                            shade=relief,
-                            color=slope,
-                            brighten=brighten)
+            shade=relief,
+            color=slope,
+            brighten=brighten)
         gscript.run_command('d.vect',
-                            map=contour,
-                            display='shape')
+            map=contour,
+            display='shape')
         gscript.run_command('d.legend',
-                            raster=slope,
-                            fontsize=fontsize,
-                            at=legend_coord)
+            raster=slope,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the modeled and reference slope
+        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, slope_difference+".png"), overwrite=overwrite)
+        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=slope_before, after=slope_after, difference=slope_difference), overwrite=overwrite)
+        gscript.write_command('r.colors', map=slope_difference, rules='-', stdin=slope_difference_colors)
+        gscript.run_command('d.vect', map=contour, display='shape')
+        gscript.run_command('d.legend', raster=slope_difference, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
         #compute landforms
@@ -371,77 +401,6 @@ def reference(ref_flow_cells, ref_depression_cells, ref_peak_cells, ref_pit_cell
         gscript.run_command('d.shade', shade=relief, color=depressions, brighten=brighten)
         gscript.run_command('d.vect', map=contour, display='shape')
         gscript.run_command('d.legend', raster=depressions, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the modeled and reference elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, dem_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=dem_before, after=dem_after, difference=dem_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=dem_difference, rules='-', stdin=dem_difference_colors)
-        gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=dem_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the linearly regressed difference between the modeled and reference elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, dem_regression_difference+".png"), overwrite=overwrite)
-        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=dem_before, mapy=dem_after, overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=dem_before, regression=dem_regression), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {regression} - {after}'.format(regression=dem_regression, after=dem_after, difference=dem_regression_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=dem_regression_difference, rules='-', stdin=dem_difference_colors)
-        gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=dem_regression_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the modeled and reference slope
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, slope_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=slope_before, after=slope_after, difference=slope_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=slope_difference, rules='-', stdin=slope_difference_colors)
-        gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=slope_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the modeled and reference slope of the regressed elevation
-        gscript.run_command('r.param.scale',
-                            input=dem_regression, output=slope_regression,
-                            size=size,
-                            method="slope",
-                            overwrite=overwrite)
-        gscript.run_command('r.colors',
-                            map=slope_regression,
-                            color="slope")
-        gscript.run_command('d.mon',
-                            start=driver,
-                            width=width,
-                            height=height,
-                            output=os.path.join(render, slope_regression_difference+".png"),
-                            overwrite=overwrite)
-        gscript.run_command('r.mapcalc',
-                            expression='{difference} = {before} - {after}'.format(
-                            before=slope_before,
-                            after=slope_regression,
-                            difference=slope_regression_difference),
-                            overwrite=overwrite)
-        gscript.write_command('r.colors',
-                              map=slope_regression_difference,
-                              rules='-',
-                              stdin=slope_difference_colors)
-        gscript.run_command('d.vect',
-                            map=contour,
-                            display='shape')
-        gscript.run_command('d.legend',
-                            raster=slope_regression_difference,
-                            fontsize=fontsize,
-                            at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the linearly regressed difference between the modeled and reference slope
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, slope_regression_difference+".png"), overwrite=overwrite)
-        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=slope_before, mapy=slope_after, overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=slope_before, regression=slope_regression), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {regression} - {after}'.format(regression=slope_regression, after=slope_after, difference=slope_regression_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=slope_regression_difference, rules='-', stdin=slope_difference_colors)
-        gscript.run_command('d.shade', shade=relief, color=slope_regression_difference, brighten=brighten)
-        gscript.run_command('d.vect', map=contour, display='shape')
-        gscript.run_command('d.legend', raster=slope_regression_difference, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
         # compute the difference between the modeled and reference landorms
@@ -642,7 +601,6 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
 
         # variables
         region = dem
-        relief = "relief"
         mask = dem.replace("dem","mask")
         contour = dem.replace("dem","contour")
         slope = dem.replace("dem","slope")
@@ -662,16 +620,12 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         mean_slope_before = slope
         mean_slope_after = mean_slope
         mean_slope_difference = dem.replace("dem","mean_slope_difference")
-        mean_slope_regression = dem.replace("dem", "mean_slope_regression")
-        mean_slope_regression_difference = dem.replace("dem", "mean_slope_regression_difference")
         mean_forms_before = forms
         mean_forms_after = mean_forms
         mean_forms_difference = dem.replace("dem","mean_forms_difference")
-        mean_forms_regression = dem.replace("dem","mean_forms_regression")
         mean_depth_before = depth
         mean_depth_after = mean_depth
         mean_depth_difference = dem.replace("dem","mean_depth_difference")
-        mean_depth_regression = dem.replace("dem","mean_depth_regression")
         mean_depressions = dem.replace("dem","mean_depressions")
         mean_concentrated_flow = dem.replace("dem","mean_concentrated_flow")
         mean_concentrated_points = dem.replace("dem","mean_concentrated_points")
@@ -703,26 +657,120 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('g.region', rast=region, res=res)
 
         # compute mean elevation
-        gscript.run_command('r.series', input=dem_list, output=mean_dem, method="average", overwrite=overwrite)
-        gscript.run_command('r.colors', map=mean_dem, color="elevation")
-        gscript.run_command('r.relief', input=mean_dem, output=mean_relief, altitude=90, azimuth=45, zscale=1, units="intl", overwrite=overwrite)
-        gscript.run_command('r.contour', input=mean_dem, output=mean_contour, step=step, overwrite=overwrite)
+        gscript.run_command('r.series',
+            input=dem_list,
+            output=mean_dem,
+            method="average",
+            overwrite=overwrite)
+        gscript.run_command('r.colors',
+            map=mean_dem, color="elevation")
+        gscript.run_command('r.relief',
+            input=mean_dem,
+            output=mean_relief,
+            altitude=90,
+            azimuth=45,
+            zscale=1,
+            units="intl",
+            overwrite=overwrite)
+        gscript.run_command('r.contour',
+            input=mean_dem,
+            output=mean_contour,
+            step=step,
+            overwrite=overwrite)
         info = gscript.parse_command('r.info', map=dem, flags='g')
-        width=int(info.cols)+int(info.cols)/2*render_multiplier
+        width=int(info.cols)+int(info.cols)/2*render_multiplier*whitespace
         height=int(info.rows)*render_multiplier
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_dem+".png"), overwrite=overwrite)
-        gscript.run_command('d.shade', shade=mean_relief, color=mean_dem, brighten=brighten)
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render,mean_dem+".png"),
+            overwrite=overwrite)
+        gscript.run_command('d.shade',
+            shade=mean_relief,
+            color=mean_dem,
+            brighten=brighten)
         gscript.run_command('d.vect', map=mean_contour, display="shape")
-        gscript.run_command('d.legend', raster=mean_dem, fontsize=fontsize, at=legend_coord)
+        gscript.run_command('d.legend',
+            raster=mean_dem,
+            fontsize=fontsize,
+            at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        # compute linear regression of mean elevation
-        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=mean_dem_before, mapy=mean_dem_after, overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=mean_dem_before, regression=mean_dem_regression), overwrite=overwrite)
-        gscript.run_command('r.colors', map=mean_dem_regression, color="elevation")
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_dem_regression+".png"), overwrite=overwrite)
-        gscript.run_command('d.rast', map=mean_dem_regression)
-        gscript.run_command('d.legend', raster=mean_dem_regression, fontsize=fontsize, at=legend_coord)
+        # compute the difference between the mean and reference elevation
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render,mean_dem_difference+".png"),
+            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+            expression='{difference} = {before} - {after}'.format(before=mean_dem_before,
+                after=mean_dem_after,
+                difference=mean_dem_difference),
+            overwrite=overwrite)
+        gscript.write_command('r.colors',
+            map=mean_dem_difference,
+            rules='-', stdin=dem_difference_colors)
+        gscript.run_command('d.rast', map=mean_dem_difference)
+        gscript.run_command('d.vect', map=mean_contour, display='shape')
+        gscript.run_command('d.legend',
+            raster=mean_dem_difference,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # linear regression
+        regression_params = gscript.parse_command('r.regression.line',
+            flags='g',
+            mapx=mean_dem_before,
+            mapy=mean_dem_after,
+            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+            expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'],
+            b=regression_params['b'],
+            before=mean_dem_before,
+            regression=mean_dem_regression),
+            overwrite=overwrite)
+        gscript.run_command('r.colors',
+            map=mean_dem_regression,
+            color="elevation")
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render,mean_dem_regression+".png"),
+            overwrite=overwrite)
+        gscript.run_command('d.rast',
+            map=mean_dem_regression)
+        gscript.run_command('d.legend',
+            raster=mean_dem_regression,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.mon', stop=driver)
+
+        # compute the difference between the modeled and reference elevation with linear regression
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render, mean_dem_regression_difference+".png"),
+            overwrite=overwrite)
+        gscript.run_command('r.mapcalc',
+            expression='{difference} = {regression} - {after}'.format(regression=mean_dem_regression,
+                after=mean_dem_after,
+                difference=mean_dem_regression_difference),
+            overwrite=overwrite)
+        gscript.write_command('r.colors',
+            map=mean_dem_regression_difference,
+            rules='-',
+            stdin=dem_difference_colors)
+        gscript.run_command('d.rast', map=mean_dem_regression_difference)
+        gscript.run_command('d.vect', map=mean_contour, display='shape')
+        gscript.run_command('d.legend',
+            raster=mean_dem_regression_difference,
+            fontsize=fontsize,
+            at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
         # check if mask needed
@@ -747,14 +795,6 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('d.legend', raster=mean_forms, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        #compute landforms for linearly regressed mean elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_forms_regression+".png"), overwrite=overwrite)
-        gscript.run_command('r.geomorphon', dem=mean_dem_regression, forms=mean_forms_regression, search=search, skip=skip, overwrite=overwrite)
-        gscript.run_command('d.rast', map=mean_forms_regression)
-        gscript.run_command('d.vect', map=mean_contour, display='shape')
-        gscript.run_command('d.legend', raster=mean_forms_regression, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
         # simulate water flow
         gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_depth+".png"), overwrite=overwrite)
         gscript.run_command('r.slope.aspect', elevation=mean_dem, dx='dx', dy='dy', overwrite=overwrite)
@@ -763,16 +803,6 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('d.shade', shade=mean_relief, color=mean_depth, brighten=brighten)
         gscript.run_command('d.vect', map=mean_contour, display='shape')
         gscript.run_command('d.legend', raster=mean_depth, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # simulate water flow for linearly regressed mean elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,mean_depth_regression+".png"), overwrite=overwrite)
-        gscript.run_command('r.slope.aspect', elevation=mean_dem_regression, dx='dx', dy='dy', overwrite=overwrite)
-        gscript.run_command('r.sim.water', elevation=mean_dem_regression, dx='dx', dy='dy', rain_value=rain_value, depth=mean_depth_regression, nwalkers=nwalkers, niterations=niterations, overwrite=overwrite)
-        gscript.run_command('g.remove', flags='f', type='raster', name=['dx', 'dy'])
-        gscript.run_command('d.shade', shade=mean_relief, color=mean_depth_regression, brighten=brighten)
-        gscript.run_command('d.vect', map=mean_contour, display='shape')
-        gscript.run_command('d.legend', raster=mean_depth_regression, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
         # identify mean depressions
@@ -785,24 +815,6 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('d.legend', raster=mean_depressions, fontsize=fontsize, at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        # compute the difference between the mean and reference elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,mean_dem_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=mean_dem_before,after=mean_dem_after,difference=mean_dem_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=mean_dem_difference, rules='-', stdin=dem_difference_colors)
-        gscript.run_command('d.rast', map=mean_dem_difference)
-        gscript.run_command('d.vect', map=mean_contour, display='shape')
-        gscript.run_command('d.legend', raster=mean_dem_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the linearly regressed difference between the modeled and reference elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, mean_dem_regression_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {regression} - {after}'.format(regression=mean_dem_regression, after=mean_dem_after, difference=mean_dem_regression_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=mean_dem_regression_difference, rules='-', stdin=dem_difference_colors)
-        gscript.run_command('d.rast', map=mean_dem_regression_difference)
-        gscript.run_command('d.vect', map=mean_contour, display='shape')
-        gscript.run_command('d.legend', raster=mean_dem_regression_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
         # compute the difference between the mean and reference slope
         gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, mean_slope_difference+".png"), overwrite=overwrite)
         gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=mean_slope_before,after=mean_slope_after,difference=mean_slope_difference), overwrite=overwrite)
@@ -810,42 +822,6 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         gscript.run_command('d.rast', map=mean_slope_difference)
         gscript.run_command('d.vect', map=mean_contour, display='shape')
         gscript.run_command('d.legend', raster=mean_slope_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the modeled and reference slope of the regressed mean elevation
-        gscript.run_command('r.param.scale',
-                            input=mean_dem_regression, output=mean_slope_regression,
-                            size=size,
-                            method="slope",
-                            overwrite=overwrite)
-        gscript.run_command('r.colors',
-                            map=mean_slope_regression,
-                            color="slope")
-        gscript.run_command('d.mon',
-                            start=driver,
-                            width=width,
-                            height=height,
-                            output=os.path.join(render, mean_slope_regression_difference+".png"),
-                            overwrite=overwrite)
-        gscript.run_command('r.mapcalc',
-                            expression='{difference} = {before} - {after}'.format(
-                            before=mean_slope_before,
-                            after=mean_slope_regression,
-                            difference=mean_slope_regression_difference),
-                            overwrite=overwrite)
-        gscript.write_command('r.colors',
-                              map=mean_slope_regression_difference,
-                              rules='-',
-                              stdin=slope_difference_colors)
-        gscript.run_command('d.rast',
-                            map=mean_slope_regression_difference)
-        gscript.run_command('d.vect',
-                            map=mean_contour,
-                            display='shape')
-        gscript.run_command('d.legend',
-                            raster=mean_slope_regression_difference,
-                            fontsize=fontsize,
-                            at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
         # compute the difference between the mean and reference landorms
@@ -1106,7 +1082,7 @@ def mean_analysis(flow_cells, depression_cells, peak_cells, pit_cells, ridge_cel
         except CalledModuleError:
             pass
 
-def stdev_analysis(stdev_flow_cells, stdev_depression_cells, stdev_peak_cells, stdev_pit_cells, stdev_ridge_cells, stdev_valley_cells, stdev_flow_distance, stdev_peak_distance, stdev_pit_distance, stdev_ridge_distance, stdev_valley_distance):
+def stdev_analysis():
     """compute the difference, water flow, depressions, and concentrated flow for each series of models"""
 
     # list reference DEMs
@@ -1120,448 +1096,146 @@ def stdev_analysis(stdev_flow_cells, stdev_depression_cells, stdev_peak_cells, s
 
         # variables
         region = dem
-        relief = "relief"
-        mask = dem.replace("dem","mask")
-        contour = dem.replace("dem","contour")
-        slope = dem.replace("dem","slope")
-        forms = dem.replace("dem","forms")
-        depth = dem.replace("dem","depth")
         stdev_dem = dem.replace("dem","stdev_dem")
-        stdev_relief = dem.replace("dem","stdev_relief")
         stdev_contour = dem.replace("dem","stdev_contour")
-        stdev_slope = dem.replace("dem","stdev_slope")
-        stdev_forms = dem.replace("dem","stdev_forms")
-        stdev_depth = dem.replace("dem","stdev_depth")
-        stdev_dem_before = dem
-        stdev_dem_after = stdev_dem
-        stdev_dem_difference = dem.replace("dem","stdev_dem_difference")
-        stdev_dem_regression = dem.replace("dem", "stdev_dem_regression")
-        stdev_dem_regression_difference = dem.replace("dem", "stdev_dem_regression_difference")
-        stdev_slope_before = slope
-        stdev_slope_after = stdev_slope
-        stdev_slope_difference = dem.replace("dem","stdev_slope_difference")
-        stdev_slope_regression = dem.replace("dem", "stdev_slope_regression")
-        stdev_slope_regression_difference = dem.replace("dem", "stdev_slope_regression_difference")
-        stdev_forms_before = forms
-        stdev_forms_after = stdev_forms
-        stdev_forms_difference = dem.replace("dem","stdev_forms_difference")
-        stdev_depth_before = depth
-        stdev_depth_after = stdev_depth
-        stdev_depth_difference = dem.replace("dem","stdev_depth_difference")
-        stdev_depressions = dem.replace("dem","stdev_depressions")
-        stdev_concentrated_flow = dem.replace("dem","stdev_concentrated_flow")
-        stdev_concentrated_points = dem.replace("dem","stdev_concentrated_points")
-        concentrated_points = dem.replace("dem","concentrated_points")
-        copied_concentrated_points = dem.replace("dem","copied_concentrated_points")
-        flow_lines = dem.replace("dem","stdev_flow_lines")
-        stdev_peaks = dem.replace("dem","stdev_peaks")
-        stdev_peak_points = dem.replace("dem","stdev_peak_points")
-        peak_points = dem.replace("dem","peak_points")
-        copied_peak_points = dem.replace("dem","copied_peak_points")
-        peak_lines= dem.replace("dem","stdev_peak_lines")
-        stdev_pits = dem.replace("dem","stdev_pits")
-        stdev_pit_points = dem.replace("dem","stdev_pit_points")
-        pit_points = dem.replace("dem","pit_points")
-        copied_pit_points = dem.replace("dem","copied_pit_points")
-        pit_lines = dem.replace("dem","stdev_pit_lines")
-        stdev_ridges = dem.replace("dem","stdev_ridges")
-        stdev_ridge_points = dem.replace("dem","stdev_ridge_points")
-        ridge_points = dem.replace("dem","ridge_points")
-        copied_ridge_points = dem.replace("dem","copied_ridge_points")
-        ridge_lines = dem.replace("dem","stdev_ridge_lines")
-        stdev_valleys = dem.replace("dem","stdev_valleys")
-        stdev_valley_points = dem.replace("dem","stdev_valley_points")
-        valley_points = dem.replace("dem","valley_points")
-        copied_valley_points = dem.replace("dem","copied_valley_points")
-        valley_lines = dem.replace("dem","stdev_valley_lines")
+        stdev_difference_series = dem.replace("dem","stdev_difference_series")
+        stdev_regression_difference_series = dem.replace("dem","stdev_regression_difference_series")
 
         # set region
         gscript.run_command('g.region', rast=region, res=res)
 
         # compute stdev elevation
-        gscript.run_command('r.series', input=dem_list, output=stdev_dem, method="stddev", overwrite=overwrite)
+        gscript.run_command('r.series',
+            input=dem_list,
+            output=stdev_dem,
+            method="stddev",
+            overwrite=overwrite)
         gscript.run_command('r.cpt2grass',
             map=stdev_dem,
             url=url,
             flags="s")
-        gscript.run_command('r.relief', input=stdev_dem, output=stdev_relief, altitude=90, azimuth=45, zscale=1, units="intl", overwrite=overwrite)
-        gscript.run_command('r.contour', input=stdev_dem, output=stdev_contour, step=step, overwrite=overwrite)
+        gscript.run_command('r.contour',
+            input=stdev_dem,
+            output=stdev_contour,
+            step=step,
+            overwrite=overwrite)
         info = gscript.parse_command('r.info', map=dem, flags='g')
-        width=int(info.cols)+int(info.cols)/2*render_multiplier
+        width=int(info.cols)+int(info.cols)/2*render_multiplier*whitespace
         height=int(info.rows)*render_multiplier
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_dem+".png"), overwrite=overwrite)
-        gscript.run_command('d.shade', shade=stdev_relief, color=stdev_dem, brighten=brighten)
-        gscript.run_command('d.vect', map=stdev_contour, display="shape")
-        gscript.run_command('d.legend', raster=stdev_dem, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute linear regression of stdev elevation
-        regression_params = gscript.parse_command('r.regression.line', flags='g', mapx=stdev_dem_before, mapy=stdev_dem_after, overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'], b=regression_params['b'], before=stdev_dem_before, regression=stdev_dem_regression), overwrite=overwrite)
-        gscript.run_command('r.colors', map=stdev_dem_regression, color="elevation")
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_dem_regression+".png"), overwrite=overwrite)
-        gscript.run_command('d.rast', map=stdev_dem_regression)
-        gscript.run_command('d.legend', raster=stdev_dem_regression, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # check if mask needed
-        find_mask = gscript.find_file(mask, element = 'cell')
-        if find_mask['name']:
-            gscript.run_command('r.mask', raster=mask, overwrite=overwrite)
-
-        # compute stdev slope
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_slope+".png"), overwrite=overwrite)
-        gscript.run_command('r.param.scale', input=stdev_dem, output=stdev_slope, size=size, method="slope", overwrite=overwrite)
-        gscript.run_command('r.colors', map=stdev_slope, color="slope")
-        gscript.run_command('d.rast', map=stdev_slope)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_slope, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        #compute stdev landforms
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_forms+".png"), overwrite=overwrite)
-        gscript.run_command('r.geomorphon', dem=stdev_dem, forms=stdev_forms, search=search, skip=skip, overwrite=overwrite)
-        gscript.run_command('d.rast', map=stdev_forms)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # simulate water flow
-        gscript.run_command('d.mon', start=driver, width=width, height=height,  output=os.path.join(render,stdev_depth+".png"), overwrite=overwrite)
-        gscript.run_command('r.slope.aspect', elevation=stdev_dem, dx='dx', dy='dy', overwrite=overwrite)
-        gscript.run_command('r.sim.water', elevation=stdev_dem, dx='dx', dy='dy', rain_value=rain_value, depth=stdev_depth, nwalkers=nwalkers, niterations=niterations, overwrite=overwrite)
-        gscript.run_command('g.remove', flags='f', type='raster', name=['dx', 'dy'])
-        gscript.run_command('d.rast', map=stdev_depth)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_depth, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # identify stdev depressions
-        gscript.run_command('r.fill.dir', input=stdev_dem, output='depressionless_dem', direction='flow_dir',overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{depressions} = if({depressionless_dem} - {dem} > {depth}, {depressionless_dem} - {dem}, null())'.format(depressions=stdev_depressions, depressionless_dem='depressionless_dem', dem=stdev_dem, depth=0), overwrite=overwrite)
-        gscript.write_command('r.colors', map=stdev_depressions, rules='-', stdin=depressions_colors)
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_depressions+".png"), overwrite=overwrite)
-        gscript.run_command('d.rast', map=stdev_depressions)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_depressions, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the stdev and reference elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_dem_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_dem_before,after=stdev_dem_after,difference=stdev_dem_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=stdev_dem_difference, rules='-', stdin=stdev_dem_difference_colors)
-        gscript.run_command('d.rast', map=stdev_dem_difference)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_dem_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the linearly regressed difference between the modeled and reference elevation
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_dem_regression_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {regression} - {after}'.format(regression=stdev_dem_regression, after=stdev_dem_after, difference=stdev_dem_regression_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=stdev_dem_regression_difference, rules='-', stdin=stdev_dem_regression_difference_colors)
-        gscript.run_command('d.rast', map=stdev_dem_regression_difference)
-        gscript.run_command('d.legend', raster=stdev_dem_regression_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the stdev and reference slope
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_slope_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_slope_before,after=stdev_slope_after,difference=stdev_slope_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=stdev_slope_difference, rules='-', stdin=stdev_slope_difference_colors)
-        gscript.run_command('d.rast', map=stdev_slope_difference)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_slope_difference, fontsize=fontsize, at=legend_coord)
-        gscript.run_command('d.mon', stop=driver)
-
-        # compute the difference between the modeled and reference slope of the regressed stdev elevation
-        gscript.run_command('r.param.scale',
-                            input=stdev_dem_regression, output=stdev_slope_regression,
-                            size=size,
-                            method="slope",
-                            overwrite=overwrite)
-        gscript.run_command('r.colors',
-                            map=stdev_slope_regression,
-                            color="slope")
         gscript.run_command('d.mon',
-                            start=driver,
-                            width=width,
-                            height=height,
-                            output=os.path.join(render, stdev_slope_regression_difference+".png"),
-                            overwrite=overwrite)
-        gscript.run_command('r.mapcalc',
-                            expression='{difference} = {before} - {after}'.format(
-                            before=stdev_slope_before,
-                            after=stdev_slope_regression,
-                            difference=stdev_slope_regression_difference),
-                            overwrite=overwrite)
-        gscript.write_command('r.colors',
-                              map=stdev_slope_regression_difference,
-                              rules='-',
-                              stdin=stdev_slope_difference_colors)
-        gscript.run_command('d.rast',
-                            map=stdev_slope_regression_difference)
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render,stdev_dem+".png"),
+            overwrite=overwrite)
+        gscript.run_command('d.rast', map=stdev_dem)
         gscript.run_command('d.legend',
-                            raster=stdev_slope_regression_difference,
-                            fontsize=fontsize,
-                            at=legend_coord)
+            raster=stdev_dem,
+            fontsize=fontsize,
+            at=legend_coord)
+        gscript.run_command('d.vect', map=stdev_contour, display="shape")
+        gscript.run_command('d.legend',
+            raster=stdev_dem,
+            fontsize=fontsize,
+            at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        # compute the difference between the stdev and reference landorms
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_forms_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_forms_before,after=stdev_forms_after,difference=stdev_forms_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=stdev_forms_difference, rules='-', stdin=forms_difference_colors)
-        gscript.run_command('d.rast', map=stdev_forms_difference)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_forms_difference, fontsize=fontsize, at=legend_coord)
+        # compute difference series
+        j = 0
+        for elev in dem_list:
+            j = j + 1
+            diff = 'diff_' + str(j) + dem.replace("dem","")
+            regress_diff = 'regress_diff_' + str(j) + dem.replace("dem","")
+
+            # difference
+            gscript.run_command('r.mapcalc',
+                expression='{difference} = {before} - {after}'.format(before=dem,
+                    after=elev,
+                    difference=diff),
+                overwrite=overwrite)
+
+            # difference with linear regression
+            regression_params = gscript.parse_command('r.regression.line',
+                flags='g',
+                mapx=dem,
+                mapy=elev,
+                overwrite=overwrite)
+            gscript.run_command('r.mapcalc',
+                expression='{regression} = {a} + {b} * {before}'.format(a=regression_params['a'],
+                b=regression_params['b'],
+                before=dem,
+                regression='regression'),
+                overwrite=overwrite)
+            # difference
+            gscript.run_command('r.mapcalc',
+                expression='{difference} = {regression} - {after}'.format(regression='regression',
+                    after=elev,
+                    difference=regress_diff),
+                overwrite=overwrite)
+
+        # compute stdev of difference series
+        diff_list = gscript.list_grouped('rast',
+            pattern='diff_*')[mapset]
+        gscript.run_command('r.series',
+            input=diff_list,
+            output=stdev_difference_series,
+            method="stddev",
+            overwrite=overwrite)
+        gscript.run_command('r.cpt2grass',
+            map=stdev_difference_series,
+            url=url,
+            flags="s")
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render,stdev_difference_series+".png"),
+            overwrite=overwrite)
+        gscript.run_command('d.rast', map=stdev_difference_series)
+        gscript.run_command('d.legend',
+            raster=stdev_difference_series,
+            fontsize=fontsize,
+            at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        # compute the difference between the stdev and reference flow depth
-        gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render, stdev_depth_difference+".png"), overwrite=overwrite)
-        gscript.run_command('r.mapcalc', expression='{difference} = {before} - {after}'.format(before=stdev_depth_before,after=stdev_depth_after,difference=stdev_depth_difference), overwrite=overwrite)
-        gscript.write_command('r.colors', map=stdev_depth_difference, rules='-', stdin=flow_difference_colors)
-        gscript.run_command('d.rast', map=stdev_depth_difference)
-        gscript.run_command('d.vect', map=stdev_contour, display='shape')
-        gscript.run_command('d.legend', raster=stdev_depth_difference, fontsize=fontsize, at=legend_coord)
+        # compute stdev of regressed difference series
+        regress_diff_list = gscript.list_grouped('rast',
+            pattern='regress_diff_*')[mapset]
+        gscript.run_command('r.series',
+            input=regress_diff_list,
+            output=stdev_regression_difference_series,
+            method="stddev",
+            overwrite=overwrite)
+        gscript.run_command('r.cpt2grass',
+            map=stdev_regression_difference_series,
+            url=url,
+            flags="s")
+        gscript.run_command('d.mon',
+            start=driver,
+            width=width,
+            height=height,
+            output=os.path.join(render,stdev_regression_difference_series+".png"),
+            overwrite=overwrite)
+        gscript.run_command('d.rast', map=stdev_regression_difference_series)
+        gscript.run_command('d.legend',
+            raster=stdev_regression_difference_series,
+            fontsize=fontsize,
+            at=legend_coord)
         gscript.run_command('d.mon', stop=driver)
 
-        # stdev concentrated flow
         try:
-            # extract stdev concentrated flow
-            gscript.run_command('r.mapcalc', expression='{concentrated_flow} = if({depth}>=0.05,{depth},null())'.format(depth=stdev_depth,concentrated_flow=stdev_concentrated_flow), overwrite=overwrite)
-            gscript.write_command('r.colors', map=stdev_concentrated_flow, rules='-', stdin=depth_colors)
-            gscript.run_command('r.random', input=stdev_concentrated_flow, npoints=npoints, vector=stdev_concentrated_points, overwrite=overwrite)
-            # distance from reference
-            gscript.run_command('g.copy', vector=[concentrated_points, copied_concentrated_points], overwrite=overwrite)
-            gscript.run_command('v.db.addcolumn', map=copied_concentrated_points, columns='distance INTEGER', overwrite=overwrite)
-            gscript.run_command('v.distance', from_=copied_concentrated_points, to=stdev_concentrated_points, upload='dist', column='distance', output=flow_lines, separator='newline', overwrite=overwrite)
-            univar_distance = gscript.parse_command('v.db.univar', map=copied_concentrated_points, column='distance', flags='g', overwrite=overwrite)
-            # collect stats
-            dist = float(univar_distance['sum'])
-            stdev_flow_distance.append(dist)
-            print 'sum of min flow distance in ' + dem + ': ' + str(dist)
-            stdev_dist = float(univar_distance['stddev'])
-            print 'stdev of min flow distance in ' + dem +': ' + str(stdev_dist)
-            # render
-            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_concentrated_flow+".png"), overwrite=overwrite)
-            gscript.run_command('d.rast', map=stdev_depth_difference)
-            gscript.run_command('d.vect', map=stdev_contour, display='shape')
-            gscript.run_command('d.vect', map=concentrated_points, display='shape', color='blue')
-            gscript.run_command('d.vect', map=stdev_concentrated_points, display='shape', color='red')
-            gscript.run_command('d.vect', map=flow_lines, display='shape')
-            gscript.run_command('d.legend', raster=stdev_depth_difference, fontsize=fontsize, at=legend_coord)
-            gscript.run_command('d.mon', stop=driver)
-        except CalledModuleError:
-            stdev_flow_distance.append(0)
-            print "no concentrated flow exist in " + dem
-
-        # stdev peaks
-        try:
-            # extract stdev peaks
-            gscript.run_command('r.mapcalc', expression='{peaks} = if({forms}==2,2,null())'.format(peaks=stdev_peaks,forms=stdev_forms), overwrite=overwrite)
-            gscript.run_command('r.colors', map=stdev_peaks, raster=stdev_forms)
-            gscript.run_command('r.random', input=stdev_peaks, npoints=npoints, vector=stdev_peak_points, overwrite=overwrite)
-            # distance from reference
-            gscript.run_command('g.copy', vector=[peak_points, copied_peak_points], overwrite=overwrite)
-            gscript.run_command('v.db.addcolumn', map=copied_peak_points, columns='distance INTEGER', overwrite=overwrite)
-            gscript.run_command('v.distance', from_=copied_peak_points, to=stdev_peak_points, upload='dist', column='distance', output=peak_lines, separator='newline', overwrite=overwrite)
-            univar_distance = gscript.parse_command('v.db.univar', map=copied_peak_points, column='distance', flags='g', overwrite=overwrite)
-            # collect stats
-            dist = float(univar_distance['sum'])
-            stdev_peak_distance.append(dist)
-            print 'sum of min peak distance in ' + dem + ': ' + str(dist)
-            stdev_dist = float(univar_distance['stddev'])
-            print 'stdev of min peak distance in ' + dem + ': ' + str(stdev_dist)
-            # render
-            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_peaks+".png"), overwrite=overwrite)
-            gscript.run_command('d.rast', map=stdev_peaks)
-            gscript.run_command('d.vect', map=stdev_contour, display='shape')
-            gscript.run_command('d.vect', map=peak_points, display='shape', color='blue')
-            gscript.run_command('d.vect', map=stdev_peak_points, display='shape', color='red')
-            gscript.run_command('d.vect', map=peak_lines, display='shape')
-            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
-            gscript.run_command('d.mon', stop=driver)
-        except CalledModuleError:
-            stdev_peak_distance.append(0)
-            print "no peaks exist in " + dem
-
-        # stdev pits
-        try:
-            #extract stdev pits
-            gscript.run_command('r.mapcalc', expression='{pits} = if({forms}==10,10,null())'.format(pits=stdev_pits,forms=stdev_forms), overwrite=overwrite)
-            gscript.run_command('r.colors', map=stdev_pits, raster=stdev_forms)
-            gscript.run_command('r.random', input=stdev_pits, npoints=npoints, vector=stdev_pit_points, overwrite=overwrite)
-            # distance from reference
-            gscript.run_command('g.copy', vector=[pit_points, copied_pit_points], overwrite=overwrite)
-            gscript.run_command('v.db.addcolumn', map=copied_pit_points, columns='distance INTEGER', overwrite=overwrite)
-            gscript.run_command('v.distance', from_=copied_pit_points, to=stdev_pit_points, upload='dist', column='distance', output=pit_lines, separator='newline', overwrite=overwrite)
-            univar_distance = gscript.parse_command('v.db.univar', map=copied_pit_points, column='distance', flags='g', overwrite=overwrite)
-            # collect stats
-            dist = float(univar_distance['sum'])
-            stdev_pit_distance.append(dist)
-            print 'sum of min pit distance in ' + dem + ': ' + str(dist)
-            stdev_dist = float(univar_distance['stddev'])
-            print 'stdev of min pit distance in ' + dem + ': ' + str(stdev_dist)
-            # render
-            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_pits+".png"), overwrite=overwrite)
-            gscript.run_command('d.rast', map=stdev_pits)
-            gscript.run_command('d.vect', map=contour, display='shape')
-            gscript.run_command('d.vect', map=pit_points, display='shape', color='blue')
-            gscript.run_command('d.vect', map=stdev_pit_points, display='shape', color='red')
-            gscript.run_command('d.vect', map=pit_lines, display='shape')
-            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
-            gscript.run_command('d.mon', stop=driver)
-        except CalledModuleError:
-            stdev_pit_distance.append(0)
-            print "no pits exist in " + dem
-
-        # stdev ridges
-        try:
-            # extract stdev ridges
-            gscript.run_command('r.mapcalc', expression='{ridges} = if({forms}==3,3,null())'.format(ridges=stdev_ridges,forms=stdev_forms), overwrite=overwrite)
-            gscript.run_command('r.colors', map=stdev_ridges, raster=stdev_forms)
-            gscript.run_command('r.random', input=stdev_ridges, npoints=npoints, vector=stdev_ridge_points, overwrite=overwrite)
-            # distance from reference
-            gscript.run_command('g.copy', vector=[ridge_points, copied_ridge_points], overwrite=overwrite)
-            gscript.run_command('v.db.addcolumn', map=copied_ridge_points, columns='distance INTEGER', overwrite=overwrite)
-            gscript.run_command('v.distance', from_=copied_ridge_points, to=stdev_ridge_points, upload='dist', column='distance', output=ridge_lines, separator='newline', overwrite=overwrite)
-            univar_distance = gscript.parse_command('v.db.univar', map=copied_ridge_points, column='distance', flags='g', overwrite=overwrite)
-            # collect stats
-            dist = float(univar_distance['sum'])
-            stdev_ridge_distance.append(dist)
-            print 'sum of min ridge distance in ' + dem + ': ' + str(dist)
-            stdev_dist = float(univar_distance['stddev'])
-            print 'stdev of min ridge distance in ' + dem + ': ' + str(stdev_dist)
-            # render
-            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_ridges+".png"), overwrite=overwrite)
-            gscript.run_command('d.rast', map=stdev_ridges)
-            gscript.run_command('d.vect', map=stdev_contour, display='shape')
-            gscript.run_command('d.vect', map=ridge_points, display='shape', color='blue')
-            gscript.run_command('d.vect', map=stdev_ridge_points, display='shape', color='red')
-            gscript.run_command('d.vect', map=ridge_lines, display='shape')
-            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
-            gscript.run_command('d.mon', stop=driver)
-        except CalledModuleError:
-            stdev_ridge_distance.append(0)
-            print "no ridges exist in " + dem
-
-        # stdev valleys
-        try:
-            # extract stdev valleys
-            gscript.run_command('r.mapcalc', expression='{valleys} = if({forms}==9,9,null())'.format(valleys=stdev_valleys,forms=stdev_forms), overwrite=overwrite)
-            gscript.run_command('r.colors', map=stdev_valleys, raster=stdev_forms)
-            gscript.run_command('r.random', input=stdev_valleys, npoints=npoints, vector=stdev_valley_points, overwrite=overwrite)
-            # distance from reference
-            gscript.run_command('g.copy', vector=[valley_points, copied_valley_points], overwrite=overwrite)
-            gscript.run_command('v.db.addcolumn', map=copied_valley_points, columns='distance INTEGER', overwrite=overwrite)
-            gscript.run_command('v.distance', from_=copied_valley_points, to=stdev_valley_points, upload='dist', column='distance', output=valley_lines, separator='newline', overwrite=overwrite)
-            univar_distance = gscript.parse_command('v.db.univar', map=copied_valley_points, column='distance', flags='g', overwrite=overwrite)
-            # collect stats
-            dist = float(univar_distance['sum'])
-            stdev_valley_distance.append(dist)
-            print 'sum of min valley distance in ' + dem + ': ' + str(dist)
-            stdev_dist = float(univar_distance['stddev'])
-            print 'stdev of min valley distance in ' + dem + ': ' + str(stdev_dist)
-            # render
-            gscript.run_command('d.mon', start=driver, width=width, height=height, output=os.path.join(render,stdev_valleys+".png"), overwrite=overwrite)
-            gscript.run_command('d.rast', map=stdev_valleys)
-            gscript.run_command('d.vect', map=stdev_contour, display='shape')
-            gscript.run_command('d.vect', map=valley_points, display='shape', color='blue')
-            gscript.run_command('d.vect', map=stdev_valley_points, display='shape', color='red')
-            gscript.run_command('d.vect', map=valley_lines, display='shape')
-            gscript.run_command('d.legend', raster=stdev_forms, fontsize=fontsize, at=legend_coord)
-            gscript.run_command('d.mon', stop=driver)
-        except CalledModuleError:
-            stdev_valley_distance.append(0)
-            print "no valleys exist in " + dem
-
-        # compute number of cells with stdev depressions
-        univar = gscript.parse_command('r.univar', map=stdev_depressions, separator='newline', flags='g')
-        if 'cells' in univar:
-            total_count = float(univar['cells'])
-            null_count = float(univar['null_cells'])
-            non_null_count = total_count - null_count
-            percent = non_null_count/total_count*100
-            stdev_depression_cells.append(percent)
-            print 'cells in ' + dem + ' with depressions: ' + str(non_null_count)
-            print 'percent cells in ' + dem + ' with depressions: ' + str(percent)
-        else:
-            stdev_depression_cells.append(0)
-            print 'no cells in ' + dem
-
-        # compute number of cells with concentrated flow
-        univar = gscript.parse_command('r.univar', map=stdev_concentrated_flow, separator='newline', flags='g')
-        if 'cells' in univar:
-            total_count = float(univar['cells'])
-            null_count = float(univar['null_cells'])
-            non_null_count = total_count - null_count
-            percent = non_null_count/total_count*100
-            stdev_flow_cells.append(percent)
-            print 'cells in ' + dem + ' with concentrated flow: ' + str(non_null_count)
-            print 'percent cells in ' + dem + ' with concentrated flow: ' + str(percent)
-        else:
-            stdev_flow_cells.append(0)
-            print 'no cells in ' + dem
-
-        # compute number of cells with stdev peaks
-        univar = gscript.parse_command('r.univar', map=stdev_peaks, separator='newline', flags='g')
-        if 'cells' in univar:
-            total_count = float(univar['cells'])
-            null_count = float(univar['null_cells'])
-            non_null_count = total_count - null_count
-            percent = non_null_count/total_count*100
-            stdev_peak_cells.append(percent)
-            print 'cells with peaks in ' + dem + ': ' + str(non_null_count)
-            print 'percent cells with peaks in ' + dem + ': ' + str(percent)
-        else:
-            stdev_peak_cells.append(0)
-            print 'no cells with peaks exist in ' + dem
-
-        # compute number of cells with stdev pits
-        univar = gscript.parse_command('r.univar', map=stdev_pits, separator='newline', flags='g')
-        if 'cells' in univar:
-            total_count = float(univar['cells'])
-            null_count = float(univar['null_cells'])
-            non_null_count = total_count - null_count
-            percent = non_null_count/total_count*100
-            stdev_pit_cells.append(percent)
-            print 'cells with pits in ' + dem + ': ' + str(non_null_count)
-            print 'percent cells with pits in ' + dem + ': ' + str(percent)
-        else:
-            stdev_pit_cells.append(0)
-            print 'no cells with pits exist in ' + dem
-
-        # compute number of cells with stdev ridges
-        univar = gscript.parse_command('r.univar', map=stdev_ridges, separator='newline', flags='g')
-        if 'cells' in univar:
-            total_count = float(univar['cells'])
-            null_count = float(univar['null_cells'])
-            non_null_count = total_count - null_count
-            percent = non_null_count/total_count*100
-            stdev_ridge_cells.append(percent)
-            print 'cells with ridges in ' + dem + ': ' + str(non_null_count)
-            print 'percent cells with ridges in ' + dem + ': ' + str(percent)
-        else:
-            stdev_ridge_cells.append(0)
-            print 'no cells with ridges exist in ' + dem
-
-        # compute number of cells with stdev valleys
-        univar = gscript.parse_command('r.univar', map=stdev_valleys, separator='newline', flags='g')
-        if 'cells' in univar:
-            total_count = float(univar['cells'])
-            null_count = float(univar['null_cells'])
-            non_null_count = total_count - null_count
-            percent = non_null_count/total_count*100
-            stdev_valley_cells.append(percent)
-            print 'cells with valleys in ' + dem + ': ' + str(non_null_count)
-            print 'percent cells with valleys in ' + dem + ': ' + str(percent)
-        else:
-            stdev_valley_cells.append(0)
-            print 'no cells with valleys exist in ' + dem
-
-        # try to remove mask
-        try:
-            gscript.run_command('r.mask', flags='r')
+            # remove temporary maps
+            gscript.run_command('g.remove',
+                type='raster',
+                pattern='*diff_*',
+                flags='f')
         except CalledModuleError:
             pass
+
+
+
+
+
 
 def render_3d_images():
     """3D rendering with nviz"""
@@ -1595,8 +1269,6 @@ def render_3d_images():
         mean_dem_regression = dem.replace("dem", "mean_dem_regression")
         mean_dem_regression_difference = dem.replace("dem", "mean_dem_regression_difference")
         mean_slope_difference = dem.replace("dem", "mean_slope_difference")
-        mean_slope_regression = dem.replace("dem", "mean_slope_regression")
-        mean_slope_regression_difference = dem.replace("dem", "mean_slope_regression_difference")
         mean_forms_difference = dem.replace("dem", "mean_forms_difference")
         mean_depth_difference = dem.replace("dem", "mean_depth_difference")
         mean_depressions = dem.replace("dem", "mean_depressions")
@@ -1615,23 +1287,12 @@ def render_3d_images():
         mean_valleys = dem.replace("dem", "mean_valleys")
         mean_valley_points = dem.replace("dem", "mean_valley_points")
         valley_lines = dem.replace("dem", "valley_lines")
-        mean_forms_regression = dem.replace("dem","mean_forms_regression")
-        mean_depth_regression = dem.replace("dem","mean_depth_regression")
 
         # stdev variables
         stdev_dem = dem.replace("dem", "stdev_dem")
-        stdev_slope = dem.replace("dem", "stdev_slope")
-        stdev_forms = dem.replace("dem", "stdev_forms")
-        stdev_depth = dem.replace("dem", "stdev_depth")
-        stdev_dem_difference = dem.replace("dem", "stdev_dem_difference")
-        stdev_dem_regression = dem.replace("dem", "stdev_dem_regression")
-        stdev_dem_regression_difference = dem.replace("dem", "stdev_dem_regression_difference")
-        stdev_slope_difference = dem.replace("dem", "stdev_slope_difference")
-        stdev_slope_regression = dem.replace("dem", "stdev_slope_regression")
-        stdev_slope_regression_difference = dem.replace("dem", "stdev_slope_regression_difference")
-        stdev_forms_difference = dem.replace("dem", "stdev_forms_difference")
-        stdev_depth_difference = dem.replace("dem", "stdev_depth_difference")
-        stdev_depressions = dem.replace("dem", "stdev_depressions")
+        stdev_dem = dem.replace("dem", "stdev_dem")
+        stdev_difference_series = dem.replace("dem", "stdev_difference_series")
+        stdev_regression_difference_series = dem.replace("dem", "stdev_regression_difference_series")
 
         # set region
         gscript.run_command('g.region',
@@ -2118,52 +1779,6 @@ def render_3d_images():
             errors='ignore'
             )
 
-        # 3D render mean regressed slope
-        gscript.write_command('r.colors',
-            map=mean_slope_regression,
-            rules='-',
-            stdin=slope_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=mean_dem_regression,
-            color_map=mean_slope_regression,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=fringe_elevation,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, mean_slope_regression),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render mean regressed slope difference
-        gscript.write_command('r.colors',
-            map=mean_slope_regression_difference,
-            rules='-',
-            stdin=slope_difference_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=mean_dem_regression,
-            color_map=mean_slope_regression_difference,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=fringe_elevation,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, mean_slope_regression_difference),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
         # 3D render mean flow difference
         gscript.write_command('r.colors',
             map=mean_depth_difference,
@@ -2317,52 +1932,6 @@ def render_3d_images():
             errors='ignore'
             )
 
-        # 3D render mean regressed forms
-        gscript.write_command('r.colors',
-            map=mean_forms_regression,
-            rules='-',
-            stdin=forms_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=mean_dem_regression,
-            color_map=mean_forms_regression,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=fringe_elevation,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, mean_forms_regression),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
-        # 3D render mean regressed depth
-        gscript.write_command('r.colors',
-            map=mean_depth_regression,
-            rules='-',
-            stdin=depth_colors_3d)
-        gscript.run_command('m.nviz.image',
-            elevation_map=mean_dem_regression,
-            color_map=mean_depth_regression,
-            resolution_fine=res_3d,
-            height=height_3d,
-            perspective=perspective,
-            light_position=light_position,
-            fringe=fringe,
-            fringe_color=color_3d,
-            fringe_elevation=fringe_elevation,
-            #arrow_position=arrow_position,
-            #arrow_size=arrow_size,
-            output=os.path.join(render_3d, mean_depth_regression),
-            format=format_3d,
-            size=size_3d,
-            errors='ignore'
-            )
-
         # 3D render stdev elevation
         gscript.run_command('r.cpt2grass',
             map=stdev_dem,
@@ -2387,6 +1956,49 @@ def render_3d_images():
             errors='ignore'
             )
 
+        # 3D render stdev of difference series
+        gscript.run_command('r.cpt2grass',
+            map=stdev_difference_series,
+            url=url,
+            flags="s")
+
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=stdev_difference_series,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d,stdev_difference_series),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
+        # 3D render stdev of regressed difference series
+        gscript.run_command('m.nviz.image',
+            elevation_map=dem,
+            color_map=stdev_regression_difference_series,
+            resolution_fine=res_3d,
+            height=height_3d,
+            perspective=perspective,
+            light_position=light_position,
+            fringe=fringe,
+            fringe_color=color_3d,
+            fringe_elevation=fringe_elevation,
+            #arrow_position=arrow_position,
+            #arrow_size=arrow_size,
+            output=os.path.join(render_3d,stdev_regression_difference_series),
+            format=format_3d,
+            size=size_3d,
+            errors='ignore'
+            )
+
 def write_results(ref_flow_cells,
     ref_depression_cells,
     ref_peak_cells,
@@ -2403,18 +2015,7 @@ def write_results(ref_flow_cells,
     peak_distance,
     pit_distance,
     ridge_distance,
-    valley_distance,
-    stdev_flow_cells,
-    stdev_depression_cells,
-    stdev_peak_cells,
-    stdev_pit_cells,
-    stdev_ridge_cells,
-    stdev_valley_cells,
-    stdev_flow_distance,
-    stdev_peak_distance,
-    stdev_pit_distance,
-    stdev_ridge_distance,
-    stdev_valley_distance):
+    valley_distance):
     """plot the percent of cells with depressions and the minumum distance of mean concentrated flow points from the reference for each experiment"""
 
     # count number of dems
@@ -2441,35 +2042,22 @@ def write_results(ref_flow_cells,
         print 'mean pit cells: ' + str(pit_cells[x])
         print 'mean ridge cells: ' + str(ridge_cells[x])
         print 'mean valley cells: ' + str(valley_cells[x])
-        # stdev cells
-        print 'stdev flow cells: ' + str(stdev_flow_cells[x])
-        print 'stdev depression cells: ' + str(stdev_depression_cells[x])
-        print 'stdev peak cells: ' + str(stdev_peak_cells[x])
-        print 'stdev pit cells: ' + str(stdev_pit_cells[x])
-        print 'stdev ridge cells: ' + str(stdev_ridge_cells[x])
-        print 'stdev valley cells: ' + str(stdev_valley_cells[x])
         # mean distance
         print 'flow distance: ' + str(flow_distance[x])
         print 'peak distance: ' + str(peak_distance[x])
         print 'pit distance: ' + str(pit_distance[x])
         print 'ridge distance: ' + str(ridge_distance[x])
         print 'valley distance: ' + str(valley_distance[x])
-        # stdev distance
-        print 'stdev flow distance: ' + str(stdev_flow_distance[x])
-        print 'stdev peak distance: ' + str(stdev_peak_distance[x])
-        print 'stdev pit distance: ' + str(stdev_pit_distance[x])
-        print 'stdev ridge distance: ' + str(stdev_ridge_distance[x])
-        print 'stdev valley distance: ' + str(stdev_valley_distance[x])
 
     # write to csv file
     with open(cells, 'wb') as csvfile:
         cells_writer = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        cells_writer.writerow(['ref_flow_cells', 'ref_depression_cells', 'ref_peak_cells', 'ref_pit_cells', 'ref_ridge_cells', 'ref_valley_cells', 'flow_cells', 'depression_cells', 'peak_cells', 'pit_cells', 'ridge_cells', 'valley_cells', 'stdev_flow_cells', 'stdev_depression_cells', 'stdev_peak_cells', 'stdev_pit_cells', 'stdev_ridge_cells', 'stdev_valley_cells', 'flow_distance', 'peak_distance', 'pit_distance', 'ridge_distance', 'valley_distance', 'stdev_flow_distance', 'stdev_peak_distance', 'stdev_pit_distance', 'stdev_ridge_distance', 'stdev_valley_distance'])
+        cells_writer.writerow(['ref_flow_cells', 'ref_depression_cells', 'ref_peak_cells', 'ref_pit_cells', 'ref_ridge_cells', 'ref_valley_cells', 'flow_cells', 'depression_cells', 'peak_cells', 'pit_cells', 'ridge_cells', 'valley_cells', 'flow_distance', 'peak_distance', 'pit_distance', 'ridge_distance', 'valley_distance'])
 
         for x in xrange(i):
-            cells_writer.writerow([ref_flow_cells[x], ref_depression_cells[x], ref_peak_cells[x], ref_pit_cells[x], ref_ridge_cells[x], ref_valley_cells[x], flow_cells[x], depression_cells[x], peak_cells[x], pit_cells[x], ridge_cells[x], valley_cells[x], stdev_flow_cells[x], stdev_depression_cells[x], stdev_peak_cells[x], stdev_pit_cells[x], stdev_ridge_cells[x], stdev_valley_cells[x], flow_distance[x], peak_distance[x], pit_distance[x], ridge_distance[x], valley_distance[x], stdev_flow_distance[x], stdev_peak_distance[x], stdev_pit_distance[x], stdev_ridge_distance[x], stdev_valley_distance[x]])
+            cells_writer.writerow([ref_flow_cells[x], ref_depression_cells[x], ref_peak_cells[x], ref_pit_cells[x], ref_ridge_cells[x], ref_valley_cells[x], flow_cells[x], depression_cells[x], peak_cells[x], pit_cells[x], ridge_cells[x], valley_cells[x], flow_distance[x], peak_distance[x], pit_distance[x], ridge_distance[x], valley_distance[x]])
 
 
 if __name__ == "__main__":
