@@ -27,6 +27,9 @@
 \usepackage{tabu}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{listings}
+\usepackage{minted}
+\usemintedstyle{bw}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 \newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
 \newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
@@ -94,7 +97,7 @@ We designed Tangible Landscape to physically manifest geographic data %digital d
 so that users can cognitively grasp the data as an extension of their bodies 
 and automatically, immediately, and subconsciously interact with it. 
 %
-We conducted a series of experiments using quantitative methods including geospatial modeling, analysis, and simulation and qualitative methods including semi-structured interviews and direct observation
+We conducted a series of experiments using quantitative methods including geospatial modeling, analysis, simulation, and statistics and qualitative methods including semi-structured interviews and direct observation
 to study how tangible interfaces mediate spatial performance. 
 %
 % EXPERIMENT RESULTS AND FINDINGS
@@ -687,22 +690,23 @@ spatial training and serious gaming.
 
 
 \subsection{Coupling experiment}
-We conducted an experiment to study how coupling digital and physical models of topography mediates spatial performance. 
+We conducted an experiment to study how 
+coupling digital and physical models of topography 
+mediates spatial performance. 
 %
-% This is like comparing apples and oranges -- 
-% a direct comparison of two different things is not fair per se.
-% Rather we tried to study the difference -- what makes each unqiue
-% Not just ethnographically though -- also spatially, quantitatively.
-%
-In this experiment % x 
-participants tried to accurately model a given study landscape 
+In this experiment 
+30 participants tried to accurately model a given study landscape 
 digitally, by hand, and with Tangible Landscape. 
+%
+% participants
+All of our participants -- either graduate students, faculty, or professionals in landscape architecture or spatial science -- 
+had experience thinking spatially. 
+%
+We used spatial modeling, statistics, analysis, and simulation to quantitatively assess how participants' performance with each method differed spatially. 
+%
+We also qualitatively studied participants' modeling process through direct observation and semi-structured interviews. 
 
-\paragraph{Participants}
-% Landscape architects and spatial scientists
-% Students, faculty, and professionals
-
-\paragraph{Study landscape}
+% study landscape
 We used a region of Lake Raleigh Woods in Raleigh, North Carolina 
 as the study landscape for this experiment. 
 %
@@ -710,10 +714,11 @@ We used a real landscape because computer generated landscapes
 often look surreal and may lack distinct landforms and clearly defined streams. 
 %
 We selected a region with distinctive, 
-clearly defined landforms -- a valley, flanked by ridges, sloping towards the lake.
-%(see Fig.~\ref{fig:study_area}). 
+clearly defined landforms -- a stream valley, flanked by a ridge, sloping towards the lake
+(see Table~\ref{table:coupling_experiment}). 
 %
-The digital elevation model for this region was derived from a 2013 airborne lidar survey using the regularized spline with tension interpolation method \cite{Mitasova2005}. 
+The digital elevation model for this region was derived from a 2013 airborne lidar survey 
+using the regularized spline with tension interpolation method \cite{Mitasova2005}. 
 
 \paragraph{Digital modeling}
 Participants had 10 minutes to digitally model the study landscape in Rhinoceros, 
@@ -723,56 +728,144 @@ designed for precise freeform curve and surface modeling
 %
 After 10 minutes of training
 participants modeled the study landscape as a NURBS surface 
-by vertically translating control points. 
+by vertically translating control points (Fig.~\ref{fig:rhino}). 
 %
 They started with a flat NURBS surface that was divided into a 10 x 10 grid of control points.
 %
 As a reference their model space also included a 3D representation of the study landscape as contours. 
 %
-Participants could at any point rebuild the surface with a higher density of control points for finer, more nuanced control. 
+At any point participants could rebuild the surface with a higher density of control points for finer, more nuanced control. 
 %
 This method is relatively simple and 
 analogous to basic actions in sculpture -- pushing and pulling. 
-
-% SCREENSHOT
-
-
-%The authors developed and tested this method 
-%as a simple, straightforward means of  digital freeform surface modeling
+%
+%We developed and tested this method 
+%as a simple, straightforward digital freeform surface modeling technique
 %that could be taught quickly, yet could produce an accurate model. 
+%
+Digital modeling affords precise transformations and
+dynamic modes of visualization such as 
+3D orbiting, zooming, and ray traced shading. 
 
-% A subset of participants (x) also modeled the study landscape in Vue
-%-- a triangulated irregular network based 3D modeling program designed for intuitive terrain sculpting. 
-%Vue's terrain editor was designed to emulate sculpting by hand -- there are tool brushes that are analogous to basic actions in sculpture including pushing, pulling, and smoothing. 
+% screenshot
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=\textwidth]{images/rhino.png}
+	\caption{Digitally modeling with Rhino}
+	\label{fig:rhino}
+\end{center}
+\end{figure*}
 
-
-% comparison of Rhino and Vue
-
-\paragraph{Hand modeling}
-
+\paragraph{Analog modeling} % Modeling by hand
+Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand by hand or with a wooden sculpting tool. 
+They were given a CNC-routed model of the study landscape as a reference. 
+%
+Theoretically analog modeling -- modeling by hand or with tools -- should be embodied, 
+affording subconscious, kinaesthetic sensing and manipulation of form. 
+%
+By sensing form subconsciously with the body
+users should have more cognitive resources for critiquing their work 
+and strategizing their next moves. 
 
 \paragraph{Projection augmented modeling}
-
+Participants had 10 minutes sculpt
+a projection-augmented, polymer-enriched sand model
+of the study landscape by hand or with a wooden sculpting tool. 
+%
+We used Tangible Landscape to project 
+an elevation map of the study landscape
+with contours and a legend
+onto participants' sand models as guide for sculpting. 
+%
+Participants were also given a 3D scale ruled in map units
+to measure the elevation of their scale models. 
+%
+This augmented approach couples digital mapping with physical modeling.
+%
+Theoretically it should combine affordances of both -- 
+enabling enriched visualization and physical sensing and manipulation -- 
+to offer more feedback.
+%
+While more feedback may help users better assess and critique their performance 
+so they can strategize their next moves,
+too much feedback may be a cognitive overload 
+resulting in distraction, frustration, and demotivation. 
+%
+Physical sensing and manipulation, however, should offload some of this cognitive work onto the body.
 
 \paragraph{Data analysis}
 
+% data acquisition
+We used Tangible Landscape to scan the finished models 
+built using hand modeling and projection augmented modeling.
+The scans were captured as point clouds, interpolated 
+as digital elevation models using the regularized spline with tension method,
+and stored as raster maps in a GRASS GIS mapset. 
+%
+The NURBS surfaces modeled in Rhino were exported as raster elevation maps,
+imported into GRASS GIS, randomly resampled, 
+re-interpolated using the regularized spline with tension method, 
+and stored as raster maps in a GRASS GIS mapset. 
 
-%\begin{enumerate}[label=\arabic*),font=\itshape]
-%\item \ldots
-%\end{enumerate}
+% data analysis
+For each set of models -- digital, analog, and augmented -- 
+We computed the mean elevation,
+the standard deviation of elevations, 
+the mean difference between the modeled elevations and reference elevation, 
+the mean slope, 
+the mean landforms, 
+and the mean water flow. 
 
+% difference
+	% mean elevation
+	% linear regression
 
+	% {regression} = {a} + {b} * {before}
+	% {difference} = {regression} - {after}
 
+% landforms 
+	% geomorphons
+
+% water flow
+	% simwe
+
+% code here?
 
 \subsection{Analytics experiment}
 We also conducted an experiment to study how different geospatial analytics mediate spatial performance when using a tangible interface for GIS.
 
 % difference
 
+
+\begin{minted}[fontsize=\small]{python}
+def run_difference(real_elev, scanned_elev, env, **kwargs):
+	regression_params = gscript.parse_command('r.regression.line', 
+		flags='g',
+		mapx=scanned_elev,
+		mapy=real_elev,
+		env=env)
+	gscript.mapcalc('{regression} = {a} + {b} * {before}' \
+		.format(a=regression_params['a'],
+		b=regression_params['b'],
+		before=scanned_elev,
+		regression='regression'),
+		 env=env)
+	gscript.mapcalc('{difference} = {regression} - {after}' \
+		.format(regression='regression',
+		after=real_elev, difference='diff'),
+		env=env)
+	gscript.write_command('r.colors', 
+		map='diff',
+		rules='-',
+		stdin="-100 black\n-20 red\n0 white\n20 blue\n100 black",
+		env=env)
+\end{minted}
+
+
 % water flow
 
-	% only compare against reference
-
+% improved study of difference 
+	% with real-time analytic and time-series analysis
 
 \subsection{Case studies}
 
@@ -854,7 +947,7 @@ Elevation &
 \includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_2.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_3.png}\\
 %
-Stdev.~of elevation &
+Stdev.~of elevations &
 \includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_1.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_2.png} &
@@ -1016,6 +1109,27 @@ Mean &
 	
 %\subsection{Design guidelines}
 %\cite{Wilson2014}
+
+
+
+
+
+%% vue
+% A subset of 11 participants also modeled the study landscape in Vue
+%-- a triangulated irregular network based 3D modeling program. 
+%Vue's terrain editor was designed for intuitive terrain sculpting
+%with tool brushes that emulate sculpting by hand.
+%The tool brushes are analogous to basic actions in sculpture 
+%including pushing, pulling, and smoothing. 
+%
+% comparison of Rhino and Vue
+	% Rhino
+		% reference contours provide horizontal and vertical scale
+		% challenge: perceiving depth / position in multidimensional space
+	% Vue
+		% little sense of vertical scale
+
+
 
 \subsection{Open science}
 % Call for collaboration with TL and experiment
