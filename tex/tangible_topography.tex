@@ -27,6 +27,7 @@
 \usepackage{tabu}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage[super]{nth}
 \usepackage{listings}
 \usepackage{minted}
 \usemintedstyle{bw}
@@ -161,7 +162,6 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 	\label{fig:tl_flow}
 \end{center}
 \end{figure*}
-
 
 % A brief intro to TL
 We present Tangible Landscape -- 
@@ -419,10 +419,10 @@ by combining these physical and computational affordances.
 \item How do different geospatial analytics mediate users' spatial performance when using a tangible interface for GIS?
 \end{itemize}
 
-\section{Methodology}
-\subsection{Tangible Landscape}
 
-\paragraph{Concept}
+\section{Tangible Landscape}
+
+\subsection{Concept}
 %
 Tangible interfaces for GIS 
 should ease the cognitive burden of 
@@ -448,7 +448,7 @@ of observation, hypothesis generation and testing, and inference.
 Tangible Landscape is meant to fluidly, seamlessly combine
 computational science with exploratory modes of creative thinking.
 
-\paragraph{Evolution}
+\subsection{Evolution}
 %
 Tangible Landscape evolved from 
 Illuminating Clay \cite{Piper2002a} and 
@@ -503,7 +503,6 @@ through a real-time cycle of 3D scanning with a Kinect sensor, spatial modeling 
 While TanGeoMS used an expensive terrestrial lidar scanner for 3D scanning \cite{Tateosian2010}, 
 Tangible Landscape uses a low-cost 3D sensor like the Kinect 
 for real-time depth and color sensing. 
-%
 The \nth{1} generation of Tangible Landscape \cite{Petrasova2014} 
 used the \nth{1} generation Kinect with structured light sensing \cite{Smisek2011}, 
 while the \nth{2}  \cite{Petrasova2015} and \nth{3} generations of Tangible Landscape 
@@ -514,11 +513,10 @@ used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015} 
 % as a table
 
 
-\paragraph{Design}
+\subsection{Design}
 Tangible Landscape was designed to let users naturally explore 
 spatial data, models, and simulations in an engaging, playful way
 by 3D sketching (Fig.~\ref{fig:subsurface}).
-%
 As users sculpt the physical model
 the model is 3D scanned as a point cloud, georeferenced, imported into GIS, 
 and either binned or interpolated as a digital elevation model. 
@@ -526,26 +524,24 @@ The digital elevation model is used to compute
 geospatial analyses, models, and simulations, 
 which are then projected back onto the physical model 
 -- all in near real-time (Fig.~\ref{fig:system_schema}). 
-%
 This enables users to tangibly interact with digital models and simulations
 either by shaping topography with their hands or
 by placing markers that are identified using object and color recognition.
-%
 Users can also for example use a laser pointer to draw polylines or polygons
 that will be detected based on light intensity.
-%
 As the digital models and simulations update
 the results are projected back onto the model for users to see. 
 
 Because the model is continually scanned
 users' hands will be digitized as they sculpt or place objects. 
-%
 Scanning users' hands as topography can be distracting; 
 it also, however, helps users understand how the system works
 -- by seeing how direct interaction is --
 and encourages play. 
 Users can, for example, cup their hands over the model 
 and see them fill with simulated water. 
+
+% --------------------------- VR ----------------------------------- 
 
 \begin{figure}[h!]
 \begin{center}
@@ -565,79 +561,58 @@ and see them fill with simulated water.
 \end{center}
 \end{figure*}
 
-\paragraph{Implementation}
+\subsection{Implementation}
 Tangible Landscape has been implemented as a set of components 
 -- the r.in.kinect add-on module 
 \footnote{\url{https://github.com/ncsu-osgeorel/r.in.kinect}}
 and the grass-tangible-landscape plugin 
 \footnote{\url{https://github.com/ncsu-osgeorel/grass-tangible-landscape}} --
 for the active development version of GRASS GIS. 
-%
 The r.in.kinect add-on module imports point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
 It has been implemented as a separate component so that it can easily be used for other applications.
-%
 The grass-tangible-landscape plugin provides 
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
-%
 Users can develop new analyses for Tangible Landscape 
 using the GRASS GIS Python Scripting Library.  %GRASS GIS Python API
-%
 Since many tasks in GIS are not appropriate for tangible interaction
 Tangible Landscape was designed to supplement, 
 not replace GRASS GIS's GUI, CLI, and scripting API. 
-%
 Tangible Landscape currently runs on Linux and Mac OSX 
 with an unsupported branch for Windows. 
-%
 Dependencies include the Point Cloud Library, OpenKinect's libfreenect2, 
 OpenCV,  watchdog, and GRASS GIS.
 
-\paragraph{Fabrication}
+\subsection{Fabrication}
 We typically use familiar, everyday materials 
 -- like sand and wooden blocks -- 
 for modeling with Tangible Landscape. 
-%
 Interactions -- sculpting sand and moving wooden blocks -- 
 are analogous to everyday tasks
 so users should subconsciously know what to do and how to do it, 
 leveraging existing sensorimotor schemas. 
-%
 The materiality -- the feel, look, and physics -- of the media matters. 
 The choice of material can afford different interactions
 and mediate meaning, emotion, and motivation. 
-%
 We typically use a polymer-enriched sand for the physical terrain model
 so that users can easily sculpt forms in a deformable medium 
 that will hold its shape, has good plasticity, and has a familiar feel and aesthetic. 
-%
-%Polymer-enriched sand can easily be cast in molds and will be hold its form 
-%so we often use computer numeric control (CNC) machined or 3D printed molds to
-%cast the sand into precise models (Fig.~\ref{fig:casting}.
-%
 Digital fabrication technologies 
 like computer numeric control (CNC) manufacturing and 3D printing
 can be used to create molds for casting polymer-enriched sand 
 into precise yet deformable models (Fig.~\ref{fig:casting}). 
-%
 Cast sand models can precisely represent complex forms 
 that are challenging to model by hand 
 and can easily be re-cast after use.
 
 Tangible Landscape can be also be used as a modeling aid for sculpting.
-%
 Static projections or dynamic analytics like differencing or water flow 
 can be used as guides for hand sculpting terrain models. 
-%
 Users can project their target digital elevation model and contours 
 over their polymeric sand model as a static guide for sculpting. 
-%
 Tangible Landscape can also dynamically compute the difference -- i.e.\ cut and fill --
 between the scanned model that has been sculpted and the target digital elevation model. 
-%
 The difference can provide a real-time guide 
 where to add or remove sand in order to match the target digital elevation model (Fig.~\ref{fig:difference_sequence}). 
-%
-% Vertically rescale and translate the scanned raster to match the original DEM using the module r.regression.line.
 
 \begin{figure*}[h!]
 \begin{center}
@@ -661,22 +636,17 @@ where to add or remove sand in order to match the target digital elevation model
 \end{center}
 \end{figure*}
 
-% Applications
-\paragraph{Applications}
+\subsection{Applications}
 Using GRASS GIS's extensive libraries for geospatial modeling, analysis, and simulation 
 we have developed a wide range of applications for Tangible Landscape.
 %for disciplines including education, ecology, geomorphology, landscape architecture, urban planning, civil engineering, and disaster management. 
-%
 Design and planning applications include
 grading, cut and fill analysis, stormwater management, erosion control, 
 trail planning, viewshed analysis, and the assessment of solar potential. 
-%
 Scientific applications include
 subsurface visualization, disease management, and invasive species management.
-%
 Disaster management applications include 
 flood control, wildfire management, and coastal change and adaptation. 
-%
 Educational applications include
 spatial training and serious gaming.
 
@@ -689,11 +659,12 @@ spatial training and serious gaming.
 %\end{figure*}
 
 
-\subsection{Coupling experiment}
+\section{Coupling experiment}
 We conducted an experiment to study how 
 coupling digital and physical models of topography 
 mediates spatial performance. 
-%
+
+\subsection{Methods}
 In this experiment 
 30 participants tried to accurately model a given study landscape 
 digitally, by hand, and with Tangible Landscape. 
@@ -701,22 +672,17 @@ digitally, by hand, and with Tangible Landscape.
 % participants
 All of our participants -- either graduate students, faculty, or professionals in landscape architecture or spatial science -- 
 had experience thinking spatially. 
-%
 We used spatial modeling, statistics, analysis, and simulation to quantitatively assess how participants' performance with each method differed spatially. 
-%
 We also qualitatively studied participants' modeling process through direct observation and semi-structured interviews. 
-
+%
 % study landscape
 We used a region of Lake Raleigh Woods in Raleigh, North Carolina 
 as the study landscape for this experiment. 
-%
 We used a real landscape because computer generated landscapes 
 often look surreal and may lack distinct landforms and clearly defined streams. 
-%
 We selected a region with distinctive, 
 clearly defined landforms -- a stream valley, flanked by a ridge, sloping towards the lake
 (see Table~\ref{table:coupling_experiment}). 
-%
 The digital elevation model for this region was derived from a 2013 airborne lidar survey 
 using the regularized spline with tension interpolation method \cite{Mitasova2005}. 
 
@@ -725,24 +691,17 @@ Participants had 10 minutes to digitally model the study landscape in Rhinoceros
 a non-uniform rational basis spline (NURBS) based 3D modeling program
 designed for precise freeform curve and surface modeling 
 \footnote{\url{https://www.rhino3d.com/}}. 
-%
 After 10 minutes of training
 participants modeled the study landscape as a NURBS surface 
 by vertically translating control points (Fig.~\ref{fig:rhino}). 
-%
 They started with a flat NURBS surface that was divided into a 10 x 10 grid of control points.
-%
 As a reference their model space also included a 3D representation of the study landscape as contours. 
-%
 At any point participants could rebuild the surface with a higher density of control points for finer, more nuanced control. 
-%
 This method is relatively simple and 
 analogous to basic actions in sculpture -- pushing and pulling. 
-%
 %We developed and tested this method 
 %as a simple, straightforward digital freeform surface modeling technique
 %that could be taught quickly, yet could produce an accurate model. 
-%
 Digital modeling affords precise transformations and
 dynamic modes of visualization such as 
 3D orbiting, zooming, and ray traced shading. 
@@ -757,12 +716,11 @@ dynamic modes of visualization such as
 \end{figure*}
 
 \paragraph{Analog modeling} % Modeling by hand
-Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand by hand or with a wooden sculpting tool. 
+Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
+by hand or with a wooden sculpting tool. 
 They were given a CNC-routed model of the study landscape as a reference. 
-%
 Theoretically analog modeling -- modeling by hand or with tools -- should be embodied, 
 affording subconscious, kinaesthetic sensing and manipulation of form. 
-%
 By sensing form subconsciously with the body
 users should have more cognitive resources for critiquing their work 
 and strategizing their next moves. 
@@ -771,70 +729,159 @@ and strategizing their next moves.
 Participants had 10 minutes sculpt
 a projection-augmented, polymer-enriched sand model
 of the study landscape by hand or with a wooden sculpting tool. 
-%
 We used Tangible Landscape to project 
 an elevation map of the study landscape
 with contours and a legend
 onto participants' sand models as guide for sculpting. 
-%
 Participants were also given a 3D scale ruled in map units
 to measure the elevation of their scale models. 
-%
 This augmented approach couples digital mapping with physical modeling.
-%
 Theoretically it should combine affordances of both -- 
 enabling enriched visualization and physical sensing and manipulation -- 
 to offer more feedback.
-%
 While more feedback may help users better assess and critique their performance 
 so they can strategize their next moves,
 too much feedback may be a cognitive overload 
 resulting in distraction, frustration, and demotivation. 
-%
-Physical sensing and manipulation, however, should offload some of this cognitive work onto the body.
+Physical sensing and manipulation, however, should offload 
+some of this cognitive work onto the body.
 
-\paragraph{Data analysis}
-
-% data acquisition
+\paragraph{Data collection}
 We used Tangible Landscape to scan the finished models 
 built using hand modeling and projection augmented modeling.
 The scans were captured as point clouds, interpolated 
 as digital elevation models using the regularized spline with tension method,
 and stored as raster maps in a GRASS GIS mapset. 
-%
 The NURBS surfaces modeled in Rhino were exported as raster elevation maps,
 imported into GRASS GIS, randomly resampled, 
 re-interpolated using the regularized spline with tension method, 
 and stored as raster maps in a GRASS GIS mapset. 
 
-% data analysis
-For each set of models -- digital, analog, and augmented -- 
-We computed the mean elevation,
-the standard deviation of elevations, 
-the mean difference between the modeled elevations and reference elevation, 
-the mean slope, 
-the mean landforms, 
-and the mean water flow. 
-
+\paragraph{Data analysis}
+For each set of models -- digital, analog, and augmented --
+we computed cellular statistics, 
+topographic and morphometric parameters, 
+and simulated water flow.
+%the mean elevation, standard deviation of elevation, mean difference, mean slope, mean landforms, and mean water flow.
+We computed 
+the mean elevation 
+and standard deviation of elevation
+for each set
+with the module \textit{r.series}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.series.html}}.
+%
+% elevation
+In order to compare participants' modeling performance between sets 
+we computed the difference 
+between the reference elevation and the mean elevation for each set.
+%
 % difference
-	% mean elevation
-	% linear regression
+The difference shows 
+where models are too low or too high
+i.e.~where sand should be added or removed to match the reference.
+To account shifts in scanning and georeferencing
+we vertically rescaled and translated the reference elevation %to match the mean elevation
+by calculating the linear regression of the reference and mean elevation
+with the module \textit{r.regression.line}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.regression.line.html}}.
+and then calculated the difference between the regression and the mean elevation 
+using map algebra 
+with the module \textit{r.mapcalc}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.mapcalc.html}}.
+%
+% slope
+We derived the mean slope in degrees for each set 
+using differential geometry
+by parameterizing a quadratic function to fit mean elevation values 
+in a neighborhood using least squares \cite{Wood1996} 
+%through quadratic parameterization \cite{Wood1996} of the mean digital elevation model 
+with the module \textit{r.param.scale}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.param.scale.html}}. 
+%
+% landforms
+We computed the mean landforms for each set using geomorphons,
+a pattern recognition method for landform classification 
+based on the openness of the terrain
+implemented the add-on module \textit{r.geomorphon}\footnote{\url{https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html}}. 
+Geomorphons works effectively across spatial scales because 
+the neighborhood search size for pattern recognition 
+is spatially variable -- it is set dynamically based on the visibility of the cell \cite{Jasiewicz2013}.  
+Landforms can be classified as flat, peaks, ridges, shoulders, spurs, slopes, hollows, footslopes, valleys, or depressions.
+%
+% water
+We simulated the mean water flow for each set using 
+a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}
+implemented as the module \textit{r.sim.water}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.sim.water.html}}. 
 
-	% {regression} = {a} + {b} * {before}
-	% {difference} = {regression} - {after}
+\subsection{Results}
+\ldots
 
-% landforms 
-	% geomorphons
+\begin{table}
+\tbl{Coupling experiment}{
+\ra{1.3}
+\begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Elevation & 
+\includegraphics[width=0.22\textwidth]{images/render_3d/dem_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_3.png}\\
+%
+Stdev.~of elevations &
+\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_3.png}\\
+%
+Elevation difference &
+\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_3.png}\\
+%
+Slope &
+\includegraphics[width=0.22\textwidth]{images/render_3d/slope_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_3.png}\\
+%
+Landforms &
+\includegraphics[width=0.22\textwidth]{images/render_3d/forms_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_3.png}\\
+%
+Water flow &
+\includegraphics[width=0.22\textwidth]{images/render_3d/depth_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_depth_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_depth_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_depth_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:coupling_experiment} 
+\end{table}
 
-% water flow
-	% simwe
 
-% code here?
 
-\subsection{Analytics experiment}
-We also conducted an experiment to study how different geospatial analytics mediate spatial performance when using a tangible interface for GIS.
 
-% difference
+
+
+
+
+
+%\section{Analytics experiment}
+%We also conducted an experiment to study 
+%how different geospatial analytics mediate spatial performance 
+%when using a tangible interface for GIS.
+
+\section{Difference experiment}
+We conducted an experiment to study 
+how the difference analytic mediates spatial performance 
+when using a tangible interface for GIS.
+
+
+\subsection{Methods}
+\ldots
 
 
 \begin{minted}[fontsize=\small]{python}
@@ -844,14 +891,14 @@ def run_difference(real_elev, scanned_elev, env, **kwargs):
 		mapx=scanned_elev,
 		mapy=real_elev,
 		env=env)
-	gscript.mapcalc('{regression} = {a} + {b} * {before}' \
-		.format(a=regression_params['a'],
+	gscript.mapcalc('{regression} = {a} + {b} * {before}'.format(
+		a=regression_params['a'],
 		b=regression_params['b'],
 		before=scanned_elev,
 		regression='regression'),
-		 env=env)
-	gscript.mapcalc('{difference} = {regression} - {after}' \
-		.format(regression='regression',
+		env=env)
+	gscript.mapcalc('{difference} = {regression} - {after}'.format(
+		regression='regression',
 		after=real_elev, difference='diff'),
 		env=env)
 	gscript.write_command('r.colors', 
@@ -863,11 +910,133 @@ def run_difference(real_elev, scanned_elev, env, **kwargs):
 
 
 % water flow
+	% path sampling method
 
 % improved study of difference 
 	% with real-time analytic and time-series analysis
 
-\subsection{Case studies}
+
+\subsection{Results}
+\ldots
+
+
+
+
+% DIFFERENCE STATS TABLE
+\begin{table}
+\tbl{Difference experiment}{
+\ra{1.3}
+\begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
+\toprule
+\multicolumn{1}{c}{Reference elevation} & \multicolumn{1}{c}{Mean elevation} & \multicolumn{1}{c}{Stdev.~of elevations}  & \multicolumn{1}{c}{Stdev.~of differences}\\
+\midrule
+%
+\includegraphics[width=0.24\textwidth]{images/render_3d/dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/mean_dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_regression_difference_series_4.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:difference_stats} 
+\end{table}
+
+% DIFFERENCE TABLE
+\begin{table}
+\tbl{Difference experiment}{
+\ra{1.3}
+\begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Elevation difference} & \multicolumn{1}{c}{Slope}  & \multicolumn{1}{c}{Landform}\\
+\midrule
+%
+Reference & 
+\includegraphics[width=0.22\textwidth]{images/render_3d/dem_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/slope_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/forms_4.png}\\
+%
+Mean & 
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_difference_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_4.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:difference_experiment} 
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+% WATER 
+
+\section{Water flow experiment}
+We conducted an experiment to study 
+how the water flow analytic mediates spatial performance 
+when using a tangible interface for GIS.
+
+
+\subsection{Methods}
+\ldots
+
+\subsection{Results}
+\ldots 
+
+% WATER FLOW STATS TABLE
+\begin{table}
+\tbl{Water flow experiment}{
+\ra{1.3}
+\begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
+\toprule
+\multicolumn{1}{c}{Reference elevation} & \multicolumn{1}{c}{Mean elevation} & \multicolumn{1}{c}{Stdev.~of elevations} & \multicolumn{1}{c}{Stdev.~of differences}\\
+\midrule
+\includegraphics[width=0.24\textwidth]{images/render_3d/dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/mean_dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_regression_difference_series_5.png}\\
+\bottomrule
+\end{tabular}}
+\label{table:water_flow_stats} 
+\end{table}
+
+% WATER FLOW TABLE
+\begin{table}
+\tbl{Water flow experiment}{
+\ra{1.3}
+\begin{tabular}{m{0.1\textwidth} m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Water depth} & \multicolumn{1}{c}{Depth difference}\\
+\midrule
+%
+Reference & 
+\includegraphics[width=0.3\textwidth]{images/render_3d/dem_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/depth_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/dem_difference_5.png}\\
+%
+Mean & 
+\includegraphics[width=0.3\textwidth]{images/render_3d/mean_dem_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/mean_depth_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/mean_depth_difference_5.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:water_flow_experiment} 
+\end{table}
+
+
+
+
+
+\section{Case studies}
 
 %Coffee \& Viz
 %Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
@@ -925,155 +1094,7 @@ unfolding in time and space.
 \end{center}
 \end{figure*}
 
-\pagebreak
 
-\section{Results}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Coupling experiment}
-
-
-\begin{table}
-\tbl{Coupling experiment}{
-\ra{1.3}
-\begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
-\toprule
-& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
-\midrule
-%
-Elevation & 
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_2.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_3.png}\\
-%
-Stdev.~of elevations &
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_2.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_3.png}\\
-%
-Elevation difference &
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_2.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_3.png}\\
-%
-Slope &
-\includegraphics[width=0.22\textwidth]{images/render_3d/slope_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_2.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_3.png}\\
-%
-Landforms &
-\includegraphics[width=0.22\textwidth]{images/render_3d/forms_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_2.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_3.png}\\
-%
-Water flow &
-\includegraphics[width=0.22\textwidth]{images/render_3d/depth_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_depth_1.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_depth_2.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_depth_3.png}\\
-%
-\bottomrule
-\end{tabular}}
-\label{table:coupling_experiment} 
-\end{table}
-
-
-\subsection{Analytics experiment}
-
-% DIFFERENCE STATS TABLE
-\begin{table}
-\tbl{Difference experiment}{
-\ra{1.3}
-\begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
-\toprule
-\multicolumn{1}{c}{Reference elevation} & \multicolumn{1}{c}{Mean elevation} & \multicolumn{1}{c}{Stdev.~of elevations}  & \multicolumn{1}{c}{Stdev.~of differences}\\
-\midrule
-%
-\includegraphics[width=0.24\textwidth]{images/render_3d/dem_4.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/mean_dem_4.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_dem_4.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_regression_difference_series_4.png}\\
-%
-\bottomrule
-\end{tabular}}
-\label{table:difference_stats} 
-\end{table}
-
-% DIFFERENCE TABLE
-\begin{table}
-\tbl{Difference experiment}{
-\ra{1.3}
-\begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
-\toprule
-& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Elevation difference} & \multicolumn{1}{c}{Slope}  & \multicolumn{1}{c}{Landform}\\
-\midrule
-%
-Reference & 
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/slope_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/forms_4.png}\\
-%
-Mean & 
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_difference_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_4.png}\\
-%
-\bottomrule
-\end{tabular}}
-\label{table:difference_experiment} 
-\end{table}
-
-% WATER FLOW STATS TABLE
-\begin{table}
-\tbl{Water flow experiment}{
-\ra{1.3}
-\begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
-\toprule
-\multicolumn{1}{c}{Reference elevation} & \multicolumn{1}{c}{Mean elevation} & \multicolumn{1}{c}{Stdev.~of elevations} & \multicolumn{1}{c}{Stdev.~of differences}\\
-\midrule
-\includegraphics[width=0.24\textwidth]{images/render_3d/dem_5.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/mean_dem_5.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_dem_5.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_regression_difference_series_5.png}\\
-\bottomrule
-\end{tabular}}
-\label{table:water_flow_stats} 
-\end{table}
-
-% WATER FLOW TABLE
-\begin{table}
-\tbl{Water flow experiment}{
-\ra{1.3}
-\begin{tabular}{m{0.1\textwidth} m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
-\toprule
-& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Water depth} & \multicolumn{1}{c}{Depth difference}\\
-\midrule
-%
-Reference & 
-\includegraphics[width=0.3\textwidth]{images/render_3d/dem_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/depth_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/dem_difference_5.png}\\
-%
-Mean & 
-\includegraphics[width=0.3\textwidth]{images/render_3d/mean_dem_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/mean_depth_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/mean_depth_difference_5.png}\\
-%
-\bottomrule
-\end{tabular}}
-\label{table:water_flow_experiment} 
-\end{table}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagebreak
 
 
 \section{Discussion}
