@@ -29,6 +29,7 @@
 \usepackage{array}
 \usepackage[super]{nth}
 \usepackage{listings}
+\usepackage{float}
 \usepackage{minted}
 \usemintedstyle{bw}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
@@ -567,7 +568,7 @@ Tangible Landscape has been implemented as a set of components
 \footnote{\url{https://github.com/ncsu-osgeorel/r.in.kinect}}
 and the grass-tangible-landscape plugin 
 \footnote{\url{https://github.com/ncsu-osgeorel/grass-tangible-landscape}} --
-for the active development version of GRASS GIS. 
+for the active development version of GRASS GIS (Fig.~\ref{fig:software_schema}). 
 The r.in.kinect add-on module imports point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
 It has been implemented as a separate component so that it can easily be used for other applications.
 The grass-tangible-landscape plugin provides 
@@ -581,6 +582,14 @@ Tangible Landscape currently runs on Linux and Mac OSX
 with an unsupported branch for Windows. 
 Dependencies include the Point Cloud Library, OpenKinect's libfreenect2, 
 OpenCV,  watchdog, and GRASS GIS.
+
+\begin{figure}[h!]
+\begin{center}
+		\includegraphics{images/software-schema.pdf}
+	\caption{Software schema}
+	\label{fig:software_schema}
+\end{center}
+\end{figure}
 
 \subsection{Fabrication}
 We typically use familiar, everyday materials 
@@ -610,7 +619,7 @@ can be used as guides for hand sculpting terrain models.
 Users can project their target digital elevation model and contours 
 over their polymeric sand model as a static guide for sculpting. 
 Tangible Landscape can also dynamically compute the difference -- i.e.\ cut and fill --
-between the scanned model that has been sculpted and the target digital elevation model. 
+between the target digital elevation model and the scanned model that has been sculpted . 
 The difference can provide a real-time guide 
 where to add or remove sand in order to match the target digital elevation model (Fig.~\ref{fig:difference_sequence}). 
 
@@ -624,17 +633,17 @@ where to add or remove sand in order to match the target digital elevation model
 \end{center}
 \end{figure*}
 
-\begin{figure*}[h!]
-\begin{center}
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
-		
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
-	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
-	\label{fig:difference_sequence}
-\end{center}
-\end{figure*}
+%\begin{figure*}[h!]
+%\begin{center}
+%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
+%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
+%		
+%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
+%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
+%	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
+%	\label{fig:difference_sequence}
+%\end{center}
+%\end{figure*}
 
 \subsection{Applications}
 Using GRASS GIS's extensive libraries for geospatial modeling, analysis, and simulation 
@@ -726,10 +735,10 @@ users should have more cognitive resources for critiquing their work
 and strategizing their next moves. 
 
 \paragraph{Projection augmented modeling}
-Participants had 10 minutes sculpt
+Participants had 10 minutes to sculpt
 a projection-augmented, polymer-enriched sand model
 of the study landscape by hand or with a wooden sculpting tool. 
-We used Tangible Landscape to project 
+Tangible Landscape was used to project 
 an elevation map of the study landscape
 with contours and a legend
 onto participants' sand models as guide for sculpting. 
@@ -812,7 +821,7 @@ implemented as the module \textit{r.sim.water}\footnote{\url{https://grass.osgeo
 \subsection{Results}
 \ldots
 
-\begin{table}
+\begin{table}[H]
 \tbl{Coupling experiment}{
 \ra{1.3}
 \begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
@@ -861,28 +870,40 @@ Water flow &
 \label{table:coupling_experiment} 
 \end{table}
 
-
-
-
-
-
-
-
-
-%\section{Analytics experiment}
-%We also conducted an experiment to study 
-%how different geospatial analytics mediate spatial performance 
-%when using a tangible interface for GIS.
-
+% DIFFERENCE
 \section{Difference experiment}
 We conducted an experiment to study 
 how the difference analytic mediates spatial performance 
 when using a tangible interface for GIS.
 
-
 \subsection{Methods}
-\ldots
+%
+\paragraph{Difference analytic}
+The same 30 participants were asked to use 
+Tangible Landscape with the difference analytic to model 
+a different region of Lake Raleigh Woods
+with a large central ridge 
+flanked by valleys 
+and a smaller, secondary ridge.
+Participants had 10 minutes to model this region
+in polymer-enriched sand using Tangible Landscape 
+with the difference analytic. 
+The difference between the reference elevation 
+and the participant's modeled elevation %the scanned elevation map
+was computed in near real-time and projected onto the sand 
+as an interactive guide.
+The linear regression of the reference and scanned elevation maps was used
+to correct for shifts in scanning and georeferencing. 
+The difference showed where sand needs to added (blue) or removed (red) 
+in order to match the reference landscape (Fig.~\ref{fig:difference_sequence}). 
+While this feedback should show participants what to do next, 
+it may provide too much data or be too challenging to rapidly parse. 
 
+%As participants were sculpting their hands would be captured in the scans,
+%so they were only shown the current difference 
+%when they requested an update
+%even though the difference was being computed in near real-time.
+%
 
 \begin{minted}[fontsize=\small]{python}
 def run_difference(real_elev, scanned_elev, env, **kwargs):
@@ -908,22 +929,41 @@ def run_difference(real_elev, scanned_elev, env, **kwargs):
 		env=env)
 \end{minted}
 
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
+		
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
+	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
+	\label{fig:difference_sequence}
+\end{center}
+\end{figure*}
 
-% water flow
-	% path sampling method
-
-% improved study of difference 
-	% with real-time analytic and time-series analysis
-
+\paragraph{Data collection and analysis}
+The final scan of each model was stored in a mapset for analysis. 
+We used cellular statistics, the difference in elevation, 
+topographic parameters, and morphometric parameters
+to compare the reference elevation and the set of modeled elevations. 
+We computed 
+the mean elevation,
+the standard deviation of elevations, 
+and the standard deviation of difference for the the set.
+To find the standard deviation of differences 
+we first computed the difference between the reference elevation and each elevation 
+and then used cellular statistics to find the standard deviation of these differences.
+We also computed the difference between the 
+reference elevation and the mean elevation for the set. 
+The reference elevation used in the difference calculation was rescaled and shifted based on the linear regression of the reference and mean elevation.
+We also computed the slope and landforms of the mean elevation. 
 
 \subsection{Results}
 \ldots
 
+\pagebreak
 
-
-
-% DIFFERENCE STATS TABLE
-\begin{table}
+\begin{table}[H]
 \tbl{Difference experiment}{
 \ra{1.3}
 \begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
@@ -941,8 +981,7 @@ def run_difference(real_elev, scanned_elev, env, **kwargs):
 \label{table:difference_stats} 
 \end{table}
 
-% DIFFERENCE TABLE
-\begin{table}
+\begin{table}[H]
 \tbl{Difference experiment}{
 \ra{1.3}
 \begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
@@ -958,7 +997,7 @@ Reference &
 %
 Mean & 
 \includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_difference_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_regression_difference_4.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_4.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_4.png}\\
 %
@@ -967,32 +1006,56 @@ Mean &
 \label{table:difference_experiment} 
 \end{table}
 
-
-
-
-
-
-
-
-
-
-
 % WATER 
-
 \section{Water flow experiment}
 We conducted an experiment to study 
 how the water flow analytic mediates spatial performance 
 when using a tangible interface for GIS.
 
-
 \subsection{Methods}
-\ldots
+\paragraph{Water flow analytic}
+The same 30 participants were asked to model water flow 
+across another region of Lake Raleigh Woods
+using Tangible Landscape with the water flow analytic.
+This region has a central ridge 
+flanked by a large stream on one side 
+and a small stream on the other.
+Participants had 10 minutes to model water flow across this region
+by sculpting polymer-enriched sand using Tangible Landscape 
+with the water flow analytic. 
+They sculpted sand models of the topography
+to direct the simulated flow of water.  
+Water flow was simulated in near real-time 
+as a diffusion wave approximation of shallow water flow.
+Participants could switch between the precomputed reference water flow 
+-- i.e.~their target -- 
+and the water flow over their scanned model. 
+
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=0.9\textwidth]{images/tl_water.jpg}
+	\caption{Modeling with Tangible Landscape's water flow analytic}
+	\label{fig:flow_sequence}
+\end{center}
+\end{figure*}
+
+\paragraph{Data collection and analysis}
+The final scan of each model was stored in a mapset for analysis. 
+We used cellular statistics, simulated water flow, and the difference in simulated water depth 
+to compare water flow across the study landscape and the set of models.
+We computed the mean elevation,
+the standard deviation of elevations, 
+and the standard deviation of difference for the set.
+Then we simulated water flow across the mean elevation for the set of models
+and computed the difference between the reference and mean water flow. 
 
 \subsection{Results}
 \ldots 
 
-% WATER FLOW STATS TABLE
-\begin{table}
+
+\pagebreak
+
+\begin{table}[H]
 \tbl{Water flow experiment}{
 \ra{1.3}
 \begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
@@ -1008,8 +1071,7 @@ when using a tangible interface for GIS.
 \label{table:water_flow_stats} 
 \end{table}
 
-% WATER FLOW TABLE
-\begin{table}
+\begin{table}[H]
 \tbl{Water flow experiment}{
 \ra{1.3}
 \begin{tabular}{m{0.1\textwidth} m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
@@ -1032,15 +1094,15 @@ Mean &
 \label{table:water_flow_experiment} 
 \end{table}
 
-
-
-
+% improved study of difference 
+	% with real-time analytic and time-series analysis
 
 \section{Case studies}
-
+%
 %Coffee \& Viz
 %Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
 % as spatial training / education: exploring scientific models / simulations
+%
 We hosted a participatory modeling workshop using Tangible Landscape 
 as part of North Carolina State University Library's Coffee \& Viz series. 
 %
@@ -1050,12 +1112,21 @@ by playing serious games.
 %
 In the games
 participants used simple tangible interactions 
-to computationally steer simulations, 
+to computationally steer simulations -- 
 to drive simulated environmental processes. 
 %
 In one game participants managed the spread of termites across a city by treating city blocks. 
-To treat a city block they placed wooden cubes representing preventive treatments on the game board 
-leveraging basic motor skills from childhood play 
+After watching the simulated spread of termites across the city, 
+participants placed preventative treatments to try to contain the invasion. 
+To treat a city block they placed wooden cubes 
+representing preventive treatments on the game board 
+leveraging basic motor skills from childhood play.
+%After they used their treatment budget (10 blocks)
+After they treated 10 blocks
+the stochastic simulation was rerun
+so participants could see how well they contained the invasion. 
+%
+%
 (Fig.~\ref{fig:termite_game}).
 %
 In the other game participants tried to save houses from coastal flooding by building coastal defenses. 
@@ -1127,7 +1198,10 @@ unfolding in time and space.
 % Iterative design process
 	% TLv2 w/ PCL + OpenKinect
 	% New analyses for experiment
-	
+
+% PLUS ANIMATION!
+
+
 %\subsection{Design guidelines}
 %\cite{Wilson2014}
 
