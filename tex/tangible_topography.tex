@@ -633,17 +633,17 @@ where to add or remove sand in order to match the target digital elevation model
 \end{center}
 \end{figure*}
 
-%\begin{figure*}[h!]
-%\begin{center}
-%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
-%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
-%		
-%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
-%		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
-%	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
-%	\label{fig:difference_sequence}
-%\end{center}
-%\end{figure*}
+\begin{figure*}[h!]
+\begin{center}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
+		
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
+		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
+	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
+	\label{fig:difference_sequence}
+\end{center}
+\end{figure*}
 
 \subsection{Applications}
 Using GRASS GIS's extensive libraries for geospatial modeling, analysis, and simulation 
@@ -813,6 +813,15 @@ the neighborhood search size for pattern recognition
 is spatially variable -- it is set dynamically based on the visibility of the cell \cite{Jasiewicz2013}.  
 Landforms can be classified as flat, peaks, ridges, shoulders, spurs, slopes, hollows, footslopes, valleys, or depressions.
 %
+%% landform legend
+%\begin{figure*}[h!]
+%\begin{center}
+%		\includegraphics[width=\textwidth]{images/geomorphons_legend.png}
+%	\caption{Landforms identified by \textit{r.geomorphon}\footnote{\url{https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html}}}
+%	\label{fig:geomorphons}
+%\end{center}
+%\end{figure*}
+%
 % water
 We simulated the mean water flow for each set using 
 a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}
@@ -820,6 +829,130 @@ implemented as the module \textit{r.sim.water}\footnote{\url{https://grass.osgeo
 
 \subsection{Results}
 \ldots
+
+
+Table \ref{table:coupling_stats} shows cellular statistics for this experiment.
+% mean
+
+
+% stdev
+
+
+% stdev diff -- > REPLACE DIFF WITH STDEV DIFF
+
+
+Table \ref{table:coupling_experiment} shows geospatial analyses for this experiment.
+
+% slope
+
+% CUT WATER FLOW ???
+
+	% move description of r.sim.water to water flow section
+
+
+
+%Participants tended to perform well with the difference analytic 
+%-- modeling simplified, but relatively accurate approximations of the landscape.
+%Since these models were sculpted in sand
+%their edges tend to slump.
+%This caused artifacts in the analysis like
+%low elevation values and steep slopes
+%along the borders. 
+%%
+%Table \ref{table:difference_stats} shows cellular statistics for this experiment.
+%%
+%%  mean
+%The mean elevation for this set of models
+%has the approximate shape of the reference elevation, 
+%but is much simpler, lacking many details. 
+%% stdev
+%%The standard deviation of elevations represents the set's consistency.
+%The standard deviation of elevations shows that participants 
+%consistently modeled the low point at the base of the secondary ridge
+%in the same way, 
+%but modeled the primary ridge in different ways. 
+%% stdev diff
+%The standard deviation of difference shows 
+%%how much the set deviated from the best fit with the reference. 
+%how consistently the models fit the reference. 
+%Overall participants performed well -- there was little deviation from the best fit. 
+%Participants tended to perform poorly near the edges of models, especially in the corners.
+%They also performed poorly with the valleys and the low point by the secondary ridge.
+%
+%Table \ref{table:difference_experiment} shows geospatial analyses for this experiment.
+%%
+%The mean elevation difference shows that participants tended to add
+%too little to the edges of the model,
+%too much to primary ridge,
+%and too much to the slope of the secondary ridge. 
+%%
+%% slope
+%The mean slope shows that participants tended to model 
+
+
+
+Table \ref{table:percent_cells}
+
+Table \ref{table:distance}
+
+
+
+
+%% INTERVIEWS
+
+% `Sense of touch: takes away some of the mystery'
+% `Versus the digital: a long learning curve: mysterious!'
+% `The digital: anxiety! not as intuitive'
+
+% DIGITAL
+% `Strategy: outside borders first in elevation view, then interior.'
+
+% ANALOG
+% `Sculpting like braille'
+% `Can feel the shape with my fingers'
+
+% PROJ AUG
+% `The contours are just a guide'
+% `General strategy: Additive. Start with ridges an hills / high points. Then feel with hands to try to match the contours. If I see concavity in the contours, then feel the sand and sculpt that concavity. Relative height was challenging - subtle. 
+
+
+\begin{table*}
+\tbl{Percent cells}{
+\ra{1.3}
+\begin{tabular}{rrcccccccc}\toprule
+method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
+\phantom{abc} & \multicolumn{2}{c}{valleys}\\
+\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
+&& reference & mean && reference & mean && reference & mean\\ \midrule
+digital && 0.89 & 1.12 && 2.10 & 0.69 && 2.90 & 0.56\\
+hand && 0.89 & 0.80 && 2.10 & 4.00 && 2.90 & 1.66\\
+augmented && 0.89 & 0.77 && 2.10 & 4.13 && 2.90 & 1.48\\
+\bottomrule
+\end{tabular}}
+\label{table:percent_cells} 
+\end{table*}
+
+%\begin{table*}
+\begin{table}[H]
+\tbl{Minimum distance (ft)}{
+\ra{1.3}
+\begin{tabular}{rrcccccccc}\toprule
+method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
+\phantom{abc} & \multicolumn{2}{c}{valleys}\\
+\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
+&& reference & mean && reference & mean && reference & mean\\ \midrule
+digital && 0 & 12916 && 0 & 110419 && 0 & 98806\\
+hand && 0 & 10162 && 0 & 24005 && 0 & 676450\\
+augmented && 0 & 7121 && 0 & 19599 && 0 & 31401\\
+\bottomrule
+\end{tabular}}
+\label{table:distance} 
+\end{table}
+%\end{table*}
+
+
+
+\pagebreak
 
 \begin{table}[H]
 \tbl{Coupling experiment}{
@@ -840,6 +973,12 @@ Stdev.~of elevations &
 \includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_1.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_2.png} &
 \includegraphics[width=0.22\textwidth]{images/render_3d/stdev_dem_3.png}\\
+%
+Stdev.~of difference &
+\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/stdev_regression_difference_series_3.png}\\
 %
 Elevation difference &
 \includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_1.png} &
@@ -929,18 +1068,6 @@ def run_difference(real_elev, scanned_elev, env, **kwargs):
 		env=env)
 \end{minted}
 
-\begin{figure*}[h!]
-\begin{center}
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
-		
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
-		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
-	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
-	\label{fig:difference_sequence}
-\end{center}
-\end{figure*}
-
 \paragraph{Data collection and analysis}
 The final scan of each model was stored in a mapset for analysis. 
 We used cellular statistics, the difference in elevation, 
@@ -949,17 +1076,107 @@ to compare the reference elevation and the set of modeled elevations.
 We computed 
 the mean elevation,
 the standard deviation of elevations, 
-and the standard deviation of difference for the the set.
+and the standard deviation of difference for the set.
 To find the standard deviation of differences 
 we first computed the difference between the reference elevation and each elevation 
 and then used cellular statistics to find the standard deviation of these differences.
 We also computed the difference between the 
 reference elevation and the mean elevation for the set. 
 The reference elevation used in the difference calculation was rescaled and shifted based on the linear regression of the reference and mean elevation.
-We also computed the slope and landforms of the mean elevation. 
+We computed the slope and landforms of the mean elevation. 
+
+We also filmed each session, 
+observed and took notes on participants' modeling processes, 
+and interviewed select participants.
+% 
 
 \subsection{Results}
-\ldots
+Participants tended to perform well with the difference analytic 
+-- modeling simplified, but relatively accurate approximations of the landscape.
+Since these models were sculpted in sand
+their edges tend to slump.
+This caused artifacts in the analysis like
+low elevation values and steep slopes
+along the borders. 
+%
+Table \ref{table:difference_stats} shows cellular statistics for this experiment.
+%
+%  mean
+The mean elevation for this set of models
+has the approximate shape of the reference elevation, 
+but is much simpler, lacking many details. 
+% stdev
+%The standard deviation of elevations represents the set's consistency.
+The standard deviation of elevations shows that participants 
+consistently modeled the low point at the base of the secondary ridge
+in the same way, 
+but modeled the primary ridge in different ways. 
+% stdev diff
+The standard deviation of difference shows 
+%how much the set deviated from the best fit with the reference. 
+how consistently the models fit the reference. 
+Overall participants performed well -- there was little deviation from the best fit. 
+Participants tended to perform poorly near the edges of models, especially in the corners.
+They also performed poorly with the valleys and the low point by the secondary ridge.
+
+Table \ref{table:difference_experiment} shows geospatial analyses for this experiment.
+%
+The mean elevation difference shows that participants tended to add
+too little to the edges of the model,
+too much to primary ridge,
+and too much to the slope of the secondary ridge. 
+%
+% slope
+The mean slope shows that participants tended to model 
+overly steep slopes for the primary ridge -- exaggerating its form --
+but tended not model steep enough slopes for the secondary ridge. 
+%
+% landforms
+The mean landforms show that participants tended to 
+clearly capture the central ridge and its spurs,
+suggest the secondary ridge, 
+and miss the valleys (see Table \ref{table:difference_percent_cells}). 
+The secondary ridge has an inchoate form 
+with small clusters of ridge cells along a spur.
+Hollows -- transitions between slopes, footslopes, and valleys -- 
+on the mean landform map hint at valleys in the right locations.
+%but lack definition and steepness.
+
+\begin{table*}
+\tbl{Difference experiment: percent cells with landforms}{
+\ra{1.3}
+\begin{tabular}{rrccccc}\toprule
+modeling method && \multicolumn{2}{c}{ridges} &
+\phantom{abc} & \multicolumn{2}{c}{valleys}\\
+\cmidrule{3-4} \cmidrule{6-7}
+&& reference & mean && reference & mean\\ \midrule
+difference analytic && 4.27 & 3.46 && 2.96 & 0.22\\
+\bottomrule
+\end{tabular}}
+\label{table:difference_percent_cells} 
+\end{table*}
+
+%\paragraph{Interviews and observations}
+Participants described the process of modeling with the difference analytic
+as continual 'rebuilding' to 'make it match.'
+%
+They described an iterative process of 
+of continual refinement based on critical analysis 
+-- similar to Sch{\"o}n's reflection-in-action --
+but enhanced by computational feedback 
+explaining that 
+`because Tangible Landscape gives immediate results it encourages an iterative process.' 
+
+% conclusions
+The difference analytic is intuitive -- 
+participants were able to learn how to use it effectively without training, 
+producing good, albeit exaggerated approximations of the landscape. 
+%
+Their models had key characteristics -- 
+the primary ridge, its spurs, the low point, 
+hints of the secondary ridge and some valleys -- 
+but these characteristics were either exaggerated or under-exaggerated.
+
 
 \pagebreak
 
@@ -1019,7 +1236,8 @@ across another region of Lake Raleigh Woods
 using Tangible Landscape with the water flow analytic.
 This region has a central ridge 
 flanked by a large stream on one side 
-and a small stream on the other.
+and a small stream on the other.  
+A third, smaller stream bisects the ridge.
 Participants had 10 minutes to model water flow across this region
 by sculpting polymer-enriched sand using Tangible Landscape 
 with the water flow analytic. 
@@ -1050,8 +1268,108 @@ Then we simulated water flow across the mean elevation for the set of models
 and computed the difference between the reference and mean water flow. 
 
 \subsection{Results}
-\ldots 
+Participants tended to perform well with the water flow analytic 
+-- approximately modeling all three streams.  
+%
+Table \ref{table:water_flow_stats} shows cellular statistics for this experiment.
+%  mean
+The mean elevation for this set of models
+has under-exaggerated valleys in the right places, but exaggerated ridges. 
+The mean elevation has 19.08\% less valleys than the reference, but
+68.28\% more ridges (see Table \ref{table:water_flow_percent_cells}). 
+% stdev
+The standard deviation of elevations shows that participants 
+consistently modeled the streams, but
+varied greatly in their treatment of the primary ridge. 
+% stdev diff
+The standard deviation of difference shows that participants 
+performed well 
+with the greatest deviation from the reference
+in the corners and along the edges. 
+Again this is to be expected 
+as sand slumps along the borders. 
 
+Table \ref{table:water_flow_experiment} shows geospatial analyses for this experiment.
+% water depth
+The mean water depth map shows all three streams, 
+simplified, but in the right locations. 
+The simplified stream channels lack micro-topography
+and thus the streams lack details. 
+Table \ref{table:water_flow_percent_cells} shows that 
+there was substantial concentrated flow (water depth $>=0.05$ ft) 
+in the streams, albeit 21.96\% less than in the reference.
+%
+This is to be expected 
+since 
+water flow over the sculpted models was only computed over the model region, 
+while 
+the reference water flow 
+was computed over a larger region 
+with the entire contributing watershed 
+in order to produce an accurate representation 
+of water flow across the study landscape. 
+%
+% depth difference
+The water depth difference map shows
+where water should be added (red) or removed (blue) 
+to match the reference
+-- i.e.~where water should flow versus where it was modeled. 
+%
+The mean water flow tightly fit the reference, 
+following similar, albeit simplified routes.
+
+\begin{table*}
+\tbl{Water flow experiment: percent cells}{
+\ra{1.3}
+\begin{tabular}{rrcccccccc}\toprule
+method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
+\phantom{abc} & \multicolumn{2}{c}{valleys}\\
+\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
+&& reference & mean && reference & mean && reference & mean\\ \midrule
+water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
+\bottomrule
+\end{tabular}}
+\label{table:water_flow_percent_cells} 
+\end{table*}
+
+
+% observations
+With the water flow analytic
+participants focused on accurately modeling the streams, 
+rather than the general shape of the topography. 
+As a result the primary ridge was inconsistently modeled and over-exaggerated,
+while the streams were consistently modeled,
+had high volumes of continuous water flow, 
+and flowed along the correct routes.
+
+% understanding water flow
+This experiment required abstract spatial thinking linking form and process. 
+Because water flow is controlled by the shape and gradient of the topography
+participants had to sculpt topographic form to drive water flow. 
+% interviews
+This modeling process, however, helped them understand topography better 
+because `seeing the flow takes away the mystery of topography.' 
+%
+We observed participants using an iterative modeling process 
+with the water flow analytic -- 
+they 
+\begin{enumerate*}[label=\alph*),font=\itshape]
+\item sculpted the topography, 
+\item observed how the water flow simulation changed, 
+\item critiqued their water flow and topography, 
+\item and continued to sculpt.
+\end{enumerate*}
+%
+Using the water flow analytic with this trial-and-error process
+participants were able to generate hypotheses, test hypotheses, and draw inferences 
+about the way that water flows over topography. 
+%
+%Participants suggested that the water flow analytic might be 
+%most useful for refining stream channels 
+%after modeling the topography with the difference analytic. 
+%% `More useful after modeling with the difference.' 
+%% i.e.~Build mass with difference, then refine with water flow
+%% a useful way of thinking about topography, but harder to model with
 
 \pagebreak
 
@@ -1099,48 +1417,49 @@ Mean &
 
 \section{Case studies}
 %
-%Coffee \& Viz
 %Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
 % as spatial training / education: exploring scientific models / simulations
 %
-We hosted a participatory modeling workshop using Tangible Landscape 
+We hosted a scientific gaming workshop using Tangible Landscape 
 as part of North Carolina State University Library's Coffee \& Viz series. 
-%
 In this interactive seminar participants 
 explored complex environmental problems 
-by playing serious games. 
-%
+by playing serious, analytical games
+with challenging objectives, rules, and scores. 
 In the games
 participants used simple tangible interactions 
 to computationally steer simulations -- 
 to drive simulated environmental processes. 
-%
+
 In one game participants managed the spread of termites across a city by treating city blocks. 
 After watching the simulated spread of termites across the city, 
 participants placed preventative treatments to try to contain the invasion. 
 To treat a city block they placed wooden cubes 
 representing preventive treatments on the game board 
 leveraging basic motor skills from childhood play.
-%After they used their treatment budget (10 blocks)
 After they treated 10 blocks
 the stochastic simulation was rerun
 so participants could see how well they contained the invasion. 
-%
-%
 (Fig.~\ref{fig:termite_game}).
-%
-In the other game participants tried to save houses from coastal flooding by building coastal defenses. 
-To build defenses they sculpted dunes out of polymeric sand
-again leveraging motor skills from childhood play
+
+In the other game participants tried to save houses 
+from coastal flooding by building coastal defenses. 
+Given a small handful of polymer-enriched sand 
+-- their budget -- 
+they sculpted new dunes as flood defenses
+again leveraging motor skills from childhood play.
+The foredune was then breached at a random location 
+and simulated storm surge was run, flooding any vulnerable houses. 
 (Fig.~\ref{fig:coastal_game}). 
-%
-Participants were able to naturally 
-interact with a statistical model of ecological invasion
-and a flood simulation. 
+
+We observed that participants were able to naturally 
+interact with the statistical model of ecological invasion
+and the flood simulation. 
 Because the interactions were so simple % yet afforded so much
 they were able to iteratively 
 explore the behavior of multidimensional environmental processes
 unfolding in time and space. 
+By playing several rounds participants were able to iteratively observe the simulated environmental process, generate hypotheses about its behavior, test how interventions affected its behavior, and draw inferences. 
 
 
 % Also SIMWE at SECREF: unstructured play, freeform/open exploration of simulation
@@ -1188,6 +1507,7 @@ unfolding in time and space.
 	% Difference: begin to relate volume and form
 
 	% Water flow: connect form and process
+		% very challenging (see isprs intro)
 
 	% iterative process
 		% capable of metacognition, while modeling
