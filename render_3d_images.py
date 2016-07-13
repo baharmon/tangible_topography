@@ -88,7 +88,6 @@ for dem in dems:
     depressions = dem.replace("dem", "depressions")
     concentrated_flow = dem.replace("dem", "concentrated_flow")
     peaks = dem.replace("dem", "peaks")
-    pits = dem.replace("dem", "pits")
     ridges = dem.replace("dem", "ridges")
     valleys = dem.replace("dem", "valleys")
 
@@ -110,9 +109,6 @@ for dem in dems:
     mean_peaks = dem.replace("dem", "mean_peaks")
     mean_peak_points = dem.replace("dem", "mean_peak_points")
     peak_lines = dem.replace("dem", "peak_lines")
-    mean_pits = dem.replace("dem", "mean_pits")
-    mean_pit_points = dem.replace("dem", "mean_pit_points")
-    pit_lines = dem.replace("dem", "pit_lines")
     mean_ridges = dem.replace("dem", "mean_ridges")
     mean_ridge_points = dem.replace("dem", "mean_ridge_points")
     ridge_lines = dem.replace("dem", "ridge_lines")
@@ -307,29 +303,6 @@ for dem in dems:
         #arrow_position=arrow_position,
         #arrow_size=arrow_size,
         output=os.path.join(render_3d, peaks),
-        format=format_3d,
-        size=size_3d,
-        errors='ignore'
-        )
-
-    # 3D render pits
-    gscript.write_command('r.colors',
-        map=pits,
-        rules='-',
-        stdin=forms_colors_3d)
-    gscript.run_command('m.nviz.image',
-        elevation_map=dem,
-        color_map=pits,
-        resolution_fine=res_3d,
-        height=height_3d,
-        perspective=perspective,
-        light_position=light_position,
-        fringe=fringe,
-        fringe_color=color_3d,
-        fringe_elevation=fringe_elevation,
-        #arrow_position=arrow_position,
-        #arrow_size=arrow_size,
-        output=os.path.join(render_3d, pits),
         format=format_3d,
         size=size_3d,
         errors='ignore'
@@ -542,36 +515,13 @@ for dem in dems:
         errors='ignore'
         )
 
-    # 3D render mean regressed elevation
-    gscript.write_command('r.colors',
-        map=mean_dem_regression,
-        rules='-',
-        stdin=dem_colors_3d)
-    gscript.run_command('m.nviz.image',
-        elevation_map=mean_dem_regression,
-        color_map=mean_dem_regression,
-        resolution_fine=res_3d,
-        height=height_3d,
-        perspective=perspective,
-        light_position=light_position,
-        fringe=fringe,
-        fringe_color=color_3d,
-        fringe_elevation=fringe_elevation,
-        #arrow_position=arrow_position,
-        #arrow_size=arrow_size,
-        output=os.path.join(render_3d, mean_dem_regression),
-        format=format_3d,
-        size=size_3d,
-        errors='ignore'
-        )
-
     # 3D render mean regressed elevation difference
     gscript.write_command('r.colors',
         map=mean_dem_regression_difference,
         rules='-',
         stdin=dem_difference_colors_3d)
     gscript.run_command('m.nviz.image',
-        elevation_map=mean_dem_regression,
+        elevation_map=mean_dem,
         color_map=mean_dem_regression_difference,
         resolution_fine=res_3d,
         height=height_3d,
@@ -686,32 +636,6 @@ for dem in dems:
         errors='ignore'
         )
 
-    # 3D render mean pit distance
-    gscript.run_command('m.nviz.image',
-        elevation_map=mean_dem,
-        color=color_3d,
-        vpoint=mean_pit_points,
-        vpoint_size=vpoint_size,
-        vpoint_marker=vpoint_marker,
-        vpoint_color=vpoint_color,
-        vline=pit_lines,
-        vline_width=vline_width,
-        vline_color=vline_color,
-        resolution_fine=res_3d,
-        height=height_3d,
-        perspective=perspective,
-        light_position=light_position,
-        fringe=fringe,
-        fringe_color=color_3d,
-        fringe_elevation=fringe_elevation,
-        #arrow_position=arrow_position,
-        #arrow_size=arrow_size,
-        output=os.path.join(render_3d, mean_pits),
-        format=format_3d,
-        size=size_3d,
-        errors='ignore'
-        )
-
     # 3D render mean ridge distance
     gscript.run_command('m.nviz.image',
         elevation_map=mean_dem,
@@ -771,7 +695,7 @@ for dem in dems:
         flags="s")
 
     gscript.run_command('m.nviz.image',
-        elevation_map=dem,
+        elevation_map=mean_dem,
         color_map=stdev_dem,
         resolution_fine=res_3d,
         height=height_3d,
@@ -795,7 +719,7 @@ for dem in dems:
         flags="s")
 
     gscript.run_command('m.nviz.image',
-        elevation_map=dem,
+        elevation_map=mean_dem,
         color_map=stdev_difference_series,
         resolution_fine=res_3d,
         height=height_3d,
@@ -814,7 +738,7 @@ for dem in dems:
 
     # 3D render stdev of regressed difference series
     gscript.run_command('m.nviz.image',
-        elevation_map=dem,
+        elevation_map=mean_dem,
         color_map=stdev_regression_difference_series,
         resolution_fine=res_3d,
         height=height_3d,
