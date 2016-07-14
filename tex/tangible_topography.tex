@@ -815,6 +815,11 @@ Geomorphons works effectively across spatial scales because
 the neighborhood search size for pattern recognition 
 is spatially variable -- it is set dynamically based on the visibility of the cell \cite{Jasiewicz2013}.  
 Landforms can be classified as flat, peaks, ridges, shoulders, spurs, slopes, hollows, footslopes, valleys, or depressions.
+%
+% minimum distance
+We also computed the mean minimum distance between features 
+such as concentrated water flow, ridges, and valleys
+on the modeled landscapes and the reference landscape.
 
 % landform legend
 \begin{figure*}[h!]
@@ -825,11 +830,9 @@ Landforms can be classified as flat, peaks, ridges, shoulders, spurs, slopes, ho
 \end{center}
 \end{figure*}
 
-
-
 \subsection{Results}
-
-
+%
+%\paragraph{Geospatial analyses}
 Participants digitally modeled so approximately and abstractly 
 with Rhinoceros
 that they only hinted at landforms. % at the morphology.
@@ -845,7 +848,7 @@ their models
 fit the reference better, 
 had more defined topography, 
 and accurately represented most of the landforms.
-
+%
 Table \ref{table:scatterplots} shows systematic errors
 in the hand sculpted and projection-augmented models;
 these models are vertically shifted due to scanning
@@ -855,11 +858,11 @@ While we used linear regression
 to vertically shift and rescale the difference in elevation, 
 we did not mitigate the systematic errors
 along the borders. 
-
+%
 Table \ref{table:coupling_experiment} shows cellular statistics 
 and geospatial analyses for this experiment.
 
-% mean
+\paragraph{Mean elevation}
 The mean digitally modeled elevation is a highly abstract massing model
 lacking any detail. 
 % 
@@ -869,7 +872,7 @@ is less abstract, more detailed, and more descriptive.
 The mean projection-augmented elevation 
 is even more detailed and defined. 
 
-% stdev
+\paragraph{Standard deviation of elevations}
 The standard deviation of elevations represents the set's consistency.
 %
 Participants were relatively consistent when digitally modeling, 
@@ -893,7 +896,7 @@ With projection-augmented modeling
 participants varied in their handling of relative high points, 
 but were relatively consistent otherwise. 
 
-% stdev diff 
+\paragraph{Standard deviation of differences}
 The standard deviation of differences shows 
 how consistently the models fit the reference. 
 %
@@ -906,7 +909,7 @@ and
 the projection-augmented landscapes 
 most consistently fit. 
 
-% diff
+\paragraph{Mean elevation difference}
 %The mean elevation difference -- i.e.~
 The difference between the linearly regressed reference and the mean elevation --
 shows where participants 
@@ -930,7 +933,7 @@ accurate values on some slopes,
 low values on others, 
 and low values along the borders.
 
-% slope
+\paragraph{Mean slope}
 The reference landscape had 
 much steeper slopes and thus more 
 defined features
@@ -942,60 +945,64 @@ with steep slopes on only one side of the ridge.
 These models
 least accurately represented the slope and curvature.
 % 
-The hand sculpted landscapes had steeper slopes
+The hand sculpted landscapes 
+had steeper slopes
 that began to define key morphological features 
 like the ridge and valley.
 %
 The projection-augmented landscapes 
-had the steep slopes along the ridge
+had steep slopes along the ridge
 creating a well defined ridge-line. 
 
-% landforms
-\ldots
-%
+\paragraph{Mean landforms}
 The digitally modeled landscapes
-\ldots
+represented the peak of the ridge
+and hinted at the valley, 
+but missed all of the other landforms.
 % 
-The hand sculpted landscapes had steeper slopes
-\ldots
+Both the hand sculpted and projection-augmented landscapes 
+accurately represented the ridge and its peak.
+They also represented most of the valley,
+but did not accurately capture its shape. 
+They had anomalous ridges and peaks 
+near the high point
+caused by slumping sand along the border.
+
+\paragraph{Minimum distance}
+We used
+the mean minimum distance between cells
+with water flow, ridges, and valleys
+on the models and the reference
+as a measure of accuracy. 
 %
 The projection-augmented landscapes 
-\ldots
+were the most accurate
+with the lowest mean minimum distance for cells with
+concentrated water flow, ridges, and valleys
+(see Tables \ref{table:percent_cells} \& \ref{table:distance}). 
+%
 
+\paragraph{Observations}
+% digital
+We observed participants using similar strategies in a linear process 
+when digitally modeling. 
+Since the reference data -- the 3D contour curves -- 
+clearly represented profiles, 
+participants typically began by modeling the borders %-- each profile -- 
+of the landscape.
+Then they began to pull up relative high points 
+building a rough massing model of the topography.
+Finally they began to pull down relative low points to 
+steepen slopes and form valleys
+% analog and augmented
+We observed that participants 
+worked in a more freeform manner 
+%participants using more freeform processes 
+when hand sculpting  -- switching freely between
+adding, removing, pressing, pushing, pulling, or smoothing
+sand.
 
-%The mean landforms show that participants tended to 
-%clearly capture the central ridge and its spurs,
-%suggest the secondary ridge, 
-%and miss the valleys (see Table \ref{table:difference_percent_cells}). 
-%The secondary ridge has an inchoate form 
-%with small clusters of ridge cells along a spur.
-%Hollows -- transitions between slopes, footslopes, and valleys -- 
-%on the mean landform map hint at valleys in the right locations.
-%%but lack definition and steepness.
-
-
-
-%% TRY TO RE-RENDER FIGURE WITH DEM SET MODELED RATHER THAN REF
-%% (ALSO DIFF COLOR TABLE -20 to 20)
-
-
-
-
-Table \ref{table:percent_cells}
-
-Table \ref{table:distance}
-
-
-%% OBSERVATIONS
-
-% DIGITAL
-% trouble with interior space
-% a LINEAR process 
-%%%We observed participants using similar modeling strategies -- 
-%%%they typically began by modeling the profiles in the elevation views,
-%%%then pulled up the relative high points, 
-%%%and finally pushed down the relative low points. 
-
+\paragraph{Interviews}
 
 %% INTERVIEWS
 
@@ -1068,8 +1075,6 @@ augmented && 0 & 7121 && 0 & 19599 && 0 & 31401\\
 
 %\begin{table*}
 %\end{table*}
-
-
 
 \pagebreak
 
