@@ -73,6 +73,7 @@
 
 % Title portion
 \title{Cognitively Grasping Topography with Tangible Landscape} 
+% Cognitively Grasping 3D Form with Tangible Landscape
 % Multidimensional Sketching with Tangible Landscape
 % Embodied Spatial Cognition in Tangible Computing
 % Cognitively Grasping Topography with Tangible Landscape
@@ -99,26 +100,39 @@ ART RICE
 \begin{abstract}
 %
 We have designed Tangible Landscape -- a tangible interface powered by a geographic information system -- 
-that gives spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it.
+that gives 3D spatial data an interactive, physical form so that users can naturally feel it, see it, and shape it.
 %
-Our aim was to iteratively design and empirically test a tangible interface that augments spatial thinking and improves spatial performance. 
+Tangible Landscape couples a physical and a digital model of a landscape
+through a near real-time cycle of 
+physical manipulation, spatial computation, and projected feedback.
+%
+As users manipulate % interact with 
+a physical model of a landscape
+the model is 3D scanned, the scan is imported into GIS 
+for spatial modeling, analysis, and simulation, 
+and the results are projected back onto the model.
+%
+Our aim was to iteratively design and empirically test a tangible interface that augments 3D spatial thinking and improves 3D spatial performance. 
 %
 Spatial thinking can be embodied -- people can functionally think about space with their bodies by cognitively grasping objects and physically simulating spatial transformations.
 %
 Tangible interfaces enable embodied cognition so that 
-interaction will be natural and intuitive,
+interaction is natural and intuitive,
 cognitive processes can be offloaded onto the body,
 and cognitive processes can be computationally augmented.
 %
-We designed Tangible Landscape to physically manifest geographic data %digital data
-so that users can cognitively grasp that data as an extension of their bodies 
+We designed Tangible Landscape to physically manifest 
+3D data such as topography 
+% topographic data / geographic data
+so that users can cognitively grasp that data %the terrain %
+as an extension of their bodies 
 and automatically, immediately, and subconsciously interact with it. 
 %
 We conducted a series of experiments using quantitative methods including geospatial modeling, analysis, simulation, and statistics and qualitative methods including semi-structured interviews and direct observation
 to study how tangible interfaces mediate spatial performance. 
 %
 We found that tangible interfaces for geospatial modeling 
-can improve spatial performance.
+can improve 3D spatial performance.
 %
 In the experiments participants produced more accurate models 
 that better represented morphological features 
@@ -182,6 +196,10 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 \end{center}
 \end{figure*}
 
+
+% REFRAME in terms of 
+% multi-dimensional spatial thinking
+
 % A brief intro to TL
 We present Tangible Landscape -- 
 a tangible interface for geographic information systems (GIS). 
@@ -190,7 +208,12 @@ GIS can be used to quantitatively model, analyze, simulate, and visualize
 complex spatial and temporal phenomena 
 -- computationally enhancing users' understanding of space. 
 %
-GIS, however, can be unintuitive and challenging to use. 
+With extensive libraries for point cloud processing, 
+3D vector modeling, and
+surface and volumetric modeling and analysis
+GIS are powerful tools for studying 3-dimensional (3D) space.
+%
+GIS, however, can be unintuitive and challenging to use. % cite?
 %
 Unintuitive interactions with GIS can 
 frustrate users,
@@ -198,28 +221,34 @@ constrain how they think about space,
 and add new cognitive burdens
 requiring highly developed spatial skills and reasoning. 
 %
-In order to make GIS more natural and intuitive to use
+Since visually thinking about 3D space requires %draws on 
+sophisticated spatial abilities like mental rotation, 
+it can be especially challenging to understand and manipulate 3D space
+in a GIS using a graphical user interface (GUI).
+%
+In order to make 3D GIS more natural and intuitive to use
 we have designed a tangible interface for GIS
-that physically manifests digital data 
-so that users can feel and manipulate it with their bodies (Fig.~\ref{fig:tl_flow}). 
+that physically manifests 3D data 
+so that users can feel and manipulate it with their bodies 
+(Fig.~\ref{fig:tl_flow}). 
 %
 We designed Tangible Landscape
 so that users can hold a GIS in their hands
 and think about 
-3D space and spatial computations % 3D SPACE
+3D space and spatial computations
 kinaesthetically with their bodies.
 %
 Our goal is for users with little or no computer experience 
-to be able to intuitively, collaboratively explore spatial data and scientific models and 
+to be able to intuitively, collaboratively explore 
+%higher dimensional %multidimensional 
+3D spatial data 
+and interact with scientific models
+so that they can 
 rapidly test ideas while learning from computational feedback. 
 %
-%In order to test, critique, and refine our design
-%and advance the study of embodied cognition and tangible interaction 
-%we quantitatively analyzed through a series of experiments how 
-%Tangible Landscape mediates spatial cognition. 
-In a series of experiments we have begun to
+Through a series of experiments we have begun to
 quantitatively analyze how 
-Tangible Landscape mediates spatial cognition. 
+Tangible Landscape mediates 3D spatial cognition. 
 %
 We invite other researchers to collaborate 
 in this ongoing open source and open science project 
@@ -228,43 +257,81 @@ contributing to its development,
 developing new applications, 
 and studying how it mediates cognition. 
 
-% EXPAND with 3D
-% importance of 3D 
-% 3D as high level spatial thinking
-% spatial thinking schema
- 
-
-\subsection{Spatial thinking and computation}
-
-Spatial thinking -- `the mental processes of representing, analyzing, and drawing inferences from spatial relations' \cite{Uttal2013} -- is used pervasively in everyday life % at a personal scale 
-for tasks such as recognizing things, manipulating things, interacting with others, and way-finding. 
+\subsection{Spatial thinking and computation} % 3D 
+Spatial thinking -- `the mental processes of representing, analyzing, and drawing inferences from spatial relations' \cite{Uttal2013} -- is used pervasively in everyday life for tasks such as recognizing things, manipulating things, interacting with others, and way-finding. 
+% 
+Higher dimensional spatial thinking 
+-- thinking about form, volume, and processes unfolding in time -- 
+plays an important role in 
+science, technology, engineering, the arts, and math. 
 %
-Spatial thinking is also used extensively in science, technology, engineering, the arts, and math 
-for tasks like 
-diagramming concepts, 
-visualizing data, % \cite{Ormand2014}
-simulating physical processes,
-mapping and manipulating molecules,
-designing circuits, 
-designing buildings, 
-shaping sculpture,
-and studying topology. 
-%
-Given the importance of spatial thinking -- personally, academically, and professionally -- 
-how can we effectively improve spatial performance, the ability to perform tasks that require spatial thinking? 
+3D spatial thinking for example is used in disciplines 
+like geology to understand the structure of the earth, 
+ecology to understand the structure of ecosystems, 
+civil engineering to shape landscapes, 
+architecture to design buildings,
+urban planning to model cities,
+and the arts to shape sculpture.
 
+% spatial concepts
+Conceptually understanding 3D space 
+-- especially at a geographic scale --
+requires sophisticated reasoning.
+%
+% Nystuen (1963)
+% Papageourgiou (1969)
+% Gersmehl and Gersmehl
+% Golledge
+%
+In Gollegde et al.'s hierarchical framework of concepts 
+for thinking about geographic space,
+primitive concepts -- identity and location, magnitude, and space-time --
+form the basis of geographic knowledge \cite{Golledge1997,Golledge2002,Golledge2016}. 
+%
+Concepts of increasing complexity are derived from 
+combinations of simpler concepts. 
+%
+In this framework
+3D surfaces 
+are a complicated concept
+derived from 
+primitives (location and magnitude) and
+simple concepts (distribution, relative distance, and shape).
+%and difficult concepts (area). 
+%
+Understanding how 3D surfaces like topography 
+control processes like the flow of water
+requires even more complex conceptual thinking
+building upon primitives (identity, location, magnitude, and space-time),
+simple concepts (distribution, relative distance, direction, sequence, and shape), 
+difficult concepts (area, change, and spread),
+and complicated concepts (gradient, connectivity, scale, and surface).
+%
+%Cognitive studies have shown that 
+%`spatial thinking is malleable,' 
+%that it can be improved be through training
+%\cite{Uttal2013}.
+%
 % `Spatial thinking is malleable ' \cite{Uttal2013}.
+%
+Given the importance of spatial thinking 
+how can we effectively improve spatial performance --
+the ability to perform tasks that require spatial thinking --
+for complex tasks in 3D space? 
 
 Many spatial tasks can be performed computationally 
 enabling us to efficiently store, model, and analyze large sets of spatial data 
 and solve complex spatiotemporal problems.
 %
 In engineering, design, and the arts 
-computer-aided design (CAD) and 3D modeling software are used to interactively, computationally model, analyze, and animate complex spatial forms. 
+computer-aided design (CAD) and 3D modeling software are used to interactively, computationally model, analyze, and animate complex 3D forms. 
 %
-In scientific computing spatial patterns and processes can be mathematically modeled, simulated, and optimized. 
+In scientific computing multidimensional spatial patterns and processes can be 
+mathematically modeled, simulated, and optimized. 
 %
-Geographic information systems for example can be used to computationally store, model, analyze, simulate, and represent geospatial patterns and processes. 
+Geographic information systems for example can be used 
+to computationally store, model, analyze, simulate, and represent 
+geospatial patterns and processes. 
 %
 The open source 
 Geographic Resource Analysis Support System (GRASS) GIS for example supports 
@@ -290,7 +357,7 @@ Unintuitive modes of human-computer interaction constrain thought and add cognit
 %
 The paradigmatic modes for interacting with computers today 
 -- command line interfaces (CLI) and
-graphical user interfaces (GUI)
+graphical user interfaces
 %including touch interfaces
  -- 
 require physical input from devices like keyboards, mice, digitizing pens, and touch screens, but
@@ -303,6 +370,15 @@ Furthermore, it can also be challenging to parse data that is only presented vis
 Spatial data -- especially 3D spatial data -- presented graphically can require sophisticated spatial reasoning skills such as mental rotation \cite{Shepard1971}, spatial visualization, and spatial perception \cite{Linn1985} to parse and understand, much less manipulate. 
 
 \subsection{Tangible interaction}
+
+% RE-FOCUS ON TANGIBLE GEOSPATIAL MODELING
+% tangible interaction with surfaces
+% lit review
+% what we know -> studies done
+% what we don't know -> gaps in knowledge
+% what we will do
+% end with objectives
+
 % Introduction to tangible interfaces
 Tangible interfaces -- interfaces that couple physical and digital data \cite{Dourish2001} -- 
 are designed to physically manifest digital data so that we can cognitively grasp and absorb it,
@@ -350,10 +426,8 @@ It can be challenging and cognitively taxing to visually perceive and parse spac
 %
 Distance and physical properties like size, shape, volume, weight, hardness, and texture, however, can be automatically and subconsciously assessed kinaesthetically with the body \cite{Jeannerod1997}. 
 %
-By affording physical feedback tangible interfaces should, therefore, reduce the cognitive load needed to judge and manipulate spatial distances, relationships, patterns, and forms. 
-%
-Tangible interfaces have been shown to significantly improve spatial performance 
-over graphical interfaces \cite{Cuendet2012}.
+By affording physical feedback tangible interfaces should, therefore, reduce the cognitive load needed to judge and manipulate spatial distances, relationships, patterns, and 3D forms and volumes. 
+
 
 \begin{figure*}[h!]
 \begin{center}
@@ -431,10 +505,108 @@ users should be better able to parse and learn from computations.
 With GIS users can computationally offload other types of challenging cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
 %
-Tangible interfaces for GIS should, therefore, enhance users' spatial performance 
+Tangible interfaces for geospatial modeling should, 
+therefore, enhance users' spatial performance 
+for challenging tasks 
+like sculpting topography and guiding the flow of water
 by combining these physical and computational affordances.
 
-\subsection{Research questions}
+
+% RE-FOCUS ON TANGIBLE GEOSPATIAL MODELING
+% tangible interaction with surfaces
+% lit review
+% what we know -> studies done
+% what we don't know -> gaps in knowledge
+% what we will do
+% end with objectives
+
+\subsection{Tangible geospatial modeling} % Tangible geospatial interaction
+% tangible interfaces for geospatial modeling
+
+% MORE INTRO...
+
+Tangible interfaces for geospatial modeling include augmented architectural models (Table~\ref{table:review_a}), augmented clay (Table~\ref{table:review_b}),  augmented sandboxes (Table~\ref{table:review_c}), and actuated pin tables (Table~\ref{table:review_d}).
+% -- a type of shape-changing interface. 
+%
+% augmented 
+Projection augmented tangible interfaces 
+couple a physical and digital model
+through a cycle of 3D sensing or object recognition,
+computation, and projection. 
+%
+Augmented architectural models
+like Urp \cite{Underkoffler1999} 
+and the Collaborative Design Platform \cite{Schubert2011}
+are a type of 
+`discrete tabletop tangible interface' \cite{Ishii2012}.
+% that / which...
+%
+Augmented clay models 
+like Illuminating Clay \cite{Piper2002a} 
+and augmented sandboxes like Sandscape \cite{Ishii2004} 
+are types of 
+`deformable, continuous tangible interfaces' \cite{Ishii2012}. 
+% that / which...
+%
+These tangible interfaces 
+have two feedback loops -- 
+there is passive, kinaesthetic feedback from grasping the physical model 
+and active, graphical feedback from computation.
+%
+% shape changing
+Actuated pin tables
+like Relief \cite{Leithinger2009}
+are a type of transformable tangible interface \cite{Ishii2012} 
+or shape changing interface
+which use `physical change of shape as input or output' \cite{Rasmussen2012}. 
+%
+These tangible interfaces 
+have a third feedback loop --
+the physical model
+can be computationally transformed
+for active, kinaesthetic feedback. 
+%
+
+%Given the need to have working prototype to study
+%research on tangible interfaces for geospatial modeling 
+%has understandably focused on the design of new technologies and prototypes 
+%
+Research on tangible interfaces for geospatial modeling 
+has focused on the design of new technologies and prototypes
+rather than studying how they % tangibles 
+are used. 
+%
+% 
+%
+% why are user studies important? 
+% ...
+%
+% \cite{Bannon2011}
+%
+A review of tangible interfaces for geospatial modeling 
+(Tables~\ref{table:review_a}-\ref{table:review_d})
+shows that have been relatively few qualitative user studies \cite{Ishii2002,Shamonsky2003,Tateosian2010,Petrasova2015}
+and only a single quantitive pilot study \cite{Harmon2016}.
+Most of the qualitative studies were case studies, 
+which lacked rigorous, systematic qualitative analysis.
+%
+A review of shape-changing interfaces 
+also found that there were relatively few user studies
+and called for `more, high-quality data on user experience'
+in order to understand if the interfaces work as designed
+\cite{Rasmussen2012}.
+%
+
+
+
+
+% what we know
+
+% what we don't know
+
+
+
+% RESEARCH QUESTIONS / OBJECTIVES
 
 \begin{itemize}
 % design
@@ -445,6 +617,116 @@ by combining these physical and computational affordances.
 \item How do different geospatial analytics mediate users' spatial performance when using a tangible interface for GIS?
 \end{itemize}
 
+
+
+\pagebreak
+
+% Tangible interfaces for geospatial modeling
+
+\begin{table}[H]
+\tbl{Augmented architectural modeling interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & User studies & Publications\\
+\midrule
+%
+Urp & Object detection && \mbox{Case studies\textsuperscript{\textasteriskcentered}} & \cite{Underkoffler1999}\\
+&&&& \cite{Ishii2002}\textsuperscript{\textasteriskcentered}\\
+%
+Collaborative Design Platform & Object detection &&& \cite{Schubert2011a}\\
+& Touch &&& \cite{Schubert2012}\\
+& Sketching &&&  \cite{Schubert2014}\\
+&&&& \cite{Schubert2015}\\
+%&&&&& cite{Schubert2011}\\\
+%&&&&& \cite{Schubert2013}\\
+%&&&&& \cite{Schubert2014a}\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:review_a} 
+%
+\vspace*{1.5em}
+%
+\tbl{Augmented clay interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & User studies & Publications\\
+\midrule
+%
+Illuminating Clay & Sculpting && Protocol analysis\textsuperscript{\textdaggerdbl} & \cite{Piper2002a}\\
+&&&& \cite{Piper2002b}\\
+&&&& \cite{fielding-piper2002}\\
+&&&& \cite{Shamonsky2003}\textsuperscript{\textdaggerdbl}\\
+&&&& \cite{Ishii2004}\\
+&&&& \cite{Ratti2004}\\
+%
+Tangible Geospatial Modeling System & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Mitasova2006}\\
+&&&& \cite{Tateosian2010}\textsuperscript{\textasteriskcentered}\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:review_b} 
+%
+\vspace*{1.5em}
+%
+\tbl{Augmented sandbox interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & User studies & Publications\\
+\midrule
+%
+SandScape& Sculpting &&& \cite{Ishii2004}\\
+&&&& \cite{Ratti2004}\\
+%
+SandyStation & Sculpting &&&\\ % \cite{Altman2014b}
+%
+Augmented Reality Sandbox & Sculpting &&& \cite{Reed2014}\\
+& Gesture\\
+%
+Tangible Landscape & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Petrasova2014}\\
+& Object detection && Quantitative experiments\textsuperscript{\textdagger} & \cite{Petrasova2015}\textsuperscript{\textasteriskcentered}\\
+& Sketching &&& \cite{Harmon2016}\textsuperscript{\textdagger}\\
+%&&&& \cite{Harmon2016a}\\
+%
+The Augmented REality Sandtable (ARES) & Sculpting &&& \cite{Amburn2015}\\
+& Gesture\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:review_c} 
+\end{table}
+%
+\begin{table}[H]
+\tbl{Actuated pin table interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & User studies & Publications\\
+\midrule
+%
+XenoVision Mark III Dynamic Sand Table & Sculpting &&&\\
+%
+Northrop Grumman Terrain Table & Sculpting &&&\\
+%
+Relief & Sculpting &&& \cite{Leithinger2009}\\
+&&&& \cite{Leithinger2010}\\
+%
+Recompose & Sculpting &&& \cite{Leithinger2011}\\
+& Gesture &&& \cite{Blackshaw2011}\\
+%
+Tangible CityScape & Gesture &&&\\ %\citep{Tang2013}
+% 
+Inform & Sculpting &&& \cite{Follmer2013}\\
+& Gesture\\
+& Object detection\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:review_d} 
+\end{table}
 
 \section{Tangible Landscape}
 
@@ -461,7 +743,7 @@ Tangible Landscape -- a tangible user interface for GRASS GIS --
 couples a physical and digital model of a landscape through a continuous cycle of 3D scanning, geospatial modeling, and projection
 so that users can intuitively interact with the modeled landscape in near real-time.
 %
-Conceptually Tangible Landscape physically manifests geospatial data 
+Conceptually Tangible Landscape physically manifests 3D data 
 so that users can hold a GIS in their hands -- 
 so that they can, for example, feel the shape of the earth, sculpt its topography, and direct the flow of water with their hands.
 %
@@ -533,7 +815,7 @@ used the \nth{1} generation Kinect with structured light sensing \cite{Smisek201
 while the \nth{2}  \cite{Petrasova2015} and \nth{3} generations of Tangible Landscape 
 used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015}. 
 %
-See Appendix \ref{appendix:review} for a review of tangible interfaces for geospatial modeling.
+%See Appendix \ref{appendix:review} for a review of tangible interfaces for geospatial modeling.
 
 \subsection{Design}
 Tangible Landscape was designed to let users naturally explore 
@@ -617,7 +899,8 @@ With this time series users can animate the evolution of their model using the m
 Advances in virtual reality are enabling immersive 3D sketching.
 %
 The illustrator
-Wesley Allsbrook %and the Oculus Story Studio team have
+Wesley Allsbrook, %and the Oculus Story Studio team have
+for example, 
 has drawn an animated short film called Dear Angelica
 by sketching in 3D space using the Oculus Rift and Oculus Touch
 to combine the affordances of digital painting and physical sculpture \cite{Oculus2016,Quilez2016}. 
@@ -1255,7 +1538,7 @@ in which the projected `contours are just a guide' --
 I feel with my hands to try to match the contours. 
 If I see concavity in the contours 
 then I feel the sand and sculpt that concavity.
-Finding the relative height, however, was challenging -- it was subtle.'
+Finding the relative height, however, is challenging -- it is subtle.'
 
 % DIFFERENCE
 \section{Difference experiment}
@@ -2081,86 +2364,87 @@ with the number of the experiment.
 % naming convention
 
 
-\section{Review of tangible interfaces for geospatial modeling}\label{appendix:review}
+%\section{Review of tangible interfaces for geospatial modeling}\label{appendix:review}
 
-\begin{table}[H]
-\tbl{Tangible interfaces for geospatial modeling}{
-\ra{1.3}
-\begin{tabulary}{1.0\textwidth}{LLLCLL}
-\toprule
-System & Typology & \mbox{Interaction} & GIS & User studies & Publications\\
-\midrule
+%\begin{table}[H]
+%\tbl{Tangible interfaces for geospatial modeling}{
+%\ra{1.5}
+%\begin{tabulary}{1.0\textwidth}{LLLCLL}
+%\toprule
+%System & Typology & \mbox{Interaction} & GIS & User studies & Publications\\
+%\midrule
+%%
+%Urp & Augmented architectural models & Object detection && Case studies & \cite{underkoffler1999}\\
+%&&&&& \cite{Ishii2002}\\
+%%
+%Illuminating Clay & Augmented clay & Sculpting && Case studies & \cite{Piper2002a}\\
+%&&&&& \cite{Piper2002b}\\
+%&&&&& \cite{fielding-piper2002}\\
+%&&&&& \cite{Ishii2004}\\
+%&&&&& \cite{Ratti2004}\\
+%%
+%SandScape & Augmented sandbox & Sculpting &&& \cite{Ishii2004}\\
+%&&&&& \cite{Ratti2004}\\
+%%
+%XenoVision Mark III Dynamic Sand Table & Actuated pin table & Sculpting &&&\\
+%%
+%Northrop Grumman Terrain Table & Actuated pin table & Sculpting &&&\\
+%%
+%Tangible Geospatial Modeling System & Augmented clay & Sculpting & \cmark & Case studies & \cite{Mitasova2006}\\
+%&&&&& \cite{Tateosian2010}\\
+%%
+%Relief & Actuated pin table & Sculpting &&& \cite{Leithinger2010}\\
+%&&&&& \cite{Leithinger2009}\\
+%%
+%Recompose & Actuated pin table & Sculpting &&& \cite{Leithinger2011}\\
+%&& Gesture &&& \cite{Blackshaw2011}\\
+%%
+%Collaborative Design Platform & Augmented architectural models & Object detection &&& \cite{Schubert2011a}\\
+%&& Touch &&& \cite{Schubert2012}\\
+%&& Sketching &&&  \cite{Schubert2014}\\
+%&&&&& \cite{Schubert2015}\\
+%%&&&&& cite{Schubert2011}\\\
+%%&&&&& \cite{Schubert2013}\\
+%%&&&&& \cite{Schubert2014a}\\
+%%
+%Tangible CityScape & Actuated pin table & Gesture &&&\\ %\citep{Tang2013}
+%% 
+%Inform & Actuated pin table & Sculpting &&& \cite{Follmer2013}\\
+%&& Gesture\\
+%&& Object detection\\
+%%
+%\bottomrule
+%\end{tabulary}}
+%\label{table:review_a} 
+%\end{table}
 %
-Urp & Augmented architectural models & Object detection && Case studies & \cite{underkoffler1999}\\
-&&&&& \cite{Ishii2002}\\
-%
-Illuminating Clay & Augmented clay & Sculpting && Case studies & \cite{Piper2002a}\\
-&&&&& \cite{Piper2002b}\\
-&&&&& \cite{fielding-piper2002}\\
-&&&&& \cite{Ishii2004}\\
-&&&&& \cite{Ratti2004}\\
-%
-SandScape & Augmented sandbox & Sculpting &&& \cite{Ishii2004}\\
-&&&&& \cite{Ratti2004}\\
-%
-XenoVision Mark III Dynamic Sand Table & Actuated pin table & Sculpting &&&\\
-%
-Northrop Grumman Terrain Table & Actuated pin table & Sculpting &&&\\
-%
-Tangible Geospatial Modeling System & Augmented clay & Sculpting & \cmark & Case studies & \cite{Mitasova2006}\\
-&&&&& \cite{Tateosian2010}\\
-%
-Relief & Actuated pin table & Sculpting &&& \cite{Leithinger2010}\\
-&&&&& \cite{Leithinger2009}\\
-%
-Recompose & Actuated pin table & Sculpting &&& \cite{Leithinger2011}\\
-&& Gesture &&& \cite{Blackshaw2011}\\
-%
-Collaborative Design Platform & Augmented architectural models & Object detection &&& \cite{Schubert2012}\\
-&& Touch &&& \cite{Schubert2011a}\\
-&& Sketching &&&  \cite{Schubert2014}\\
-&&&&& \cite{Schubert2015}\\
-%&&&&& cite{Schubert2011}\\\
-%&&&&& \cite{Schubert2013}\\
-%&&&&& \cite{Schubert2014a}\\
-%
-Tangible CityScape & Actuated pin table & Gesture &&&\\ %\citep{Tang2013}
-% 
-Inform & Actuated pin table & Sculpting &&& \cite{Follmer2013}\\
-&& Gesture\\
-&& Object detection\\
-%
-\bottomrule
-\end{tabulary}}
-\label{table:review_a} 
-\end{table}
+%\begin{table}[H]
+%\tbl{Tangible interfaces for geospatial modeling}{
+%\ra{1.5}
+%\begin{tabulary}{1.0\textwidth}{LLLCLL}
+%\toprule
+%System & Typology & \mbox{Interaction} & GIS & User studies & Publications\\
+%\midrule
+%%
+%SandyStation & Augmented sandbox & Sculpting &&&\\ % \cite{Altman2014b}
+%%
+%Augmented Reality Sandbox & Augmented sandbox & Sculpting &&& \cite{Reed2014}\\
+%&& Gesture\\
+%%
+%Tangible Landscape & Augmented sandbox & Sculpting & \cmark & Case studies & \cite{Petrasova2014}\\
+%&& Object detection && User experiments & \cite{Petrasova2015}\\
+%&& Sketching &&& \cite{Harmon2016}\\
+%&&&&& \cite{Harmon2016a}\\
+%%
+%The Augmented REality Sandtable (ARES) & Augmented sandbox & Sculpting &&& \cite{Amburn2015}\\
+%&& Gesture\\
+%%
+%\bottomrule
+%\end{tabulary}}
+%\label{table:review_b} 
+%\end{table}
 
-\begin{table}[H]
-\tbl{Tangible interfaces for geospatial modeling}{
-\ra{1.3}
-\begin{tabulary}{1.0\textwidth}{LLLCLL}
-\toprule
-System & Typology & \mbox{Interaction} & GIS & User studies & Publications\\
-\midrule
-%
-SandyStation & Augmented sandbox & Sculpting &&&\\ % \cite{Altman2014b}
-%
-Augmented Reality Sandbox & Augmented sandbox & Sculpting &&& \cite{Reed2014}\\
-&& Gesture\\
-%
-Tangible Landscape & Augmented sandbox & Sculpting & \cmark & Case studies & \cite{Petrasova2014}\\
-&& Object detection && User experiments & \cite{Petrasova2015}\\
-&& Sketching &&& \cite{Harmon2016}\\
-&&&&& \cite{Harmon2016a}\\
-%
-The Augmented REality Sandtable (ARES) & Augmented sandbox & Sculpting &&& \cite{Amburn2015}\\
-&& Gesture\\
-%
-\bottomrule
-\end{tabulary}}
-\label{table:review_b} 
-\end{table}
 
-%\section{Photographic observations}
+%\section{Interview methodology}
 
 \end{document}
