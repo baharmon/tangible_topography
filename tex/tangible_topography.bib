@@ -1,5 +1,208 @@
+%%% 
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+% END HEADER % ============================================= |
+
+
+
+
 % Tangible Landscape
-%
+
 @book{Petrasova2015,
 author = {Petrasova, Anna and Harmon, Brendan and Petras, Vaclav and Mitasova, Helena},
 isbn = {978-3-319-25775-4},
@@ -7,15 +210,7 @@ publisher = {Springer},
 title = {{Tangible Modeling with Open Source GIS}},
 year = {2015}
 }
-%
-@misc{GRASS,
-author = {{GRASS Development Team}},
-title = {{GRASS GIS}},
-url = {https://grass.osgeo.org},
-urldate = {02/28/2016},
-year = {2016}
-}
-%
+
 @inproceedings{Harmon2016,
 address = {Prague},
 author = {Harmon, Brendan A and Petrasova, Anna and Petras, Vaclav and Mitasova, Helena and Meentemeyer, Ross K},
@@ -24,7 +219,25 @@ publisher = {International Society of Photogrammetry and Remote Sensing},
 title = {{Tangible Landscape: cognitively grasping the flow of water}},
 year = {2016}
 }
-%
+
+@inproceedings{Harmon2016b,
+ author = {Harmon, Brendan Alexander},
+ title = {Embodied Spatial Thinking in Tangible Computing},
+ booktitle = {Proceedings of the TEI '16: Tenth International Conference on Tangible, Embedded, and Embodied Interaction},
+ series = {TEI '16},
+ year = {2016},
+ isbn = {978-1-4503-3582-9},
+ location = {Eindhoven, Netherlands},
+ pages = {693--696},
+ numpages = {4},
+ url = {http://doi.acm.org/10.1145/2839462.2854103},
+ doi = {10.1145/2839462.2854103},
+ acmid = {2854103},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {3D modeling, Human-computer interaction, embodied cognition, spatial thinking, tangible interaction, tangible user interfaces},
+} 
+
 @incollection{Harmon2016a,
 abstract = {With emerging technologies landscape architects can begin to intuitively model and creatively design dynamic, evolving landscapes. Advances in geospatial modeling, remote sensing, rapid prototyping, and 3d scanning are changing the way that landscapes are modeled. Now we can generate dynamic landscape form with process-based scientific models. We can build precise physical models using remote sensing and rapid prototyping. And we can link physical and digital models with real-time 3d scanning. Our new technology — Tangible Landscape — enables designers to intuitively sculpt a physical model of a landscape coupled with a digital model in a real-time feedback loop of 3d scanning, geospatial modeling, and projection. This bridges the digital-analog divide by combining the kin{\ae}sthetic creativity of traditional modes of design with the analytics and procedural dynamism of geospatial modeling.},
 author = {Harmon, Brendan A and Petrasova, Anna and Petras, Vaclav and Mitasova, Helena},
@@ -35,15 +248,7 @@ title = {{Computational Landscape Architecture: Procedural, Tangible, and Open L
 url = {https://www.routledge.com/Innovations-in-Landscape-Architecture/Anderson-Ortega/p/book/9781138860681},
 year = {2016}
 }
-%
-@misc{ncsu_geoforall_2016,
-author = {{NCSU GeoForAll Lab}},
-title = {{Tangible Landscape: Difference Analytic}},
-url = {https://youtu.be/GmOqo4FCehM},
-urldate = {2016-07-25},
-year = {2016}
-}
-%
+
 % FUTURES
 %
 @article{Meentemeyer2013,
@@ -116,30 +321,42 @@ year = {2015}
 %
 % TUI Research
 %
-@article{Rasmussen2012,
-abstract = {Reviews work on physical interfaces that use shape change as input or output, so-called shape-changing interfaces. Provide an overview of the design space of such interfaces and identify open research questions.},
-author = {Rasmussen, Majken K and Pedersen, Esben W and Petersen, Marianne G and Hornbaek, Kasper},
-doi = {10.1145/2207676.2207781},
-isbn = {9781450310154},
-journal = {Proceedings of the 2012 ACM annual conference on Human Factors in Computing Systems CHI 12},
-keywords = {Shape-changing interfaces,actuated interfaces,non-visual actuators,organic user interfaces,shape displays},
-pages = {735--744},
-title = {{Shape-Changing Interfaces : A Review of the Design Space and Open Research Questions}},
-url = {http://dl.acm.org/citation.cfm?id=2207676.2207781},
-year = {2012}
-}
+@inproceedings{Rasmussen2012,
+ author = {Rasmussen, Majken K. and Pedersen, Esben W. and Petersen, Marianne G. and Hornb{\ae}k, Kasper},
+ title = {Shape-changing Interfaces: A Review of the Design Space and Open Research Questions},
+ booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+ series = {CHI '12},
+ year = {2012},
+ isbn = {978-1-4503-1015-4},
+ location = {Austin, Texas, USA},
+ pages = {735--744},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/2207676.2207781},
+ doi = {10.1145/2207676.2207781},
+ acmid = {2207781},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {actuated interfaces, non-visual actuators, organic user interfaces, shape displays, shape-changing interfaces},
+} 
 %
-@article{Bakker2011,
-abstract = {Using tangible interaction in interactive educational systems can benefit learning. This can be supported by relying on experientially originating schemata in the interaction design of learning systems. This paper presents the design and evaluation of MoSo Tangibles, a set of interactive, physical artifacts with which children manipulate the pitch, volume and tempo of ongoing tones, in order to structure their understanding of these abstract sound concepts in terms of multiple different concrete body-based concepts. The results indicate that MoSo provided children with a physical handle to reason about the targeted abstract concepts.},
-author = {Bakker, Saskia and Hoven, Elise Van Den and Antle, Alissa N.},
-doi = {10.1145/1935701.1935720},
-isbn = {9781450304788},
-journal = {Interfaces},
-pages = {85--92},
-title = {{MoSo Tangibles : Evaluating Embodied Learning}},
-url = {http://dl.acm.org/citation.cfm?id=1935720},
-year = {2011}
-}
+@inproceedings{Bakker2011,
+ author = {Bakker, Saskia and van den Hoven, Elise and Antle, Alissa N.},
+ title = {MoSo Tangibles: Evaluating Embodied Learning},
+ booktitle = {Proceedings of the Fifth International Conference on Tangible, Embedded, and Embodied Interaction},
+ series = {TEI '11},
+ year = {2011},
+ isbn = {978-1-4503-0478-8},
+ location = {Funchal, Portugal},
+ pages = {85--92},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1935701.1935720},
+ doi = {10.1145/1935701.1935720},
+ acmid = {1935720},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {children, design research, embodied schemata, learning systems, metaphors, tangible and embodied interaction},
+} 
+
 %
 @article{Dorst2001,
 abstract = {Empirical data on design processes were obtained from a set of protocol studies of nine experienced industrial designers, whose designs were evaluated on overall quality and on a variety of aspects including creativity. From the protocol data we identify aspects of creativity in design related to the formulation of the design problem and to the concept of originality. We also apply our observations to a model of creative design as the co-evolution of problem/solution spaces, and confirm the general validity of the model. We propose refinements to the co-evolution model, and suggest relevant new concepts of 'default' and 'surprise' problem/solution spaces.},
@@ -161,17 +378,22 @@ year = {2001}
 % Spatial thinking
 %
 @inproceedings{Cuendet2012,
-address = {Copenhagen},
-author = {Cuendet, Sebastien and Bumbacher, Engin and Dillenbourg, Pierre},
-booktitle = {NordiCHI '12 Proceedings of the 7th Nordic Conference on Human-Computer Interaction: Making Sense Through Design},
-doi = {10.1145/2399016.2399032},
-isbn = {9781450314824},
-pages = {99--108},
-publisher = {ACM},
-title = {{Tangible vs. virtual representations: when tangibles benefit the training of spatial skills}},
-url = {http://dl.acm.org/citation.cfm?id=2399032},
-year = {2012}
-}
+ author = {Cuendet, S{\'e}bastien and Bumbacher, Engin and Dillenbourg, Pierre},
+ title = {Tangible vs. Virtual Representations: When Tangibles Benefit the Training of Spatial Skills},
+ booktitle = {Proceedings of the 7th Nordic Conference on Human-Computer Interaction: Making Sense Through Design},
+ series = {NordiCHI '12},
+ year = {2012},
+ isbn = {978-1-4503-1482-4},
+ location = {Copenhagen, Denmark},
+ pages = {99--108},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/2399016.2399032},
+ doi = {10.1145/2399016.2399032},
+ acmid = {2399032},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {carpenter, learning, learning environment, spatial ability, spatial skills, tangible interface},
+} 
 %
 @book{Gehry2004,
 address = {Cambridge, MA},
@@ -320,10 +542,8 @@ year = {2014}
 @article{Jee2009,
 abstract = {How does learning affect the structure of domain knowledge? This question is difficult to address in domains such as geoscience, where spatial knowledge is paramount. We explore a new platform, called CogSketch, for collecting and analyzing participantsÕ sketches as a means of discerning their spatial knowledge. Participants with differing levels of experience in the geosciences produced sketches of geologic structures and processes on a tablet computer running CogSketch software. This allowed for the analysis of not only the spatial-relational structure of the sketches, but also the process through which the sketches were constructed.},
 author = {Jee, Benjamin D and Gentner, Dedre and Forbus, Kenneth and Sageman, Bradley and Uttal, David H},
-file = {:Users/Brendan/Documents/Journals/Mendeley/jee et al\_CogSci2009\_Final.pdf:pdf},
 isbn = {978-0-9768318-5-3},
 journal = {Proceedings of the 31st Annual Conference of the Cognitive Science Society},
-mendeley-groups = {Tangible Topography},
 pages = {6},
 title = {{Drawing on experience : Use of sketching to evaluate knowledge of spatial scientific concepts}},
 year = {2009}
@@ -332,7 +552,6 @@ year = {2009}
 @article{Linn1985,
 author = {Linn, Marcia C and Petersen, Anne C},
 doi = {10.2307/1130467},
-file = {:Users/Brendan/Documents/Journals/Mendeley/1130467.pdf:pdf},
 journal = {Child Development},
 number = {6},
 pages = {1479--1498},
@@ -380,7 +599,6 @@ booktitle = {Beyond the Brain},
 chapter = {1},
 editor = {Hardy-Vallee, Benoit and Payette, Nicolas},
 isbn = {9781847185983},
-mendeley-groups = {Tangible Topography},
 publisher = {Cambridge Scholars Publishing},
 title = {{Evolution, Embodiment and the Nature of the Mind}},
 year = {2008}
@@ -408,17 +626,23 @@ title = {{Form and Meaning in Art}},
 year = {2006}
 }
 %
-@article{Cafaro2014,
-author = {Cafaro, Francesco and Lyons, Leilah and Roberts, Jessica and Radinsky, Josh},
-doi = {10.1145/2598510.2598593},
-file = {:Users/Brendan/Documents/Journals/Mendeley/embodied\_uncanny\_valley.pdf:pdf},
-isbn = {9781450329026},
-journal = {Proceedings of the 2014 conference on Designing interactive systems - DIS '14},
-pages = {1075--1078},
-title = {{The uncanny valley of embodied interaction design}},
-url = {http://dl.acm.org/citation.cfm?doid=2598510.2598593},
-year = {2014}
-}
+@inproceedings{Cafaro2014,
+ author = {Cafaro, Francesco and Lyons, Leilah and Roberts, Jessica and Radinsky, Josh},
+ title = {The Uncanny Valley of Embodied Interaction Design},
+ booktitle = {Proceedings of the 2014 Conference on Designing Interactive Systems},
+ series = {DIS '14},
+ year = {2014},
+ isbn = {978-1-4503-2902-6},
+ location = {Vancouver, BC, Canada},
+ pages = {1075--1078},
+ numpages = {4},
+ url = {http://doi.acm.org/10.1145/2598510.2598593},
+ doi = {10.1145/2598510.2598593},
+ acmid = {2598593},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {design, embodied interaction, focus of interaction., locus of interaction, realism, uncanny valley},
+} 
 %
 @incollection{Deacon2006,
 address = {New York},
@@ -479,7 +703,6 @@ author = {Dror, Itiel E and Harnad, Stevan},
 booktitle = {Cognition Distributed : How Cognitive Technology Extends Our Minds},
 chapter = {1},
 eprint = {0808.3569},
-file = {:Users/Brendan/Documents/Journals/Mendeley/cognitive\_tech.pdf:pdf},
 isbn = {9789027222466},
 publisher = {John Benjamins Publishing Company},
 title = {{Offloading cognition onto cognitive technology}},
@@ -501,7 +724,6 @@ year = {1976}
 author = {Fauconnier, Gilles},
 booktitle = {The Encyclopedia of the Social and Behavioral Sciences},
 editor = {Smelser, N and Baltes, P},
-file = {:Users/Brendan/Documents/Journals/Mendeley/faucon\_blending.pdf:pdf},
 title = {{Conceptual blending}},
 year = {2000}
 }
@@ -512,7 +734,6 @@ author = {Gibson, James J.},
 booktitle = {Perceiving, Acting, and Knowing: Toward an Ecological Psychology},
 editor = {Shaw, Robert and Bransford, John},
 isbn = {978-0470990148},
-mendeley-groups = {Tangible Topography},
 publisher = {Lawrence Erlbaum},
 title = {{The Theory of Affordances}},
 year = {1977}
@@ -540,17 +761,24 @@ publisher = {Cambridge Scholars Publishing},
 year = {2008}
 }
 %
-@article{Horn2007,
-abstract = {This paper describes a new technique for implementing educational programming languages using tangible interface technology. It emphasizes the use of inexpensive and durable parts with no embedded electronics or power supplies. Students create programs in offline settings---on their desks or on the floor---and use a portable scanning station to compile their code. We argue that languages created with this approach offer an appealing and practical alternative to text-based and visual languages for classroom use. In this paper we discuss the motivations for our project and describe the design and implementation of two tangible programming languages. We also describe an initial case study with children and outline future research goals.},
-author = {Horn, Michael S. and Jacob, Robert J.K.},
-doi = {10.1145/1226969.1227003},
-isbn = {9781595936196},
-journal = {Proceedings of the 1st international conference on Tangible and embedded interaction (TEI '07)},
-pages = {159--162},
-title = {{Designing Tangible Programming Languages for Classroom Use}},
-url = {http://dl.acm.org/citation.cfm?id=1227003},
-year = {2007}
-}
+@inproceedings{Horn2007,
+ author = {Horn, Michael S. and Jacob, Robert J. K.},
+ title = {Designing Tangible Programming Languages for Classroom Use},
+ booktitle = {Proceedings of the 1st International Conference on Tangible and Embedded Interaction},
+ series = {TEI '07},
+ year = {2007},
+ isbn = {978-1-59593-619-6},
+ location = {Baton Rouge, Louisiana},
+ pages = {159--162},
+ numpages = {4},
+ url = {http://doi.acm.org/10.1145/1226969.1227003},
+ doi = {10.1145/1226969.1227003},
+ acmid = {1227003},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {children, education, programming languages, tangible UIs},
+} 
+
 %
 @book{Howard2012a,
 address = {Oxford},
@@ -605,39 +833,42 @@ publisher = {MIT Press},
 title = {{Designing with blends : conceptual foundations of human-computer interaction and software engineering}},
 year = {2007}
 }
-%
+
 @inproceedings{Ishii1997,
-author = {Ishii, Hiroshi and Ullmer, Brygg},
-booktitle = {Proceedings of the SIGCHI conference on Human factors in computing systems - CHI '97},
-doi = {10.1145/258549.258715},
-file = {:Users/Brendan/Documents/Journals/MIT Media Lab/ishii-chi97-tangible-bits.pdf:pdf},
-isbn = {0897918029},
-month = mar,
-pages = {234--241},
-publisher = {ACM Press},
-title = {{Tangible bits: towards seamless interfaces between people, bits and atoms}},
-url = {http://dl.acm.org/citation.cfm?id=258549.258715},
-year = {1997}
-}
-%address = {New York, New York, USA},
-%
+ author = {Ishii, Hiroshi and Ullmer, Brygg},
+ title = {Tangible Bits: Towards Seamless Interfaces Between People, Bits and Atoms},
+ booktitle = {Proceedings of the ACM SIGCHI Conference on Human Factors in Computing Systems},
+ series = {CHI '97},
+ year = {1997},
+ isbn = {0-89791-802-9},
+ location = {Atlanta, Georgia, USA},
+ pages = {234--241},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/258549.258715},
+ doi = {10.1145/258549.258715},
+ acmid = {258715},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {ambient media, augmented reality, center and periphery, foreground and background, graspable user interface, tangible user interface, ubiquitous computing},
+} 
+
 @inproceedings{Ishii2008,
-abstract = {Tangible user interfaces (TUIs) provide physical form to digital information and computation, facilitating the direct manipulation of bits. Our goal in TUI development is to empower collaboration, learning, and design by using digital technology and at the same time taking advantage of human abilities to grasp and manipulate physical objects and materials. This paper discusses a model of TUI, key properties, genres, applications, and summarizes the contributions made by the Tangible Media Group and other researchers since the publication of the first Tangible Bits paper at CHI 1997. http://tangible.media.mit.edu/},
-author = {Ishii, Hiroshi},
-booktitle = {Proceedings of the 2nd international conference on Tangible and embedded interaction - TEI '08},
-doi = {10.1145/1347390.1347392},
-file = {:Users/Brendan/Documents/Journals/MIT Media Lab/tangible\_bits.pdf:pdf},
-isbn = {9781605580043},
-keywords = {ACM,Ambient Media,Augmented Reality,Interaction Design,Tangible User Interfaces,Ubiquitous Computing},
-month = feb,
-pages = {xv--xxv},
-publisher = {ACM Press},
-title = {{Tangible bits: beyond pixels}},
-url = {http://dl.acm.org/citation.cfm?id=1347390.1347392},
-year = {2008}
-}
-%address = {Bonn, Germany},
-%
+ author = {Ishii, Hiroshi},
+ title = {Tangible Bits: Beyond Pixels},
+ booktitle = {Proceedings of the 2Nd International Conference on Tangible and Embedded Interaction},
+ series = {TEI '08},
+ year = {2008},
+ isbn = {978-1-60558-004-3},
+ location = {Bonn, Germany},
+ pages = {xv--xxv},
+ url = {http://doi.acm.org/10.1145/1347390.1347392},
+ doi = {10.1145/1347390.1347392},
+ acmid = {1347392},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {ambient media, augmented reality, interaction design, tangible user interfaces, ubiquitous computing},
+} 
+
 @book{Jeannerod1997,
 address = {Cambridge, MA},
 author = {Jeannerod, Marc},
@@ -649,10 +880,8 @@ year = {1997}
 }
 %
 @article{Jetter2014,
-abstract = {We introduce Blended Interaction, a new conceptual framework that helps to explain when users perceive user interfaces as ÒnaturalÓ or not. Based on recent findings from embodied cognition and cognitive linguistics, Blended Interaction provides a novel and more accurate description of the nature of humanÐcomputer interaction (\{HCI).\} In particular, it introduces the notion of conceptual blends to explain how users rely on familiar and real-world concepts whenever they learn to use new digital technologies. We apply Blended Interaction in the context of post-\{ÒWindows\} Icons Menu PointerÓ interactive spaces. These spaces are ubiquitous computing environments for computer-supported collaboration of multiple users in a physical space or room, e.g., meeting rooms, design studios, or libraries, augmented with novel interactive technologies and digital computation, e.g., multi-touch walls, tabletops, and tablets. Ideally, in these spaces, the virtues of the familiar physical and social world are combined with that of the digital realm in a considered manner so that desired properties of each are preserved and a seemingly ÒnaturalÓ \{HCI\} is achieved. To support designers in this goal, we explain how the usersÕ conceptual systems use blends to tie together familiar concepts with the novel powers of digital computation. Furthermore, we introduce four domains of design to structure the underlying problem and design space: individual and social interaction, workflow, and physical environment. We introduce our framework by discussing related work, e.g., metaphors, mental models, direct manipulation, image schemas, reality-based interaction, and illustrate Blended Interaction using design decisions we made in recent projects.},
 author = {Jetter, Hans Christian and Reiterer, Harald and Geyer, Florian},
 doi = {10.1007/s00779-013-0725-4},
-file = {:Users/Brendan/Documents/Journals/Mendeley/Blended Interaction.pdf:pdf},
 issn = {16174909},
 journal = {Personal and Ubiquitous Computing},
 keywords = {Blended Interaction,Blends,Computer-supported cooperative work,Natural user interfaces,Post-WIMP,Ubiquitous computing},
@@ -695,19 +924,26 @@ year = {2008}
 }
 %
 @article{Kirsh2013,
-abstract = {The theory of embodied cognition can provide HCI practitioners and theorists with new ideas about interaction and new principles for better designs. I support this claim with four ideas about cognition: (1) interacting with tools changes the way we think and perceive -- tools, when manipulated, are soon absorbed into the body schema, and this absorption leads to fundamental changes in the way we perceive and conceive of our environments; (2) we think with our bodies not just with our brains; (3) we know more by doing than by seeing -- there are times when physically performing an activity is better than watching someone else perform the activity, even though our motor resonance system fires strongly during other person observation; (4) there are times when we literally think with things. These four ideas have major implications for interaction design, especially the design of tangible, physical, context aware, and telepresence systems.},
-author = {Kirsh, David},
-doi = {10.1145/2442106.2442109},
-isbn = {1073-0516},
-issn = {1073-0516},
-journal = {ACM Transactions on Computer-Human Interaction},
-number = {1},
-pages = {3:1--3:30},
-title = {{Embodied cognition and the magical future of interaction design}},
-url = {http://doi.acm.org/10.1145/2442106.2442109},
-volume = {20},
-year = {2013}
-}
+ author = {Kirsh, David},
+ title = {Embodied Cognition and the Magical Future of Interaction Design},
+ journal = {ACM Trans. Comput.-Hum. Interact.},
+ issue_date = {March 2013},
+ volume = {20},
+ number = {1},
+ month = apr,
+ year = {2013},
+ issn = {1073-0516},
+ pages = {3:1--3:30},
+ articleno = {3},
+ numpages = {30},
+ url = {http://doi.acm.org/10.1145/2442106.2442109},
+ doi = {10.1145/2442106.2442109},
+ acmid = {2442109},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Human-computer interaction, distributed cognition, embodied cognition, interaction design, mental simulation, physical computation, situated cognition, tangible interfaces},
+} 
+
 %
 @misc{Kreylos2012,
 author = {Kreylos, Oliver},
@@ -718,17 +954,22 @@ year = {2012}
 }
 %
 @inproceedings{Leithinger2010,
-address = {Cambridge, MA},
-author = {Leithinger, Daniel and Ishii, Hiroshi},
-booktitle = {Proceedings of the fourth international conference on Tangible, embedded, and embodied interaction - TEI '10},
-doi = {10.1145/1709886.1709928},
-isbn = {9781605588414},
-pages = {221},
-publisher = {ACM Press},
-title = {{Relief: a scalable actuated shape display}},
-url = {http://dl.acm.org/citation.cfm?id=1709886.1709928},
-year = {2010}
-}
+ author = {Leithinger, Daniel and Ishii, Hiroshi},
+ title = {Relief: A Scalable Actuated Shape Display},
+ booktitle = {Proceedings of the Fourth International Conference on Tangible, Embedded, and Embodied Interaction},
+ series = {TEI '10},
+ year = {2010},
+ isbn = {978-1-60558-841-4},
+ location = {Cambridge, Massachusetts, USA},
+ pages = {221--222},
+ numpages = {2},
+ url = {http://doi.acm.org/10.1145/1709886.1709928},
+ doi = {10.1145/1709886.1709928},
+ acmid = {1709928},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {haptic display, pin array, relief interface, shape display, tangible input},
+} 
 %
 @article{Martisek2010,
 author={Martisek,Dalibor and Prochazkova,Jana},
@@ -1003,26 +1244,27 @@ year = {2013}
   year={2014}
 }
 %
-@inproceedings{blackshaw2011,
-abstract = {Abstract In this paper we present Recompose, a new system for manipulation of an actuated surface. By collectively utilizing the body as a tool for direct manipulation alongside gestural input for functional manipulation, we show how a user is afforded unprecedented control over an actuated surface. We describe a number of interaction techniques exploring the shared space of direct and gestural input, demonstrating how their combined use can greatly enhance creation and manipulation beyond unaided human capability.},
-address = {Vancouver},
-author = {Blackshaw, Matthew and DeVincenzi, Anthony and Lakatos, David and Leithinger, Daniel and Ishii, Hiroshi},
-booktitle = {Proceedings of the 2011 annual conference extended abstracts on Human factors in computing systems - CHI EA '11},
-doi = {10.1145/1979742.1979754},
-isbn = {9781450302685},
-keywords = {Actuated Surface,Direct Manipulation,Gestural Input,Shape Display,Tangible Input},
-month = may,
-pages = {1237},
-publisher = {ACM Press},
-title = {{Recompose: direct and gestural interaction with an actuated surface}},
-url = {http://dl.acm.org/citation.cfm?id=1979742.1979754},
-year = {2011}
-}
+@inproceedings{Blackshaw2011,
+ author = {Blackshaw, Matthew and DeVincenzi, Anthony and Lakatos, David and Leithinger, Daniel and Ishii, Hiroshi},
+ title = {Recompose: Direct and Gestural Interaction with an Actuated Surface},
+ booktitle = {CHI '11 Extended Abstracts on Human Factors in Computing Systems},
+ series = {CHI EA '11},
+ year = {2011},
+ isbn = {978-1-4503-0268-5},
+ location = {Vancouver, BC, Canada},
+ pages = {1237--1242},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/1979742.1979754},
+ doi = {10.1145/1979742.1979754},
+ acmid = {1979754},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {actuated surface, direct manipulation, gestural input, shape display, tangible input},
+} 
 
 @article{coelho2010,
 author = {Coelho, Marcelo and Zigelbaum, Jamie},
 doi = {10.1007/s00779-010-0311-y},
-file = {:Users/Brendan/Documents/Journals/MIT Media Lab/shape\_changing\_interfaces.pdf:pdf},
 issn = {1617-4909},
 journal = {Personal and Ubiquitous Computing},
 month = jul,
@@ -1061,36 +1303,39 @@ type = {Master's thesis},
 year = {2002}
 }
 
-@article{Fitzmaurice1995,
-abstract = {We introduce the concept of Graspable User Interfaces which allow direct control of electronic or virtual objects through physical handles for control. These physical artifacts are essentially new input devices which can be tightly coupled or ?attached? to virtual objects for manipulation or for expressing action (e.g., to set parameters or for initiating processes). We present three steps in the development of these ideas. First, as a note on research methodology, we outline a series of exploratory studies that were conducted. Secondly, we describe a prototype system called "Bricks" and a sample application, GraspDraw, which was developed to investigate the Graspable UI concepts and to design new one- and two- handed interaction techniques. The physical artifacts, or bricks, operate on top of a large horizontal display surface known as the ActiveDesk. Finally, we conclude by presenting a design space for Bricks which lay the foundation for further exploring and developing graspable user interfaces.},
-author = {Fitzmaurice, George W. and Ishii, Hiroshi and Buxton, William},
-doi = {10.1145/223904.223964},
-file = {:Users/baharmon/Downloads/BricksCHI95.pdf:pdf},
-isbn = {0201847051},
-issn = {00220221},
-journal = {Proceedings of the SIGCHI conference on Human factors in computing systems},
-keywords = {computer augmented environ- ments,graphical user interfaces,graspable user interfaces,haptic input,input devices,prototyping,two-handed interaction,ubiquitous computing},
-mendeley-groups = {Introduction},
-pages = {442--449},
-title = {{Bricks: laying the foundations for graspable user interfaces}},
-url = {http://portal.acm.org/citation.cfm?id=223964},
-year = {1995}
-}
+@inproceedings{Fitzmaurice1995,
+ author = {Fitzmaurice, George W. and Ishii, Hiroshi and Buxton, William A. S.},
+ title = {Bricks: Laying the Foundations for Graspable User Interfaces},
+ booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+ series = {CHI '95},
+ year = {1995},
+ isbn = {0-201-84705-1},
+ location = {Denver, Colorado, USA},
+ pages = {442--449},
+ numpages = {8},
+ url = {http://dx.doi.org/10.1145/223904.223964},
+ doi = {10.1145/223904.223964},
+ acmid = {223964},
+ publisher = {ACM Press/Addison-Wesley Publishing Co.},
+ address = {New York, NY, USA},
+} 
 
-@inproceedings{follmer2013,
-abstract = {Past research on shape displays has primarily focused on rendering content and user interface elements through shape output, with less emphasis on dynamically changing UIs. We propose utilizing shape displays in three different ways to mediate interaction: to facilitate by providing dynamic physical affordances through shape change, to restrict by guiding users with dynamic physical constraints, and to manipulate by actuating physical objects. We outline potential interaction techniques and introduce Dynamic Physical Affordances and Constraints with our inFORM system, built on top of a state-of-the-art shape display, which provides for variable stiffness rendering and real-time user input through direct touch and tangible interaction. A set of motivating examples demonstrates how dynamic affordances, constraints and object actuation can create novel interaction possibilities.},
-address = {St. Andrews, UK},
-author = {Follmer, Sean and Leithinger, Daniel and Olwal, Alex and Hogge, Akimitsu and Ishii, H},
-booktitle = {UIST '13 Proceedings of the 26th annual ACM symposium on User interface software and technology},
-doi = {10.1145/2501988.2502032},
-file = {:Users/Brendan/Documents/Journals/TUI/follmer\_inform\_uist\_2013.pdf:pdf},
-isbn = {9781450322683},
-keywords = {Actuated Tangible Interfaces,Shape Displays,Shape-changing User Interfaces,Token and Constraint Interfaces},
-pages = {417--426},
-publisher = {ACM Press},
-title = {{inFORM: dynamic physical affordances and constraints through shape and object actuation.}},
-url = {http://www.olwal.com/projects/research/inform/follmer\_inform\_uist\_2013.pdf},
-year = {2013}
+@inproceedings{Follmer2013,
+ author = {Follmer, Sean and Leithinger, Daniel and Olwal, Alex and Hogge, Akimitsu and Ishii, Hiroshi},
+ title = {inFORM: Dynamic Physical Affordances and Constraints Through Shape and Object Actuation},
+ booktitle = {Proceedings of the 26th Annual ACM Symposium on User Interface Software and Technology},
+ series = {UIST '13},
+ year = {2013},
+ isbn = {978-1-4503-2268-3},
+ location = {St. Andrews, Scotland, United Kingdom},
+ pages = {417--426},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/2501988.2502032},
+ doi = {10.1145/2501988.2502032},
+ acmid = {2502032},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {actuated tangible interfaces, shape changing user interfaces, shape displays, token and constraint interfaces},
 }
 
 @misc{goulthorpe2000,
@@ -1147,47 +1392,59 @@ url = {http://www.computer.org/csdl/proceedings/ismar/2002/1781/00/17810203-abs.
 year = {2002}
 }
 
-@article{ishii2008b,
-abstract = {The article discusses tangible computer user interfaces (TUIs). Contrary to graphical user interfaces that decouple the input and presentation of data, a TUI manifests digital information in physical form. The author illustrates the concept by describing two implementations. An "Urban Planning Workbench" developed in 1999 by the Tangible Media Group incorporated TUI using scaled models of buildings. Tangible Media later developed "Sandscape," a TUI that permitted users to manipulate a model landscape by handling sand.},
-author = {Ishii, Hiroshi},
-doi = {10.1145/1349026.1349034},
-file = {:Users/Brendan/Documents/Journals/MIT Media Lab/The tangible user interface and its evolution.pdf:pdf},
-isbn = {0897918029},
-issn = {00010782},
-journal = {Communications of the ACM},
-number = {6},
-pages = {32--36},
-title = {{The tangible user interface and its evolution}},
-volume = {51},
-year = {2008}
-}
+@article{Ishii2008b,
+ author = {Ishii, Hiroshi},
+ title = {The Tangible User Interface and Its Evolution},
+ journal = {Commun. ACM},
+ issue_date = {June 2008},
+ volume = {51},
+ number = {6},
+ month = jun,
+ year = {2008},
+ issn = {0001-0782},
+ pages = {32--36},
+ numpages = {5},
+ url = {http://doi.acm.org/10.1145/1349026.1349034},
+ doi = {10.1145/1349026.1349034},
+ acmid = {1349034},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
 
-@article{iwata2001,
-abstract = {This paper presents work carried out for a project to develop a new interactive technique that combines haptic sensation with computer graphics. The project has two goals. The first is to provide users with a spatially continuous surface on which they can effectively touch an image using any part of their bare hand, including the palm. The second goal is to present visual and haptic sensation simultaneously by using a single device that doesn't oblige the user to wear any extra equipment. In order to achieve these goals, we designed a new interface device comprising of a flexible screen, an actuator array and a projector. The actuator deforms the flexible screen onto which the image is projected. The user can then touch the image directly and feel its shape and rigidity. Initially we fabricated two prototypes, and their effectiveness is examined by studying the observations made by anonymous users and a performance evaluation test for spatial resolution.},
-author = {Iwata and Yano and Nakaizumi and Kawamura},
-doi = {10.1145/383259.383314},
-file = {:Users/Brendan/Documents/Journals/Mendeley/feelex.pdf:pdf},
-isbn = {158113374X},
-journal = {Proceedings of SIGGRAPH 2001},
-keywords = {deformable screen,haptics,interactive graphics},
-pages = {469--475},
-title = {{Project FEELEX: adding haptic surface to graphics}},
-url = {http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=pubmed\&cmd=Retrieve\&dopt=AbstractPlus\&list\_uids=3786863014116845425related:ced\_AdmjjTQJ$\backslash$npapers://c80d98e4-9a96-4487-8d06-8e1acc780d86/Paper/p197},
-year = {2001}
-}
+@inproceedings{Iwata2001,
+ author = {Iwata, Hiroo and Yano, Hiroaki and Nakaizumi, Fumitaka and Kawamura, Ryo},
+ title = {Project FEELEX: Adding Haptic Surface to Graphics},
+ booktitle = {Proceedings of the 28th Annual Conference on Computer Graphics and Interactive Techniques},
+ series = {SIGGRAPH '01},
+ year = {2001},
+ isbn = {1-58113-374-X},
+ pages = {469--476},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/383259.383314},
+ doi = {10.1145/383259.383314},
+ acmid = {383314},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {actuator array, deformable screen, haptics, interactive graphics},
+} 
 
-@article{leithinger2013,
-abstract = {Recent research in 3D user interfaces pushes towards immersive graphics and actuated shape displays. Our work explores the hybrid of these directions, and we introduce sublimation and deposition, as metaphors for the transitions between physical and virtual states. We discuss how digital models, handles and controls can be interacted with as virtual 3D graphics or dynamic physical shapes, and how user interfaces can rapidly and fluidly switch between those representations. To explore this space, we developed two systems that integrate actuated shape displays and augmented reality (AR) for co-located physical shapes and 3D graphics. Our spatial optical see-through display provides a single user with head-tracked stereoscopic augmentation, whereas our handheld devices enable multi-user interaction through video seethrough AR. We describe interaction techniques and applications that explore 3D interaction for these new modalities. We conclude by discussing the results from a user study that show how freehand interaction with physical shape displays and co-located graphics can outperform wand-based interaction with virtual 3D graphics.},
-author = {Leithinger, Daniel and Follmer, Sean and Olwal, Alex and Luescher, Samuel and Hogge, Akimitsu and Lee, Jinha and Ishii, Hiroshi},
-doi = {10.1145/2470654.2466191},
-file = {:Users/Brendan/Documents/Journals/TUI/sublimate.pdf:pdf},
-isbn = {9781450318990},
-journal = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
-pages = {1441--1450},
-title = {{Sublimate: State-changing virtual and physical rendering to augment interaction with shape displays}},
-url = {http://dl.acm.org/citation.cfm?id=2466191},
-year = {2013}
-}
+@inproceedings{Leithinger2013,
+ author = {Leithinger, Daniel and Follmer, Sean and Olwal, Alex and Luescher, Samuel and Hogge, Akimitsu and Lee, Jinha and Ishii, Hiroshi},
+ title = {Sublimate: State-changing Virtual and Physical Rendering to Augment Interaction with Shape Displays},
+ booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+ series = {CHI '13},
+ year = {2013},
+ isbn = {978-1-4503-1899-0},
+ location = {Paris, France},
+ pages = {1441--1450},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/2470654.2466191},
+ doi = {10.1145/2470654.2466191},
+ acmid = {2466191},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {3d interaction, actuated tangibles, shape display, spatial augmented reality},
+} 
 
 @inproceedings{lakatos2012,
 address = {Kosice, Slovakia},
@@ -1204,20 +1461,23 @@ year = {2012}
 }
 
 @article{Ishii2012,
-abstract = {Graphical user interfaces (GUIs) let users see digital information only through a screen, as if looking into a pool of water, as depicted in Figure 1 on page 40. We interact with the forms below through remote controls, such as a mouse, a keyboard, or a touchscreen (Figure 1a). Now imagine an iceberg, a mass of ice that penetrates the surface of the water and provides a handle for the mass beneath. This metaphor describes tangible user interfaces: They act as physical manifestations of computation, allowing us to interact directly with the portion that is made tangible—the “tip of the iceberg” (Figure 1b). Radical Atoms takes a leap beyond tangible interfaces by assuming a hypothetical generation of materials that can change form and appearance dynamically, so they are as reconfigurable as pixels on a screen. Radical Atoms is a vision for the future of human-material interactions, in which all digital information has physical manifestation so that we can interact directly with it—as if the iceberg had risen from the depths to reveal its sunken mass (Figure 1c).},
-author = {Ishii, Hiroshi and Lakatos, D{\'{a}}vid and Bonanni, Leonardo and Labrune, Jean-Baptiste Jb},
-doi = {10.1145/2065327.2065337},
-isbn = {1978750447},
-issn = {10725520},
-journal = {Interactions},
-publisher = {ACM},
-number = {February},
-pages = {38--51},
-title = {{Radical Atoms : Beyond Tangible Bits , Toward Transformable Materials}},
-url = {http://dl.acm.org/citation.cfm?id=2065337},
-volume = {XIX},
-year = {2012}
-}
+ author = {Ishii, Hiroshi and Lakatos, D\'{a}vid and Bonanni, Leonardo and Labrune, Jean-Baptiste},
+ title = {Radical Atoms: Beyond Tangible Bits, Toward Transformable Materials},
+ journal = {interactions},
+ issue_date = {January + February 2012},
+ volume = {19},
+ number = {1},
+ month = jan,
+ year = {2012},
+ issn = {1072-5520},
+ pages = {38--51},
+ numpages = {14},
+ url = {http://doi.acm.org/10.1145/2065327.2065337},
+ doi = {10.1145/2065327.2065337},
+ acmid = {2065337},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
 
 @misc{leithinger2009,
 author = {Leithinger, Daniel and Kumpf, Adam and Ishii, Hiroshi},
@@ -1227,19 +1487,23 @@ urldate = {2015-04-25},
 year = {2009}
 }
 
-@article{leithinger2011,
-abstract = {Actuated shape output provides novel opportunities for experiencing, creating and manipulating 3D content in the physical world. While various shape displays have been proposed, a common approach utilizes an array of linear actuators to form 2.5D surfaces. Through identifying a set of common interactions for viewing and manipulating content on shape displays, we argue why input modalities beyond direct touch are required. The combination of freehand gestures and direct touch provides additional degrees of freedom and resolves input ambiguities, while keeping the locus of interaction on the shape output. To demonstrate the proposed combination of input modalities and explore applications for 2.5D shape displays, two example scenarios are implemented on a prototype system.},
-author = {Leithinger, Daniel and Lakatos, David and Devincenzi, Anthony and Blackshaw, Matthew and Ishii, Hiroshi},
-doi = {10.1145/2047196.2047268},
-file = {:Users/Brendan/Documents/Journals/Mendeley/fp392-leithinger.pdf:pdf},
-isbn = {9781450307161},
-journal = {Proceedings of the 24th annual ACM symposium on User interface software and technology},
-keywords = {actuated surface,direct manipu-,gestural input,lation,shape display,tangible input},
-mendeley-groups = {Introduction},
-pages = {541--548},
-title = {{Direct and Gestural Interaction with Relief : A 2 . 5D Shape Display}},
-year = {2011}
-}
+@inproceedings{Leithinger2011,
+ author = {Leithinger, Daniel and Lakatos, David and DeVincenzi, Anthony and Blackshaw, Matthew and Ishii, Hiroshi},
+ title = {Direct and Gestural Interaction with Relief: A 2.5D Shape Display},
+ booktitle = {Proceedings of the 24th Annual ACM Symposium on User Interface Software and Technology},
+ series = {UIST '11},
+ year = {2011},
+ isbn = {978-1-4503-0716-1},
+ location = {Santa Barbara, California, USA},
+ pages = {541--548},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/2047196.2047268},
+ doi = {10.1145/2047196.2047268},
+ acmid = {2047268},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {actuated surface, direct manipulation, gestural input, shape display, tangible input},
+} 
 
 @article{patten2001,
 abstract = {In this paper we present a system that electromagnetically tracks the positions and orientations of multiple wireless objects on a tabletop display surface. The system offers two types of improvements over existing tracking approaches such as computer vision. First, the system tracks objects quickly and accurately without susceptibility to occlusion or changes in lighting conditions. Second, the tracked objects have state that can be modified by attaching physical dials and modifiers. The system can detect these changes in real-time.We present several new interaction techniques developed in the context of this system. Finally, we present two applications of the system: chemistry and system dynamics simulation.},
@@ -1274,19 +1538,23 @@ title = {{Illuminating Clay: A Tangible Interface with potential GRASS applicati
 year = {2002}
 }
 
-@article{poupyrev2007,
-abstract = {In the last decade, the vision of future interfaces has shifted from virtual reality to augmented and tangible user inter- faces (UI) where virtual and physical (or bits and atoms) co-exist in harmony. Recently, a growing number of de- signers and researchers have been taking the next logical step: creating interfaces where physical, tangible elements are not merely dynamically coupled to the digital attributes and information, but are themselves dynamic, self- reconfigurable devices that can change their physical properties depending on the state of the interfaces, the user, or the environment. A combination of the actuation, self-configuration, and tangibility can expand and enhance the design of tangible interfaces. In this paper, we present an overview of the use of actuation in user interfaces and discuss the rationality of building actuated interfaces. We then discuss actuated interfaces in detail based on our experience designing Lumen shape displays. Work on actuated interfaces is still in its infancy, projects are few and far between, so we consider this paper an invitation to discussion and hope it can help stimulate further research in this area.},
-author = {Poupyrev, Ivan and Nashida, Tatsushi and Okabe, Makoto},
-doi = {10.1145/1226969.1227012},
-file = {:Users/Brendan/Documents/Journals/TUI/Actuation and Tangible User Interfaces.pdf:pdf},
-isbn = {9781595936196},
-journal = {Proceedings of TEI 2007},
-keywords = {collaboration,haptics,interaction,shape displays},
-pages = {205--212},
-title = {{Actuation and tangible user interfaces: the Vaucanson duck, robots, and shape displays}},
-url = {http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=pubmed\&cmd=Retrieve\&dopt=AbstractPlus\&list\_uids=4610820766724075012related:BC6V4w7t\_D8J$\backslash$npapers://c80d98e4-9a96-4487-8d06-8e1acc780d86/Paper/p171},
-year = {2007}
-}
+@inproceedings{Poupyrev2007,
+ author = {Poupyrev, Ivan and Nashida, Tatsushi and Okabe, Makoto},
+ title = {Actuation and Tangible User Interfaces: The Vaucanson Duck, Robots, and Shape Displays},
+ booktitle = {Proceedings of the 1st International Conference on Tangible and Embedded Interaction},
+ series = {TEI '07},
+ year = {2007},
+ isbn = {978-1-59593-619-6},
+ location = {Baton Rouge, Louisiana},
+ pages = {205--212},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1226969.1227012},
+ doi = {10.1145/1226969.1227012},
+ acmid = {1227012},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {collaboration, haptics, interaction, shape displays},
+} 
 
 @article{Poynor1995,
 author = {Poynor, R.},
@@ -1333,21 +1601,23 @@ volume = {16},
 year = {2010}
 }
 
-@inproceedings{underkoffler1999,
-address = {New York, New York, USA},
-author = {Underkoffler, John and Ishii, Hiroshi},
-booktitle = {CHI '99 Proceedings of the SIGCHI conference on Human Factors in Computing Systems},
-doi = {10.1145/302979.303114},
-file = {:Users/Brendan/Documents/Journals/MIT Media Lab/Urp.pdf:pdf},
-isbn = {0201485591},
-month = may,
-pages = {386--393},
-publisher = {ACM Press},
-title = {{Urp: a luminous-tangible workbench for urban planning and design}},
-url = {http://dl.acm.org/citation.cfm?id=302979.303114},
-year = {1999}
-}
-%
+@inproceedings{Underkoffler1999,
+ author = {Underkoffler, John and Ishii, Hiroshi},
+ title = {Urp: A Luminous-tangible Workbench for Urban Planning and Design},
+ booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+ series = {CHI '99},
+ year = {1999},
+ isbn = {0-201-48559-1},
+ location = {Pittsburgh, Pennsylvania, USA},
+ pages = {386--393},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/302979.303114},
+ doi = {10.1145/302979.303114},
+ acmid = {303114},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
 @misc{altmann2015,
 author = {Altmann, Markus},
 title = {{About Nonuniform Rational B-Splines - NURBS}},
@@ -1387,7 +1657,6 @@ url={http://search.proquest.com/docview/757110299?accountid=12725},
 abstract = {Bivariate and trivariate functions for interpolation from scattered data are derived. They are constructed by explicit minimization of a general smoothness functional, and they include a tension parameter that controls the character of the interpolation function (e.g., for bivariate case the surface can be tuned from a ÒmembraneÓ to a Òthin steel plateÓ), Tension can be applied also in a chosen direction, for modeling of phenomena with a simple type of anisotropy. The functions have regular derivatives of all orders everywhere. This makes them suitable for analysis of surface geometry and for direct application in models where derivatives are necessary. For processing of large datasets (thousands of data points), which are now common in geosciences, a segmentation algorithm with a flexible size of overlapping neighborhood is presented. Simple examples demonstrating flexibility and accuracy of the functions are presented.},
 author = {Mitasova, Helena and Mitas, Lubos},  
 doi = {10.1007/BF00893171},
-file = {:Users/Brendan/Documents/Journals/Mendeley/MG-I-93.pdf:pdf},
 issn = {08828121},
 journal = {Mathematical Geology},
 keywords = {scattered data interpolation,segmented processing,surface modeling},
@@ -1498,33 +1767,6 @@ volume = {56},
 year = {2012}
 }
 %
-@misc{Blender,
-   title = {Blender -- a 3D modelling and rendering package},
-   author = {{Blender Online Community}},
-   organization = {Blender Foundation},
-   address = {Blender Institute, Amsterdam},
-   year = {2016},
-   url = {http://www.blender.org},
- }
-%
-@misc{Oculus2016,
-author = {Oculus},
-title = {{Illustrative filmmaking with Oculus Story Studio}},
-url = {https://youtu.be/-rvwcGxEUGM},
-urldate = {2016-07-24},
-year = {2016}
-}
-%
-@inproceedings{Quilez2016,
-address = {Anaheim, CA},
-author = {Quilez, Inigo and Allsbrook, Wesley},
-booktitle = {SIGGRAPH},
-publisher = {ACM},
-title = {{Quill: VR Drawing in the Production of Oculus Story Studio's New Movie}},
-url = {https://www.pathlms.com/siggraph/events/609/video{\_}presentations/31754},
-year = {2016}
-}
-%
 @inproceedings{Schubert2011,
 address = {Banff, Canada},
 author = {Schubert, Gerhard and Artinger, Eva and Petzold, Frank and Klinker, Gudrun},
@@ -1602,7 +1844,7 @@ year = {2015}
 %
 @article{Golledge2002,
 abstract = {The nature of geographic knowledge today is very different from what it. was fifty years ago. It has evolved from phenomenal (declarative) to intellectual (primed by cognitive demands). Surges of interest in systematic specialties and technical innovations in representation and analysis have changed the nature of geographic knowledge, advanced geographic vocabulary, defined and examined geographic concepts, and developed spatially explicit theories relating to human and physical environments. Explorations of interactions between these domains has generated a new interest in integrated science. This interest has produced a unique way of examining human-environment relations, and has provided the basis for a vastly different underlying knowledge structure in the discipline. But the future still challenges and significant problems face geography if it is to remain a viable academic discipline in the new information technology society. {\textcopyright} 2002 by Association of American Geographers.},
-author = {Golledge, R.G.},
+author = {Golledge, Reginald G.},
 doi = {10.1111/1467-8306.00276},
 isbn = {0004-5608},
 issn = {0004-5608},
@@ -1615,7 +1857,7 @@ year = {2002}
 }
 %
 @article{Golledge2016,
-author = {Golledge, R. and Marsh, M. and Battersby, S. E.},
+author = {Golledge, Reginald G. and Marsh, Meredith and Battersby, Sarah},
 journal = {Annals of the Association of American Geographers},
 number = {2},
 pages = {285--308},
@@ -1635,7 +1877,7 @@ year = {1997}
 %
 @article{Gersmehl2007,
 abstract = {The human brain appears to have several “regions” that are structured to do different kinds of spatial thinking, according to a large and rapidly growing body of research in a number of disciplines. Building on a previous review of research with older children and adults, this article summarizes the research on spatial thinking by young children. Three conclusions: brain structures for spatial reasoning are fully functional at a very early age, adult intervention can enhance both use and representational ability, and practice in early grades is an important, perhaps even essential, part of the scaffold for later learning.},
-author = {Gersmehl, Philip J. and Gersmehl, Carol a.},
+author = {Gersmehl, Philip J. and Gersmehl, Carol A.},
 doi = {10.1080/00221340701809108},
 issn = {0022-1341},
 journal = {Journal of Geography},
@@ -1691,4 +1933,219 @@ pages = {183--198},
 title = {{Effect of GIS Learning on Spatial Thinking}},
 volume = {33},
 year = {2009}
+}
+
+@InProceedings{Rusu2011,
+author    = {Radu Bogdan Rusu and Steve Cousins},
+title     = {{3D is here: Point Cloud Library (PCL)}},
+booktitle = {{IEEE International Conference on Robotics and Automation (ICRA)}},
+month     = {May 9-13},
+year      = {2011},
+address   = {Shanghai, China}
+}
+
+@inproceedings{Quilez2016,
+ author = {Quilez, Inigo},
+ title = {Quill: VR Drawing in the Production of Oculus Story Studio's New Movie},
+ booktitle = {ACM SIGGRAPH 2016 Real-Time Live!},
+ series = {SIGGRAPH '16},
+ year = {2016},
+ isbn = {978-1-4503-4378-7},
+ location = {Anaheim, California},
+ pages = {41:26--41:26},
+ articleno = {41},
+ numpages = {1},
+ url = {http://doi.acm.org/10.1145/2933540.2933549},
+ doi = {10.1145/2933540.2933549},
+ acmid = {2933549},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+% -------------------------- GRASS ------------------------------
+
+@Manual{GRASS_GIS_software,
+title = {Geographic Resources Analysis Support System (GRASS GIS) Software},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {http://grass.osgeo.org},
+}
+
+@Manual{g.gui.animation,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: g.gui.animation},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass72/manuals/g.gui.animation.html},
+}
+
+@Manual{r.series,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: r.series},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass72/manuals/r.series.html},
+}
+
+@Manual{r.regression.line,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: r.regression.line},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass72/manuals/r.regression.line.html},
+}
+
+@Manual{r.mapcalc,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: r.mapcalc},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass72/manuals/r.mapcalc.html},
+}
+
+@Manual{r.param.scale,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: r.param.scale},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass72/manuals/r.param.scale.html},
+}
+
+@Manual{r.geomorphon,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: r.geomorphon},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html},
+}
+
+@Manual{r.sim.water,
+title = {Geographic Resources Analysis Support System (GRASS GIS 7.2) Reference Manual: r.sim.water},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+address = {USA},
+year = {2016},
+url = {https://grass.osgeo.org/grass72/manuals/r.sim.water.html},
+}
+
+% -------------------------- TL SOURCE CODE ------------------
+
+@misc{r.in.kinect,
+author = {Petrasova, Anna},
+year = {2016},
+title = {r.in.kinect},
+url = {https://github.com/tangible-landscape/r.in.kinect},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{grass-tangible-landscape,
+author = {Petrasova, Anna},
+year = {2016},
+title = {grass-tangible-landscape},
+url = {https://github.com/tangible-landscape/grass-tangible-landscape},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{tangible-landscape-immersive-extension,
+author = {Tabrizian, Payam },
+year = {2016},
+title = {Tangible Landscape Immersive Extension},
+url = {https://github.com/tangible-landscape/tangible-landscape-immersive-extension},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+% -------------------------- WEBSITES ------------------------------
+
+@misc{Blender,
+author = {{Blender Online Community}},
+year = {2016},
+title = {Blender -- a 3D modelling and rendering package},
+url = {http://www.blender.org},
+lastaccessed  = {July 25, 2016},
+note =  {},
+}
+
+@misc{ncsu_geoforall_2016,
+author = {{NCSU GeoForAll Lab}},
+year = {2016},
+title	= {Tangible Landscape: Difference Analytic},
+howpublished = {Video},
+url = {https://youtu.be/GmOqo4FCehM},
+lastaccessed  = {July 25, 2016},
+note =  {},
+}
+
+@misc{Oculus2016,
+author = {Oculus},
+year = {2016},
+title	= {Illustrative filmmaking with Oculus Story Studio},
+howpublished = {Video},
+url = {https://youtu.be/-rvwcGxEUGM},
+lastaccessed  = {July 24, 2016},
+note =  {},
+}
+
+@misc{Rhino,
+author = {McNeel, Robert and Associates},
+year = {2016},
+title = {{Rhinoceros}},
+url = {https://www.rhino3d.com/},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{Vue,
+author = {{	e-on software}},
+year = {2012},
+title = {{Vue}},
+url = {http://www.e-onsoftware.com/products/vue/},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{PCL,
+author = {PCL Development Team},
+year = {2016},
+title = {Point Cloud Library},
+url = {http://pointclouds.org/},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{OpenKinect,
+author = {OpenKinect Development Team},
+year = {2016},
+title = {OpenKinect},
+url = {https://github.com/OpenKinect},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{OpenCV,
+author = {OpenCV Development Team},
+year = {2016},
+title = {OpenCV},
+url = {http://opencv.org/},
+lastaccessed  = {August 6, 2016},
+note =  {},
+}
+
+@misc{Watchdog,
+author = {Yesudeep Mangalapilly},
+year = {2011},
+title = {Watchdog},
+url = {https://github.com/gorakhargosh/watchdog},
+lastaccessed  = {August 6, 2016},
+note =  {},
 }

@@ -44,11 +44,11 @@
 \newcommand{\xmark}{\ding{55}}
 
 % Metadata Information
-\acmVolume{9}
-\acmNumber{4}
-\acmArticle{39}
-\acmYear{2010}
-\acmMonth{3}
+\acmVolume{0}
+\acmNumber{0}
+\acmArticle{0}
+\acmYear{0}
+\acmMonth{0}
 
 % Copyright
 %\setcopyright{acmcopyright}
@@ -186,7 +186,7 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 
 \section{Introduction}
 
-\begin{figure*}[h!]
+\begin{figure}[H]
 \begin{center}
 %		\includegraphics[width=0.32\textwidth]{images/tl_sequence_1.jpg}
 		\includegraphics[width=0.49\textwidth]{images/tl_sequence_2.jpg}
@@ -194,11 +194,7 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 	\caption{Tangibly modeling the flow of water with Tangible Landscape}
 	\label{fig:tl_flow}
 \end{center}
-\end{figure*}
-
-
-% REFRAME in terms of 
-% multi-dimensional spatial thinking
+\end{figure}
 
 % A brief intro to TL
 We present Tangible Landscape -- 
@@ -213,7 +209,7 @@ With extensive libraries for point cloud processing,
 surface and volumetric modeling and analysis
 GIS are powerful tools for studying 3-dimensional (3D) space.
 %
-GIS, however, can be unintuitive and challenging to use. % cite?
+GIS, however, can be unintuitive and challenging to use \cite{Ratti2004}. % more citations?
 %
 Unintuitive interactions with GIS can 
 frustrate users,
@@ -286,7 +282,7 @@ requires sophisticated reasoning.
 In Gollegde et al.'s hierarchical framework of concepts 
 for thinking about geographic space,
 primitive concepts -- identity and location, magnitude, and space-time --
-form the basis of geographic knowledge \cite{Golledge1997,Golledge2002,Golledge2016}. 
+form the basis of geographic knowledge \cite{Golledge2002,Golledge2016}. 
 %
 Concepts of increasing complexity are derived from 
 combinations of simpler concepts. 
@@ -335,8 +331,7 @@ geospatial patterns and processes.
 %
 The open source 
 Geographic Resource Analysis Support System (GRASS) GIS for example supports 
-`geospatial data management and analysis, image processing, graphics and maps production, spatial modeling, and visualization' \cite{GRASS}. 
-%\footnote{\url{https://grass.osgeo.org/}} 
+`geospatial data management and analysis, image processing, graphics and maps production, spatial modeling, and visualization' \cite{GRASS_GIS_software}. 
 
 Computing mediates and transforms spatial thinking -- expanding, but also constraining what is possible.
 %
@@ -370,14 +365,6 @@ Furthermore, it can also be challenging to parse data that is only presented vis
 Spatial data -- especially 3D spatial data -- presented graphically can require sophisticated spatial reasoning skills such as mental rotation \cite{Shepard1971}, spatial visualization, and spatial perception \cite{Linn1985} to parse and understand, much less manipulate. 
 
 \subsection{Tangible interaction}
-
-% RE-FOCUS ON TANGIBLE GEOSPATIAL MODELING
-% tangible interaction with surfaces
-% lit review
-% what we know -> studies done
-% what we don't know -> gaps in knowledge
-% what we will do
-% end with objectives
 
 % Introduction to tangible interfaces
 Tangible interfaces -- interfaces that couple physical and digital data \cite{Dourish2001} -- 
@@ -428,15 +415,14 @@ Distance and physical properties like size, shape, volume, weight, hardness, and
 %
 By affording physical feedback tangible interfaces should, therefore, reduce the cognitive load needed to judge and manipulate spatial distances, relationships, patterns, and 3D forms and volumes. 
 
-
-\begin{figure*}[h!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=0.49\textwidth]{images/physical_rotation_1.jpg}
 		\includegraphics[width=0.49\textwidth]{images/physical_rotation_2.jpg}
 	\caption{Physically rotating a topographic model}
 	\label{fig:physical_rotation}
 \end{center}
-\end{figure*}
+\end{figure}
 
 % Physical simulation
 Furthermore, some cognitive processes can be physically simulated, offloading cognitive work onto the body \cite{Kirsh2013}. 
@@ -492,7 +478,7 @@ Tangible interfaces enable embodied interaction
 -- the kinaesthetic exploration and physical transformation of digital data.
 %
 By embodying interaction
-users can offload 
+users should be able to offload 
 challenging cognitive tasks 
 like sensing form, manipulating form, and imagining new forms 
 onto the body
@@ -501,8 +487,14 @@ metacognition.
 %
 With more resources for metacognition
 users should be better able to parse and learn from computations.
-%
-With GIS users can computationally offload other types of challenging cognitive tasks 
+
+\subsection{Tangible interfaces for geospatial modeling} 
+% Tangible geospatial interaction
+% Tangible geospatial modeling
+% Tangible interfaces for geospatial modeling
+
+With GIS %spatial modeling
+users can computationally offload other types of challenging cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
 %
 Tangible interfaces for geospatial modeling should, 
@@ -510,25 +502,16 @@ therefore, enhance users' spatial performance
 for challenging tasks 
 like sculpting topography and guiding the flow of water
 by combining these physical and computational affordances.
-
-
-% RE-FOCUS ON TANGIBLE GEOSPATIAL MODELING
-% tangible interaction with surfaces
-% lit review
-% what we know -> studies done
-% what we don't know -> gaps in knowledge
-% what we will do
-% end with objectives
-
-\subsection{Tangible geospatial modeling} % Tangible geospatial interaction
-% tangible interfaces for geospatial modeling
-
-% MORE INTRO...
-
-Tangible interfaces for geospatial modeling include augmented architectural models (Table~\ref{table:review_a}), augmented clay (Table~\ref{table:review_b}),  augmented sandboxes (Table~\ref{table:review_c}), and actuated pin tables (Table~\ref{table:review_d}).
-% -- a type of shape-changing interface. 
 %
-% augmented 
+There are already many tangible interfaces for geospatial modeling.
+%
+%Tangible interfaces for geospatial modeling 
+These include 
+augmented architectural models (Table~\ref{table:review_a}), 
+augmented clay (Table~\ref{table:review_b}),  
+augmented sandboxes (Table~\ref{table:review_c}), 
+and actuated pin tables (Table~\ref{table:review_d}).
+%
 Projection augmented tangible interfaces 
 couple a physical and digital model
 through a cycle of 3D sensing or object recognition,
@@ -538,22 +521,21 @@ Augmented architectural models
 like Urp \cite{Underkoffler1999} 
 and the Collaborative Design Platform \cite{Schubert2011}
 are a type of 
-`discrete tabletop tangible interface' \cite{Ishii2012}.
-% that / which...
+`discrete tabletop tangible interface' \cite{Ishii2012}
+that track models on tabletop.
 %
 Augmented clay models 
 like Illuminating Clay \cite{Piper2002a} 
 and augmented sandboxes like Sandscape \cite{Ishii2004} 
 are types of 
-`deformable, continuous tangible interfaces' \cite{Ishii2012}. 
-% that / which...
+`deformable, continuous tangible interfaces' \cite{Ishii2012}
+that users can sculpt. 
 %
 These tangible interfaces 
 have two feedback loops -- 
 there is passive, kinaesthetic feedback from grasping the physical model 
 and active, graphical feedback from computation.
 %
-% shape changing
 Actuated pin tables
 like Relief \cite{Leithinger2009}
 are a type of transformable tangible interface \cite{Ishii2012} 
@@ -565,65 +547,73 @@ have a third feedback loop --
 the physical model
 can be computationally transformed
 for active, kinaesthetic feedback. 
-%
 
-%Given the need to have working prototype to study
-%research on tangible interfaces for geospatial modeling 
-%has understandably focused on the design of new technologies and prototypes 
-%
 Research on tangible interfaces for geospatial modeling 
 has focused on the design of new technologies and prototypes
-rather than studying how they % tangibles 
+rather than studying how they
 are used. 
-%
-% 
-%
-% why are user studies important? 
-% ...
-%
-% \cite{Bannon2011}
 %
 A review of tangible interfaces for geospatial modeling 
 (Tables~\ref{table:review_a}-\ref{table:review_d})
-shows that have been relatively few qualitative user studies \cite{Ishii2002,Shamonsky2003,Tateosian2010,Petrasova2015}
+shows that have been 
+relatively few case studies \cite{Ishii2002,Tateosian2010,Petrasova2015} 
+or qualitative user studies \cite{Shamonsky2003}
 and only a single quantitive pilot study \cite{Harmon2016}.
-Most of the qualitative studies were case studies, 
-which lacked rigorous, systematic qualitative analysis.
 %
 A review of shape-changing interfaces 
 also found that there were relatively few user studies
 and called for `more, high-quality data on user experience'
-in order to understand if the interfaces work as designed
+in order to understand if interfaces work as designed
 \cite{Rasmussen2012}.
+
+Many of the theoretical underpinnings of tangibles 
+remain unproven and unexplored. 
+%
+Can users successfully
+cognitively grasp digital data as an extension of their bodies,
+intuitively interact, 
+and offload cognitive processes
+with tangibles?
+%
+How does this change how users think and perform?
+%
+Do current approaches to tangible, embodied interfaces
+really work as theorized? 
+
+Because bodies are situated in space, embodiment is inherently spatial. 
+%
+Tangible, embodied interaction could radically change 
+how we think about and interact with space in computing. 
+%
+Tangible interfaces for geospatial modeling 
+promise to enhance spatial thinking
+through kinaesthetic interaction with 
+spatial computations. 
+%
+How can tangible interfaces for geospatial modeling 
+mediate spatial cognition and performance? 
+%
+Can users offload enough cognitive work onto their bodies
+with tangible interfaces for geospatial modeling 
+to successfully parse and learn from computational feedback
+without suffering cognitive overload?
 %
 
-
-
-
-% what we know
-
-% what we don't know
-
-
-
-% RESEARCH QUESTIONS / OBJECTIVES
-
+In order to begin to answer some of these questions we 
+designed a tangible interface for geospatial modeling, 
+while simultaneously conducting an experiment
+to study how this tangible interface mediates spatial cognition.
+%
+Our research objectives were to:
+%
 \begin{itemize}
-% design
-\item How can we design an effective tangible interface for GIS?
-% coupling
-\item Can coupling a physical and digital model of topography improve spatial performance?
-% analytics
-\item How do different geospatial analytics mediate users' spatial performance when using a tangible interface for GIS?
+\item Design an effective tangible interface for geospatial modeling
+\item Test whether coupling a physical and digital model of topography can improve spatial performance
+\item Study how different geospatial analytics mediate users' spatial performance when using a tangible interface for geospatial modeling
 \end{itemize}
 
 
-
-\pagebreak
-
-% Tangible interfaces for geospatial modeling
-
-\begin{table}[H]
+\begin{table}
 \tbl{Augmented architectural modeling interfaces}{
 \ra{1.5}
 \begin{tabulary}{1.0\textwidth}{LLCLL}
@@ -634,13 +624,13 @@ System & \mbox{Interaction} & GIS & User studies & Publications\\
 Urp & Object detection && \mbox{Case studies\textsuperscript{\textasteriskcentered}} & \cite{Underkoffler1999}\\
 &&&& \cite{Ishii2002}\textsuperscript{\textasteriskcentered}\\
 %
-Collaborative Design Platform & Object detection &&& \cite{Schubert2011a}\\
-& Touch &&& \cite{Schubert2012}\\
-& Sketching &&&  \cite{Schubert2014}\\
+Collaborative Design Platform & Object detection &&& \cite{Schubert2011}\\
+& Touch &&& \cite{Schubert2011a}\\
+& Sketching &&&  \cite{Schubert2012}\\
+&&&& \cite{Schubert2014}\\
 &&&& \cite{Schubert2015}\\
-%&&&&& cite{Schubert2011}\\\
-%&&&&& \cite{Schubert2013}\\
-%&&&&& \cite{Schubert2014a}\\
+%&&&& \cite{Schubert2013}\\
+%&&&& \cite{Schubert2014a}\\
 %
 \bottomrule
 \end{tabulary}}
@@ -699,7 +689,7 @@ The Augmented REality Sandtable (ARES) & Sculpting &&& \cite{Amburn2015}\\
 \label{table:review_c} 
 \end{table}
 %
-\begin{table}[H]
+\begin{table}
 \tbl{Actuated pin table interfaces}{
 \ra{1.5}
 \begin{tabulary}{1.0\textwidth}{LLCLL}
@@ -893,7 +883,9 @@ in GRASS GIS' temporal framework
 to create a time series of maps. 
 %
 With this time series users can animate the evolution of their model using the module 
-\emph{g.gui.animation}\footnote{\url{https://grass.osgeo.org/grass72/manuals/g.gui.animation.html}}.
+\emph{g.gui.animation}\cite{g.gui.animation}.
+%\footnote{\url{https://grass.osgeo.org/grass72/manuals/g.gui.animation.html}}.
+
 % add animated video with example
 
 Advances in virtual reality are enabling immersive 3D sketching.
@@ -955,14 +947,18 @@ express ourselves in space and time.
 
 \subsection{Implementation}
 Tangible Landscape has been implemented as a set of components 
--- the \emph{r.in.kinect} add-on module\footnote{\url{https://github.com/tangible-landscape/r.in.kinect}}
-and the \emph{grass-tangible-landscape} plugin\footnote{\url{https://github.com/tangible-landscape/grass-tangible-landscape}} --
+-- the \emph{r.in.kinect} add-on module \cite{r.in.kinect}
+%\footnote{\url{https://github.com/tangible-landscape/r.in.kinect}}
+and the \emph{grass-tangible-landscape} plugin \cite{grass-tangible-landscape}
+%\footnote{\url{https://github.com/tangible-landscape/grass-tangible-landscape}}
+--
 for the active development version of GRASS GIS (Fig.~\ref{fig:software_schema}). 
 The \emph{r.in.kinect} add-on module imports point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
 It has been implemented as a separate component so that it can easily be used for other applications.
 The \emph{grass-tangible-landscape} plugin provides 
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
-The \emph{tangible-landscape-immersive-extension}\footnote{\url{https://github.com/tangible-landscape/tangible-landscape-immersive-extension}}
+The \emph{tangible-landscape-immersive-extension} \cite{tangible-landscape-immersive-extension}
+%\footnote{\url{https://github.com/tangible-landscape/tangible-landscape-immersive-extension}}
 links Tangible Landscape with Blender, 
 an open source 3D modeling and animation program \cite{Blender} 
 enabling 3D rendering on screens or head-mounted displays.
@@ -971,11 +967,14 @@ Users can develop new analyses for Tangible Landscape
 using the GRASS GIS Python Scripting Library.  %GRASS GIS Python API
 Since many tasks in GIS are not appropriate for tangible interaction
 Tangible Landscape was designed to supplement, 
-not replace GRASS GIS's GUI, CLI, and scripting API. 
+not replace GRASS GIS's GUI, CLI, and scripting application program interface (API). 
 Tangible Landscape currently runs on Linux and Mac OSX 
 with an unsupported branch for Windows. 
-Dependencies include the Point Cloud Library, OpenKinect's libfreenect2, 
-OpenCV,  watchdog, and GRASS GIS.
+Dependencies include the Point Cloud Library \cite{Rusu2011,PCL}, 
+OpenKinect's libfreenect2 \cite{OpenKinect}, 
+OpenCV \cite{OpenCV},  
+watchdog \cite{watchdog}, 
+and GRASS GIS \cite{GRASS_GIS_software}.
 
 \begin{figure}
 \begin{center}
@@ -1017,7 +1016,7 @@ between the target digital elevation model and the scanned model that has been s
 The difference can provide a real-time guide 
 where to add or remove sand in order to match the target digital elevation model (Fig.~\ref{fig:difference_sequence}). 
 
-\begin{figure*}[h!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=0.32\textwidth]{images/3d_print/3d_print_1.jpg}
 		\includegraphics[width=0.32\textwidth]{images/3d_print/3d_print_2.jpg}
@@ -1025,19 +1024,18 @@ where to add or remove sand in order to match the target digital elevation model
 	\caption{Casting polymeric sand models with 3D printed molds}
 	\label{fig:casting}
 \end{center}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[h!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_1.jpg}
 		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_2.jpg}\vspace*{0.2em}
-		
 		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_3.jpg}
 		\includegraphics[width=0.49\textwidth]{images/difference/tl_difference_4.jpg}
 	\caption{Sculpting a terrain model using Tangible Landscape's difference analytic}
 	\label{fig:difference_sequence}
 \end{center}
-\end{figure*}
+\end{figure}
 
 \subsection{Applications}
 Using GRASS GIS's extensive libraries for geospatial modeling, analysis, and simulation 
@@ -1053,17 +1051,9 @@ flood control, wildfire management, and coastal change and adaptation.
 Educational applications include
 spatial training and serious gaming.
 
-%\begin{figure*}[h!]
-%\begin{center}
-%		\includegraphics[width=\textwidth]{images/walking_route_view.png}
-%	\caption{...}
-%	\label{fig:applications}
-%\end{center}
-%\end{figure*}
-
-
 \section{Coupling experiment}
-We conducted an experiment to study how 
+After a pilot study \cite{Harmon2016b}
+we conducted an experiment to study how 
 coupling digital and physical models of topography 
 mediates spatial performance. 
 
@@ -1092,7 +1082,8 @@ using the regularized spline with tension interpolation method \cite{Mitasova200
 \paragraph{Digital modeling}
 Participants had 10 minutes to digitally model the study landscape in Rhinoceros, 
 a non-uniform rational basis spline (NURBS) based 3D modeling program
-designed for precise freeform curve and surface modeling\footnote{\url{https://www.rhino3d.com/}}. 
+designed for precise freeform curve and surface modeling \cite{Rhino}.
+%\footnote{\url{https://www.rhino3d.com/}}. 
 After 10 minutes of training
 participants modeled the study landscape as a NURBS surface 
 by vertically translating control points (Fig.~\ref{fig:rhino}). 
@@ -1108,7 +1099,7 @@ Digital modeling affords precise transformations and
 dynamic modes of visualization such as 
 3D orbiting, zooming, and ray traced shading. 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 		\includegraphics[height=108px]{images/experiments/art_rhino.jpg}
 		\includegraphics[height=108px]{images/experiments/rhino.png}
@@ -1127,7 +1118,7 @@ By sensing form subconsciously with the body
 users should have more cognitive resources for critiquing their work 
 and strategizing their next moves. 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=\textwidth]{images/experiments/connie_analog_1.jpg}
 	\caption{Analog modeling by hand}
@@ -1178,7 +1169,7 @@ and stored as raster maps in a GRASS GIS mapset.
 
 \paragraph{Data analysis}
 For each set of models -- digital, analog, and augmented --
-we computed cellular statistics, 
+we computed cellular statistics (i.e.~per cell statistics), 
 topographic and morphometric parameters, 
 and simulated water flow.
 %the mean elevation, standard deviation of elevation, mean difference, mean slope, mean landforms, and mean water flow.
@@ -1186,24 +1177,34 @@ We computed
 the mean elevation 
 and standard deviation of elevation
 for each set
-with the module \textit{r.series}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.series.html}}.
+with the module \textit{r.series} \cite{r.series}
+%\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.series.html}}.
+The mean elevation is the mean of each cell 
+of all elevation maps in a given set of models.
+%The standard deviation of elevation is the standard deviation of each cell
+%of all elevation maps in a given set of models.
 %
 % elevation
 In order to compare participants' modeling performance between sets 
 we computed the difference 
-between the reference elevation and the mean elevation for each set.
+between the reference elevation and 
+the linearly regressed mean elevation for each set.
 %
 % difference
 The difference shows 
-where models are too low or too high
+where models are too low or too high,
 i.e.~where sand should be added or removed to match the reference.
 To account for shifts in scanning and georeferencing
 we vertically rescaled and translated the reference elevation %to match the mean elevation
 by calculating the linear regression of the reference and mean elevation
-with the module \textit{r.regression.line}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.regression.line.html}}
-and then calculating the difference between the regression and the mean elevation 
+with the module \textit{r.regression.line} \cite{r.regression.line}
+%\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.regression.line.html}}
+and then calculating the difference between 
+the regression 
+and the mean elevation 
 using map algebra 
-with the module \textit{r.mapcalc}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.mapcalc.html}}.
+with the module \textit{r.mapcalc} \cite{r.mapcalc}.
+%\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.mapcalc.html}}.
 Table \ref{table:scatterplots} shows the vertical shift 
 in the hand sculpted and projection augmented models 
 caused by scanning and georeferencing.
@@ -1214,13 +1215,15 @@ using differential geometry
 by parameterizing a quadratic function to fit mean elevation values 
 in a neighborhood using least squares \cite{Wood1996} 
 %through quadratic parameterization \cite{Wood1996} of the mean digital elevation model 
-with the module \textit{r.param.scale}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.param.scale.html}}. 
+with the module \textit{r.param.scale} \cite{r.param.scale}.
+%\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.param.scale.html}}. 
 %
 % landforms
 We computed the mean landforms for each set using geomorphons,
 a pattern recognition method for landform classification 
 based on the openness of the terrain
-implemented as the add-on module \textit{r.geomorphon}\footnote{\url{https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html}}. 
+implemented as the add-on module \textit{r.geomorphon} \cite{r.geomorphon}.
+%\footnote{\url{https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html}}. 
 Geomorphons works effectively across spatial scales because 
 the neighborhood search size for pattern recognition 
 is spatially variable -- it is set dynamically based on the visibility of the cell \cite{Jasiewicz2013}.  
@@ -1232,13 +1235,14 @@ such as concentrated water flow, ridges, and valleys
 on the modeled landscapes and the reference landscape.
 
 % landform legend
-\begin{figure*}[h!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=\textwidth]{images/geomorphons_legend.png}
-	\caption{Landforms identified by \textit{r.geomorphon}\footnote{\url{https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html}}} % image source
+	\caption{Landforms identified by \textit{r.geomorphon}, 
+		image source \cite{r.geomorphon}}
 	\label{fig:geomorphons}
 \end{center}
-\end{figure*}
+\end{figure}
 
 \subsection{Results}
 %
@@ -1291,46 +1295,45 @@ Mean &
 \end{table}
 
 \begin{table}
-\tbl{Percent cells}{
+\tbl{Coupling experiment: percent cells}{
 \ra{1.3}
-\begin{tabular}{rrcccccccc}\toprule
-method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
-\phantom{abc} & \multicolumn{2}{c}{valleys}\\
-\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
-&& reference & mean && reference & mean && reference & mean\\ \midrule
-digital && 0.89 & 1.12 && 2.10 & 0.69 && 2.90 & 0.56\\
-hand && 0.89 & 0.80 && 2.10 & 4.00 && 2.90 & 1.66\\
-augmented && 0.89 & 0.77 && 2.10 & 4.13 && 2.90 & 1.48\\
+\begin{tabular}{c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{3em}} c}
+\toprule
+Method & Concentrated flow & Ridges & Valleys \\
+\midrule
+Reference & 0.89 & 2.10 & 2.90\\
+Digital & 1.12 & 0.69 & 0.56\\
+Hand & 0.80 & 4.00 & 1.66\\
+Augmented & 0.77 & 4.13 & 1.48\\
 \bottomrule
 \end{tabular}}
 \label{table:percent_cells} 
 \end{table}
 
 \begin{table}
-\tbl{Minimum distance (ft)}{
+\tbl{Mean minimum distance (ft) of features from reference features}{
 \ra{1.3}
-\begin{tabular}{rrcccccccc}\toprule
-method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
-\phantom{abc} & \multicolumn{2}{c}{valleys}\\
-\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
-&& reference & mean && reference & mean && reference & mean\\ \midrule
-digital && 0 & 12916 && 0 & 110419 && 0 & 98806\\
-hand && 0 & 10162 && 0 & 24005 && 0 & 676450\\
-augmented && 0 & 7121 && 0 & 19599 && 0 & 31401\\
+\begin{tabular}{c <{\hspace{0.5em}} c <{\hspace{1em}} c <{\hspace{3.5em}} c}
+\toprule
+Method & Concentrated flow & Ridges & Valleys \\
+\midrule
+Digital & 12916 & 110419 & 98806\\
+Hand & 10162 & 24005 & 676450\\
+Augmented & 7121 & 19599 & 31401\\
 \bottomrule
 \end{tabular}}
 \label{table:distance} 
 \end{table}
 
 \begin{table}
-\tbl{Coupling experiment}{
+\tbl{Coupling experiment: maps draped over a 3D rendering of the digital elevation model for each set}{
 \ra{1.3}
 \begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
 \toprule
 & \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
 \midrule
 %
-Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+Mean elevation (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
 \includegraphics[width=0.19\textwidth]{images/render_3d/dem_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_2.png} &
@@ -1348,13 +1351,13 @@ Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_3.png}\\
 %
-Mean difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/diff_legend.pdf} & 
+Mean difference (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/diff_legend.pdf} & 
 \includegraphics[width=0.19\textwidth]{images/render_3d/dem_difference_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_3.png}\\
 %
-Mean slope \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend.pdf} & 
+Mean slope (\%) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend_1.pdf} & 
 \includegraphics[width=0.19\textwidth]{images/render_3d/slope_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_2.png} &
@@ -1488,7 +1491,7 @@ We used
 the mean minimum distance between cells
 with water flow, ridges, and valleys
 on the models and the reference
-as a measure of accuracy. 
+as a measure of positional accuracy. 
 %
 The projection-augmented landscapes 
 were the most accurate
@@ -1753,19 +1756,49 @@ Mean &
 &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_4.pdf}} &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/diff_legend.pdf}} &
-\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/slope_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/slope_legend_1.pdf}} &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/forms_legend.pdf}}\\
 %
 \bottomrule
 \end{tabular}}
 \label{table:difference_experiment} 
+%
+\vspace*{1.5em}
+%
+\tbl{Difference experiment: percent cells}{
+\ra{1.3}
+\begin{tabular}{rrcccccccc}\toprule
+Method && \multicolumn{2}{c}{Concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{Ridges} &
+\phantom{abc} & \multicolumn{2}{c}{Valleys}\\
+\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
+&& Reference & Mean && Reference & Mean && Reference & Mean\\ \midrule
+Difference && 1.07 & 0.73 && 4.27 & 3.46 && 2.96 & 0.22\\
+\bottomrule
+\end{tabular}}
+\label{table:difference_percent_cells} 
+%
+%\vspace*{1.5em}
+%%
+%\tbl{Mean minimum distance (ft) of features from reference features}{
+%\ra{1.3}
+%\begin{tabular}{c <{\hspace{1em}} c <{\hspace{1.5em}} c <{\hspace{4em}} c}
+%\toprule
+%Method & Concentrated flow & Ridges & Valleys \\
+%\midrule
+%Difference & 25073 & 35656 & 114378\\
+%\bottomrule
+%\end{tabular}}
+%\label{table:difference_distance} 
 \end{table}
+
 
 % WATER 
 \section{Water flow experiment}
-We conducted an experiment to study 
-how the water flow analytic mediates spatial performance 
-when using a tangible interface for GIS.
+After a pilot study \cite{Harmon2016}
+we conducted an experiment to study 
+how water flow analytics 
+in a tangible interface for GIS
+mediate spatial performance.
 
 \subsection{Methods}
 \paragraph{Water flow analytic}
@@ -1784,7 +1817,8 @@ to direct the simulated flow of water.
 Water flow was simulated in near real-time 
 as a diffusive wave approximation of shallow water flow.
 % water
-The module \textit{r.sim.water}\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.sim.water.html}}
+The module \textit{r.sim.water} \cite{r.sim.water}
+%\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.sim.water.html}}
 uses a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}.
 %We simulated the mean water flow for each set using 
 %a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}
@@ -1793,13 +1827,13 @@ Participants could switch between the precomputed reference water flow
 -- i.e.~their target -- 
 and the water flow over their scanned model. 
 
-\begin{figure*}[h!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=0.9\textwidth]{images/experiments/tl_water.jpg}
 	\caption{Modeling with Tangible Landscape's water flow analytic}
 	\label{fig:flow_sequence}
 \end{center}
-\end{figure*}
+\end{figure}
 
 \paragraph{Data collection and analysis}
 The final scan of each model was stored in a mapset for analysis. 
@@ -1832,20 +1866,6 @@ with the greatest deviation from the reference
 in the corners and along the edges. 
 Again this is to be expected 
 as sand slumps along the borders. 
-
-\begin{table}
-\tbl{Water flow experiment: percent cells}{
-\ra{1.3}
-\begin{tabular}{rrcccccccc}\toprule
-method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
-\phantom{abc} & \multicolumn{2}{c}{valleys}\\
-\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
-&& reference & mean && reference & mean && reference & mean\\ \midrule
-water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
-\bottomrule
-\end{tabular}}
-\label{table:water_flow_percent_cells} 
-\end{table}
 
 Table \ref{table:water_flow_experiment} shows geospatial analyses for this experiment.
 % water depth
@@ -1924,7 +1944,35 @@ Mean &
 \bottomrule
 \end{tabular}}
 \label{table:water_flow_experiment} 
+%
+\vspace*{1.5em}
+%
+\tbl{Water flow experiment: percent cells}{
+\ra{1.3}
+\begin{tabular}{rrcccccccc}\toprule
+method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{ridges} &
+\phantom{abc} & \multicolumn{2}{c}{valleys}\\
+\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
+&& reference & mean && reference & mean && reference & mean\\ \midrule
+water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
+\bottomrule
+\end{tabular}}
+\label{table:water_flow_percent_cells} 
+%%
+%\vspace*{1.5em}
+%%
+%\tbl{Mean minimum distance (ft) of features from reference features}{
+%\ra{1.3}
+%\begin{tabular}{c <{\hspace{1em}} c <{\hspace{1.5em}} c <{\hspace{4em}} c}
+%\toprule
+%Method & Concentrated flow & Ridges & Valleys \\
+%\midrule
+%Water flow & 28321 & 37918 & 26166\\
+%\bottomrule
+%\end{tabular}}
+%\label{table:flow_distance} 
 \end{table}
+
 
 % observations
 With the water flow analytic
@@ -1966,13 +2014,10 @@ about the way that water flows over topography.
 
 
 \section{Case studies}
-%
-%Scientific gaming: Structured problem solving with rules, challenging objectives, and scoring
-% as spatial training / education: exploring scientific models / simulations
-%
+
 We hosted a scientific gaming workshop using Tangible Landscape 
 as part of North Carolina State University Library's Coffee \& Viz series. 
-In this interactive seminar participants 
+In this workshop participants 
 explored complex environmental problems 
 by playing serious, analytical games
 with challenging objectives, rules, and scores. 
@@ -2003,11 +2048,21 @@ The foredune was then breached at a random location
 and simulated storm surge was run, flooding any vulnerable houses. 
 (Fig.~\ref{fig:coastal_game}). 
 
+At another station participants could also playfully interact 
+with a water flow simulation
+in an unstructured way. 
+Several participants could simultaneously sculpt 
+a sand model of a landscape and see how they changed
+simulated water flow % (Fig.~\ref{fig:tl_flow}) 
+learning how shape affects process through unstructured play.
+They used Tangible Landscape in new, unexpected ways --
+cupping their hands, for example, to fill their palms with projected water.
+
 We observed that participants were able to naturally 
-interact with the statistical model of ecological invasion
-and the flood simulation. 
+interact with the statistical model of ecological invasion,
+the flood simulation, and the water flow simulation. 
 Because the interactions were so simple % yet afforded so much 
--- just moving wooden blocks --
+-- just moving wooden blocks or sculpting sand --
 they were able to continually reconfigure the model,
 dynamically exploring the behavior 
 of multidimensional environmental processes
@@ -2018,10 +2073,7 @@ generate hypotheses about its behavior,
 test how interventions affected its behavior, 
 and draw inferences. 
 
-
-% Also SIMWE at SECREF: unstructured play, freeform/open exploration of simulation
-
-\begin{figure*}[ht!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=0.3\textwidth]{images/termite_game_1.jpg}
 		\includegraphics[width=0.3\textwidth]{images/termite_game_2.jpg}
@@ -2029,24 +2081,19 @@ and draw inferences.
 	\caption{Managing the simulated spread of termites through a city with Tangible Landscape}
 	\label{fig:termite_game}
 \end{center}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[ht!]
+\begin{figure}
 \begin{center}
 		\includegraphics[width=0.3\textwidth]{images/tl_coastal_1s.png}
 		\includegraphics[width=0.3\textwidth]{images/tl_coastal_3s.png}
 		\includegraphics[width=0.3\textwidth]{images/tl_coastal_4s.png}
-	\caption{...}
+	\caption{Testing coastal flood defences with Tangible Landscape}
 	\label{fig:coastal_game}
 \end{center}
-\end{figure*}
+\end{figure}
 
 \section{Discussion}
-
-% How did the experiment address these research questions?
-
-%\subsection{Coupling}
-
 % coupling
 The results of the coupling experiment show that 
 coupling a physical and digital model of topography 
@@ -2073,7 +2120,28 @@ demonstrates that they can successfully
 combine the physical and computational affordances 
 of analog and digital modeling. 
 
-%\subsection{Difference}
+Since we used a NURBS based 3D modeling program 
+for digital sculpting
+the results were constrained to smooth, circular shapes %isotropic
+formed by splines.
+%
+In the pilot study we also tested Vue's terrain editor,
+a triangulated irregular network based 3D modeling program 
+for intuitive terrain sculpting \cite{Vue},
+and found that the results were 
+less smooth with sharper transitions and
+had obvious triangular artifacts.
+%were constrained to composite shapes
+%composed of different sized triangles.
+The triangulated structure caused
+exaggerated slopes and discontinuous water flow. 
+%
+The models sculpted in polymer-enriched sand 
+were much less constrained 
+because the medium has a very fine, uniform grain size,
+a good balance of plasticity and adhesiveness,
+and thus can be sculpted into a smooth, continuous shape
+with fine details.
 
 % difference
 The results of the difference experiment show that 
@@ -2082,14 +2150,14 @@ enabled an iterative modeling process
 successfully combining the affordances of physical modeling
 with near real-time computational feedback. 
 %
-Participants tended to performed well without training 
+Participants tended to perform well without training 
 successfully managing to %rapidly parse and 
 understand the analytic
 and use it to adaptively sculpt.
 %
 This suggests that they were able to offload the cognitive work 
 of manipulation onto their bodies, while cognitively 
-parsing a rapidly changing, graphical representation of difference in volume.
+parsing a rapidly changing, graphical representation of the difference in volume.
 
 We observed, however, that some participants had trouble understanding
 the color table for the difference analytic. 
@@ -2104,8 +2172,6 @@ After the experiment we tested an absolute color table
 with colors assigned to specific values.
 The absolute color table helped -- it was much easier 
 to observe gradual, incremental progress throughout the modeling process.
-
-% \subsection{Water flow}
 
 % water flow
 The results of the water flow experiment show 
@@ -2148,8 +2214,6 @@ and reaffirmed the need for speed -- the importance of fast feedback.
 This informed the next generation of Tangible Landscape 
 and led to the redesign of the difference analytic. 
 
-% describe the need for serious games
-
 After the experiments
 we developed the \nth{3} generation Tangible Landscape system
 using 
@@ -2185,13 +2249,13 @@ for detailed instructions for replicating this experiment.
 The data used in this experiment are available on the Open Science Framework 
 at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
 While the rest of the software used in this research is free and open source, 
-Rhinoceros\footnote{\url{https://www.rhino3d.com/}} is proprietary software. 
+Rhinoceros is proprietary software. 
 Open source 3D modeling programs like 
-Blender\footnote{\url{https://www.blender.org/}}, however,
+Blender, however,
 could be substituted for Rhinoceros. 
 
 To build your own Tangible Landscape
-visit the project website\footnote{\url{http://tangible-landscape.github.io/}}, 
+visit the project website at \url{http://tangible-landscape.github.io/}, 
 see the documentation in the GitHub repository 
 including the Wiki at \url{https://github.com/tangible-landscape/grass-tangible-landscape/wiki}
 and refer to the book Tangible Modeling with Open Source GIS \cite{Petrasova2015}.
