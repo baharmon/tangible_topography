@@ -62,14 +62,8 @@ dem_colors_3d = """\
 nv 192:192:192
 default 192:192:192
 """
-slope_colors_3d = '0 192:192:192\n2 255:255:0\n5 0:255:0\n10 0:255:255\n15 0:0:255\n30 255:0:255\n50 255:0:0\n90 0:0:0\nnv 192:192:192\ndefault 192:192:192'
-depressions_colors_3d = '0% aqua\n100% blue\nnv 192:192:192\ndefault 192:192:192'
-depth_colors_3d = '0 192:192:192\n0.001 255:255:0\n0.05 0:255:255\n0.1 0:127:255\n0.5 0:0:255\n100% 0:0:0\nnv 192:192:192\ndefault 192:192:192'
-forms_colors_3d = '0 192:192:192\n1 220:220:220\n2 56:0:0\n3 200:0:0\n4 255:80:20\n5 250:210:60\n6 255:255:60\n7 180:230:20\n8 60:250:150\n9 0:0:255\n10 0:0:56\n11 255:0:255\nnv 192:192:192\ndefault 192:192:192'
-dem_difference_colors_3d = '-20 blue\n0 192:192:192\n20 red\nnv 192:192:192\ndefault 192:192:192' # 1-3: -20 to 20  & 4-5: -40 to 40
-flow_difference_colors_3d = '-0.5 blue\n0 192:192:192\n0.5 red\nnv 192:192:192\ndefault 192:192:192'
-slope_difference_colors_3d = '-30 blue\n0 192:192:192\n30 red\nnv 192:192:192\ndefault 192:192:192'
-forms_difference_colors_3d = '-10 blue\n0 192:192:192\n10 red\nnv 192:192:192\ndefault 192:192:192'
+dem_difference_colors_3d = '-40 red\n0 192:192:192\n40 blue\nnv 192:192:192\ndefault 192:192:192' # 1-3: -20 to 20  & 4-5: -40 to 40
+flow_difference_colors_3d = '-0.5 red\n0 192:192:192\n0.5 blue\nnv 192:192:192\ndefault 192:192:192'
 url="http://soliton.vm.bytemark.co.uk/pub/cpt-city/mpl/viridis.cpt" # http://soliton.vm.bytemark.co.uk/pub/cpt-city/mpl/inferno.cpt
 
 # list scanned DEMs
@@ -88,6 +82,12 @@ for dem in dems:
     mean_dem_difference = dem.replace("dem", "mean_dem_difference")
     mean_dem_regression = dem.replace("dem", "mean_dem_regression")
     mean_dem_regression_difference = dem.replace("dem", "mean_dem_regression_difference")
+    mean_depth_difference = dem.replace("dem", "mean_depth_difference")
+
+    # set region
+    gscript.run_command('g.region',
+                        rast=region,
+                        res=res)
 
     # 3D render mean elevation difference
     gscript.write_command('r.colors',
@@ -130,6 +130,29 @@ for dem in dems:
         #arrow_position=arrow_position,
         #arrow_size=arrow_size,
         output=os.path.join(render_3d, mean_dem_regression_difference),
+        format=format_3d,
+        size=size_3d,
+        errors='ignore'
+        )
+
+    # 3D render mean flow difference
+    gscript.write_command('r.colors',
+        map=mean_depth_difference,
+        rules='-',
+        stdin=flow_difference_colors_3d)
+    gscript.run_command('m.nviz.image',
+        elevation_map=mean_dem,
+        color_map=mean_depth_difference,
+        resolution_fine=res_3d,
+        height=height_3d,
+        perspective=perspective,
+        light_position=light_position,
+        fringe=fringe,
+        fringe_color=color_3d,
+        fringe_elevation=fringe_elevation,
+        #arrow_position=arrow_position,
+        #arrow_size=arrow_size,
+        output=os.path.join(render_3d, mean_depth_difference),
         format=format_3d,
         size=size_3d,
         errors='ignore'
