@@ -212,8 +212,37 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 \end{center}
 \end{figure}
 
-Geographic information systems (GIS) 
-can be used to quantitatively model, analyze, simulate, and visualize 
+Spatial thinking -- `the mental processes of representing, analyzing, and drawing inferences from spatial relations' \cite{Uttal2013} -- is used pervasively in everyday life for tasks such as recognizing things, manipulating things, interacting with others, and way-finding. 
+% 
+Higher dimensional spatial thinking 
+-- thinking about form, volume, and processes unfolding in time -- 
+plays an important role in 
+science, technology, engineering, the arts, and math. 
+%
+3D spatial thinking is used in disciplines 
+such as geology to understand the structure of the earth, 
+ecology to understand the structure of ecosystems, 
+civil engineering to shape landscapes, 
+architecture to design buildings,
+urban planning to model cities,
+and the arts to shape sculpture.
+
+Many spatial tasks can be performed computationally 
+enabling users to efficiently store, model, and analyze large sets of spatial data 
+and solve complex spatiotemporal problems.
+%
+In engineering, design, and the arts 
+computer-aided design (CAD) and 3D modeling software are used 
+to interactively, computationally model, analyze, and animate complex 3D forms.
+%
+In scientific computing
+multidimensional spatial patterns and processes can be 
+mathematically modeled, simulated, and optimized 
+using geographic information systems (GIS), 
+geospatial programming, and 
+spatial statistics. 
+%
+GIS can be used to quantitatively model, analyze, simulate, and visualize 
 complex spatial and temporal phenomena 
 -- computationally enhancing users' understanding of space. 
 %
@@ -221,34 +250,41 @@ With extensive libraries for point cloud processing,
 3D vector modeling, and
 surface and volumetric modeling and analysis
 GIS are powerful tools for studying 3-dimensional (3D) space.
-%
-GIS, however, can be unintuitive and challenging to use \cite{Ratti2004}. 
-% more citations? % Goodchild 2011 % Buckley et al. 2000
+
+GIS, however, can be unintuitive, challenging to use, and creatively constraining
+due to the complexity of the software, 
+the complex workflows, 
+and the limited modes of interaction and visualization 
+\cite{Ratti2004}. 
 %
 Unintuitive interactions with GIS can 
 frustrate users,
-constrain how they think about space,
-and add new cognitive burdens
-requiring highly developed spatial skills and reasoning. 
+constrain how they think about space, and add new cognitive burdens
+that require highly developed spatial skills and reasoning to overcome. 
 %
-Since visually thinking about 3D space requires
-sophisticated spatial abilities like mental rotation, 
-it can be especially challenging to understand and manipulate 3D space
-in a GIS using a graphical user interface (GUI).
+The paradigmatic modes for interacting with GIS today 
+-- command line interfaces (CLI) and
+graphical user interfaces (GUI) -- 
+require physical input into devices like 
+keyboards, mice, digitizing pens, and touch screens, 
+but output data visually as text or graphics. 
 %
+Theoretically this disconnect between intention, action, and feedback 
+makes graphical interaction unintuitive \cite{Dourish2001,Ishii2008}. 
+%
+Since users can only think about space visually with GUIs,
+they need sophisticated spatial abilities 
+like mental rotation \cite{Shepard1971,Just1985}
+%spatial visualization, and spatial perception \cite{Linn1985}
+to parse and understand, much less manipulate 
+3D space. %in a GIS using a GUI. 
+
 In order to make 3D GIS more natural and intuitive to use
 we have designed Tangible Landscape 
 -- a tangible interface for GIS --
 that physically manifests 3D data 
 so that users can feel and manipulate it with their bodies 
 (Fig.~\ref{fig:tl_flow}). 
-%
-We designed Tangible Landscape
-so that
-users can hold a GIS in their hands
-and think about 
-3D space and spatial computations
-kinaesthetically with their bodies.
 %
 Our goal is for users with little or no computer experience 
 to be able to intuitively, collaboratively explore 
@@ -269,250 +305,47 @@ contributing to its development,
 developing new applications, 
 and studying how it mediates cognition. 
 
-\subsection{Spatial thinking and computation} % 3D 
-Spatial thinking -- `the mental processes of representing, analyzing, and drawing inferences from spatial relations' \cite{Uttal2013} -- is used pervasively in everyday life for tasks such as recognizing things, manipulating things, interacting with others, and way-finding. 
-% 
-Higher dimensional spatial thinking 
--- thinking about form, volume, and processes unfolding in time -- 
-plays an important role in 
-science, technology, engineering, the arts, and math. 
-%
-3D spatial thinking is used in disciplines 
-such as geology to understand the structure of the earth, 
-ecology to understand the structure of ecosystems, 
-civil engineering to shape landscapes, 
-architecture to design buildings,
-urban planning to model cities,
-and the arts to shape sculpture.
+\subsection{Tangible, embodied interaction}
 
-% spatial concepts
-Conceptually understanding 3D space 
--- especially at a geographic scale --
-requires sophisticated reasoning.
+In embodied cognition higher cognitive processes are 
+grounded in, built upon, and mediated by bodily experiences 
+such as kinaesthetic perception and action \cite{Hardy-Vallee2008}. 
 %
-% Nystuen (1963)
-% Papageourgiou (1969)
-% Gersmehl and Gersmehl
-% Golledge
+Tangible interfaces 
+-- interfaces that couple physical and digital data \cite{Dourish2001} -- 
+are designed to enable embodied interaction
+by physically manifesting digital data 
+so that users can cognitively grasp and absorb it,
+thinking with it rather than about it \cite{Kirsh2013}. 
 %
-In Gollegde et al.'s hierarchical framework of concepts 
-for thinking about geographic space,
-primitive concepts -- identity and location, magnitude, and space-time --
-form the basis of geographic knowledge \cite{Golledge2002,Golledge2016}. 
+Embodied interaction should be highly intuitive --
+drawing on existing motor schemas
+and seamlessly connecting intention, action, and feedback.
 %
-%Concepts of increasing complexity are derived from 
-%combinations of simpler concepts. 
+It should reduce users' cognitive load 
+by enabling them to
+physically simulate processes 
+and offload tasks like 
+spatial perception and manipulation onto the body
+\cite{Kirsh2013}.
 %
-In this framework
-3D surfaces 
-are a complicated concept
-derived from 
-primitives (location and magnitude) and
-simple concepts (distribution, relative distance, and shape).
-%and difficult concepts (area). 
+%Users should be able to 
+%subconsciously, kinaesethically judge and manipulate 
+%spatial distances, relationships, patterns, 3D forms, and volumes
+%offloading these challenging cognitive tasks onto their bodies.
 %
-Understanding how 3D surfaces like topography 
-control processes like the flow of water
-requires even more complex conceptual thinking
-building upon primitives (identity, location, magnitude, and space-time),
-simple concepts (distribution, relative distance, direction, sequence, and shape), 
-difficult concepts (area, change, and spread),
-and complicated concepts (gradient, connectivity, scale, and surface).
-%
-%Cognitive studies have shown that 
-%`spatial thinking is malleable,' 
-%that it can be improved be through training
-%\cite{Uttal2013}.
-%
-% `Spatial thinking is malleable ' \cite{Uttal2013}.
-%
-Given the importance of higher dimensional spatial thinking 
-how can we effectively improve spatial performance --
-the ability to perform tasks that require spatial thinking --
-for complex tasks in 3D space? 
-
-Many spatial tasks can be performed computationally 
-enabling us to efficiently store, model, and analyze large sets of spatial data 
-and solve complex spatiotemporal problems.
-%
-In engineering, design, and the arts 
-computer-aided design (CAD) and 3D modeling software are used to interactively, computationally model, analyze, and animate complex 3D forms. 
-%
-Multidimensional spatial patterns and processes can be 
-mathematically modeled, simulated, and optimized 
-through scientific computing.
-%
-Geographic information systems for example can be used 
-to computationally store, model, analyze, simulate, and represent 
-geospatial patterns and processes. 
-%
-The open source 
-Geographic Resource Analysis Support System (GRASS) GIS for example supports 
-`geospatial data management and analysis, image processing, graphics and maps production, spatial modeling, and visualization' \cite{GRASS_GIS_software}. 
-
-Computing mediates and transforms spatial thinking -- expanding, but also constraining what is possible.
-%
-While spatial computing can augment spatial thinking 
--- distributing or offloading cognitive processes through digital computation -- 
-the logic of implementation,
-the limits of what is computationally possible, 
-and the modes of input and output
-constrain how we reason. % citations
-%
-Furthermore, 
-when it is difficult to interact with a computer, 
-to input commands and parse the resulting output, 
-one has to think harder 
-and risks frustration and demotivation. % citations 
-
-Unintuitive modes of human-computer interaction constrain thought and add cognitive and emotional costs. 
-%
-The paradigmatic modes for interacting with computers today 
--- command line interfaces (CLI) and
-graphical user interfaces
- -- 
-require physical input from devices like keyboards, mice, digitizing pens, and touch screens, but
-output %render
-data visually as text or graphics. 
-%
-Theoretically this disconnect between intention, action, and feedback should make interaction less intuitive \cite{Dourish2001,Ishii2008}. 
-%
-Furthermore, it can also be challenging to parse data that is only presented visually. 
-Spatial data -- especially 3D spatial data -- presented graphically can require sophisticated spatial reasoning skills such as mental rotation \cite{Shepard1971}, spatial visualization, and spatial perception \cite{Linn1985} to parse and understand, much less manipulate. 
-
-\subsection{Tangible interaction}
-
-% Introduction to tangible interfaces
-Tangible interfaces -- interfaces that couple physical and digital data \cite{Dourish2001} -- 
-are designed to physically manifest digital data so that we can cognitively grasp and absorb it,
-so that we can think with it rather than about it \cite{Kirsh2013}. 
-%
-Ishii and Ullmer envisioned that tangible interfaces would  `take advantage of natural physical affordances to achieve a heightened legibility and seamlessness of interaction between people and information' \cite{Ishii1997}. 
-%
-With a tangible interface both input and output are physical. 
-%
-Data can be felt as well as seen; data can be directly, physically manipulated, leveraging highly developed motor skills. 
-%
-Thus intention, action, and feedback should be seamlessly connected 
-enabling automatic, subconscious, and intuitive interaction.
-
-% Embodied interaction
-Tangible interfaces let users interact with computers while (functionally) thinking with their bodies. 
-%
-By thinking with their bodies, by embodying cognition 
-users may be able to reduce their cognitive loads
-offloading cognitive tasks like 
-spatial perception and manipulation 
-onto the body and 
-physically simulating processes.
-%
-In embodied cognition higher cognitive processes are grounded in, built upon, and mediated by bodily experiences such as kinaesthetic perception and action \cite{Hardy-Vallee2008}. 
-%
-When people use tools they temporarily, contingently incorporate them into their body schema, feeling the perimeter, weight, and balance of the tool, 
-sensing resistance when the tool touches something, 
-as if the tool was an extension of the body \cite{Maravita2004}.
-%
-Because tools can be cognitively gripped and absorbed into users' body schema, tools mediate embodied cognition -- affording new bodily experiences and actions and thus extending users' capacity for thought. 
-%
-Tangible interfaces are designed to give computation physical form 
-so that it can be cognitively gripped and absorbed, 
-so that computation can be understood with and offloaded onto the body.
-%
-When tangible interactions are designed to be analogous to everyday, physical tasks 
-like unscrewing a bottle top \cite{Kirsh2013}, 
-picking up and placing objects, 
-or sculpting sand 
-users may already understand what to do; 
-such interaction should be highly intuitive
-drawing on existing cultural knowledge and motor schemas. 
-
-% Tangible interaction and spatial cognition
-It can be challenging and cognitively taxing to visually perceive and parse space, to for example visually judge distances and imagine volumetric form.
-%
-Distance and physical properties like size, shape, volume, weight, hardness, and texture, however, can be automatically and subconsciously assessed kinaesthetically with the body \cite{Jeannerod1997}. 
-%
-By affording physical feedback tangible interfaces should, therefore, reduce the cognitive load needed to judge and manipulate spatial distances, relationships, patterns, and 3D forms and volumes. 
-
-\begin{figure}
-\begin{center}
-		\includegraphics[width=0.49\textwidth]{images/physical_rotation_1.jpg}
-		\includegraphics[width=0.49\textwidth]{images/physical_rotation_2.jpg}
-	\caption{Physically rotating a topographic model.}
-	\label{fig:physical_rotation}
-\end{center}
-\end{figure}
-
-% Physical simulation
-Furthermore, some cognitive processes can be physically simulated, offloading cognitive work onto the body \cite{Kirsh2013}. 
-%
-Mental models can be abstracted and physically simulated 
-through acting, 
-sketching, 
-or experimental adaptation or transformation. 
-%
-Kirsh cites dancers use of marking 
--- a simplified, abstraction of a dance phrase -- 
-to learn and practice elements or aspects of the phrase \cite{Kirsh2013}. 
-%
-% Mental rotation
-Mental rotation 
--- a cognitive task commonly used in psychometric tests of spatial ability -- 
-can be physically simulated 
-simply by grasping the object and rotating it (Fig.~\ref{fig:physical_rotation}).
-%
-While tasks like spatial visualization and mental rotation are used assess spatial ability
-\cite{Uttal2013a,Uttal2013,Ormand2014}, 
-space is not just visualized, but also felt.
-Space need not be imagined to be transformed. 
-%--haptic feedback about space informs subconscious pragmatic representations that rapidly generate action \cite{Jeannerod1997}. 
-Mental rotation and spatial visualization, therefore, 
-may tell us very little about embodied spatial ability. 
-
-% Form finding
-Metacognition -- thinking about thinking -- 
-can play an important role in embodied spatial performance.
-%
-Physical simulation guided by metacognitive reflection 
-is used in generative, creative processes 
-such as sculptural form-finding or gestural sketching. 
-%
-Professionals like designers develop creative ideas through `reflection-in-action,' 
-an iterative, exploratory, metacognitive process 
-of framing a problem, ideation or making, and critical reflection \cite{Schon1983}.
-This exploratory process may unfold in an instant, 
-repeated continually throughout acts such as drawing, sculpting, and modeling. 
-%
-The architect Frank Gehry for example develops his designs through exploratory form finding with massing models
-and by thinking through the movement of gestural drawing
-\cite{Gehry2004,Pollack2006}.
-%
-An ethnography of the Office of Metropolitan Architecture
-showed that architects in the firm used exploratory modeling
-to develop designs through iterative processes
--- exploring form by carving foam massing models with hot-wire cutters, reflecting on each model as they carved, while building up a library of forms \cite{Yaneva2009}.
-
-% Metacognition in tangible interaction
-Tangible interfaces enable embodied interaction
--- the kinaesthetic exploration and physical transformation of digital data.
-%
-By embodying interaction
-users should be able to offload 
-challenging cognitive tasks 
-like sensing form, manipulating form, and imagining new forms 
-onto the body
--- freeing up more cognitive resources for  
-metacognition. 
-%
-With more resources for metacognition
-users should be better able to parse and learn from computations.
+Distance and physical properties 
+like size, shape, volume, weight, hardness, and texture
+can be automatically and subconsciously assessed 
+with the body \cite{Jeannerod1997}.
+Tangible interfaces should, therefore, enable users to
+subconsciously, kinaesethically judge and manipulate 
+spatial distances, relationships, patterns, 3D forms, and volumes
+offloading these challenging cognitive tasks onto their bodies.
 
 \subsection{Tangible interfaces for geospatial modeling} 
-% Tangible geospatial interaction
-% Tangible geospatial modeling
-% Tangible interfaces for geospatial modeling
 
-With GIS %spatial modeling
-users can computationally offload other types of challenging cognitive tasks 
+With GIS users can computationally offload complex cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
 %
 Tangible interfaces for geospatial modeling should, 
@@ -529,7 +362,7 @@ augmented architectural models (Table~\ref{table:review_a}),
 augmented clay (Table~\ref{table:review_b}),  
 augmented sandboxes (Table~\ref{table:review_c}), 
 and actuated pin tables (Table~\ref{table:review_d}).
-%
+
 Projection augmented tangible interfaces 
 couple a physical and digital model
 through a cycle of 3D sensing or object recognition,
@@ -539,7 +372,9 @@ Augmented architectural models
 like Urp \cite{Underkoffler1999} 
 and the Collaborative Design Platform \cite{Schubert2011}
 are a type of 
-`discrete tabletop tangible interface' \cite{Ishii2012}.
+`discrete tabletop tangible interface' \cite{Ishii2012}
+with physical models of buildings 
+that are augmented with projected analytics.
 %
 Augmented clay models 
 like Illuminating Clay \cite{Piper2002a} 
@@ -552,12 +387,13 @@ These tangible interfaces
 have two feedback loops -- 
 there is passive, kinaesthetic feedback from grasping the physical model 
 and active, graphical feedback from computation.
-%
+
 Actuated pin tables
 like Relief \cite{Leithinger2009}
 are a type of transformable tangible interface \cite{Ishii2012} 
-or shape changing interface
-which use `physical change of shape as input or output' \cite{Rasmussen2012}. 
+or shape changing interface \cite{Rasmussen2012}
+that can physically change shape based on computation.
+%which use `physical change of shape as input or output' \cite{Rasmussen2012}. 
 %
 These tangible interfaces 
 have a third feedback loop --
@@ -1084,6 +920,15 @@ See Appendix
 and Appendix 
 \ref{appendix:guidelines} for interview guidelines. 
 %
+We did not use psychometric tests
+to assess spatial ability because
+these do not address 
+geographic scales,
+spatial relations,
+domain-specific knowledge and abilities 
+\cite{Lee2009,Bednarz2011,Wakabayashi2011},
+or embodied cognitive ability. 
+
 % study landscape
 We used a region of Lake Raleigh Woods in Raleigh, North Carolina 
 as the study landscape for this experiment. 
@@ -1129,7 +974,8 @@ dynamic modes of visualization such as
 \paragraph{Analog modeling}
 Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
 by hand or with a wooden sculpting tool. 
-They were given a CNC-routed model of the study landscape as a reference. 
+They were given a CNC-routed model of the study landscape as a reference
+and a 3D scale. 
 A lamp on the table cast shadows across the model for hillshading.
 Theoretically analog modeling -- modeling by hand or with tools -- should be embodied, 
 affording subconscious, kinaesthetic sensing and manipulation of form. 
@@ -1169,7 +1015,7 @@ resulting in distraction, frustration, and demotivation.
 Physical sensing and manipulation, however, should offload 
 some of this cognitive work onto the body.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 	\includegraphics[width=\textwidth]{images/experiments/carla_proj_aug.jpg}
 	\caption{Coupling experiment - projection augmented modeling:
@@ -2317,7 +2163,8 @@ under the GPL.
 This study focused on spatial performance
 using geospatial analyses to assess modeling results. 
 %
-It did not quantitively address cognitive, affective, motivational, or metacognitive processes. 
+It did not quantitively address 
+cognitive, affective, motivational, or metacognitive processes. 
 %
 Future research in embodied spatial cognition with tangible interfaces 
 should quantitively study these processes using methods like 
@@ -2332,14 +2179,15 @@ vector flow fields, contour evolution, and animation.
 
 \subsection{Robotic fabrication and autonomous construction}
 %
-Emerging technologies are enabling the ever more close coupling 
-of the physical and the digital, 
+Emerging technologies are enabling ever closer coupling 
+of the physical and the digital 
 bridging real and virtual geographies. 
 %
-With advances in sensor networking like the internet of things and pervasive sensing 
+With advances in sensor networking like 
+the internet of things and pervasive sensing 
 physical things and environmental processes
 can be digitally tracked, sensed, and analyzed  
--- giving the physical a digital presence \cite{Ratti2009,Resch2011} . 
+-- giving the physical a digital presence \cite{Ratti2009,Resch2011}. 
 %
 With advances in sensing technologies
 3D forms can be digitized at scales ranging from millimeters to the entire planet.
@@ -2347,12 +2195,16 @@ With advances in sensing technologies
 Data can be digitally fabricated with technologies such as 3D printing and robotics. 
 %
 Landscapes and the built environment can be digitally fabricated 
-with technologies such as machine control for construction, earthmoving, and precision agriculture 
+with technologies such as machine control 
+for construction, earthmoving, and precision agriculture.
 %
-Tangible interfaces for GIS have the potential to tie these emerging technologies together, seamlessly linking physical models, digital models, and real geographies. 
+Tangible interfaces for GIS have the potential to 
+tie these emerging technologies together 
+seamlessly linking physical models, digital models, and real geographies. 
 
 In the future we intend to extend Tangible Landscape to 
-seamlessly, bidirectionally link a physical model, a digital model, and a real landscape.
+seamlessly, bidirectionally link 
+a physical model, a digital model, and a real landscape.
 %
 We plan to integrate real-time streaming data, 
 robotic fabrication, 
@@ -2375,7 +2227,8 @@ to an autonomous construction vehicle or robot in the field for construction
 \begin{figure}
 \begin{center}
 \includegraphics[width=\textwidth]{images/system_schema_land.pdf}
-\caption{Tangible Landscape with robotic fabrication, robotic construction, and real-time field data.}
+\caption{Tangible Landscape with 
+robotic fabrication, robotic construction, and real-time field data.}
 \label{fig:system_schema_land}
 \end{center}
 \end{figure}
@@ -2401,7 +2254,7 @@ and draw inferences.
 %
 % experiment / findings
 In a series of experiments we found that 
-Tangible Landscape can improve spatial performance -- 
+Tangible Landscape can improve spatial performance  
 enabling users to more accurately model 3-dimensional space. 
 %
 The experiments show that users 
@@ -2569,19 +2422,133 @@ If they agree to take part in the experiment have them sign an informed consent 
 In the \nth{1} experiment participants will sit at a computer
 and use Rhinoceros, a 3D modeling program, to digitally model
 the study landscape. 
-
-% 10 minutes of training
-
-% 10 minutes of modeling
-
+% training
+They will have 10 minutes of training before they begin.
+Start by explaining the interface, 
+showing them the basic controls 
+-- selecting, panning, zooming, orbiting, and transforming with the gumball --
+and then letting them try.
+Then explain how this experiment will work, 
+show them how to vertically translate control points on a NURBS surface
+using the gumball, 
+and let them try. 
+% modeling
+Begin the experiment. 
+They will have 10 minutes to model the study landscape
+by vertically translating control points on a NURBS surface
+using the gumball.
+They will begin with a flat surface 
+subdivided into a 10 x 10 grid of control points.
+They can use the \emph{rebuild} command 
+to create a higher density of control points.
+They will raise and lower these control points with the gumball
+to change the surface. 
+They can used a locked layer with 3D contours as a reference.
+Snapping should be disabled.  
 %
-\paragraph{Tangible Landscape}
-%In experiment 2-5 participants will build polymer-enriched sand models 
+When 10 minutes have elapsed 
+save their model as a \emph{.3dm} file
+and then export it as a GeoTIFF (\emph{.tif)}. 
+Import this \emph{.tif} raster into GRASS GIS
+using r.in.gdal,\footnote{
+\url{https://grass.osgeo.org/grass72/manuals/r.in.gdal.html}}
+randomly resample it using r.random,\footnote{
+\url{https://grass.osgeo.org/grass72/manuals/r.random.html}}
+and then interpolate it using v.surf.rst 
+to create a digital elevation model.
+Copy this to the \emph{data} mapset
+as \emph{name{\_}dem{\_}1}.
 
-% observation, photography, and video
-%Record the experiments with photographic 
-% interviews
-Interview select participants after the experiment. 
+\paragraph{Analog modeling}
+In the \nth{2} experiment
+each participant will have 10 minutes to build a polymer-enriched sand model
+of the study landscape using a CNC-routed model as a reference. 
+They will be given a 3D scale 
+-- a wooden block ruled with map units -- 
+as an additional guide. 
+They can use a wooden modeling tool or their hands to sculpt the model.  
+A desk lamp will illuminate both models from an angle
+casting shadows like a hillshade. 
+%
+When 10 minutes have elapsed 
+save their model by scanning it with Tangible Landscape.
+Copy the scanned elevation to the \emph{data} mapset
+as \emph{name{\_}dem{\_}2}.
+
+\paragraph{Projection-augmented modeling}
+In the \nth{3} experiment
+each participant will have 10 minutes to build 
+a projection-augmented polymer-enriched sand model
+of the study landscape.
+The digital elevation model and contours of the study landscape 
+will be projected on the sand model as a reference. 
+They should also be given a CNC-routed model 
+and a 3D scale for additional guidance. 
+%
+When 10 minutes have elapsed 
+save their model by scanning it with Tangible Landscape.
+Copy the scanned elevation to the \emph{data} mapset
+as \emph{name{\_}dem{\_}3}.
+
+\paragraph{Tangible modeling with the difference analytic}
+In the \nth{4} experiment
+each participant will have 10 minutes to build 
+a polymer-enriched sand model
+of the study landscape 
+using Tangible Landscape with the difference analytic.
+This experiment will use a different region of the study landscape. 
+Use Tangible Landscape's \emph{run{\_}difference} function 
+in the \emph{current{\_}analyses.py} script 
+to show each participant where to add and remove sand 
+in order to match the study landscape
+The difference between their model and the study landscape
+will be projected onto the sand model in real-time
+to guide them. 
+The contours of the study landscape should layered
+over the difference map. 
+They should also be given a CNC-routed model 
+and a 3D scale for additional guidance. 
+%
+When 10 minutes have elapsed 
+save their model by scanning it with Tangible Landscape.
+Copy the scanned elevation to the \emph{data} mapset
+as \emph{name{\_}dem{\_}4}.
+
+\paragraph{Tangible modeling with the water flow analytic}
+In the \nth{5} experiment
+each participant will have 10 minutes to build 
+a polymer-enriched sand model
+of the study landscape 
+using Tangible Landscape with the water flow analytic.
+This experiment will use a different region of the study landscape. 
+Each participant can choose to see either
+simulated water flow for the study landscape
+or simulated water flow for their model. 
+When a participant asks
+switch between these layers 
+in GRASS's layer manager. 
+Use Tangible Landscape's \emph{run{\_}simwe} function 
+in the \emph{current{\_}analyses.py} script 
+to simulate water flow across their model in near-real time.
+The contours of the study landscape should layered
+over the precomputed reference water flow, 
+while the contours of the scanned model should be layered
+over the water flow for the scanned model. 
+They should also be given a CNC-routed model 
+and a 3D scale for additional guidance. 
+%
+When 10 minutes have elapsed 
+save their model by scanning it with Tangible Landscape.
+Copy the scanned elevation to the \emph{data} mapset
+as \emph{name{\_}dem{\_}5}.
+
+\paragraph{Documentation}
+Record each experiment with photographs or video.
+Observe each participant as they work
+and take notes about their modeling processing.
+
+\paragraph{Interviews}
+Interview select participants after they finish the experiments. 
 See Appendix \ref{appendix:guidelines} for semi-structured interview guidelines.
 
 \subsection{Geospatial analysis}\label{appendix:analysis}
