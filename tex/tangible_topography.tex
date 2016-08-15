@@ -38,6 +38,7 @@
 %\newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
 
 % Special characters
+\usepackage{gensymb}
 \usepackage{amssymb}
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -429,7 +430,7 @@ intuitively interact,
 and offload cognitive processes
 with tangibles?
 How does this change how users think and perform?
-How does it mediate spatial spatial cognition and performance? 
+How does it mediate spatial cognition and performance? 
 Can tangible interfaces for geospatial modeling 
 enhance spatial thinking
 through kinaesthetic interaction with 
@@ -780,15 +781,15 @@ express ourselves in space and time.
 Tangible Landscape has been implemented as a set of components 
 -- the \emph{r.in.kinect} add-on module \cite{r.in.kinect}
 %\footnote{\url{https://github.com/tangible-landscape/r.in.kinect}}
-and the \emph{grass-tangible-landscape} plugin \cite{grass-tangible-landscape}
+and the \emph{Tangible Landscape} plugin \cite{grass-tangible-landscape}
 %\footnote{\url{https://github.com/tangible-landscape/grass-tangible-landscape}}
 --
 for the active development version of GRASS GIS (Fig.~\ref{fig:software_schema}). 
-The \emph{r.in.kinect} add-on module imports point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
+The \emph{r.in.kinect} add-on module continuously imports and filters point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
 It has been implemented as a separate component so that it can easily be used for other applications.
-The \emph{grass-tangible-landscape} plugin provides 
+The \emph{Tangible Landscape} plugin provides 
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
-The \emph{tangible-landscape-immersive-extension} \cite{tangible-landscape-immersive-extension}
+The \emph{Tangible Landscape Immersive Extension} \cite{tangible-landscape-immersive-extension}
 %\footnote{\url{https://github.com/tangible-landscape/tangible-landscape-immersive-extension}}
 links Tangible Landscape with Blender, 
 an open source 3D modeling and animation program \cite{Blender} 
@@ -799,8 +800,8 @@ using the GRASS GIS Python Scripting Library.  %GRASS GIS Python API
 Since many tasks in GIS are not appropriate for tangible interaction
 Tangible Landscape was designed to supplement, 
 not replace GRASS GIS's GUI, CLI, and scripting application program interface (API). 
-Tangible Landscape currently runs on Linux and Mac OSX 
-with an unsupported branch for Windows. 
+Tangible Landscape currently runs on Linux and Mac OSX.
+%with an unsupported branch for Windows. 
 Dependencies include the Point Cloud Library \cite{Rusu2011,PCL}, 
 OpenKinect's libfreenect2 \cite{OpenKinect}, 
 OpenCV \cite{OpenCV},  
@@ -1012,26 +1013,27 @@ some of this cognitive work onto the body.
 \end{center}
 \end{figure}
 
-\paragraph{Data collection}
+\paragraph{Data collection and analysis}
 We used Tangible Landscape to scan the finished models 
 built using analog hand modeling and projection augmented modeling.
 The scans were captured as point clouds, interpolated 
 as digital elevation models using the regularized spline with tension method,
-and stored as raster maps in a GRASS GIS mapset. 
+and stored as raster maps in a GRASS GIS database 
 The NURBS surfaces modeled in Rhinoceros were exported as raster elevation maps,
 imported into GRASS GIS, randomly resampled, 
 re-interpolated using the regularized spline with tension method, 
-and stored as raster maps in a GRASS GIS mapset. 
+and stored as raster maps in a GRASS GIS database. 
 The data from Rhinoceros was randomly resampled and re-interpolated
 to account for differences and irregularities in resolution, data density, and point spacing.
 %caused by data conversion.
 
-\paragraph{Data analysis}
+%\paragraph{Data analysis}
 For each set of models -- digital, analog, and augmented --
 we computed cellular statistics (i.e.~per cell statistics), 
 topographic and morphometric parameters, 
 and simulated water flow.
-% elevation
+
+\paragraph{Mean elevation}
 We computed 
 the mean elevation 
 and standard deviation of elevation
@@ -1039,10 +1041,16 @@ for each set
 with the module \textit{r.series} \cite{r.series}.
 The mean elevation is the average of each cell 
 of all elevation maps in a given set of models.
-%The standard deviation of elevation is the standard deviation of each cell
-%of all elevation maps in a given set of models.
-%
-% difference 
+
+\paragraph{Standard deviation of elevation}
+We computed 
+the standard deviation of elevation
+for each set
+with the module \textit{r.series} \cite{r.series}.
+This is the standard deviation of each cell 
+of all elevation maps in a given set of models.
+
+\paragraph{Mean difference}
 In order to compare participants' modeling performance between sets 
 we computed the difference 
 between the linearly regressed reference elevation and 
@@ -1065,33 +1073,65 @@ in order to account for these systematic errors
 in the difference calculation,
 
 \begin{equation}
-\label{eq:regressed_difference}
-\Delta = (a + b * x) - y
+\label{eq:regressed_mean_difference}
+\Delta = (a + b * z_0) - \overline{z}
 \end{equation}
 
 where:
 
-\hspace*{1em} $\Delta$ is the difference %[ft]
+\hspace*{1em} $\Delta$ is the difference
 
-\hspace*{1em} $x$ is the reference elevation map %[ft]
+\hspace*{1em} $z_0$ is the reference elevation map
 
-\hspace*{1em} $y$ is the mean elevation of maps in a set %[ft]
+\hspace*{1em} $\overline{z}$ is the mean elevation of maps in a set
 
-\hspace*{1em} $a$ is the offset
+\hspace*{1em} $a$ is the intercept of the regression line
 
-\hspace*{1em} $b$ is the slope.\\
+\hspace*{1em} $b$ is the slope of the regression line.\\
 
-% slope
-We derived the mean slope in degrees for each set 
+
+\paragraph{Standard deviation of difference}
+
+We computed the standard deviation of difference
+by first calculating the difference 
+between the linearly regressed reference elevation and 
+each modeled elevation map in a set
+to generate a set of difference maps.
+Then we calculated the standard deviation 
+for that set of difference maps.
+
+%\begin{equation}
+%\label{eq:regressed_difference}
+%\sigma(\Delta) = (a + b * z_0) - z % add stdev to this side of the equation
+%\end{equation}
+%
+%where:
+%
+%\hspace*{1em} $\sigma$ is the standard deviation
+%
+%\hspace*{1em} $\Delta$ is the difference
+%
+%\hspace*{1em} $z_0$ is the reference elevation map
+%
+%\hspace*{1em} $z$ is a modeled elevation map
+%
+%\hspace*{1em} $a$ is the intercept of the regression line
+%
+%\hspace*{1em} $b$ is the slope of the regression line.\\
+
+\paragraph{Mean slope}
+We derived the slope of the mean elevation of each set %in degrees
 using differential geometry
 by parameterizing a quadratic function to fit mean elevation values 
 in a neighborhood using least squares \cite{Wood1996} 
 %through quadratic parameterization \cite{Wood1996} of the mean digital elevation model 
 with the module \textit{r.param.scale} \cite{r.param.scale}.
 %\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.param.scale.html}}. 
-%
-% landforms
-We computed the mean landforms for each set using geomorphons,
+
+\paragraph{Mean landforms}
+We identified landforms 
+for the mean digital elevation model for each set 
+using geomorphons,
 a pattern recognition method for landform classification 
 based on the openness of the terrain
 implemented as the add-on module \textit{r.geomorphon} \cite{r.geomorphon}.
@@ -1099,9 +1139,9 @@ implemented as the add-on module \textit{r.geomorphon} \cite{r.geomorphon}.
 Geomorphons works effectively across spatial scales because 
 the neighborhood search size for pattern recognition 
 is spatially variable -- it is set dynamically based on the visibility of the cell \cite{Jasiewicz2013}.  
-Landforms can be classified as flat, peaks, ridges, shoulders, spurs, slopes, hollows, footslopes, valleys, or depressions (Fig.~\ref{fig:geomorphons}).
-%
-% minimum distance
+Landforms can be classified as flat, peak, ridge, shoulder, spur, slope, hollow, footslope, valley, or depression (Fig.~\ref{fig:geomorphons}).
+
+\paragraph{Mean minimum distance}
 We also computed the mean minimum distance between features 
 such as concentrated water flow, ridges, and valleys
 on the modeled landscapes and the reference landscape.
@@ -1128,7 +1168,17 @@ Mean &
 \begin{figure}
 \begin{center}
 		\includegraphics[width=\textwidth]{images/geomorphons_legend.png}
-	\caption{Landforms identified by \textit{r.geomorphon}. 
+	\caption{Landforms identified by \textit{r.geomorphon} --
+		1)~flat, 
+		2)~peak, 
+		3)~ridge, 
+		4)~shoulder, 
+		5)~spur, 
+		6)~slope, 
+		7)~hollow, 
+		8)~footslope, 
+		9)~valley, and
+		10)~depression.
 		Source: \cite{r.geomorphon}.}
 	\label{fig:geomorphons}
 \end{center}
@@ -1179,14 +1229,14 @@ Mean elevation (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{i
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_3.png}\\
 %
-Stdev.~of elevations \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_legend.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/dem_difference_1.png} &
+Stdev.~of elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_3.png}\\
 %
 Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_3.png}\\
@@ -1197,7 +1247,7 @@ Mean difference (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_3.png}\\
 %
-Mean slope (\%) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend_1.pdf} & 
+Mean slope (\degree) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend_1.pdf} & 
 \includegraphics[width=0.19\textwidth]{images/render_3d/slope_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_2.png} &
@@ -1418,7 +1468,8 @@ when using a tangible interface for GIS.
 
 \begin{figure}
 \begin{center}
-	\includegraphics[width=\textwidth]{images/experiments/connie_difference_2.jpg}
+	\includegraphics[width=0.48\textwidth]{images/experiments/difference_1.jpg}
+	\includegraphics[width=0.48\textwidth]{images/experiments/difference_2.jpg}
 	\caption{Difference experiment: 
 	A participant sculpts the study landscape using Tangible Landscape's difference
 	analytic, which shows where to add sand (blue) and remove sand (red).}
@@ -1474,7 +1525,7 @@ def run_difference(real_elev, scanned_elev, env, **kwargs):
 \end{minted}
 
 \paragraph{Data collection and analysis}
-The final scan of each model was stored in a mapset for analysis. 
+The final scan of each model was stored in a GRASS GIS database for analysis. 
 We used cellular statistics, the difference in elevation, 
 topographic parameters, and morphometric parameters
 to compare the reference elevation and the set of modeled elevations. 
@@ -1695,7 +1746,7 @@ and the water flow over their scanned model.
 \end{figure}
 
 \paragraph{Data collection and analysis}
-The final scan of each model was stored in a mapset for analysis. 
+The final scan of each model was stored in a GRASS GIS database for analysis. 
 We used cellular statistics, simulated water flow, and the difference in simulated water depth 
 to compare water flow across the study landscape and the set of models.
 We computed the mean elevation,
@@ -1997,7 +2048,7 @@ formed by splines.
 In the pilot study we also tested Vue's terrain editor,
 a triangulated irregular network based 3D modeling program 
 for intuitive terrain sculpting \cite{Vue},
-and determinted that the results were 
+and determined that the results were 
 less smooth with sharper transitions and
 had obvious triangular artifacts.
 %were constrained to composite shapes

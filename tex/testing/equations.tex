@@ -140,20 +140,20 @@ in the difference calculation,
 
 \begin{equation}
 \label{eq:regressed_difference}
-z = (a + b * x) - y
+\Delta = (a + b * z_0) - \overline{z}
 \end{equation}
 
 where:
 
-\hspace*{1em} $x$ is the reference elevation map %[ft]
+\hspace*{1em} $\Delta$ is the difference
 
-\hspace*{1em} $y$ is the mean elevation of maps in a set %[ft]
+\hspace*{1em} $z_0$ is the reference elevation map
 
-\hspace*{1em} $z$ is the difference %[ft]
+\hspace*{1em} $\overline{z}$ is the mean elevation of maps in a set
 
-\hspace*{1em} $a$ is the offset
+\hspace*{1em} $a$ is the intercept~/~offset of the regression line
 
-\hspace*{1em} $b$ is the slope.\\
+\hspace*{1em} $b$ is the gain~/~slope of the regression line.\\
 
 We vertically rescaled and translated the reference elevation 
 using the linear regression of the reference and mean elevation maps
