@@ -118,7 +118,6 @@ for dem in dems:
 
     # stdev variables
     stdev_dem = dem.replace("dem", "stdev_dem")
-    stdev_dem = dem.replace("dem", "stdev_dem")
     stdev_difference_series = dem.replace("dem", "stdev_difference_series")
     stdev_regression_difference_series = dem.replace("dem", "stdev_regression_difference_series")
 

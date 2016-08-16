@@ -31,6 +31,7 @@
 \usepackage[super]{nth}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{upquote}
 \usepackage{minted}
 \usemintedstyle{bw}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
@@ -203,7 +204,7 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 %		\includegraphics[width=0.32\textwidth]{images/tl_sequence_1.jpg}
 		\includegraphics[width=0.49\textwidth]{images/tl_sequence_2.jpg}
 		\includegraphics[width=0.49\textwidth]{images/tl_sequence_3.jpg}
-	\caption{Tangibly modeling the flow of water with Tangible Landscape. 
+	\caption{Modeling the flow of water with Tangible Landscape. 
 	A user sculpts a polymeric sand model of a landscape
 	augmented with simulated water flow and an orthophotograph.  
 	Changes to the model are scanned into in GIS 
@@ -617,7 +618,7 @@ TanGeoMS \cite{Tateosian2010}.
 TanGeoMS coupled a physical model and GIS model of a landscape 
 through a cycle of laser scanning, 
 geospatial computation in GRASS GIS, and projection
-giving developers and users assess to 
+giving developers and users access to 
 a sophisticated library for 
 spatial modeling, simulation, visualization, and databasing.
 It enriched freeform hand modeling with geospatial simulations 
@@ -680,7 +681,7 @@ at a human scale
 \begin{figure}
 \begin{center}
 		\includegraphics{images/system_schema.pdf}
-	\caption{How Tangible Landscape works: a near real-time feedback cycle of interaction, 3D scanning, point cloud processing, geospatial computation, and projection.}
+	\caption{How Tangible Landscape works: a near real-time feedback cycle of physical interaction, 3D scanning, point cloud processing, geospatial computation, and projection.}
 	\label{fig:system_schema}
 \end{center}
 \end{figure}
@@ -811,7 +812,7 @@ and GRASS GIS \cite{GRASS_GIS_software}.
 \begin{figure}
 \begin{center}
 		\includegraphics{images/software-schema.pdf}
-	\caption{Software schema.}
+	\caption{Software schema for Tangible Landscape.}
 	\label{fig:software_schema}
 \end{center}
 \end{figure}
@@ -960,7 +961,7 @@ dynamic modes of visualization such as
 
 \paragraph{Analog modeling}
 Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
-by hand or with a wooden sculpting tool. 
+by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).  
 They were given a CNC-routed model of the study landscape as a reference
 and a 3D scale. 
 A lamp on the table cast shadows across the model for hillshading.
@@ -1122,23 +1123,22 @@ for that set of difference maps.
 \paragraph{Mean slope}
 We derived the slope of the mean elevation of each set %in degrees
 using differential geometry
-by parameterizing a quadratic function to fit mean elevation values 
-in a neighborhood using least squares \cite{Wood1996} 
+%by parameterizing a quadratic function to fit mean elevation values 
+%in a neighborhood using least squares 
+\cite{Wood1996} 
 %through quadratic parameterization \cite{Wood1996} of the mean digital elevation model 
 with the module \textit{r.param.scale} \cite{r.param.scale}.
-%\footnote{\url{https://grass.osgeo.org/grass72/manuals/r.param.scale.html}}. 
 
 \paragraph{Mean landforms}
 We identified landforms 
 for the mean digital elevation model for each set 
-using geomorphons,
+using geomorphon,
 a pattern recognition method for landform classification 
 based on the openness of the terrain
 implemented as the add-on module \textit{r.geomorphon} \cite{r.geomorphon}.
-%\footnote{\url{https://grass.osgeo.org/grass70/manuals/addons/r.geomorphon.html}}. 
-Geomorphons works effectively across spatial scales because 
+Geomorphon works effectively across spatial scales because 
 the neighborhood search size for pattern recognition 
-is spatially variable -- it is set dynamically based on the visibility of the cell \cite{Jasiewicz2013}.  
+is spatially variable -- it depends on the visibility of the cell \cite{Jasiewicz2013}.  
 Landforms can be classified as flat, peak, ridge, shoulder, spur, slope, hollow, footslope, valley, or depression (Fig.~\ref{fig:geomorphons}).
 
 \paragraph{Mean minimum distance}
@@ -1235,17 +1235,17 @@ Stdev.~of elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{i
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_3.png}\\
 %
-Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_3.png}\\
-%
 Mean difference (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/diff_legend_1.pdf} & 
 \includegraphics[width=0.19\textwidth]{images/render_3d/dem_difference_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_1.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_2.png} &
 \includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_3.png}\\
 %
 Mean slope (\degree) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend_1.pdf} & 
 \includegraphics[width=0.19\textwidth]{images/render_3d/slope_1.png} &
@@ -1333,19 +1333,6 @@ With projection-augmented modeling
 participants varied in their handling of relative high points, 
 but were relatively consistent otherwise. 
 
-\paragraph{Standard deviation of differences}
-The standard deviation of differences shows 
-how consistently the models fit the reference. 
-%
-The digitally modeled landscapes deviated the most from the reference
-with substantial errors along the ridge and valley. 
-%
-The hand sculpted landscapes 
-more consistently fit the reference
-and
-the projection-augmented landscapes 
-most consistently fit. 
-
 \paragraph{Mean elevation difference}
 The difference between the linearly regressed reference and the mean elevation
 shows where participants 
@@ -1368,6 +1355,19 @@ had accurate values along the ridge,
 accurate values on some slopes, 
 low values on others, 
 and low values along the borders.
+
+\paragraph{Standard deviation of differences}
+The standard deviation of differences shows 
+how consistently the models fit the reference. 
+%
+The digitally modeled landscapes deviated the most from the reference
+with substantial errors along the ridge and valley. 
+%
+The hand sculpted landscapes 
+more consistently fit the reference
+and
+the projection-augmented landscapes 
+most consistently fit. 
 
 \paragraph{Mean slope}
 The reference landscape had 
@@ -1500,28 +1500,25 @@ in order to match the reference landscape (Fig.~\ref{fig:difference_sequence}).
 While this feedback should show participants what to do next, 
 it may provide too much data or be too challenging to rapidly parse. 
 
-\begin{minted}[fontsize=\small]{python}
-def run_difference(real_elev, scanned_elev, env, **kwargs):
+\begin{minted}[fontsize=\small,fontfamily=tt]{python}
+def run_difference(real_elev, scanned_elev):
 	regression_params = gscript.parse_command('r.regression.line', 
 		flags='g',
 		mapx=scanned_elev,
-		mapy=real_elev,
-		env=env)
+		mapy=real_elev)
 	gscript.mapcalc('{regression} = {a} + {b} * {before}'.format(
 		a=regression_params['a'],
 		b=regression_params['b'],
 		before=scanned_elev,
-		regression='regression'),
-		env=env)
+		regression='regression'))
 	gscript.mapcalc('{difference} = {regression} - {after}'.format(
 		regression='regression',
-		after=real_elev, difference='diff'),
-		env=env)
+		after=real_elev, difference='diff'))
+	rules = ['-100 black', '-20 red', '0 white', '20 blue', '100 black']
 	gscript.write_command('r.colors', 
 		map='diff',
 		rules='-',
-		stdin="-100 black\n-20 red\n0 white\n20 blue\n100 black",
-		env=env)
+		stdin=stdin='\n'.join(rules))
 \end{minted}
 
 \paragraph{Data collection and analysis}
@@ -1554,39 +1551,36 @@ their edges tend to slump.
 This caused artifacts in the analysis like
 low elevation values and steep slopes
 along the borders. 
-%
+
+\paragraph{Per-cell statistics}
 Table \ref{table:difference_stats} shows maps of cellular statistics for this experiment.
-%
 %  mean
 The mean elevation for this set of models
 has the approximate shape of the reference elevation, 
 but is much simpler, lacking many details. 
 % stdev
-%The standard deviation of elevations represents the set's consistency.
 The standard deviation of elevations shows that participants 
 consistently modeled the low point at the base of the secondary ridge
 in the same way, 
 but modeled the primary ridge in different ways. 
 % stdev diff
 The standard deviation of difference shows 
-%how much the set deviated from the best fit with the reference. 
 how consistently the models fit the reference. 
 Overall participants performed well -- there was little deviation from the best fit. 
 Participants tended to perform poorly near the edges of models, especially in the corners.
 They also performed poorly with the valleys and the low point by the secondary ridge.
 
+\paragraph{Geospatial analyses}
 Table \ref{table:difference_experiment} shows geospatial analyses for this experiment.
 %
 The mean elevation difference shows that participants tended to add
 too little to the edges of the model,
 too much to primary ridge,
 and too much to the slope of the secondary ridge. 
-%
 % slope
 The mean slope shows that participants tended to model 
 overly steep slopes for the primary ridge -- exaggerating its form --
 but tended not model steep enough slopes for the secondary ridge. 
-%
 % landforms
 The mean landforms show that participants tended to 
 clearly capture the central ridge and its spurs,
@@ -1596,9 +1590,6 @@ The secondary ridge has an inchoate form
 with small clusters of ridge cells along a spur.
 Hollows -- transitions between slopes, footslopes, and valleys -- 
 on the mean landform map hint at valleys in the right locations.
-%but lack definition and steepness.
-
-
 
 \paragraph{Interviews and observations}
 % understanding volume
@@ -1758,7 +1749,8 @@ and computed the difference between the reference and mean water flow.
 \subsection{Results}
 Participants tended to perform well with the water flow analytic 
 -- approximately modeling all three streams.  
-%
+
+\paragraph{Per-cell statistics}
 Table \ref{table:water_flow_stats} shows maps of cellular statistics for this experiment.
 %  mean
 The mean elevation for this set of models
@@ -1777,6 +1769,7 @@ in the corners and along the edges.
 Again this is to be expected 
 as sand slumps along the borders. 
 
+\paragraph{Geospatial analyses}
 Table \ref{table:water_flow_experiment} shows geospatial analyses for this experiment.
 % water depth
 The mean water depth map shows all three streams, 
@@ -1786,7 +1779,6 @@ and thus the streams lack details.
 Table \ref{table:water_flow_percent_cells} shows that 
 there was substantial concentrated flow (water depth $>=0.05$ ft) 
 in the streams, albeit 22\% less than in the reference.
-%
 This is to be expected 
 since 
 water flow over the sculpted models was only computed over the model region, 
@@ -1796,15 +1788,62 @@ was computed over a larger region
 with the entire contributing watershed 
 in order to produce an accurate representation 
 of water flow across the study landscape. 
-%
 % depth difference
 The water depth difference map shows
 where water should be added (red) or removed (blue) 
 to match the reference
 -- i.e.~where water should flow versus where it was modeled. 
-%
 The mean water flow tightly fit the reference, 
 following similar, albeit simplified routes.
+
+\paragraph{Interviews and observations}
+% observations
+With the water flow analytic
+participants focused on accurately modeling the streams, 
+rather than the general shape of the topography. 
+As a result the primary ridge was inconsistently modeled and over-exaggerated,
+while the streams were consistently modeled,
+had high volumes of continuous water flow, 
+and flowed along the correct routes.
+
+% understanding water flow
+This experiment required abstract spatial thinking linking form and process. 
+Because water flow is controlled by the shape and gradient of the topography
+participants had to sculpt topographic form to drive water flow. 
+% interviews
+This modeling process, however, helped them understand topography better 
+because `seeing the flow takes away the mystery of topography.' 
+%
+We observed participants using an iterative modeling process 
+with the water flow analytic -- 
+they 
+\begin{enumerate*}[label=\alph*),font=\itshape]
+\item sculpted the topography, 
+\item observed how the water flow simulation changed, 
+\item critiqued their water flow and topography, 
+\item and continued to sculpt.
+\end{enumerate*}
+%
+Using the water flow analytic with this trial-and-error process
+participants were able to generate hypotheses, test hypotheses, and draw inferences 
+about the way that water flows over topography. 
+%
+%One participant described this trail-and-error process as tinkering --
+%`Tangible Landscape let me tinker. 
+%I could rapidly create, making new iterations. 
+%I could try something, see and feel it -- directly experience it --
+%and try again. Reinvent it.'
+%`Tangible Landscape lowers the stakes so that you're not too invested.
+%You're ready to fail. So you can intuitively explore, 
+%while reflecting on what you've done,
+%what you're doing.'
+
+%Participants suggested that the water flow analytic might be 
+%most useful for refining stream channels 
+%after modeling the topography with the difference analytic. 
+%% `More useful after modeling with the difference.' 
+%% i.e.~Build mass with difference, then refine with water flow
+%% a useful way of thinking about topography, but harder to model with
 
 \begin{table}
 \tbl{Water flow experiment: maps of per-cell statistics draped over a 3D rendering of the topography}{
@@ -1882,56 +1921,6 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 %\end{tabular}}
 %\label{table:flow_distance} 
 \end{table}
-
-
-% observations
-With the water flow analytic
-participants focused on accurately modeling the streams, 
-rather than the general shape of the topography. 
-As a result the primary ridge was inconsistently modeled and over-exaggerated,
-while the streams were consistently modeled,
-had high volumes of continuous water flow, 
-and flowed along the correct routes.
-
-% understanding water flow
-This experiment required abstract spatial thinking linking form and process. 
-Because water flow is controlled by the shape and gradient of the topography
-participants had to sculpt topographic form to drive water flow. 
-% interviews
-This modeling process, however, helped them understand topography better 
-because `seeing the flow takes away the mystery of topography.' 
-%
-We observed participants using an iterative modeling process 
-with the water flow analytic -- 
-they 
-\begin{enumerate*}[label=\alph*),font=\itshape]
-\item sculpted the topography, 
-\item observed how the water flow simulation changed, 
-\item critiqued their water flow and topography, 
-\item and continued to sculpt.
-\end{enumerate*}
-%
-Using the water flow analytic with this trial-and-error process
-participants were able to generate hypotheses, test hypotheses, and draw inferences 
-about the way that water flows over topography. 
-%
-%One participant described this trail-and-error process as tinkering --
-%`Tangible Landscape let me tinker. 
-%I could rapidly create, making new iterations. 
-%I could try something, see and feel it -- directly experience it --
-%and try again. Reinvent it.'
-%`Tangible Landscape lowers the stakes so that you're not too invested.
-%You're ready to fail. So you can intuitively explore, 
-%while reflecting on what you've done,
-%what you're doing.'
-
-%Participants suggested that the water flow analytic might be 
-%most useful for refining stream channels 
-%after modeling the topography with the difference analytic. 
-%% `More useful after modeling with the difference.' 
-%% i.e.~Build mass with difference, then refine with water flow
-%% a useful way of thinking about topography, but harder to model with
-
 
 %\section{Case studies}
 %
@@ -2265,7 +2254,7 @@ to an autonomous construction vehicle or robot in the field for construction
 \begin{center}
 \includegraphics[width=\textwidth]{images/system_schema_land.pdf}
 \caption{Tangible Landscape with 
-robotic fabrication, robotic construction, and real-time field data.}
+robotic fabrication, robotic construction, and streaming field data.}
 \label{fig:system_schema_land}
 \end{center}
 \end{figure}
