@@ -53,15 +53,18 @@ vline_color = "black"
 
 # 3d color rules with null values and default set to light gray
 stdev_colors_3d = """\
+30 68:1:84
+15 31:149:139
+5 248:230:33
 0 192:192:192
-5 171,143,150
-10 151,101,127
-15 131,66,117
-20 106,37,110
-25 66,16,90
-30 29,0,70
-nv 192:192:192
-default 192:192:192
+"""
+
+# 3d color rules with null values and default set to light gray
+stdev_series_colors_3d = """\
+24 68:1:84
+12 31:149:139
+6 248:230:33
+0 192:192:192
 """
 
 # list scanned DEMs
@@ -90,10 +93,16 @@ for dem in dems:
                         res=res)
 
     # 3D render stdev of reference elevation
+
     gscript.write_command('r.colors',
         map=stdev_ref,
         rules='-',
         stdin=stdev_colors_3d)
+
+    # gscript.read_command('r.colors',
+    #     map=stdev_ref,
+    #     color='viridis',
+    #     flags='n')
 
     gscript.run_command('m.nviz.image',
         elevation_map=dem,
@@ -114,10 +123,16 @@ for dem in dems:
         )
 
     # 3D render stdev elevation
+
     gscript.write_command('r.colors',
         map=stdev_dem,
         rules='-',
         stdin=stdev_colors_3d)
+
+    # gscript.read_command('r.colors',
+    #     map=stdev_dem,
+    #     color='viridis',
+    #     flags='n')
 
     gscript.run_command('m.nviz.image',
         elevation_map=mean_dem,
@@ -138,10 +153,16 @@ for dem in dems:
         )
 
     # 3D render stdev of regressed difference series
+
     gscript.write_command('r.colors',
         map=stdev_regression_difference_series,
         rules='-',
-        stdin=stdev_colors_3d)
+        stdin=stdev_series_colors_3d)
+
+    # gscript.read_command('r.colors',
+    #     map=stdev_regression_difference_series,
+    #     color='viridis',
+    #     flags='n')
 
     gscript.run_command('m.nviz.image',
         elevation_map=mean_dem,

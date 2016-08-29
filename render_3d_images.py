@@ -70,7 +70,18 @@ dem_difference_colors_3d = '-40 blue\n0 192:192:192\n40 red\nnv 192:192:192\ndef
 flow_difference_colors_3d = '-0.5 blue\n0 192:192:192\n0.5 red\nnv 192:192:192\ndefault 192:192:192'
 slope_difference_colors_3d = '-30 blue\n0 192:192:192\n30 red\nnv 192:192:192\ndefault 192:192:192'
 forms_difference_colors_3d = '-10 blue\n0 192:192:192\n10 red\nnv 192:192:192\ndefault 192:192:192'
-url="http://soliton.vm.bytemark.co.uk/pub/cpt-city/mpl/viridis.cpt" # http://soliton.vm.bytemark.co.uk/pub/cpt-city/mpl/inferno.cpt
+stdev_colors_3d = """\
+30 68:1:84
+15 31:149:139
+5 248:230:33
+0 192:192:192
+"""
+stdev_series_colors_3d = """\
+24 68:1:84
+12 31:149:139
+6 248:230:33
+0 192:192:192
+"""
 
 # list scanned DEMs
 dems = gscript.list_grouped('rast',
@@ -687,11 +698,45 @@ for dem in dems:
         errors='ignore'
         )
 
+    # 3D render stdev of reference elevation
+    gscript.write_command('r.colors',
+        map=stdev_ref,
+        rules='-',
+        stdin=stdev_colors_3d)
+
+    # gscript.read_command('r.colors',
+    #     map=stdev_ref,
+    #     color='viridis',
+    #     flags='n')
+
+    gscript.run_command('m.nviz.image',
+        elevation_map=dem,
+        color_map=stdev_ref,
+        resolution_fine=res_3d,
+        height=height_3d,
+        perspective=perspective,
+        light_position=light_position,
+        fringe=fringe,
+        fringe_color=color_3d,
+        fringe_elevation=fringe_elevation,
+        #arrow_position=arrow_position,
+        #arrow_size=arrow_size,
+        output=os.path.join(render_3d, stdev_ref),
+        format=format_3d,
+        size=size_3d,
+        errors='ignore'
+        )
+
     # 3D render stdev elevation
-    gscript.run_command('r.cpt2grass',
+    gscript.write_command('r.colors',
         map=stdev_dem,
-        url=url,
-        flags="s")
+        rules='-',
+        stdin=stdev_colors_3d)
+
+    # gscript.read_command('r.colors',
+    #     map=stdev_dem,
+    #     color='viridis',
+    #     flags='n')
 
     gscript.run_command('m.nviz.image',
         elevation_map=mean_dem,
@@ -711,31 +756,17 @@ for dem in dems:
         errors='ignore'
         )
 
-    # 3D render stdev of difference series
-    gscript.run_command('r.cpt2grass',
-        map=stdev_difference_series,
-        url=url,
-        flags="s")
-
-    gscript.run_command('m.nviz.image',
-        elevation_map=mean_dem,
-        color_map=stdev_difference_series,
-        resolution_fine=res_3d,
-        height=height_3d,
-        perspective=perspective,
-        light_position=light_position,
-        fringe=fringe,
-        fringe_color=color_3d,
-        fringe_elevation=fringe_elevation,
-        #arrow_position=arrow_position,
-        #arrow_size=arrow_size,
-        output=os.path.join(render_3d,stdev_difference_series),
-        format=format_3d,
-        size=size_3d,
-        errors='ignore'
-        )
-
     # 3D render stdev of regressed difference series
+    gscript.write_command('r.colors',
+        map=stdev_regression_difference_series,
+        rules='-',
+        stdin=stdev_series_colors_3d)
+
+    # gscript.read_command('r.colors',
+    #     map=stdev_regression_difference_series,
+    #     color='viridis',
+    #     flags='n')
+
     gscript.run_command('m.nviz.image',
         elevation_map=mean_dem,
         color_map=stdev_regression_difference_series,

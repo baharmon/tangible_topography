@@ -45,6 +45,12 @@
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
 
+% Fix table of contents
+\makeatletter
+\newcommand\l@paragraph[2]{}
+\newcommand\l@subparagraph[2]{}
+\makeatother
+
 % Metadata Information
 \acmVolume{0}
 \acmNumber{0}
@@ -196,6 +202,10 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 
 
 \maketitle
+
+%{\tableofcontents}
+%{\listoffigures}
+%{\listoftables}
 
 \section{Introduction}
 
@@ -516,6 +526,8 @@ SandyStation & Sculpting &&&\\
 %
 Augmented Reality Sandbox & Sculpting &&& \cite{Reed2014}\\
 & Gesture\\
+%
+Rapid Landscape Prototyping Machine & Machining &&& \cite{Robinson2014}\\
 %
 Tangible Landscape & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Petrasova2014}\\
 & Object detection && Quantitative experiments\textsuperscript{\textdagger} & \cite{Petrasova2015}\textsuperscript{\textasteriskcentered}\\
@@ -1601,7 +1613,7 @@ as continual 'rebuilding to make it match.'
 % iterative process
 They described an iterative process of 
 continual refinement based on critical analysis 
--- similar to Sch{\"o}n's reflection-in-action --
+-- similar to Sch{\"o}n's reflection-in-action \cite{Schon1983} --
 but enhanced by computational feedback 
 explaining that 
 `because Tangible Landscape gives immediate results it encourages an iterative process.' 
