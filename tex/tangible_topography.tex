@@ -31,9 +31,10 @@
 \usepackage[super]{nth}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{tikz}
 \usepackage{upquote}
-\usepackage{minted}
-\usemintedstyle{bw}
+%\usepackage{minted}
+%\usemintedstyle{bw}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 %\newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
 %\newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
@@ -107,63 +108,58 @@ ART RICE
 
 \begin{abstract}
 %
-Spatial thinking can be embodied 
--- people can functionally think about space with their bodies 
-by kinaesthetically experiencing space, 
-cognitively grasping objects, and 
-physically simulating spatial transformations.
+%Spatial thinking can be embodied 
+%-- people can functionally think about space with their bodies 
+%by kinaesthetically experiencing space, 
+%cognitively grasping objects, and 
+%physically simulating spatial transformations.
 %
 Tangible interfaces for spatial modeling
-combine kinaesthetic interaction with spatial computations. 
+combine embodied, kinaesthetic interaction with spatial computations. 
 %
 Theoretically this should enable users to 
-naturally and intuitively interact 
+intuitively interact 
 with multidimensional digital models of space,
 offloading challenging cognitive tasks onto the body and 
 computationally enhancing how they think about space.
 % 
 We have designed Tangible Landscape 
--- a tangible interface powered by a geographic information system (GIS) -- 
+-- a tangible interface powered by a geographic information system (GIS) 
 that gives 3D spatial data an interactive, physical form so that 
-users can naturally feel it, see it, and shape it.
+users can naturally sense and shape it.
 %
 Tangible Landscape couples a physical and a digital model of a landscape
-through continual near real-time cycles of 
+through real-time cycles of 
 physical manipulation, 3D scanning, spatial computation, and projected feedback.
 %
-As users manipulate
-a physical model of a landscape
-the model is 3D scanned, the scan is imported into GIS 
-for spatial modeling, analysis, and simulation, 
-and the results are projected back onto the model.
+%As users manipulate
+%a physical model of a landscape
+%the model is 3D scanned, the scan is imported into GIS 
+%for spatial modeling, analysis, and simulation, 
+%and the results are projected back onto the model.
 %
-%Coupling physical and digital models 
-%should, theoretically, enable 
-%users to cognitively grasp 3D data 
-%as an extension of their bodies 
-%and automatically, immediately, and subconsciously interact with it. 
-% 
-We conducted a series of experiments using 
-quantitative methods 
-including geospatial modeling, analysis, simulation, and statistics 
+Through a series of 
+3D modeling experiments 
+assessed using both
+quantitative %methods 
+%such as geospatial modeling
 and qualitative methods 
-including semi-structured interviews and direct observation
-to study how tangible interfaces for geospatial modeling 
-mediate spatial performance. 
+%such as geospatial modeling and interviews
+%including semi-structured interviews and direct observation
+%to study how Tangible Landscape
+%mediates 3D spatial performance.
 %
-We determined that tangible interfaces for geospatial modeling 
-can improve 3D spatial performance.
+%We determined that tangible interfaces for geospatial modeling 
+%can improve 3D spatial performance.
+we determined that Tangible Landscape 
+can improve 3D spatial performance. 
 %
-In the experiments participants produced more accurate models 
+The participants produced more accurate models 
 that better represented morphological features 
 with tangible modeling than they did with either digital or analog, hand modeling. 
-%
-%We also ran a serious gaming event as a case study
-%in which attendees used Tangible Landscape to solve complex spatial problems. 
-%As they played the games
-%attendees naturally steered sophisticated simulations of environmental processes,
-%iteratively exploring and learning how the processes behave. 
-%
+
+
+
 \end{abstract}
 
 %
@@ -194,7 +190,7 @@ with tangible modeling than they did with either digital or analog, hand modelin
 
 \keywords{Human-computer interaction, tangible interfaces, interaction design, physical computation, embodied cognition, spatial thinking, geospatial modeling}
 
-\acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, Ross K. Meentemeyer, Eugene H. Bressler, and Art Rice, 2016. Embodied Spatial Cognition in Tangible Computing.}
+\acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, Ross K. Meentemeyer, Eugene H. Bressler, and Art Rice, 2016. Cognitively Grasping Topography with Tangible Landscape.}
 
 \begin{bottomstuff}
 Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University; B. A. Harmon, E. H. Bressler {and} A. Rice, Department of Landscape Architecture, North Carolina State University.
@@ -219,7 +215,7 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 	augmented with simulated water flow and an orthophotograph.  
 	Changes to the model are scanned into in GIS 
 	and the resulting water flow simulation is
-	projected back onto the model in near real-time.}
+	projected back onto the model in real-time.}
 	\label{fig:tl_flow}
 \end{center}
 \end{figure}
@@ -362,6 +358,7 @@ like analyzing spatial patterns and simulating spatiotemporal processes.
 %
 Tangible interfaces for geospatial modeling should, 
 therefore, enhance users' spatial performance 
+-- their ability to sense, manipulate, and interact with multidimensional space -- 
 for challenging tasks 
 like sculpting topography and guiding the flow of water
 by combining these physical and computational affordances.
@@ -420,7 +417,7 @@ are used.
 %
 A review of tangible interfaces for geospatial modeling 
 (Tables~\ref{table:review_a}-\ref{table:review_d})
-shows that have been 
+shows that there have been 
 relatively few case studies \cite{Ishii2002,Tateosian2010,Petrasova2015} 
 or qualitative user studies \cite{Shamonsky2003}
 and only a single quantitive pilot study \cite{Harmon2016}.
@@ -459,8 +456,8 @@ Our research objectives were to:
 %
 \begin{itemize}
 \item Design an effective tangible interface for geospatial modeling
-\item Test whether coupling a physical and digital model of topography can improve spatial performance
-\item Study how different geospatial analytics mediate users' spatial performance when using a tangible interface for geospatial modeling
+\item Test whether coupling a physical and digital model of topography can improve 3D spatial performance
+\item Study how different geospatial analytics mediate users' 3D spatial performance when using a tangible interface for geospatial modeling
 \end{itemize}
 
 
@@ -584,7 +581,7 @@ that users can cognitively grasp and kinaesthetically explore.
 %
 Tangible Landscape -- a tangible user interface for GRASS GIS --
 couples a physical and digital model of a landscape through a continuous cycle of 3D scanning, geospatial modeling, and projection
-so that users can intuitively interact with the modeled landscape in near real-time.
+so that users can intuitively interact with the modeled landscape in real-time.
 %
 Conceptually Tangible Landscape physically manifests 3D data 
 so that users can hold a GIS in their hands -- 
@@ -599,6 +596,16 @@ of observation, hypothesis generation and testing, and inference.
 %
 Tangible Landscape is meant to fluidly, seamlessly combine
 computational science with exploratory modes of creative thinking.
+
+Tangible Landscape is unique because it is the only 
+real-time tangible interface for spatial modeling that 
+\begin{enumerate*}
+\item is powered by a GIS,
+\item has extensive libraries for rasters, vectors, time-series, statistics, modeling, analysis, simulation, visualization, and databasing, 
+\item physically represents space with enough precision for real-world problem solving,
+\item has been demonstrated for a wide range of applications,
+\item and has been quantitatively tested in user experiments. 
+\end{enumerate*}
 
 \subsection{Evolution}
 Tangible Landscape evolved from 
@@ -667,7 +674,7 @@ and either binned or interpolated as a digital elevation model.
 The digital elevation model is used to compute 
 geospatial analyses, models, and simulations, 
 which are then projected back onto the physical model 
--- all in near real-time (Fig.~\ref{fig:system_schema}). 
+-- all in real-time (Fig.~\ref{fig:system_schema}). 
 Users can tangibly interact with digital models and simulations
 by sculpting, placing objects, or sketching.
 They can sculpt the model with their hands
@@ -693,7 +700,7 @@ at a human scale
 \begin{figure}
 \begin{center}
 		\includegraphics{images/system_schema.pdf}
-	\caption{How Tangible Landscape works: a near real-time feedback cycle of physical interaction, 3D scanning, point cloud processing, geospatial computation, and projection.}
+	\caption{How Tangible Landscape works: a real-time feedback cycle of physical interaction, 3D scanning, point cloud processing, geospatial computation, and projection.}
 	\label{fig:system_schema}
 \end{center}
 \end{figure}
@@ -704,9 +711,20 @@ Scanning users' hands as topography can be distracting;
 it also, however, helps users understand how the system works
 %-- by seeing how direct interaction is --
 and encourages play. 
-Users can, for example, cup their hands over the model 
-and see them fill with simulated water. 
-% add figure with example
+Users can, for example, 
+place their hands on the model and create simulated lakes between their fingers
+%cup their hands over the model and see them fill with simulated water 
+(Fig.~\ref{fig:hands}) \cite{ncsu_geoforall_2016b}. 
+
+\begin{figure}
+\begin{center}
+		\includegraphics[width=0.32\textwidth]{images/hands/tl_hand_1.png}
+		\includegraphics[width=0.32\textwidth]{images/hands/tl_hand_2.png}
+		\includegraphics[width=0.32\textwidth]{images/hands/tl_hand_3.png}
+	\caption{With Tangible Landscape users can scan their arms and hands as topography creating lakes between their fingers.}
+	\label{fig:hands}
+\end{center}
+\end{figure}
 
 \paragraph{Multidimensional sketching}
 %
@@ -903,7 +921,7 @@ spatial training and serious gaming.
 After a pilot study \cite{Harmon2016b}
 we conducted an experiment to study how 
 coupling digital and physical models of topography 
-mediates spatial performance. 
+mediates 3D spatial performance. 
 
 \subsection{Methods}
 In this experiment 
@@ -1227,54 +1245,326 @@ along the borders.
 Table \ref{table:coupling_experiment} shows 3D maps of cellular statistics 
 and geospatial analyses for this experiment.
 
+% ---------------------------- TREE ---------------------------- 
+
+\begin{figure}
+\begin{center}
+%
+\begin{tikzpicture}[grow = right,
+	level 1/.style={sibling distance=12 em},
+	level 2/.style={sibling distance=6 em},
+	level distance = 14em,
+	every node/.style = {shape=rectangle, 
+		rounded corners,
+		draw, 
+		font=\footnotesize,
+		align=center,
+		top color=white,
+		bottom color=white}]
+\node {Participants \\ 
+	\includegraphics[width=0.1\textwidth]{images/render_3d/participants/mean_dem_1.png}
+	\includegraphics[width=0.1\textwidth]{images/render_3d/participants/mean_dem_2.png}
+	\includegraphics[width=0.1\textwidth]{images/render_3d/participants/mean_dem_3.png} \\
+	\makebox[0.1\textwidth][c]{\scriptsize Digital}
+	\makebox[0.1\textwidth][c]{\scriptsize Analog }
+	\makebox[0.1\textwidth][c]{\scriptsize Augmented }
+	}
+	child { node {Students \\ 
+		\includegraphics[width=0.1\textwidth]{images/render_3d/students/mean_dem_1.png}
+		\includegraphics[width=0.1\textwidth]{images/render_3d/students/mean_dem_2.png}
+		\includegraphics[width=0.1\textwidth]{images/render_3d/students/mean_dem_3.png}
+		}
+		child { node {Landscape architecture \\ 
+			\includegraphics[width=0.1\textwidth]{images/render_3d/landscape_students/mean_dem_1.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/landscape_students/mean_dem_2.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/landscape_students/mean_dem_3.png}
+			}
+			}
+		child { node {GIS \\ 
+			\includegraphics[width=0.1\textwidth]{images/render_3d/gis_students/mean_dem_1.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/gis_students/mean_dem_2.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/gis_students/mean_dem_3.png}
+			}
+			}
+		}
+	child { node {Professionals \\ 
+		\includegraphics[width=0.1\textwidth]{images/render_3d/professionals/mean_dem_1.png}
+		\includegraphics[width=0.1\textwidth]{images/render_3d/professionals/mean_dem_2.png}
+		\includegraphics[width=0.1\textwidth]{images/render_3d/professionals/mean_dem_3.png}
+		}
+		child { node {3D novices \\ 
+			\includegraphics[width=0.1\textwidth]{images/render_3d/3d_novices/mean_dem_1.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/3d_novices/mean_dem_2.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/3d_novices/mean_dem_3.png}
+			}
+			}
+		child { node {3D experts \\ 
+			\includegraphics[width=0.1\textwidth]{images/render_3d/3d_experts/mean_dem_1.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/3d_experts/mean_dem_2.png}
+			\includegraphics[width=0.1\textwidth]{images/render_3d/3d_experts/mean_dem_3.png}
+			}
+			}
+};
+\end{tikzpicture}
+%
+\caption{Pairwise comparison of the mean digital elevation models grouped by category of participants}
+\label{fig:tree}
+\end{center}
+\end{figure}
+
+% ---------------------------- PARTICIPANTS ---------------------------- 
+
 \begin{table}
-\tbl{Coupling experiment: maps of per-cell statistics and geospatial analyses draped over 3D topography}{
+\tbl{Coupling experiment: maps of per-cell statistics and geospatial analyses draped over 3D topography for all participants}{
 \ra{1.3}
 \begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
 \toprule
 & \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
 \midrule
 %
-Mean elevation (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/dem_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_3.png}\\
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_dem_3.png}\\
 %
-Stdev.~of elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_legend.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_dem_3.png}\\
-%
-Mean difference (ft) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/diff_legend_1.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/dem_difference_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_dem_regression_difference_3.png}\\
+Stdev.~of elevations \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/stdev_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/stdev_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/stdev_dem_3.png}\\
 %
 Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/stdev_regression_difference_series_3.png}\\
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/stdev_regression_difference_series_3.png}\\
 %
-Mean slope (\degree) \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend_1.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/slope_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_slope_3.png}\\
+Mean difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_dem_regression_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_dem_regression_difference_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_dem_regression_difference_3.png}\\
+%
+Mean slope \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/slope_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/slope_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_slope_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_slope_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_slope_3.png}\\
 %
 Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
-\includegraphics[width=0.19\textwidth]{images/render_3d/forms_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_forms_1.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_forms_2.png} &
-\includegraphics[width=0.19\textwidth]{images/render_3d/mean_forms_3.png}\\
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/participants/mean_forms_3.png}\\
 %
 \bottomrule
 \end{tabular}}
 \label{table:coupling_experiment} 
 \end{table}
+
+% ---------------------------- STUDENTS vs PROFESSIONALS ---------------------------- 
+
+% STUDENTS
+
+\begin{table}
+\tbl{Students}{
+\ra{1.3}
+\begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/mean_dem_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/stdev_regression_difference_series_3.png}\\
+%
+Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/students/mean_forms_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:students} 
+
+% PROFESSIONALS
+\vspace*{1.5em}
+
+\tbl{Academics and professionals}{
+\ra{1.3}
+\begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/mean_dem_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/stdev_regression_difference_series_3.png}\\
+%
+Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/professionals/mean_forms_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:professionals} 
+\end{table}
+
+% ---------------------------- LANDSCAPE vs. GIS STUDENTS ---------------------------- 
+
+% LANDSCAPE STUDENTS
+
+\begin{table}
+\tbl{Landscape architecture students}{
+\ra{1.3}
+\begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/mean_dem_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/stdev_regression_difference_series_3.png}\\
+%
+Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/landscape_students/mean_forms_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:landscape_students} 
+
+% GIS STUDENTS
+\vspace*{1.5em}
+
+\tbl{GIS students}{
+\ra{1.3}
+\begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/mean_dem_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/stdev_regression_difference_series_3.png}\\
+%
+Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/gis_students/mean_forms_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:gis_students} 
+\end{table}
+
+% ---------------------------- 3D NOVICES vs EXPERTS ---------------------------- 
+
+% 3D NOVICES
+
+\begin{table}
+\tbl{Academics and professionals without expertise in 3D modeling}{
+\ra{1.3}
+\begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/mean_dem_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/stdev_regression_difference_series_3.png}\\
+%
+Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_novices/mean_forms_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:3d_novices} 
+
+% 3D EXPERTS
+\vspace*{1.5em}
+
+\tbl{Academics and professionals with expertise in 3D modeling}{
+\ra{1.3}
+\begin{tabular}{m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth} m{0.19\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Reference} & \multicolumn{1}{c}{Digital} & \multicolumn{1}{c}{Analog}  & \multicolumn{1}{c}{Augmented}\\
+\midrule
+%
+Mean elevation \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/elevation_legend_1.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/mean_dem_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/mean_dem_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/mean_dem_3.png}\\
+%
+Stdev.~of difference \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/stdev_diff_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/dem_difference_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/stdev_regression_difference_series_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/stdev_regression_difference_series_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/stdev_regression_difference_series_3.png}\\
+%
+Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images/legends/forms_legend.pdf} & 
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/mean_forms_1.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/mean_forms_2.png} &
+\includegraphics[width=0.19\textwidth]{images/render_3d/3d_experts/mean_forms_3.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:3d_experts} 
+\end{table}
+
+% ---------------------------- TABLES ----------------------------
 
 \begin{table}
 \tbl{Coupling experiment: percent cells}{
@@ -1290,9 +1580,9 @@ Augmented & 0.77 & 4.13 & 1.48\\
 \bottomrule
 \end{tabular}}
 \label{table:percent_cells} 
-\end{table}
-
-\begin{table}
+%
+\vspace*{1.5em}
+%
 \tbl{Mean minimum distance (ft) of features from reference features}{
 \ra{1.3}
 \begin{tabular}{c <{\hspace{0.5em}} c <{\hspace{1em}} c <{\hspace{3.5em}} c}
@@ -1475,7 +1765,7 @@ Finding the relative height, however, was challenging -- it was subtle.'
 
 \section{Difference experiment}
 We conducted an experiment to study 
-how the difference analytic mediates spatial performance 
+how the difference analytic mediates 3D spatial performance 
 when using a tangible interface for GIS.
 
 \begin{figure}
@@ -1512,26 +1802,26 @@ in order to match the reference landscape (Fig.~\ref{fig:difference_sequence}).
 While this feedback should show participants what to do next, 
 it may provide too much data or be too challenging to rapidly parse. 
 
-\begin{minted}[fontsize=\small,fontfamily=tt]{python}
-def run_difference(real_elev, scanned_elev):
-	regression_params = gscript.parse_command('r.regression.line', 
-		flags='g',
-		mapx=scanned_elev,
-		mapy=real_elev)
-	gscript.mapcalc('{regression} = {a} + {b} * {before}'.format(
-		a=regression_params['a'],
-		b=regression_params['b'],
-		before=scanned_elev,
-		regression='regression'))
-	gscript.mapcalc('{difference} = {regression} - {after}'.format(
-		regression='regression',
-		after=real_elev, difference='diff'))
-	rules = ['-100 black', '-20 red', '0 white', '20 blue', '100 black']
-	gscript.write_command('r.colors', 
-		map='diff',
-		rules='-',
-		stdin=stdin='\n'.join(rules))
-\end{minted}
+%\begin{minted}[fontsize=\small,fontfamily=tt]{python}
+%def run_difference(real_elev, scanned_elev):
+%	regression_params = gscript.parse_command('r.regression.line', 
+%		flags='g',
+%		mapx=scanned_elev,
+%		mapy=real_elev)
+%	gscript.mapcalc('{regression} = {a} + {b} * {before}'.format(
+%		a=regression_params['a'],
+%		b=regression_params['b'],
+%		before=scanned_elev,
+%		regression='regression'))
+%	gscript.mapcalc('{difference} = {regression} - {after}'.format(
+%		regression='regression',
+%		after=real_elev, difference='diff'))
+%	rules = ['-100 black', '-20 red', '0 white', '20 blue', '100 black']
+%	gscript.write_command('r.colors', 
+%		map='diff',
+%		rules='-',
+%		stdin=stdin='\n'.join(rules))
+%\end{minted}
 
 \paragraph{Data collection and analysis}
 The final scan of each model was stored in a GRASS GIS database for analysis. 
@@ -1629,17 +1919,17 @@ hints of the secondary ridge and some valleys --
 but these characteristics were either exaggerated or under-exaggerated.
 
 \begin{table}
-\tbl{Difference experiment: maps of per-cell statistics draped over a 3D rendering of the topography}{
+\tbl{Difference experiment: maps of per-cell statistics draped over a 3D rendering of the topography for all participants}{
 \ra{1.3}
 \begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
 \toprule
 \multicolumn{1}{c}{Reference elevation} & \multicolumn{1}{c}{Mean elevation} & \multicolumn{1}{c}{Stdev.~ of elevations}  & \multicolumn{1}{c}{Stdev.~ of differences}\\
 \midrule
 %
-\includegraphics[width=0.24\textwidth]{images/render_3d/dem_4.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/mean_dem_4.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_dem_4.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_regression_difference_series_4.png}\\
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/mean_dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/stdev_dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/stdev_regression_difference_series_4.png}\\
 %
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_4.pdf}} &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_4.pdf}} &
@@ -1652,29 +1942,28 @@ but these characteristics were either exaggerated or under-exaggerated.
 %
 \vspace*{1.5em}
 %
-\tbl{Difference experiment: maps of geospatial analyses draped over a 3D rendering of the topography}{
-\ra{1.3}
+\tbl{Difference experiment: maps of geospatial analyses draped over a 3D rendering of the topography  for all participants}{
 \begin{tabular}{m{0.1\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth} m{0.22\textwidth}}
 \toprule
 & \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Elevation difference} & \multicolumn{1}{c}{Slope}  & \multicolumn{1}{c}{Landform}\\
 \midrule
 %
 Reference & 
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/dem_difference_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/slope_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/forms_4.png}\\
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/dem_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/dem_difference_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/slope_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/forms_4.png}\\
 %
 Mean & 
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_dem_difference_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_slope_4.png} &
-\includegraphics[width=0.22\textwidth]{images/render_3d/mean_forms_4.png}\\
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/mean_dem_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/mean_dem_difference_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/mean_slope_4.png} &
+\includegraphics[width=0.22\textwidth]{images/render_3d/participants/mean_forms_4.png}\\
 %
 &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_4.pdf}} &
-\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/diff_legend_4.pdf}} &
-\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/slope_legend_1.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/diff_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/slope_legend.pdf}} &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/forms_legend.pdf}}\\
 %
 \bottomrule
@@ -1714,7 +2003,7 @@ After a pilot study \cite{Harmon2016}
 we conducted an experiment to study 
 how water flow analytics 
 in a tangible interface for GIS
-mediate spatial performance.
+mediate 3D spatial performance.
 
 \subsection{Methods}
 \paragraph{Water flow analytic}
@@ -1858,16 +2147,16 @@ about the way that water flows over topography.
 %% a useful way of thinking about topography, but harder to model with
 
 \begin{table}
-\tbl{Water flow experiment: maps of per-cell statistics draped over a 3D rendering of the topography}{
+\tbl{Water flow experiment: maps of per-cell statistics draped over a 3D rendering of the topography  for all participants}{
 \ra{1.3}
 \begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
 \toprule
 \multicolumn{1}{c}{Reference elevation} & \multicolumn{1}{c}{Mean elevation} & \multicolumn{1}{c}{Stdev.~ of elevations} & \multicolumn{1}{c}{Stdev.~ of differences}\\
 \midrule
-\includegraphics[width=0.24\textwidth]{images/render_3d/dem_5.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/mean_dem_5.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_dem_5.png} &
-\includegraphics[width=0.24\textwidth]{images/render_3d/stdev_regression_difference_series_5.png}\\
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/mean_dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/stdev_dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/participants/stdev_regression_difference_series_5.png}\\
 %
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_5.pdf}} &
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_5.pdf}} &
@@ -1880,7 +2169,7 @@ about the way that water flows over topography.
 %
 \vspace*{1.5em}
 %
-\tbl{Water flow experiment: maps of geospatial analyses draped over a 3D rendering of the topography}{
+\tbl{Water flow experiment: maps of geospatial analyses draped over a 3D rendering of the topography  for all participants}{
 \ra{1.3}
 \begin{tabular}{m{0.1\textwidth} m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
 \toprule
@@ -1888,14 +2177,14 @@ about the way that water flows over topography.
 \midrule
 %
 Reference & 
-\includegraphics[width=0.3\textwidth]{images/render_3d/dem_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/depth_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/dem_difference_5.png}\\
+\includegraphics[width=0.3\textwidth]{images/render_3d/participants/dem_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/participants/depth_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/participants/dem_difference_5.png}\\
 %
 Mean & 
-\includegraphics[width=0.3\textwidth]{images/render_3d/mean_dem_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/mean_depth_5.png} &
-\includegraphics[width=0.3\textwidth]{images/render_3d/mean_depth_difference_5.png}\\
+\includegraphics[width=0.3\textwidth]{images/render_3d/participants/mean_dem_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/participants/mean_depth_5.png} &
+\includegraphics[width=0.3\textwidth]{images/render_3d/participants/mean_depth_difference_5.png}\\
 %
 & 
 \multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_5.pdf}} &
@@ -2018,7 +2307,7 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 % coupling
 The results of the coupling experiment show that 
 coupling a physical and digital model of topography 
-can improve spatial performance. 
+can improve 3D spatial performance. 
 %
 The projection-augmented models tended
 to more accurately fit the reference, 
@@ -2146,7 +2435,7 @@ This dramatically increased the speed of the system
 tripling the rate of feedback
 so that there is only approximately 2 seconds of lag. 
 %
-Now that the analytics are closer to real-time to
+Now that the analytics are faster%closer to real-time
 users should perform even better than they did in the experiments.
 %
 As a test a member of our research team 
@@ -2197,7 +2486,7 @@ under the GPL.
 %
 \subsection{Future cognitive studies}
 %
-This study focused on spatial performance
+This study focused on 3D spatial performance
 using geospatial analyses to assess modeling results. 
 %
 It did not quantitively address 
@@ -2291,8 +2580,8 @@ and draw inferences.
 %
 % experiment / findings
 In a series of experiments we found that 
-Tangible Landscape can improve spatial performance  
-enabling users to more accurately model 3-dimensional space. 
+Tangible Landscape can improve 3D spatial performance  
+enabling users to more accurately model 3D space. 
 %
 The experiments show that users 
 were able to offload enough of the cognitive work 
@@ -2541,7 +2830,7 @@ in the \emph{current{\_}analyses.py} script
 to show each participant where to add and remove sand 
 in order to match the study landscape
 The difference between their model and the study landscape
-will be projected onto the sand model in real-time
+will be projected onto the sand model in near real-time
 to guide them. 
 The contours of the study landscape should layered
 over the difference map. 

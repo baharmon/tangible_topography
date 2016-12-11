@@ -1,0 +1,9 @@
+g.region n=n-15 s=s+15 e=e-15 w=w+15
+
+r.mapcalc "temp = map" --overwrite
+
+r.region map=temp raster=map
+
+r.colors map=temp color=elevation
+
+g.rename --overwrite raster=temp,map
