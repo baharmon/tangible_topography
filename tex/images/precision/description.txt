@@ -1,0 +1,23 @@
+scanning resolution 2mm, smoothing 12, interpolation, 78 cm above, model dem_02 13.5 cm x 13.5 cm
+
+legend is in mm of vertical difference
+
+r.univar map=scan_regressed_diff_precision@scanning -e                          
+total null and non-null cells: 54756
+total null cells: 932
+Of the non-null cells:
+----------------------
+n: 53824
+minimum: -2.83712
+maximum: 3.73062
+range: 6.56774
+mean: -0.017372
+mean of absolute values: 0.51979
+standard deviation: 0.744232
+variance: 0.553882
+variation coefficient: -4284.1 %
+sum: -935.028590136284
+1st quartile: -0.411035
+median (even number of cells): -0.0318134
+3rd quartile: 0.278788
+90th percentile: 0.849084
