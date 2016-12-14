@@ -227,7 +227,7 @@ Higher dimensional spatial thinking
 plays an important role in 
 science, technology, engineering, the arts, and math. 
 %
-3D spatial thinking is used in disciplines 
+3-dimensional (3D) spatial thinking is used in disciplines 
 such as geology to understand the structure of the earth, 
 ecology to understand the structure of ecosystems, 
 civil engineering to shape landscapes, 
@@ -257,7 +257,7 @@ complex spatial and temporal phenomena
 With extensive libraries for point cloud processing, 
 3D vector modeling, and
 surface and volumetric modeling and analysis
-GIS are powerful tools for studying 3-dimensional (3D) space.
+GIS are powerful tools for studying 3D space.
 
 GIS, however, can be unintuitive, challenging to use, and creatively constraining
 due to the complexity of the software, 
@@ -367,6 +367,28 @@ offloading these challenging cognitive tasks onto their bodies.
 
 % REFERREE 1: The paper presents a sizeable number of recently published papers on related work. Unfortunately, most papers are only enumerated in four tables, focusing on different aspects. For a journal article, a more detailed discussion would be appropriate. In particular, it is not clear how these systems compare to the Tangible Landscape system. Even though the focus of this submitted paper is on the evaluation of the system rather than the system itself, readers should to be able to understand the relevance of the evaluations for other systems. Furthermore, a few prior evaluations of tangible interfaces for geospatial modeling are cited, but not discussed either. What were the results/conclusions of such prior evaluations?
 
+% REFEREE 2: 
+% The studies by Woods (Woods 2016) and Schmidt-Daly (Schmidt-Daly 2016) may have been too recent at the time of submission, but they are highly relevant related work on how augmented sand interfaces for GIS are used as teaching tools and to investigate spatial knowledge.
+% The appeal of the contribution could be broadened by providing examples of similar systems for other application domains, such as volumetric data exploration (Ratti 2003) and music (Kikukawa 2013), gaming (Wilson 2007), and animation (Kazi 2011).
+% While not a continuous sand TUI, GeoTUI, as a study of a tangible user interface for GIS experts should be mentioned as well (Couture 2008).
+
+% REFERENCES
+%Nadine Couture, Guillaume Rivière, and Patrick Reuter. 2008. GeoTUI: a tangible user interface for geoscience. In Proceedings of the 2nd international conference on Tangible and embedded interaction (TEI '08). ACM, New York, NY, USA, 89-96. DOI=http://dx.doi.org/10.1145/1347390.1347411
+%
+%Kazi, Rubaiat Habib, et al. "SandCanvas: a multi-touch art medium inspired by sand animation." Proceedings of the SIGCHI Conference on Human Factors in Computing Systems. ACM, 2011.
+%
+%Kikukawa, Yuya, et al. "Hakoniwa: A sonification art installation consists of sand and woodblocks." (2013).
+%
+%Ratti, Carlo, et al. "PHOXEL-SPACE: an interface for exploring volumetric data with physical voxels." Proceedings of the 5th conference on Designing interactive systems: processes, practices, methods, and techniques. ACM, 2004.
+%
+%Tarah N. Schmidt-Daly, Jennifer M. Riley, Charles R. Amburn, Kelly S. Hale, and P. David Yacht
+%Video Game Play and Effect on Spatial Knowledge Tasks Using an Augmented Sand Table Proceedings of the Human Factors and Ergonomics Society Annual MeetingSeptember 2016 60: 1429-1433, doi:10.1177/1541931213601328
+%
+%Wilson, A. Depth-Sensing Video Cameras for 3D Tangible Tabletop Interaction, Tabletop 2007.
+%
+%Woods, Terri L., et al. "Pilot Study Using the Augmented Reality Sandbox to Teach Topographic Maps and Surficial Processes in Introductory Geology Labs." Journal of Geoscience Education 64.3 (2016): 199-214.
+
+
 With GIS users can computationally offload complex cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
 %
@@ -441,6 +463,18 @@ also found that there were relatively few user studies
 and called for `more, high-quality data on user experience'
 in order to understand if interfaces work as designed
 \cite{Rasmussen2012}.
+
+% RESEARCH QUESTIONS
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Novice vs. expert systems
+% 	What functionality is needed for expert modeling tasks?
+% 
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2: 
+% This article presents a study of how tangible user interfaces can aid spatial modeling tasks. “Tangible Landscape” is the culmination of years of research, which have been published in articles and books, and the contribution of this article over such prior work is a study to compare the system to a graphical user interface for 3D modeling, and to investigate the effect of projected feedback. The results are interesting: study participants produce more detailed and defined models with this projection-augmented tangible interface. While the study tasks are domain-specific to GIS, its contribution is relevant for the wider HCI community: Various tangible user interfaces for 3D modeling have been proposed in the past, but only few studies exist to quantify how well they perform compared to graphical user interfaces. The sandbox form factor is well suited for such a comparison, as it has recently gained traction and public interest with versions of the UC Davis “AR Sandbox” being installed in many locations (see https://arsandbox.ucdavis.edu/#mapid), targeting mainly introductory classroom exercises and public science museums. In contrast, this “Tangible Landscape” system and study is designed for domain experts. I believe that TOCHI readers will be interested in the implications whether such TUI modeling systems can be suitable not only for novice users, but also for use by experts, and what functionality can support such modeling tasks.
 
 Many of the theoretical underpinnings of tangibles 
 remain unproven and unexplored. 
@@ -585,7 +619,21 @@ Inform & Sculpting &&& \cite{Follmer2013}\\
 \section{Tangible Landscape}
 
 \subsection{Concept}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Frame as an expert system
+% 	vs. AR Sandbox as novice system
 %
+% Maps
+% 	Add map of TL?
+% 	Add map of AR Sandbox?
+% 
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2: 
+% ...Various tangible user interfaces for 3D modeling have been proposed in the past, but only few studies exist to quantify how well they perform compared to graphical user interfaces. The sandbox form factor is well suited for such a comparison, as it has recently gained traction and public interest with versions of the UC Davis “AR Sandbox” being installed in many locations (see https://arsandbox.ucdavis.edu/#mapid), targeting mainly introductory classroom exercises and public science museums. In contrast, this “Tangible Landscape” system and study is designed for domain experts. I believe that TOCHI readers will be interested in the implications whether such TUI modeling systems can be suitable not only for novice users, but also for use by experts, and what functionality can support such modeling tasks.
+
 Tangible interfaces for GIS 
 should ease the cognitive burden of 
 visualizing, interacting with, 
@@ -761,7 +809,6 @@ to create a time series of maps.
 %
 With this time series users can animate the evolution of their model using the module 
 \emph{g.gui.animation}\cite{g.gui.animation}.
-%\footnote{\url{https://grass.osgeo.org/grass72/manuals/g.gui.animation.html}}.
 
 % add animated video with example
 
@@ -828,15 +875,30 @@ express ourselves in space and time.
 % 
 % Describe system implementation in greater detail
 % 	Physical dimensions
+% 		Diagram of system with dimensions
 % 	Capturing distance
-% 		Precison
+% 		Precision
+% 		Scanning res in x, y, z
+% 		Noise
+% 	Sampling rate
+% 	Filtering
 % 	Lag
+% 		Lag due to analyses
+% 			Table of analyses with speed benchmarks
+% 		Discussion of frame rate and interaction
+% 			Tradeoffs 
 % 
 % -------------------------------------------------------------------------- 
 
 % EDITOR: Add details on the system implementation. While we understand that the system is not the main contribution here, it is important to describe it in sufficient details. Please add physical dimensions, capturing distances, lag, what contributes to 2 sec. delay?, etc.
 
+% REFEREE 1: From a technical point of view, the presented system seems to be a solid piece of work. Yet, the authors do not describe it in detail. Thus technical aspects cannot be judged (compared to the state of the art) very well. One side remark on page 24 states that the feedback rate how has (only) two seconds of lag. Is this fast enough for users to work interactively?
 
+% REFEREE 2: 
+%Some key parameters of the system setup should be included:
+%- What is the physical size of the sand interface?
+%- At the mounted distance of the Kinect, what is the scanning resolution in x,y, and z, and how much noise does the sensor produce? What is the sampling rate? Does the system filter and average the sensor data over time or drop frames and only use raw data?
+%- What is the system lag? The article mentions an improved subsequent system with a 2 second delay in the end, but does not state the delay for this system in the study. System lag seems like a critical factor for the projected feedback in the difference experiment and the water flow experiment. What are the observations of the authors in this regard? I suspect that a low framerate may be even helpful in some conditions, as it produces fewer distractions than a fast, noisy visual feedback.
 
 Tangible Landscape has been implemented as a set of components 
 -- the \emph{r.in.kinect} add-on module \cite{r.in.kinect}
@@ -952,7 +1014,50 @@ we conducted an experiment to study how
 coupling digital and physical models of topography 
 mediates 3D spatial performance. 
 
+\subsection{Participants}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Describe participants
+% 
+% -------------------------------------------------------------------------- 
+
+% EDITOR: 
+% Clarify user study details. Why interview some, but not all participants? Is the ordering counter balanced? This could be a big issue if proper study procedures were not taken. Were there learning effects? How did limited time to complete a task play into the results? One would expect a speed/accuracy trade off if time was too short. How proficient in Rhino were your participants? Rhino has a pretty steep learning curve. Please use the suggestions from Reviewer 1 on how to properly describe your study setup and results.
+
+% REFEREE 2: 
+% As this study investigates expert users, have the participants used CAD programs before? If so, how frequently do they use it in their work? Are they familiar and comfortable with Rhinocerus, or do they use other CAD software? How many of the participants have worked with GIS models before and have familiarity with contour lines and elevation models? This context is interesting as it relates back to whether the study was aimed at beginners or expert users. In the interviews at page 18, line 41, one participant mentions the long learning curve for digital modeling, which likely influenced her performance.
+
+
 \subsection{Methods}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Order of experiments
+% 	Counter balancing
+% Time limit
+% Rhino
+% 	Reasons for choosing
+% 		Comparison with Vue
+% 	 Design of interaction method
+% 	Training
+% Physical model for reference
+% Interviews
+% Videos 
+%
+% -------------------------------------------------------------------------- 
+
+% REFEREE 1:
+% The user studies leave many questions open, regarding the test design and the demographics of the recruited test persons. It sounds like all participants performed the three modeling tasks in the same order (digital, manual, augmented), working with the same desired 3D model. Were there any learning effects? How experienced were the test persons with modeling tasks and/or geographical datasets / maps? At the interview (taken only once at the end of all tests): were the tests persons able to remember details of all the different system variants they had tested? Apparently, only some, selected test persons were interviewed. Which criterion was used for deciding whom to interview and whom not? It looks like there might be a lot of confounding factors associated with the current test design - thereby invalidating the current results.
+
+% REFEREE 2: 
+%- As the authors use a within-subjects design, do they take any measures to minimize the practice effect, such as a counterbalance design? This seems especially important for the coupling experiments 1, 2, and 3, which use the same landscape reference model.
+%- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinocerus? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
+%- The system mentions two tools provided for the physical modeling tasks: a 3D scale and a wooden sculpting tool.  Where the subjects advised to use these tools? It would be very interesting to read how many study participants used the tools and if there was a difference in tool use between the analog modeling and the projection augmented modeling task.
+%- In Figure 10, a physical model is placed on the table next to the computer screen. Was this model random or did subjects have access to a physical reference model in this condition as well?
+%- Why did the study switch to another reference model for the Difference Experiment? It would have been interesting to compare user performance with the conditions in the coupling experiment. As it is presented as a standalone experiment and result, it is hard to evaluate its advantages compared to the other conditions, which would be really interesting given the positive user feedback.
+%- How was the time constraint of 10 minutes chosen? Did this condition create time pressure for study participants or were most of them done and satisfied with their models at the end of each time slot? If the participants were given 20 minutes instead of 10, would they have refined the models further in all these conditions? The reason I am interested in this question is because I wonder if participants would have refined the Rhinocerus models further to be less abstract and eventually produced a more precise model than what they could have achieved with the Tangible Landscape. If that were the case, the study would indicate that a 3D modeling TUI can outperform GUI for quick modeling tasks.
+
 In this experiment 
 30 participants tried to accurately model a given study landscape 
 digitally, by hand, and with Tangible Landscape. 
@@ -1626,6 +1731,19 @@ Augmented & 7121 & 19599 & 31401\\
 \label{table:distance} 
 \end{table}
 
+% RESULTS
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% 
+% Revised color table
+% 	Add reference to Brewer & Brewer / Color Brewer
+%
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2:
+%- This is just personal preference, but I found the Figures of results in the previous 2016 TEI paper by Harmon, which show a 2D top-down view, more readable than the smaller 3D renderings in this article. But this is not a criticism, just personal preference. I was also interested in the choice of color scheme for the heat maps, some of which I also found harder to read than others. An example are the colors for the stdev. of difference in Table VI. The authors may have a good reason for these colors - the choice for mean difference colors for user feedback seems for instance very clear. Some may also be standard in the GIS community, in which case it would be helpful to include a reference.
+
 \paragraph{Mean elevation}
 The mean digitally modeled elevation is a highly abstract massing model
 lacking any detail. 
@@ -1749,6 +1867,19 @@ concentrated water flow, ridges, and valleys
 (see Tables \ref{table:percent_cells} \& \ref{table:distance}). 
 
 \paragraph{Observations}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Discuss role of tools, reference models, and reference contours
+% Observations of users' process with Rhino
+% 	Rebuilding control points
+%
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2: 
+% The system mentions two tools provided for the physical modeling tasks: a 3D scale and a wooden sculpting tool.  Where the subjects advised to use these tools? It would be very interesting to read how many study participants used the tools and if there was a difference in tool use between the analog modeling and the projection augmented modeling task.
+% In the results of the coupling experiment reported on page 15, the authors describe the Rhinoceros models as approximate and abstract. I assume that is the case either because the users did not create enough NURBS control points, and/or because the control points were not accurate in how they corresponded to the reference model. Can the authors provide more details on what factor seemed more influential? For instance, did users mainly work with the 10x10 grid of initial control points or did they also make use of the feature to rebuild the surface to a higher density of control points?
+
 % digital
 We observed participants using similar strategies in a linear process 
 when digitally modeling. 
@@ -1768,6 +1899,17 @@ adding, removing, pressing, pushing, pulling, or smoothing
 sand.
 
 \paragraph{Interviews}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% More qualitative feedback
+% 	Low response rate
+%
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2: It would be very interesting to find out more about the qualitative feedback from users, as outlined in the interview guidelines on page 34. Additionally, the authors mention direct observation, photographic and video analysis in the methods for the coupling experiment on page 12, but do not report many observations from these, such as usage patterns or other observations in their results. These observations, like the use of tools in different conditions, would be very helpful for TEI researchers.
+
+
 One participant said that she felt anxious when digitally modeling,
 but felt calmer and more relaxed when hand sculpting sand. 
 %
@@ -1809,7 +1951,18 @@ when using a tangible interface for GIS.
 \end{figure}
 
 \subsection{Methods}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Changing reference models
+% 	Minimize learning effect
+% 	Focus on process
 %
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2: 
+% Why did the study switch to another reference model for the Difference Experiment? It would have been interesting to compare user performance with the conditions in the coupling experiment. As it is presented as a standalone experiment and result, it is hard to evaluate its advantages compared to the other conditions, which would be really interesting given the positive user feedback.
+
 \paragraph{Difference analytic}
 The same 30 participants were asked to use 
 Tangible Landscape's difference analytic to model 
@@ -2342,11 +2495,19 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 % 		Assess how results answer objectives
 % 		What can others learn from this work
 %  	Infer and speculate what findings mean for other tangible interfaces
-%	What are best practices when spatial modeling is the goal?
+% Discuss tool use
+% Our experiences and observations
+% What are best practices when spatial modeling is the goal?
 %
 % -------------------------------------------------------------------------- 
 
 % EDITOR: Generalize on your findings. On page 3, you list a set of 3 research objectives. I would expect to see a detailed discussion section at the end which assesses how well do the results of your studies answer these objectives and what others can learn from your work. This is your chance to infer and speculate what findings here might mean for other tangible interfaces, or what should be the best practices if spatial modeling is the target goal.
+
+% REFEREE 1: The comparison of the Augmented Landscape with a purely digital and a purely manual approach is interesting and has the potential for very useful conclusions. On page 4, the authors formulate a number of compelling questions - yet, most of them could not (yet) be addressed in the submitted paper.
+
+% REFEREE 2:
+%- It would be very interesting to find out more about the qualitative feedback from users, as outlined in the interview guidelines on page 34. Additionally, the authors mention direct observation, photographic and video analysis in the methods for the coupling experiment on page 12, but do not report many observations from these, such as usage patterns or other observations in their results. These observations, like the use of tools in different conditions, would be very helpful for TEI researchers.
+%- Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift. I am sure that the authors have many lessons and observations to share that would frame the contribution of this study.
 
 
 % RESEARCH QUESTIONS
@@ -2489,7 +2650,7 @@ This dramatically increased the speed of the system
 tripling the rate of feedback
 so that there is only approximately 2 seconds of lag. 
 %
-Now that the analytics are faster%closer to real-time
+Now that the analytics are faster 
 users should perform even better than they did in the experiments.
 %
 As a test a member of our research team 
@@ -2499,7 +2660,14 @@ and produced a very accurate model \cite{ncsu_geoforall_2016}.
 
 % Embed video in online edition if possible / Include video in supplemental material
 
-\subsection{Open science}
+\subsection{Open science} 
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Add references to appendices with videos, scripts, and data
+%
+% -------------------------------------------------------------------------- 
+
 As a work of open science we invite readers to
 replicate or build upon this experiment by 
 using or adapting our tangible interface, experimental methodology, code, and data. 
@@ -2536,6 +2704,21 @@ under the GPL.
 %\url{https://github.com/ncsu-osgeorel/grass-tangible-landscape} and 
 %\url{https://github.com/tangible-landscape/r.in.kinect}
 
+
+\subsection{Reflections on the design process} % \subsection{Our experiences and observations}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Describe our experiences and observations using TL
+%
+% -------------------------------------------------------------------------- 
+
+%- Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift. I am sure that the authors have many lessons and observations to share that would frame the contribution of this study.
+
+% REFERENCES
+% Karapanos 2012, Theories, Methods and Case Studies of Longitudinal HCI Research
+
+
 \subsection{Design Guidelines}
 
 % ---------------------------- REVISIONS ---------------------------- 
@@ -2569,8 +2752,9 @@ It did not quantitively address
 cognitive, affective, motivational, or metacognitive processes. 
 %
 Future research in embodied spatial cognition with tangible interfaces 
-should quantitively study these processes using methods like 
-eye tracking and biometric sensing.  
+should study these processes using quantitive methods like 
+eye tracking and biometric sensing 
+and qualitative methods like protocol analysis.  
 %
 Future research should also study spatiotemporal performance
 using time series analysis to assess participants' modeling processes.
@@ -2636,6 +2820,15 @@ robotic fabrication, robotic construction, and streaming field data.}
 \end{figure}
 
 \section{Conclusion}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Make stronger conclusions that answer research questions
+%
+% -------------------------------------------------------------------------- 
+
+% REFEREE 1: The comparison of the Augmented Landscape with a purely digital and a purely manual approach is interesting and has the potential for very useful conclusions. On page 4, the authors formulate a number of compelling questions - yet, most of them could not (yet) be addressed in the submitted paper.
+
 % concept
 Tangible Landscape -- a tangible interface for GIS -- 
 enables natural 3D sketching. % 4D spatiotemporal sketching.
@@ -3021,6 +3214,36 @@ Understand how tangible interfaces for geospatial modeling change how users mode
 \item Was it stressful? Was it fun?
 \item Did the technology change how you perceived distance, depth, form, or volume?  
 \end{itemize}
+
+\vfill
+
+\pagebreak
+
+\section{Videos}\label{appendix:videos}
+
+\vfill
+
+\pagebreak
+
+\section{Scripts}\label{appendix:scripts}
+
+
+%The python scripts for data processing and analysis used in this experiment 
+%are available on GitHub at 
+%\url{https://github.com/baharmon/tangible_topography}
+%released under the GNU General Public License (GPL). 
+
+\vfill
+
+\pagebreak
+
+\section{Data}\label{appendix:data}
+
+%The data used in this experiment 
+%and the results -- 
+%including data, renderings, photographs, and interview notes --
+%are available on the Open Science Framework 
+%at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
 
 \vfill
 
