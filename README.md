@@ -9,7 +9,6 @@ GIS data for the experiment, the results of the experiment, and instructions for
 # Instructions
 Under development...
 
-
 # License
 The code in this repository is licensed under GPL v2.
 
@@ -21,34 +20,43 @@ The data and results for this experiment are available on the Open Science Frame
 
 ## Literature review
 * Detailed discussion of related work
-- Evaluate other systems
-- Compare similar systems to TL
+   - Evaluate other systems
+   - Compare similar systems to TL
 * Discuss relevant user studies
 * Research questions
-- What functionality is needed for expert modeling tasks?
+   - What functionality is needed for expert modeling tasks?
 
 ## Concept
 * Frame as an expert system
-- vs. AR Sandbox as novice system
+   - vs. AR Sandbox as novice system
 
 ## Implementation
 * Describe system implementation in greater detail
 * Physical dimensions
-- Diagram of system with dimensions
+   - Diagram of system with dimensions
 * ~~Capturing distance~~
-- ~~Precision / accuracy~~
-- ~~Scanning res in x, y, z~~
-- ~~Noise~~
+   - ~~Precision / accuracy~~
+   - ~~Scanning res in x, y, z~~
+   - ~~Noise~~
 * Sampling rate
-- Filtering
+   - Filtering
 * Lag
-- Lag due to analyses
-- Table of analyses with speed benchmarks
-- Discussion of frame rate and interaction
-- Tradeoffs
+   - Lag due to analyses
+   - Table of analyses with speed benchmarks
+   - Discussion of frame rate and interaction
+   - Tradeoffs
 
 ## Analysis and results
 * ~~Rerun and render analyses~~
+* Update methods
+   - Describe participants
+   - Discuss Rhino
+* Update results
+   - ~~New figures~~
+   - Update tables
+* Update discussion
+   - Generalize findings
+* Update conclusion
 
 ## Appendices
 * Add mapsets, renderings, photographs, and video as supplemental material
