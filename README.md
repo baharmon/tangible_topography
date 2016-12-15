@@ -35,10 +35,10 @@ The data and results for this experiment are available on the Open Science Frame
 * Describe system implementation in greater detail
 * Physical dimensions
 - Diagram of system with dimensions
-* Capturing distance
-- Precision
-- Scanning res in x, y, z
-- Noise
+* ~~Capturing distance~~
+- ~~Precision / accuracy~~
+- ~~Scanning res in x, y, z~~
+- ~~Noise~~
 * Sampling rate
 - Filtering
 * Lag
