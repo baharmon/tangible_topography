@@ -18,7 +18,37 @@ The text and images in this repository are licensed under CC BY-SA 4.0. This lic
 The data and results for this experiment are available on the Open Science Framework at [osf.io/82gst/](https://osf.io/82gst/) under the CC0 license.
 
 # TODO
+
+## Literature review
+* Detailed discussion of related work
+- Evaluate other systems
+- Compare similar systems to TL
+* Discuss relevant user studies
+* Research questions
+- What functionality is needed for expert modeling tasks?
+
+## Concept
+* Frame as an expert system
+- vs. AR Sandbox as novice system
+
+## Implementation
+* Describe system implementation in greater detail
+* Physical dimensions
+- Diagram of system with dimensions
+* Capturing distance
+- Precision
+- Scanning res in x, y, z
+- Noise
+* Sampling rate
+- Filtering
+* Lag
+- Lag due to analyses
+- Table of analyses with speed benchmarks
+- Discussion of frame rate and interaction
+- Tradeoffs
+
+## Analysis and results
+* ~~Rerun and render analyses~~
+
 ## Appendices
-* Experiment instructions
-* Interview guidelines
-* Mapsets, photographic documentation, and video on OSF
+* Add mapsets, renderings, photographs, and video as supplemental material
