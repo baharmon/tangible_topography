@@ -938,7 +938,29 @@ and GRASS GIS \cite{GRASS_GIS_software}.
 \end{center}
 \end{figure}
 
-\subsection{System accuracy}
+\subsection{System resolution and accuracy}
+The spatial resolution of the system is determined by the depth camera parameters
+and the distance from camera to the model. Given Kinect's field of view of 70 $\times$ 60 degrees
+and depth resolution of 512 $\times$ 424 pixels, the spatial resolution ranges
+from 1.4 to 2.7 mm for distances from 0.5 to 1 m used typically by Tangible Landscape.
+For the experiment where the distance was approximately 0.6 m we used 2 mm resolution, which
+translated to 6 m in real world given the scale of the physical model.
+Kinect depth measurements suffer from noise quantified by \cite{Hamed2015}.
+We minimized the negative effects of noise by placing the model
+closer to the center of the camera and by smoothing the data using Moving Least
+Squares reconstruction method \cite{Rusu2011}.
+
+In Fig.~\ref{fig:accuracy} we show the accuracy of the experiment setup.
+We scanned a CNC routed model used in this study
+and compared it with the original DEM.
+% do we know the accuracy of cnc?
+The routed model has is sufficiently accurate for this comparison.
+We removed the systematic error (vertical shift) since it is removed
+during processing of the scans from the experiment and does not influence the results.
+The difference in Fig.~\ref{fig:accuracy} is given from a single frame,
+and although it is possible to integrate multiple frames,
+we chose to construct the DEM from one frame for faster smoothing procedure.
+
 
 \begin{figure}
 \begin{center}
