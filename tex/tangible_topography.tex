@@ -950,17 +950,21 @@ We minimized the negative effects of noise by placing the model
 closer to the center of the camera and by smoothing the data using Moving Least
 Squares reconstruction method \cite{Rusu2011}.
 
-In Fig.~\ref{fig:accuracy} we show the accuracy of the experiment setup.
+In Fig.~\ref{fig:accuracy} and Table \ref{table:accuracy} 
+we show the accuracy of the experiment setup.
 We scanned a CNC routed model used in this study
 and compared it with the original DEM.
-% do we know the accuracy of cnc? +- 0.01 mm
-The routed model has is sufficiently accurate for this comparison.
+% do we know the accuracy of cnc? 
+% 0.125" or 3.175 mm bit with 0.05" or 1.27 mm stepover with +- 0.01 mm positional accuracy
+% so could say 1.27 mm +- 0.01
+The routed model is sufficiently accurate for this comparison.
 We removed the systematic error (vertical shift) since it is removed
 during processing of the scans from the experiment and does not influence the results.
 The difference in Fig.~\ref{fig:accuracy} is given from a single frame,
 and although it is possible to integrate multiple frames,
 we chose to construct the DEM from one frame for faster smoothing procedure.
 
+% This table might not be needed given the histogram on the legend
 
 \begin{figure}
 \begin{center}
@@ -972,24 +976,34 @@ we chose to construct the DEM from one frame for faster smoothing procedure.
 \end{center}
 \end{figure}
 
-
-% This table might not be needed given the histogram on the legend
 \begin{table}
-\tbl{}{
+\tbl{Scanning accuracy}{
 \ra{1.3}
-\begin{tabular}{l <{\hspace{1em}} r }
+\begin{tabular}{c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c}
 \toprule
-Minimum & -2.8 \\
-Maximum & 3.7 \\
-Mean & -0.02 \\
-Std. deviation & 0.7 \\
-1$^{st}$ quartile & -0.4 \\
-3$^{rd}$ quartile & 0.3\\
+Min & Max & Mean & Stdev &  \nth{1} Q & \nth{3} Q\\
+\midrule
+-2.8 & 3.7 & -0.02 & 0.7 & -0.4 & 0.3\\
 \bottomrule
 \end{tabular}}
-\label{table:accuracy}
+\label{table:accuracy} 
 \end{table}
 
+%\begin{table}
+%\tbl{}{
+%\ra{1.3}
+%\begin{tabular}{l <{\hspace{1em}} r }
+%\toprule
+%Minimum & -2.8 \\
+%Maximum & 3.7 \\
+%Mean & -0.02 \\
+%Std. deviation & 0.7 \\
+%1$^{st}$ quartile & -0.4 \\
+%3$^{rd}$ quartile & 0.3\\
+%\bottomrule
+%\end{tabular}}
+%\label{table:accuracy}
+%\end{table}
 
 \subsection{Fabrication}
 We typically use familiar, everyday materials 
@@ -1067,7 +1081,10 @@ we conducted an experiment to study how
 coupling digital and physical models of topography 
 mediates 3D spatial performance. 
 
-\subsection{Participants}
+\subsection{Methods}
+In this experiment 
+18 participants tried to accurately model a given study landscape 
+digitally, by hand, and with Tangible Landscape. 
 
 % ---------------------------- REVISIONS ---------------------------- 
 % 
@@ -1079,10 +1096,53 @@ mediates 3D spatial performance.
 % Clarify user study details. Why interview some, but not all participants? Is the ordering counter balanced? This could be a big issue if proper study procedures were not taken. Were there learning effects? How did limited time to complete a task play into the results? One would expect a speed/accuracy trade off if time was too short. How proficient in Rhino were your participants? Rhino has a pretty steep learning curve. Please use the suggestions from Reviewer 1 on how to properly describe your study setup and results.
 
 % REFEREE 2: 
-% As this study investigates expert users, have the participants used CAD programs before? If so, how frequently do they use it in their work? Are they familiar and comfortable with Rhinocerus, or do they use other CAD software? How many of the participants have worked with GIS models before and have familiarity with contour lines and elevation models? This context is interesting as it relates back to whether the study was aimed at beginners or expert users. In the interviews at page 18, line 41, one participant mentions the long learning curve for digital modeling, which likely influenced her performance.
+% As this study investigates expert users, have the participants used CAD programs before? If so, how frequently do they use it in their work? Are they familiar and comfortable with Rhinoceros, or do they use other CAD software? How many of the participants have worked with GIS models before and have familiarity with contour lines and elevation models? This context is interesting as it relates back to whether the study was aimed at beginners or expert users. In the interviews at page 18, line 41, one participant mentions the long learning curve for digital modeling, which likely influenced her performance.
 
+\paragraph{Participants}
+All of the participants 
+-- either graduate students, faculty, or professionals 
+in landscape architecture or geographic information science -- 
+had experience thinking spatially. 
+These participants were selected in order to compare 
+the performance of novices and experts
+in grading (i.e.~earthworking), GIS, and 3D modeling.
+Of the 12 graduate students 6 were in the \nth{2} semester of the 
+Master of Landscape Architecture program 
+at North Carolina State University.
+These students were just beginning to learn to read and manipulate contour lines 
+in the class Landform, Site Grading, and Development Systems. 
+They had no experience with GIS, 3 credit hours of training in digital representation, 
+and no experience with Rhinoceros.
+The other 6 graduate students were in the \nth{2} semester of the 
+Master of Geospatial Information Science and Technology program 
+at North Carolina State University.
+They had at least 9 credits hours of training in GIS, but 
+had no experience with contour maps, digital terrain modeling, or 3D modeling.
+The other 6 participants were either landscape architecture faculty 
+with professional experience or practicing professionals in landscape architecture 
+from around the world. 
+Of these 2 were experts in 3D modeling with over 10 years of experience 
+using Rhinoceros and similar programs including Maya and 3ds Max. 
+These experts felt comfortable and proficient modeling a wide variety of geometries 
+and had developed unique, personalized, and highly adaptable workflow 
+(see Table~\ref{table:participants}).
+%An additional 12 participants took part in the study, 
+%but were discarded as they did not complete every task. 
 
-\subsection{Methods}
+\begin{table}
+\tbl{Participants}{
+\ra{1.3}
+\begin{tabular}{l <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c}
+\toprule
+Group & No. & GIS training & 3D modeling expertise \\
+\midrule
+Landscape architecture students & 6 & 0 & 0\\
+GIS students & 6 & 6 & 0\\
+Academics \& professionals & 6 & 0 & 2\\
+\bottomrule
+\end{tabular}}
+\label{table:participants} 
+\end{table}
 
 % ---------------------------- REVISIONS ---------------------------- 
 % 
@@ -1105,27 +1165,43 @@ mediates 3D spatial performance.
 
 % REFEREE 2: 
 %- As the authors use a within-subjects design, do they take any measures to minimize the practice effect, such as a counterbalance design? This seems especially important for the coupling experiments 1, 2, and 3, which use the same landscape reference model.
-%- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinocerus? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
+%- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinoceros? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
 %- The system mentions two tools provided for the physical modeling tasks: a 3D scale and a wooden sculpting tool.  Where the subjects advised to use these tools? It would be very interesting to read how many study participants used the tools and if there was a difference in tool use between the analog modeling and the projection augmented modeling task.
 %- In Figure 10, a physical model is placed on the table next to the computer screen. Was this model random or did subjects have access to a physical reference model in this condition as well?
 %- Why did the study switch to another reference model for the Difference Experiment? It would have been interesting to compare user performance with the conditions in the coupling experiment. As it is presented as a standalone experiment and result, it is hard to evaluate its advantages compared to the other conditions, which would be really interesting given the positive user feedback.
-%- How was the time constraint of 10 minutes chosen? Did this condition create time pressure for study participants or were most of them done and satisfied with their models at the end of each time slot? If the participants were given 20 minutes instead of 10, would they have refined the models further in all these conditions? The reason I am interested in this question is because I wonder if participants would have refined the Rhinocerus models further to be less abstract and eventually produced a more precise model than what they could have achieved with the Tangible Landscape. If that were the case, the study would indicate that a 3D modeling TUI can outperform GUI for quick modeling tasks.
+%- How was the time constraint of 10 minutes chosen? Did this condition create time pressure for study participants or were most of them done and satisfied with their models at the end of each time slot? If the participants were given 20 minutes instead of 10, would they have refined the models further in all these conditions? The reason I am interested in this question is because I wonder if participants would have refined the Rhinoceros models further to be less abstract and eventually produced a more precise model than what they could have achieved with the Tangible Landscape. If that were the case, the study would indicate that a 3D modeling TUI can outperform GUI for quick modeling tasks.
 
-In this experiment 
-30 participants tried to accurately model a given study landscape 
-digitally, by hand, and with Tangible Landscape. 
+\paragraph{Experimental design}
+% tasks
+Participants were given three tasks -- 
+to digitally sculpt a model a landscape using the 3D modeling program Rhinoceros, 
+to hand sculpt a model of a landscape in polymer-enriched sand,
+and to sculpt a model of a landscape using Tangible Landscape.
+% time limit 
+They had 10 minutes to complete each task. 
+The time limit was calibrated based on 
+the time it took the research team 
+to comfortably complete each task.
+% counterbalancing / order of tasks
+The modeling tasks were reordered for each participant
+to partially account for learning and fatigue
+by counterbalancing the experiment using a Latin square design.
+% assessment
+Participants were asked to model the same landscape for each task 
+so that their performance could be quantitatively assessed 
+using spatial modeling, statistics, analysis, and simulation.
+Their modeling processes were qualitatively assessed 
+through direct observation %and semi-structured interviews
+supported by photographic and video documentation. 
+% 
+After completing the tasks
+the academics and professionals 
+were interviewed. 
+We intended to conduct semi-structured interviews 
+with all of the participants, but
+the students were too tired by the end of the experiment. 
 %
-% participants
-All of our participants -- either graduate students, faculty, or professionals in landscape architecture or spatial science -- 
-had experience thinking spatially. 
-We used spatial modeling, statistics, analysis, and simulation to quantitatively assess how participants' performance with each method differed spatially. 
-We also qualitatively studied participants' modeling processes through direct observation, photographic analysis, video analysis, and semi-structured interviews. 
-See Appendix 
-\ref{appendix:procedure} for instructions for running the experiment
-and Appendix 
-\ref{appendix:guidelines} for interview guidelines. 
-%
-We did not use psychometric tests
+Psychometric tests were not used
 to assess spatial ability because
 these do not address 
 geographic scales,
@@ -1133,6 +1209,11 @@ spatial relations,
 domain-specific knowledge and abilities 
 \cite{Lee2009,Bednarz2011,Wakabayashi2011},
 or embodied cognitive ability. 
+%
+See Appendix 
+\ref{appendix:procedure} for instructions for running the experiment
+and Appendix 
+\ref{appendix:guidelines} for semi-structured interview guidelines. 
 
 % study landscape
 We used a region of Lake Raleigh Woods in Raleigh, North Carolina 
@@ -1140,17 +1221,24 @@ as the study landscape for this experiment.
 A real landscape was used because computer generated landscapes 
 often look surreal and may lack distinct landforms and clearly defined streams. 
 This study region has distinctive, 
-clearly defined landforms -- a stream valley flanked by a ridge and sloping towards the lake
-(see Table~\ref{table:coupling_experiment}). 
+clearly defined landforms -- a stream valley flanked by a ridge and sloping towards the lake.
+%(see Table~\ref{table:coupling_experiment}). 
 The digital elevation model for this region was derived from a 2013 airborne lidar survey 
 using the regularized spline with tension interpolation method \cite{Mitasova2005}. 
+% physical reference models
+We CNC routed a model of the study landscape in Baltic birch 
+using 2 parallel finish cuts 
+with a 3.175 mm diameter ball-nose bit
+with a 1.27 mm stepover. 
+Participants were given this model 
+at the beginning of the experiment
+to use as a reference during each task.
 
 \paragraph{Digital modeling}
-Participants had 10 minutes to digitally model the study landscape in Rhinoceros, 
+Participants had 10 minutes to digitally model the study landscape in Rhinoceros 5, 
 a non-uniform rational basis spline (NURBS) based 3D modeling program
 designed for precise freeform curve and surface modeling \cite{Rhino}.
-%\footnote{\url{https://www.rhino3d.com/}}. 
-After 10 minutes of training
+After 10 minutes of training 
 participants modeled the study landscape as a NURBS surface 
 by vertically translating control points (Fig.~\ref{fig:rhino}). 
 They started with a flat NURBS surface that was divided into a 10 x 10 grid of control points.
@@ -1158,12 +1246,30 @@ As a reference their model space also included a 3D representation of the study 
 At any point participants could rebuild the surface with a higher density of control points for finer, more nuanced control. 
 This method is relatively simple and 
 analogous to basic actions in sculpture -- pushing and pulling. 
-%We developed and tested this method 
-%as a simple, straightforward digital freeform surface modeling technique
-%that could be taught quickly, yet could produce an accurate model. 
+We developed and tested this method 
+as a simple, straightforward digital freeform surface modeling technique
+that could be taught quickly, yet could produce an accurate model. 
+%  
+% timing / rebuilding
+%
+% choice of 3d modeling program
+%	use by architects
+% comparison with Vue
+%
+See Appendix \ref{appendix:videos}
+for videos demonstrating the training and digital 3D modeling task.
+
 Digital modeling affords precise transformations and
 dynamic modes of visualization such as 
 3D orbiting, zooming, and ray traced shading. 
+
+
+
+
+%- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinoceros? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
+
+
+
 
 \begin{figure}
 \begin{center}
@@ -1182,11 +1288,17 @@ by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).
 They were given a CNC-routed model of the study landscape as a reference
 and a 3D scale. 
 A lamp on the table cast shadows across the model for hillshading.
+
 Theoretically analog modeling -- modeling by hand or with tools -- should be embodied, 
 affording subconscious, kinaesthetic sensing and manipulation of form. 
 By sensing form subconsciously with the body
 users should have more cognitive resources for critiquing their work 
 and strategizing their next moves. 
+
+
+
+%- The system mentions two tools provided for the physical modeling tasks: a 3D scale and a wooden sculpting tool.  Where the subjects advised to use these tools? It would be very interesting to read how many study participants used the tools and if there was a difference in tool use between the analog modeling and the projection augmented modeling task.
+
 
 \begin{figure}
 \begin{center}
@@ -1209,6 +1321,7 @@ with contours and a legend
 onto participants' sand models as guide for sculpting. 
 Participants were also given a 3D scale ruled in map units
 to measure the elevation of their scale models. 
+
 This augmented approach couples digital mapping with physical modeling.
 Theoretically it should combine affordances of both -- 
 enabling enriched visualization and physical sensing and manipulation -- 
@@ -1219,6 +1332,10 @@ too much feedback may be a cognitive overload
 resulting in distraction, frustration, and demotivation. 
 Physical sensing and manipulation, however, should offload 
 some of this cognitive work onto the body.
+
+
+
+
 
 \begin{figure}
 \begin{center}
@@ -2787,7 +2904,9 @@ under the GPL.
 
 
 
+% cite Wilson et al. 2014, Best Practices in Scientific Computing
 
+% cite Dabbish et al. 2012, Social Coding in GitHub
 
 
 \section{Future work}
