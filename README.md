@@ -48,15 +48,43 @@ The data and results for this experiment are available on the Open Science Frame
 
 ## Analysis and results
 * ~~Rerun and render analyses~~
-* Update methods
-   - Describe participants
-   - Discuss Rhino
-* Update results
-   - ~~New figures~~
-   - Update tables
-* Update discussion
-   - Generalize findings
-* Update conclusion
+
+## Methods
+* Order of experiments
+   - Counter balancing
+* Time limit
+* Rhino
+   - Reasons for choosing
+   - Comparison with Vue
+   - Design of interaction method
+   - Training
+* Physical model for reference
+* Interviews
+* Videos
+* Color tables
+   - Cite Brewer & Brewer / Color Brewer
+
+## Results
+* ~~New figures~~
+* Update tables
+* Update discussion of results
+* Discuss role of tools, reference models, and reference contours
+* Observations of users' process with Rhino
+   - Rebuilding control points
+* Interviews
+
+## Discussion
+* Generalize findings
+   - Address research objectives
+   - Assess how results answer objectives
+   - What can others learn from this work
+   - Infer and speculate what findings mean for other tangible interfaces
+* Discuss tool use
+* Our experiences and observations
+* What are best practices when spatial modeling is the goal?
+
+## Conclusion
+* Make stronger conclusions that answer research questions
 
 ## Appendices
 * Add mapsets, renderings, photographs, and video as supplemental material
