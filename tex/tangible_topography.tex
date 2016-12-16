@@ -900,6 +900,38 @@ express ourselves in space and time.
 %- At the mounted distance of the Kinect, what is the scanning resolution in x,y, and z, and how much noise does the sensor produce? What is the sampling rate? Does the system filter and average the sensor data over time or drop frames and only use raw data?
 %- What is the system lag? The article mentions an improved subsequent system with a 2 second delay in the end, but does not state the delay for this system in the study. System lag seems like a critical factor for the projected feedback in the difference experiment and the water flow experiment. What are the observations of the authors in this regard? I suspect that a low framerate may be even helpful in some conditions, as it produces fewer distractions than a fast, noisy visual feedback.
 
+Tangible Landscape uses Microsoft Kinect to continuously capture the shape of the physical model
+as a point cloud and processes it into a raster-based DEM in GRASS GIS database.
+Since the scanner can be slightly tilted,
+we first ensure the scan is horizontally aligned by a calibration process, which derives
+a rotation matrix by scanning a horizontal surface of the table where the model lies.
+This rotation matrix is then applied for each scan.
+The point cloud is automatically trimmed to include only points on the physical model,
+smoothed and georeferenced based on the known
+spatial extent of the area represented by the model.
+Georeferencing includes translation, rotation by 180\textdegree{} along z axis,
+and separate horizontal and vertical scaling, where vertical scaling takes into
+account possible vertical exaggeration of the physical model.
+The resulting terrain representation has real world dimensions
+and can be combined effortlessly with other GIS data, such as land cover or orthophotograph.
+
+The DEM is then reconstructed from the point cloud either using interpolation method
+with regularized spline with tension \cite{Mitasova2005},
+or binning with cell values computed as the mean of points' z coordinates falling into that cell.
+Although binning results in noisier DEM, it is very fast,
+and can therefore be a better option for certain applications. 
+Multiple point clouds can be integrated to increase point density at the cost of increased
+processing time.
+
+For each new DEM, a set of customizable analyses and geospatial workflows
+specified in a Python file is run, and the display is updated.
+Tangible Landscape provides a library of geospatial functions built on top of
+GRASS GIS modules and an API for developing custom workflows.
+The modeled analyses as well as scanning parameters can be modified 
+as the system runs.
+
+
+
 Tangible Landscape has been implemented as a set of components 
 -- the \emph{r.in.kinect} add-on module \cite{r.in.kinect}
 %\footnote{\url{https://github.com/tangible-landscape/r.in.kinect}}
