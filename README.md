@@ -46,6 +46,10 @@ The data and results for this experiment are available on the Open Science Frame
    - Discussion of frame rate and interaction
    - Tradeoffs
 
+## Applications
+* Describe applications in more detail
+   - Add figure with examples
+
 ## ~~Analysis~~
 * ~~Rerun and render analyses~~
 
