@@ -1213,7 +1213,7 @@ and to sculpt a model of a landscape using Tangible Landscape.
 They had 10 minutes to complete each task. 
 The time limit was calibrated based on 
 the time it took the research team 
-to comfortably complete each task.
+to comfortably complete each task. 
 % counterbalancing / order of tasks
 The modeling tasks were reordered for each participant
 to partially account for learning and fatigue
@@ -1223,7 +1223,7 @@ Participants were asked to model the same landscape for each task
 so that their performance could be quantitatively assessed 
 using spatial modeling, statistics, analysis, and simulation.
 Their modeling processes were qualitatively assessed 
-through direct observation %and semi-structured interviews
+through direct observation
 supported by photographic and video documentation. 
 % 
 After completing the tasks
@@ -1269,7 +1269,7 @@ to use as a reference during each task.
 \paragraph{Digital modeling}
 Digital modeling affords precise transformations and
 dynamic modes of visualization such as 
-3D orbiting, zooming, and ray traced shading. 
+3D orbiting, zooming, and ray traced shading.  % WHY DIGITAL 3D MODELING
 
 Participants had 10 minutes to digitally model the study landscape in Rhinoceros 5, 
 a non-uniform rational basis spline (NURBS) based 3D modeling program
@@ -1299,15 +1299,26 @@ See Appendix \ref{appendix:videos}
 for videos demonstrating the training and digital 3D modeling task.
 
 % choice of 3d modeling program
+Different 3D modeling programs afford very different
+interactions, modeling tools, data structures, and modes of representations. 
+%
+Developing a simple, intuitive modeling technique 
+drove the choice of software in this study. 
+%
 After testing 3D modeling workflows in 
 Rhinoceros, Vue, Maya, SketchUp, and Voxel Builder
 we chose Rhinoceros for this task because it 
 is popular with designers such as architects, 
+has a wide variety of modeling tools,
 can precisely represent continuous surfaces, 
 and has plugins for importing and exporting geographic data. 
 %
+To make a fair comparison between digital, analog, and tangible modeling,
+the digital modeling technique needed to be relatively analogous to hand sculpting
+-- i.e.~pushing and pulling rather than painting in 3D, drafting in 3D, or stacking voxels.
+%
 There is an analogous modeling technique -- pulling and pushing vertices -- 
-using the Sandbox tool in SketchUp, % http://www.sketchup.com/
+using the Sandbox tool in SketchUp \cite{SketchUp},
 but this creates a triangulated irregular network (TIN)
 rather than a continuous NURBS surface. 
 %
@@ -1332,8 +1343,7 @@ While voxel modeling programs
 % http://voxelbuilder.com/
 %and MagicaVoxel
 % https://ephtracy.github.io/
-and games like Minecraft 
-% https://minecraft.net/
+and games like Minecraft \cite{Minecraft}
 are very intuitive to use,
 they can also be slow to use,
 %especially when modeling
@@ -1341,14 +1351,6 @@ create blocky rather than
 continuous surfaces, %like topography 
 and are not typically used in design professions 
 like architecture and landscape architecture.
-%
-Developing an intuitive modeling technique 
-was more important than the choice of software. % why? ...
-%as the training 
-
-% relatively analogous to hand sculpting and tangible sculpting...
-
-%Furthermore 3D modeling software continually evolves 
 
 
 %- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinoceros? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
