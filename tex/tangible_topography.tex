@@ -1235,15 +1235,22 @@ at the beginning of the experiment
 to use as a reference during each task.
 
 \paragraph{Digital modeling}
+Digital modeling affords precise transformations and
+dynamic modes of visualization such as 
+3D orbiting, zooming, and ray traced shading. 
+
 Participants had 10 minutes to digitally model the study landscape in Rhinoceros 5, 
 a non-uniform rational basis spline (NURBS) based 3D modeling program
 designed for precise freeform curve and surface modeling \cite{Rhino}.
 After 10 minutes of training 
 participants modeled the study landscape as a NURBS surface 
 by vertically translating control points (Fig.~\ref{fig:rhino}). 
-They started with a flat NURBS surface that was divided into a 10 x 10 grid of control points.
-As a reference their model space also included a 3D representation of the study landscape as contours. 
-At any point participants could rebuild the surface with a higher density of control points for finer, more nuanced control. 
+They started with a flat NURBS surface that was 
+divided into a 10 x 10 grid of control points.
+As a reference their model space also included 
+a locked 3D representation of the study landscape as contours. 
+At any point participants could rebuild the surface 
+with a higher density of control points for finer, more nuanced control. 
 This method is relatively simple and 
 analogous to basic actions in sculpture -- pushing and pulling. 
 We developed and tested this method 
@@ -1251,19 +1258,65 @@ as a simple, straightforward digital freeform surface modeling technique
 that could be taught quickly, yet could produce an accurate model. 
 %  
 % timing / rebuilding
-%
-% choice of 3d modeling program
-%	use by architects
-% comparison with Vue
+Through testing we determined that 
+novice users took approximately 10 minutes
+to model the surface with a 10 x 10 grid of control points
+before wanting to building the surface with more control points.
 %
 See Appendix \ref{appendix:videos}
 for videos demonstrating the training and digital 3D modeling task.
 
-Digital modeling affords precise transformations and
-dynamic modes of visualization such as 
-3D orbiting, zooming, and ray traced shading. 
+% choice of 3d modeling program
+After testing 3D modeling workflows in 
+Rhinoceros, Vue, Maya, SketchUp, and Voxel Builder
+we chose Rhinoceros for this task because it 
+is popular with designers such as architects, 
+can precisely represent continuous surfaces, 
+and has plugins for importing and exporting geographic data. 
+%
+There is an analogous modeling technique -- pulling and pushing vertices -- 
+using the Sandbox tool in SketchUp, % http://www.sketchup.com/
+but this creates a triangulated irregular network (TIN)
+rather than a continuous NURBS surface. 
+%
+Vue has a terrain editor designed for intuitive 3D painting and sculpting \cite{Vue},
+but it requires continual retuning of tool parameters
+and generates a TIN. 
+%
+TINs less accurately represent continuous surfaces like topography
+and would generate artifacts in our analyses. 
+%
+In another pilot study \cite{Harmon2016} we tested Vue's terrain editor. 
+We found that participants tended to 
+over-exaggerate distinct features in the landscape like stream channels, 
+while ignoring more subtle features like slopes.  
+We also determined that the resulting models
+had an obvious triangulated structure that caused
+exaggerated slopes and discontinuous water flow 
+in our analyses. 
+%
+While voxel modeling programs 
+%like Voxel Builder 
+% http://voxelbuilder.com/
+%and MagicaVoxel
+% https://ephtracy.github.io/
+and games like Minecraft 
+% https://minecraft.net/
+are very intuitive to use,
+they can also be slow to use,
+%especially when modeling
+create blocky rather than
+continuous surfaces, %like topography 
+and are not typically used in design professions 
+like architecture and landscape architecture.
+%
+Developing an intuitive modeling technique 
+was more important than the choice of software. % why? ...
+%as the training 
 
+% relatively analogous to hand sculpting and tangible sculpting...
 
+%Furthermore 3D modeling software continually evolves 
 
 
 %- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinoceros? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
@@ -1283,17 +1336,19 @@ dynamic modes of visualization such as
 \end{figure}
 
 \paragraph{Analog modeling}
-Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
-by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).  
-They were given a CNC-routed model of the study landscape as a reference
-and a 3D scale. 
-A lamp on the table cast shadows across the model for hillshading.
 
 Theoretically analog modeling -- modeling by hand or with tools -- should be embodied, 
 affording subconscious, kinaesthetic sensing and manipulation of form. 
 By sensing form subconsciously with the body
 users should have more cognitive resources for critiquing their work 
 and strategizing their next moves. 
+
+Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
+by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).  
+They were given a CNC-routed model of the study landscape as a reference
+and a 3D scale. 
+A lamp on the table cast shadows across the model for hillshading.
+
 
 
 
@@ -2719,16 +2774,16 @@ for digital sculpting
 the results were constrained to smooth, circular shapes %isotropic
 formed by splines.
 %
-In the pilot study we also tested Vue's terrain editor,
-a triangulated irregular network based 3D modeling program 
-for intuitive terrain sculpting \cite{Vue},
-and determined that the results were 
-less smooth with sharper transitions and
-had obvious triangular artifacts.
-%were constrained to composite shapes
-%composed of different sized triangles.
-The triangulated structure caused
-exaggerated slopes and discontinuous water flow. 
+%In the pilot study we also tested Vue's terrain editor,
+%a triangulated irregular network based 3D modeling program 
+%for intuitive terrain sculpting \cite{Vue},
+%and determined that the results were 
+%less smooth with sharper transitions and
+%had obvious triangular artifacts.
+%%were constrained to composite shapes
+%%composed of different sized triangles.
+%The triangulated structure caused
+%exaggerated slopes and discontinuous water flow. 
 %
 The models sculpted in polymer-enriched sand 
 were much less constrained 

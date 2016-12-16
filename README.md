@@ -50,15 +50,16 @@ The data and results for this experiment are available on the Open Science Frame
 * ~~Rerun and render analyses~~
 
 ## Methods
-* Order of experiments
-   - Counter balancing
+* ~~Participants~~
+* ~~Order of experiments~~
+   - ~~Counter balancing~~
 * Time limit
 * Rhino
    - Reasons for choosing
    - Comparison with Vue
    - Design of interaction method
    - Training
-* Physical model for reference
+* ~~Physical model for reference~~
 * Interviews
 * Videos
 * Color tables
