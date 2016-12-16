@@ -46,9 +46,9 @@ The data and results for this experiment are available on the Open Science Frame
    - Discussion of frame rate and interaction
    - Tradeoffs
 
-## Applications
-* Describe applications in more detail
-   - Add figure with examples
+## ~~Applications~~
+* ~~Describe applications in more detail~~
+   - ~~Add figure with examples~~
 
 ## ~~Analysis~~
 * ~~Rerun and render analyses~~
@@ -64,8 +64,8 @@ The data and results for this experiment are available on the Open Science Frame
    - ~~Design of interaction method~~
    - ~~Training~~
 * ~~Physical model for reference~~
-* Interviews
-* Videos
+* ~~Videos~~
+* ~~Interviews~~
 * Color tables
    - Cite Brewer & Brewer / Color Brewer
 

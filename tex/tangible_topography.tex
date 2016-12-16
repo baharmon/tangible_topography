@@ -207,9 +207,9 @@ Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mit
 
 \begin{figure}
 \begin{center}
-%		\includegraphics[width=0.32\textwidth]{images/tl_sequence_1.jpg}
-		\includegraphics[width=0.49\textwidth]{images/tl_sequence_2.jpg}
-		\includegraphics[width=0.49\textwidth]{images/tl_sequence_3.jpg}
+%		\includegraphics[width=0.32\textwidth]{images/applications/tl_sequence_1.jpg}
+		\includegraphics[width=0.49\textwidth]{images/applications/tl_sequence_2.jpg}
+		\includegraphics[width=0.49\textwidth]{images/applications/tl_sequence_3.jpg}
 	\caption{Modeling the flow of water with Tangible Landscape. 
 	A user sculpts a polymeric sand model of a landscape
 	augmented with simulated water flow and an orthophotograph.  
@@ -724,40 +724,6 @@ used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015}.
 
 
 \subsection{Design}
-Tangible Landscape was designed to let users naturally explore 
-spatial data, models, and simulations in an engaging, playful way
-by 3D sketching (Fig.~\ref{fig:subsurface}). 
-Users can work collaboratively, 
-simultaneously interacting with the physical model 
-(Fig.~\ref{fig:collaboration}). 
-As users change the physical model
-the model is 3D scanned as a point cloud, georeferenced, imported into GIS, 
-and either binned or interpolated as a digital elevation model. 
-The digital elevation model is used to compute 
-geospatial analyses, models, and simulations, 
-which are then projected back onto the physical model 
--- all in real-time (Fig.~\ref{fig:system_schema}). 
-Users can tangibly interact with digital models and simulations
-by sculpting, placing objects, or sketching.
-They can sculpt the model with their hands
-to shape topography, 
-create or move volumes
-like buildings or forest canopy, 
-or explore 3D raster data.  
-They can place objects or markers 
-that will be identified using object and color recognition
-in order to draw points, polylines, polygons, or volumes. 
-They can also use a laser pointer to draw polylines or polygons
-that will be detected based on light intensity (Fig.~\ref{fig:drawing_trees}). 
-As the digital models and simulations update
-the results are projected back onto the model for users to see. 
-% VR
-The results can also be rendered in 3D 
-on a screen or head-mounted display like an Oculus Rift
-so that users can immersively visualize the modeled landscape 
-at a human scale 
-(Fig.~\ref{fig:drawing_trees}).
-% add reference to immersive tangible geospatial modeling \cite{Payam2016}
 
 \begin{figure}
 \begin{center}
@@ -767,15 +733,59 @@ at a human scale
 \end{center}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+		\includegraphics[width=\textwidth]{images/interactions.png}
+	\caption{Modes of interaction with Tangible Landscape: sculpting surfaces, placing points, drawing lines, building volumes, and marking areas.}
+	\label{fig:interactions}
+\end{center}
+\end{figure}
+
+Tangible Landscape was designed to let users naturally explore 
+spatial data, models, and simulations in an engaging, playful way
+by 3D sketching (Fig.~\ref{fig:subsurface}). 
+Users can work collaboratively, 
+simultaneously interacting with the physical model
+(Table \ref{table:tl_vr}) \cite{Tabrizian2016}. 
+%(Fig.~\ref{fig:collaboration}). 
+As users change the physical model
+the model is 3D scanned as a point cloud, georeferenced, imported into GIS, 
+and either binned or interpolated as a digital elevation model. 
+The digital elevation model is used to compute 
+geospatial analyses, models, and simulations, 
+which are then projected back onto the physical model 
+-- all in real-time (Fig.~\ref{fig:system_schema}). 
+Users can tangibly interact with digital models and simulations
+by sculpting, placing objects, or sketching (Fig.~\ref{fig:interactions}) .
+They can sculpt the model with their hands
+to shape topography, 
+create or move volumes
+like buildings or forest canopy, 
+or explore 3D raster data.  
+They can place objects or markers 
+that will be identified using object and color recognition
+in order to draw points, polylines, polygons, or volumes. 
+They can also use a laser pointer to draw polylines or polygons
+that will be detected based on light intensity. 
+%(Fig.~\ref{fig:drawing_trees}). 
+As the digital models and simulations update
+the results are projected back onto the model for users to see. 
+The results can also be rendered in 3D 
+on a screen or head-mounted display like an Oculus Rift
+so that users can immersively visualize the modeled landscape 
+at a human scale 
+(Table \ref{table:tl_vr}) \cite{Tabrizian2016}.
+%(Fig.~\ref{fig:drawing_trees}).
+
 Because the model is continually scanned
 users' hands will be digitized as they sculpt or place objects. 
-Scanning users' hands as topography can be distracting; 
-it also, however, helps users understand how the system works
+Scanning users' hands as topography 
+%can be distracting; it also, however, 
+helps users understand how the system works
 %-- by seeing how direct interaction is --
 and encourages play. 
 Users can, for example, 
 place their hands on the model and create simulated lakes between their fingers
-%cup their hands over the model and see them fill with simulated water 
 (Fig.~\ref{fig:hands}) \cite{ncsu_geoforall_2016b}. 
 
 \begin{figure}
@@ -787,6 +797,59 @@ place their hands on the model and create simulated lakes between their fingers
 	\label{fig:hands}
 \end{center}
 \end{figure}
+
+\begin{figure}
+\begin{center}
+		\includegraphics[height=70px]{images/applications/subsurface_1.jpg}
+		\includegraphics[height=70px]{images/applications/subsurface_2.jpg}
+		\includegraphics[height=70px]{images/applications/subsurface_3.jpg}
+	\caption{Naturally exploring subsurface soil moisture and soil types with Tangible Landscape.}
+	\label{fig:subsurface}
+\end{center}
+\end{figure}
+
+\begin{table}
+\tbl{Collaboratively sculpting topography to create lakes, drawing trees with a laser pointer, and visualizing in VR.}{
+\ra{1.3}
+\begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
+\toprule
+\multicolumn{1}{c}{Sculpting}  & \multicolumn{1}{c}{Drawing \& Immersion}\\
+\midrule
+%
+\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_lakes_2.png} &
+\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_1.png}\\
+%
+\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_2.png} &
+\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_2.png}\\
+%
+\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_3.png} &
+\includegraphics[width=0.49\textwidth]{images/immersive/trees_with_oculus_1.png}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:tl_vr} 
+\end{table}
+
+%\begin{figure}
+%\begin{center}
+%		\includegraphics[width=0.32\textwidth]{images/immersive/sculpting_lakes_2.png}
+%		\includegraphics[width=0.32\textwidth]{images/immersive/sculpting_landforms_2.png}
+%		\includegraphics[width=0.32\textwidth]{images/immersive/sculpting_landforms_3.png}
+%	\caption{Collaboratively sculpting topography and creating lakes with Tangible Landscape.}
+%	\label{fig:collaboration}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}
+%\begin{center}
+%		\includegraphics[width=0.32\textwidth]{images/immersive/drawing_trees_1.png}
+%		\includegraphics[width=0.32\textwidth]{images/immersive/drawing_trees_2.png}
+%		\includegraphics[width=0.32\textwidth]{images/immersive/trees_with_oculus_1.png}
+%		%\includegraphics[width=0.32\textwidth]{images/immersive/walkthrough_2.png}
+%	\caption{Drawing and visualizing trees using a laser pointer with Tangible Landscape and an Oculus Rift.}
+%	\label{fig:drawing_trees}
+%\end{center}
+%\end{figure}
 
 \paragraph{Multidimensional sketching}
 %
@@ -837,37 +900,6 @@ should theoretically offer very different affordances
 in terms of embodied and situated cognition
 both have the potential to revolutionize how we 
 express ourselves in space and time.
-
-\begin{figure}
-\begin{center}
-		\includegraphics[height=70px]{images/subsurface_1.jpg}
-		\includegraphics[height=70px]{images/subsurface_2.jpg}
-		\includegraphics[height=70px]{images/subsurface_3.jpg}
-	\caption{Naturally exploring subsurface soil moisture and soil types with Tangible Landscape.}
-	\label{fig:subsurface}
-\end{center}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-		\includegraphics[width=0.32\textwidth]{images/immersive/sculpting_lakes_2.png}
-		\includegraphics[width=0.32\textwidth]{images/immersive/sculpting_landforms_2.png}
-		\includegraphics[width=0.32\textwidth]{images/immersive/sculpting_landforms_3.png}
-	\caption{Collaboratively sculpting topography and creating lakes with Tangible Landscape.}
-	\label{fig:collaboration}
-\end{center}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-		\includegraphics[width=0.32\textwidth]{images/immersive/drawing_trees_1.png}
-		\includegraphics[width=0.32\textwidth]{images/immersive/drawing_trees_2.png}
-		\includegraphics[width=0.32\textwidth]{images/immersive/trees_with_oculus_1.png}
-		%\includegraphics[width=0.32\textwidth]{images/immersive/walkthrough_2.png}
-	\caption{Drawing and visualizing trees using a laser pointer with Tangible Landscape and an Oculus Rift.}
-	\label{fig:drawing_trees}
-\end{center}
-\end{figure}
 
 \subsection{Implementation}
 
@@ -1094,12 +1126,30 @@ where to add or remove sand in order to match the target digital elevation model
 
 \subsection{Applications}
 
-% ---------------------------- REVISIONS ---------------------------- 
-% 
-% Describe applications in more detail
-% 	Add figure with examples
-% 
-% -------------------------------------------------------------------------- 
+\begin{figure}
+%
+\begin{center}
+		\includegraphics[width=0.49\textwidth]{images/applications/trail_2.jpg}
+		\includegraphics[width=0.49\textwidth]{images/applications/trail_4.jpg}
+	\caption{Trail planning with Tangible Landscape. Users create waypoints for a trail by placing markers on the terrain model. The optimal route between the waypoints is automatically computed based on the least cost path and the solution of the traveling salesman problem. Feedback includes the slope along the trail and viewsheds from waypoints. Users can also change the topography and build bridges. Source: \cite{Petrasova2015}.}
+	\label{fig:trails}
+\end{center}
+%
+\begin{center}
+		\includegraphics[width=0.49\textwidth]{images/applications/tl_coastal_3s.png}
+		\includegraphics[width=0.49\textwidth]{images/applications/tl_coastal_4s.png}
+	\caption{Testing coastal flood defences with Tangible Landscape. Users try to save houses from coastal flooding by building coastal defenses. Given a small handful of polymer-enriched sand -- their budget -- they sculpt new dunes as flood defenses. The foredune is then breached at a random location and simulated storm surge is rerun, flooding any vulnerable houses.}
+	\label{fig:coastal}
+\end{center}
+%
+\begin{center}
+		\includegraphics[width=0.49\textwidth]{images/applications/termite_game_2.jpg}
+		\includegraphics[width=0.49\textwidth]{images/applications/termite_game_3.jpg}
+	\caption{Managing the simulated spread of termites through a city with Tangible Landscape by treating city blocks. After watching the simulated spread of termites across the city users place preventative treatments to try to contain the invasion. To treat a city block they place wooden cubes representing preventive treatments on the game board leveraging basic motor skills from childhood play. After they treating 10 blocks the stochastic simulation is rerun so users can see how well they contained the invasion.}
+	\label{fig:termites}
+\end{center}
+%
+\end{figure}
 
 Using GRASS GIS's extensive libraries for 
 geospatial modeling, analysis, and simulation 
@@ -1107,15 +1157,16 @@ we have developed a wide range of applications for Tangible Landscape
 \cite{Petrasova2015}.
 Design and planning applications include
 grading, cut and fill analysis, stormwater management, erosion control, 
-trail planning, viewshed analysis, and the assessment of solar potential. 
+trail planning (Fig.~\ref{fig:trails}), viewshed analysis, and the assessment of solar potential. 
 Scientific applications include
-subsurface visualization, disease management, and invasive species management.
+subsurface visualization (Fig.~\ref{fig:subsurface}), urban growth modeling, disease management, and invasive species management (Fig.~\ref{fig:termites}).
 Disaster management applications include 
-flood control, wildfire management, and coastal change and adaptation. 
+flood control, wildfire management, and coastal change and adaptation (Fig.~\ref{fig:coastal}). 
 Educational applications include
 spatial training and serious gaming.
-
-
+%
+See Appendix \ref{appendix:videos}
+for videos of landscape design (\ref{videos:tl_vr}), viewshed analysis (\ref{videos:viewshed}), wildfire spread (\ref{videos:fire}), and urban growth applications (\ref{videos:urban}).
 
 \section{Coupling experiment}
 After a pilot study \cite{Harmon2016b}
@@ -1333,7 +1384,7 @@ to model the surface with a 10 x 10 grid of control points
 before wanting to building the surface with more control points.
 %
 See Appendix \ref{appendix:videos}
-for videos demonstrating the training and digital 3D modeling task.
+for videos demonstrating the training \ref{videos:training} and digital 3D modeling task (\ref{videos:digital}).
 
 % choice of 3d modeling program
 Different 3D modeling programs afford very different
@@ -1376,24 +1427,15 @@ exaggerated slopes and discontinuous water flow
 in our analyses. 
 %
 While voxel modeling programs 
-%like Voxel Builder 
-% http://voxelbuilder.com/
-%and MagicaVoxel
-% https://ephtracy.github.io/
+%like Voxel Builder % http://voxelbuilder.com/
+%and MagicaVoxel % https://ephtracy.github.io/
 and games like Minecraft \cite{Minecraft}
 are very intuitive to use,
 they can also be slow to use,
-%especially when modeling
 create blocky rather than
-continuous surfaces, %like topography 
+continuous surfaces, 
 and are not typically used in design professions 
 like architecture and landscape architecture.
-
-
-%- What version of Rhinoceros is used for the study? I think the paper would benefit from a more detailed description of the Rhino modeling workflow used in the study. Rhino is a popular modeling program and seems like a good choice for a comparison, but I am don’t know if and how it is commonly used in the GIS community. This is not a criticism of the study, just a question to provide more information to help readers without domain expertise in understanding the task better. I did not completely understand the disadvantage of the Vue terrain editor mentioned in the discussion on page 23, as I think that it would produce terrains that are at least as smooth as the point cloud a Kinect would produce. It would definitely be interesting to expand on this point and the lessons learned in the pilot study. Did study participants for instance produce more precise results with Vue compared to Rhinoceros? The reason I think this is important is to address questions that readers may have on how much the study results were influenced by the choice of desktop CAD software. This is of course a very complex and convoluted question that can only partially be answered by any study of this type, but for this very reason it should be addressed with a high level of detail and scrutiny.
-
-
-
 
 \begin{figure}
 \begin{center}
@@ -1408,18 +1450,17 @@ like architecture and landscape architecture.
 
 \paragraph{Analog modeling}
 
-
-Participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
+After a brief explanation and demonstration
+participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
 by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).  
-They were given a CNC-routed model of the study landscape as a reference
-and a 3D scale. 
+They were given a CNC-routed model of the study landscape 
+as a reference, a sculpting tool, and a 3D scale. 
+Participants were shown how the 3D scale could be used to 
+measure the height of the model. 
 A lamp on the table cast shadows across the model for hillshading.
-
-
-
-
-%- The system mentions two tools provided for the physical modeling tasks: a 3D scale and a wooden sculpting tool.  Where the subjects advised to use these tools? It would be very interesting to read how many study participants used the tools and if there was a difference in tool use between the analog modeling and the projection augmented modeling task.
-
+%
+See Appendix \ref{appendix:videos}
+for a video demonstrating the analog 3D modeling task (\ref{videos:analog}).
 
 \begin{figure}
 \begin{center}
@@ -1432,7 +1473,8 @@ A lamp on the table cast shadows across the model for hillshading.
 \end{figure}
 
 \paragraph{Projection augmented modeling}
-Participants had 10 minutes to sculpt
+After a minute long explanation and demonstration
+participants had 10 minutes to sculpt
 a projection-augmented, polymer-enriched sand model
 of the study landscape by hand or with a wooden sculpting tool 
 (Fig.~\ref{fig:proj_aug}). 
@@ -1440,12 +1482,14 @@ Tangible Landscape was used to project
 an elevation map of the study landscape
 with contours and a legend
 onto participants' sand models as guide for sculpting. 
-Participants were also given a 3D scale ruled in map units
-to measure the elevation of their scale models. 
-
-
-
-
+Participants were also given CNC routed reference model and 
+a 3D scale ruled in map units. 
+After an explanation of the contour map, elevation color table, and legend,
+participants were shown how the 3D scale could be used to 
+measure the elevation of their scale models
+%
+See Appendix \ref{appendix:videos}
+for a video demonstrating the projection augmented 3D modeling task (\ref{videos:augmented}).
 
 \begin{figure}
 \begin{center}
@@ -1470,9 +1514,7 @@ re-interpolated using the regularized spline with tension method,
 and stored as raster maps in a GRASS GIS database. 
 The data from Rhinoceros was randomly resampled and re-interpolated
 to account for differences and irregularities in resolution, data density, and point spacing.
-%caused by data conversion.
 
-%\paragraph{Data analysis}
 For each set of models -- digital, analog, and augmented --
 we computed cellular statistics (i.e.~per cell statistics), 
 topographic and morphometric parameters, 
@@ -2261,7 +2303,10 @@ to correct shifts in scanning and georeferencing.
 The difference showed where sand needs to added (blue) or removed (red) 
 in order to match the reference landscape (Fig.~\ref{fig:difference_sequence}). 
 While this feedback should show participants what to do next, 
-it may provide too much data or be too challenging to rapidly parse. 
+it may provide too much data or be too challenging to rapidly parse.
+%
+See Appendix \ref{appendix:videos}
+for a video demonstrating the 3D modeling task with the difference analytic (\ref{videos:difference}).
 
 %\begin{minted}[fontsize=\small,fontfamily=tt]{python}
 %def run_difference(real_elev, scanned_elev):
@@ -2486,7 +2531,10 @@ The module \textit{r.sim.water} \cite{r.sim.water}
 uses a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}.
 Participants could switch between the precomputed reference water flow 
 -- i.e.~their target -- 
-and the water flow over their scanned model. 
+and the water flow over their scanned model.
+%
+See Appendix \ref{appendix:videos}
+for a video demonstrating the 3D modeling task with the water flow analytic (\ref{videos:water}).
 
 \begin{figure}
 \begin{center}
@@ -2684,88 +2732,7 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 %\label{table:flow_distance} 
 \end{table}
 
-%\section{Case studies}
-%
-%We hosted a scientific gaming workshop using Tangible Landscape 
-%as part of North Carolina State University Library's Coffee \& Viz series. 
-%In this workshop participants 
-%explored complex environmental problems 
-%by playing serious, analytical games
-%with challenging objectives, rules, and scores. 
-%In the games
-%participants used simple tangible interactions 
-%to computationally steer simulations -- 
-%to drive simulated environmental processes. 
-%
-%In one game participants managed 
-%the spread of termites across a city by treating city blocks. 
-%After watching the simulated spread of termites across the city, 
-%participants placed preventative treatments to try to contain the invasion. 
-%To treat a city block they placed wooden cubes 
-%representing preventive treatments on the game board 
-%leveraging basic motor skills from childhood play.
-%After they treated 10 blocks
-%the stochastic simulation was rerun
-%so participants could see how well they contained the invasion. 
-%(Fig.~\ref{fig:termite_game}).
-%
-%In the other game participants tried to save houses 
-%from coastal flooding by building coastal defenses. 
-%Given a small handful of polymer-enriched sand 
-%-- their budget -- 
-%they sculpted new dunes as flood defenses
-%again leveraging motor skills from childhood play.
-%The foredune was then breached at a random location 
-%and simulated storm surge was run, flooding any vulnerable houses. 
-%(Fig.~\ref{fig:coastal_game}). 
-%
-%At another station participants could also playfully interact 
-%with a water flow simulation
-%in an unstructured way. 
-%Several participants could simultaneously sculpt 
-%a sand model of a landscape and see how they changed
-%simulated water flow % (Fig.~\ref{fig:tl_flow}) 
-%learning how shape affects process through unstructured play.
-%They used Tangible Landscape in new, unexpected ways --
-%cupping their hands, for example, to fill their palms with projected water.
-%
-%We observed that participants were able to naturally 
-%interact with the statistical model of ecological invasion,
-%the flood simulation, and the water flow simulation. 
-%Because the interactions were so simple % yet afforded so much 
-%-- just moving wooden blocks or sculpting sand --
-%they were able to continually reconfigure the model,
-%dynamically exploring the behavior 
-%of multidimensional environmental processes
-%unfolding in time and space. 
-%By playing several rounds participants were able to 
-%iteratively observe the simulated environmental process, 
-%generate hypotheses about its behavior, 
-%test how interventions affected its behavior, 
-%and draw inferences. 
-%
-%\begin{figure}
-%\begin{center}
-%		\includegraphics[width=0.3\textwidth]{images/termite_game_1.jpg}
-%		\includegraphics[width=0.3\textwidth]{images/termite_game_2.jpg}
-%		\includegraphics[width=0.3\textwidth]{images/termite_game_3.jpg}
-%	\caption{Managing the simulated spread of termites through a city with Tangible Landscape}
-%	\label{fig:termite_game}
-%\end{center}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%		\includegraphics[width=0.3\textwidth]{images/tl_coastal_1s.png}
-%		\includegraphics[width=0.3\textwidth]{images/tl_coastal_3s.png}
-%		\includegraphics[width=0.3\textwidth]{images/tl_coastal_4s.png}
-%	\caption{Testing coastal flood defences with Tangible Landscape}
-%	\label{fig:coastal_game}
-%\end{center}
-%\end{figure}
-
 \section{Discussion}
-
 
 % ---------------------------- REVISIONS ---------------------------- 
 % 
@@ -3239,8 +3206,16 @@ to account for the relative rotation of the scanner and the table.
 \end{center}
 \end{figure}
 
+%\begin{figure}
+%\begin{center}
+%		\includegraphics[width=\textwidth]{images/setup/participant_and_operator_1.jpg}
+%	\caption{The participant using Tangible Landscape and the operator running it.}
+%	\label{fig:participant_operator}
+%\end{center}
+%\end{figure}
+
 \vfill
-\pagebreak
+\clearpage
 
 \section{Experimental procedure}\label{appendix:procedure}
 
@@ -3441,7 +3416,7 @@ Then run the script \emph{render\_3d\_images.py}
 to generate 3D renderings of the maps in the \emph{render\_3d} directory.
 
 \vfill
-\pagebreak
+\clearpage
 
 \section{Semi-structured interview guidelines}\label{appendix:guidelines}
 \vspace*{0.5em}
@@ -3486,7 +3461,7 @@ Understand how tangible interfaces for geospatial modeling change how users mode
 \end{itemize}
 \vspace*{0.5em}
 
-\subsection{Topic: perception and experience}
+\subsection{\emph{Topic:} perception and experience}
 \begin{itemize}
 \item How did it feel to sculpt a 3D model with this technology?
 \item Was it stressful? Was it fun?
@@ -3495,13 +3470,34 @@ Understand how tangible interfaces for geospatial modeling change how users mode
 
 \vfill
 
-\pagebreak
+\clearpage
 
 \section{Videos}\label{appendix:videos}
 
+\subsection{Landscape design with Tangible Landscape and Virtual Reality}\label{videos:tl_vr}
+We coupled Tangible Landscape with an immersive virtual environment so that users can virtually walk around the modeled landscape and visualize it at a human-scale. Now as users shape topography, draw trees, define viewpoints, or route a walkthrough, they can see the results on the projection-augmented model, rendered on a display, or rendered on a head-mounted display.
+
+\subsection{Viewshed analysis with Tangible Landscape}\label{videos:viewshed}
+
+\subsection{Wildfire spread modeling with Tangible Landscape}\label{videos:fire}
+
+\subsection{Urban growth modeling with Tangible Landscape}\label{videos:urban}
+
+\subsection{Training for digital 3D modeling}\label{videos:training}
+
+\subsection{Digital 3D modeling with Rhinoceros}\label{videos:digital}
+
+\subsection{Analog 3D modeling}\label{videos:analog}
+
+\subsection{Projection augmented 3D modeling with Tangible Landscape}\label{videos:augmented}
+
+\subsection{3D modeling with Tangible Landscape's difference analytic}\label{videos:difference}
+
+\subsection{3D modeling with Tangible Landscape's water flow analytic}\label{videos:water}
+
 \vfill
 
-\pagebreak
+\clearpage
 
 \section{Scripts}\label{appendix:scripts}
 
@@ -3513,7 +3509,7 @@ Understand how tangible interfaces for geospatial modeling change how users mode
 
 \vfill
 
-\pagebreak
+\clearpage
 
 \section{Data}\label{appendix:data}
 
