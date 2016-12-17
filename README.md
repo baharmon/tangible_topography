@@ -32,8 +32,6 @@ The data and results for this experiment are available on the Open Science Frame
 
 ## Implementation
 * Describe system implementation in greater detail
-* Physical dimensions
-   - Diagram of system with dimensions
 * ~~Capturing distance~~
    - ~~Precision / accuracy~~
    - ~~Scanning res in x, y, z~~
@@ -66,12 +64,13 @@ The data and results for this experiment are available on the Open Science Frame
 * ~~Physical model for reference~~
 * ~~Videos~~
 * ~~Interviews~~
-* Color tables
-   - Cite Brewer & Brewer / Color Brewer
+* ~~Color tables~~
+   - ~~Cite Brewer & Brewer / Color Brewer~~
 
 ## Results
 * ~~New figures~~
 * Update tables
+* Update scatterplots
 * Update discussion of results
 * Discuss role of tools, reference models, and reference contours
 * Observations of users' process with Rhino
@@ -92,4 +91,10 @@ The data and results for this experiment are available on the Open Science Frame
 * Make stronger conclusions that answer research questions
 
 ## Appendices
-* Add mapsets, renderings, photographs, and video as supplemental material
+* Mapsets
+* Scripts
+* Renderings
+* Photographs
+* ~~Video~~
+* ~~Physical dimensions~~
+   - ~~Diagram of system with dimensions~~

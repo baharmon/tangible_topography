@@ -1053,22 +1053,6 @@ Min & Max & Mean & Stdev &  \nth{1} Q & \nth{3} Q\\
 \label{table:accuracy} 
 \end{table}
 
-%\begin{table}
-%\tbl{}{
-%\ra{1.3}
-%\begin{tabular}{l <{\hspace{1em}} r }
-%\toprule
-%Minimum & -2.8 \\
-%Maximum & 3.7 \\
-%Mean & -0.02 \\
-%Std. deviation & 0.7 \\
-%1$^{st}$ quartile & -0.4 \\
-%3$^{rd}$ quartile & 0.3\\
-%\bottomrule
-%\end{tabular}}
-%\label{table:accuracy}
-%\end{table}
-
 \subsection{Fabrication}
 We typically use familiar, everyday materials 
 -- like sand and wooden blocks -- 
@@ -1536,6 +1520,8 @@ for each set
 with the module \textit{r.series} \cite{r.series}.
 This is the standard deviation of each cell 
 of all elevation maps in a given set of models.
+We used a sequential color table from Color Brewer
+\cite{Brewer1994,ColorBrewer}.
 
 \paragraph{Mean difference}
 In order to compare participants' modeling performance between sets 
@@ -1585,7 +1571,7 @@ between the linearly regressed reference elevation and
 each modeled elevation map in a set
 to generate a set of difference maps.
 Then we calculated the standard deviation 
-for that set of difference maps.
+for that set of difference maps. 
 
 %\begin{equation}
 %\label{eq:regressed_difference}
@@ -3148,13 +3134,15 @@ in tangible modeling.
 Type & Product & Cost\\
 \midrule
 Computer & System 76 Oryx Pro & \$1500\\
-Projector & Optoma ML750 WXGA 700 DLP LED & \$500\\
+Projector & Epson PowerLite 1761W & \$600\\
 3D sensor & Xbox One Kinect & \$100\\
 & Kinect Adapter for Windows & \$50\\
 Stand & Avenger 40-Inch C-Stand with Grip Kit & \$200\\
-& Avenger 40-Inch C-Stand with Grip Kit & \$200\\
+& Kupo 4 Way Clamp & \$50\\
+& Kupo Baby 5/8-Inch Receiver for 4 Way Clamp & \$12\\
+& Avenger D520L 40-Inch Extension Arm & \$45\\
 & Avenger F800 3-Inch Baby Wall Plate & \$10\\
-& Avenger F800 3-Inch Baby Wall Plate & \$10\\
+& Avenger F810 3-Inch Baby Wall Plate with Swivel Pin & \$40\\
 Peripherals & HDMI cable & \$10\\
 & Extension cord & \$10\\
 Modeling media & Waba Fun Kinetic Sand 11 Lbs & \$50\\
@@ -3163,7 +3151,7 @@ Modeling media & Waba Fun Kinetic Sand 11 Lbs & \$50\\
 \label{table:hardware} 
 \end{table}
 
-\paragraph{Hardware}
+\paragraph{Hardware \& software}
 To build Tangible Landscape you will need a computer,
 a projector, a 3D sensor, an armature to hold the projector and sensor,
 and a physical model of a landscape.
@@ -3188,35 +3176,38 @@ you can use hard, rigid models such as 3D prints.
 \paragraph{Setup}
 Place your physical model of a landscape on a table. 
 Mount the Kinect sensor on baby wall plate attached to a C-stand. 
-Adjust the height of the C-stand so that the Kinect is 0.5 m - 1 m above the model. 
+Adjust the height of the C-stand so that the Kinect is 50 - 100 cm above the model. 
 Check that the Kinect is level using an instrument like a spirit level.
 Mount the projector on another baby wall plate attached to the other C-stand. 
 Connect the Kinect and projector to your computer. 
+See \url{https://github.com/tangible-landscape/grass-tangible-landscape/wiki}
+for more detailed instructions.
+
+%\paragraph{Stickers}
+%Download the \url{https://github.com/tangible-landscape/tangible-landscape-media}
+%repository, print Tangible Landscape stickers, and stick them onto your computer.
 
 \paragraph{Calibration}
 Remove the model, clear the table, and then
-run Tangible Landscapes' automatic calibration function
+run Tangible Landscape's automatic calibration function
 to account for the relative rotation of the scanner and the table.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
-	\includegraphics[width=\textwidth]{images/system_measurement.pdf}
-	\caption{System setup}
-	\label{fig:system_measurements}
-	%
-	\includegraphics[width=\textwidth]{images/system_setup.pdf}
-	\caption{System components}
-	\label{fig:system_setup}
+	\includegraphics[width=0.25\textwidth]{images/tl_logo.pdf}
+	%\includegraphics[width=0.2\textwidth]{images/tl_system_logo.pdf}
+	\caption{Download stickers from \url{https://github.com/tangible-landscape/tangible-landscape-media}}
+	\label{fig:stickers}
 \end{center}
 \end{figure}
 
-%\begin{figure}
-%\begin{center}
-%		\includegraphics[width=\textwidth]{images/setup/participant_and_operator_1.jpg}
-%	\caption{The participant using Tangible Landscape and the operator running it.}
-%	\label{fig:participant_operator}
-%\end{center}
-%\end{figure}
+\begin{figure}
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{images/system_setup.pdf}
+	\caption{System setup}
+	\label{fig:system_setup}
+\end{center}
+\end{figure}
 
 \vfill
 \clearpage
@@ -3479,13 +3470,18 @@ Understand how tangible interfaces for geospatial modeling change how users mode
 \section{Videos}\label{appendix:videos}
 
 \subsection{Landscape design with Tangible Landscape and Virtual Reality}\label{videos:tl_vr}
+\url{https://youtu.be/pYbpEMjME1Y}\\
+
 We coupled Tangible Landscape with an immersive virtual environment so that users can virtually walk around the modeled landscape and visualize it at a human-scale. Now as users shape topography, draw trees, define viewpoints, or route a walkthrough, they can see the results on the projection-augmented model, rendered on a display, or rendered on a head-mounted display.
 
 \subsection{Viewshed analysis with Tangible Landscape}\label{videos:viewshed}
+\url{https://youtu.be/tGFNHFoHMYM}
 
 \subsection{Wildfire spread modeling with Tangible Landscape}\label{videos:fire}
+\url{https://youtu.be/EJc57GFJeZI}
 
 \subsection{Urban growth modeling with Tangible Landscape}\label{videos:urban}
+\url{https://youtu.be/SeBoGwSqmRM}
 
 \subsection{Training for digital 3D modeling}\label{videos:training}
 
