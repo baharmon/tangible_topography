@@ -408,7 +408,7 @@ augmented clay (Table~\ref{table:review_b}),
 augmented sandboxes (Table~\ref{table:review_c}), 
 and actuated pin tables (Table~\ref{table:review_d}).
 
-Projection augmented tangible interfaces 
+Projection-augmented tangible interfaces 
 couple a physical and digital model
 through a cycle of 3D sensing or object recognition,
 computation, and projection. 
@@ -1162,7 +1162,7 @@ This experiment compared how users performed
 in a terrain modeling task using 
 digital 3D modeling with Rhinoceros, 
 analog modeling by hand, 
-and projection augmented modeling powered by Tangible Landscape. 
+and projection-augmented modeling powered by Tangible Landscape. 
 % digital
 Digital modeling with a GUI affords precise transformations and
 dynamic modes of visualization such as 
@@ -1176,7 +1176,7 @@ By sensing form subconsciously with the body
 users should have more cognitive resources for critiquing their work 
 and strategizing their next moves. 
 % 
-Projection augmented modeling 
+Projection-augmented modeling 
 couples digital mapping with physical modeling.
 Theoretically it should combine affordances of both -- 
 enabling enriched visualization and physical sensing and manipulation -- 
@@ -1456,7 +1456,7 @@ for a video demonstrating the analog 3D modeling task (\ref{videos:analog}).
 \end{center}
 \end{figure}
 
-\paragraph{Projection augmented modeling}
+\paragraph{Projection-augmented modeling}
 After a minute long explanation and demonstration
 participants had 10 minutes to sculpt
 a projection-augmented, polymer-enriched sand model
@@ -1473,12 +1473,12 @@ participants were shown how the 3D scale could be used to
 measure the elevation of their scale models
 %
 See Appendix \ref{appendix:videos}
-for a video demonstrating the projection augmented 3D modeling task (\ref{videos:augmented}).
+for a video demonstrating the projection-augmented 3D modeling task (\ref{videos:augmented}).
 
 \begin{figure}
 \begin{center}
 	\includegraphics[width=\textwidth]{images/experiments/carla_proj_aug.jpg}
-	\caption{Coupling experiment - projection augmented modeling:
+	\caption{Coupling experiment - projection-augmented modeling:
 	A participant sculpts the study landscape using
 	the projected elevation and contour maps
 	as guides.}
@@ -1488,7 +1488,7 @@ for a video demonstrating the projection augmented 3D modeling task (\ref{videos
 
 \paragraph{Data collection and analysis}
 We used Tangible Landscape to scan the finished models 
-built using analog hand modeling and projection augmented modeling.
+built using analog hand modeling and projection-augmented modeling.
 The scans were captured as point clouds, interpolated 
 as digital elevation models using the regularized spline with tension method,
 and stored as raster maps in a GRASS GIS database 
@@ -1535,7 +1535,7 @@ where the mean elevation values for each set are too low or too high.
 There were, however, systematic errors in the scanned models.
 %
 Table \ref{table:scatterplots} shows the vertical shift 
-in the hand sculpted and projection augmented models 
+in the hand sculpted and projection-augmented models 
 caused by scanning and georeferencing.
 %
 We used linear regression 
@@ -1618,6 +1618,18 @@ We also computed the mean minimum distance between features
 such as concentrated water flow, ridges, and valleys
 on the modeled landscapes and the reference landscape.
 
+\paragraph{Systematic errors}
+Table \ref{table:scatterplots} shows systematic errors
+in the hand sculpted and projection-augmented models.
+These models are vertically shifted due to scanning
+and have low values along the borders
+caused by slumping sand. 
+While we used linear regression 
+to vertically shift and rescale the difference in elevation, 
+we did not mitigate the systematic errors
+along the borders. 
+
+
 \begin{table}
 \tbl{Bivariate scatterplots of elevation values}{
 \ra{1.3}
@@ -1656,36 +1668,46 @@ Mean &
 \end{center}
 \end{figure}
 
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Revised color table
+% 	Add reference to Brewer & Brewer / Color Brewer
+%
+% -------------------------------------------------------------------------- 
+
+% REFEREE 2:
+%- This is just personal preference, but I found the Figures of results in the previous 2016 TEI paper by Harmon, which show a 2D top-down view, more readable than the smaller 3D renderings in this article. But this is not a criticism, just personal preference. I was also interested in the choice of color scheme for the heat maps, some of which I also found harder to read than others. An example are the colors for the stdev. of difference in Table VI. The authors may have a good reason for these colors - the choice for mean difference colors for user feedback seems for instance very clear. Some may also be standard in the GIS community, in which case it would be helpful to include a reference.
+
 \subsection{Results}
 %
-Participants digitally modeled so approximately and abstractly 
-with Rhinoceros
-that they only hinted at landforms. % at the morphology.
-%
-When they sculpted by hand
-their models tended to be descriptive -- 
-differing substantially from the reference, but
-accurately representing most of the landforms. 
-%
-Their performance improved 
-when they sculpted projection-augmented models --
-the resulting models
-fit the reference better, 
-had more defined topography, 
-and accurately represented most of the landforms.
-%
-Table \ref{table:scatterplots} shows systematic errors
-in the hand sculpted and projection-augmented models;
-these models are vertically shifted due to scanning
-and have low values along the borders
-caused by slumping sand. 
-While we used linear regression 
-to vertically shift and rescale the difference in elevation, 
-we did not mitigate the systematic errors
-along the borders. 
-%
-Table \ref{table:coupling_experiment} shows 3D maps of cellular statistics 
-and geospatial analyses for this experiment.
+%Participants digitally modeled so approximately and abstractly 
+%with Rhinoceros
+%that they only hinted at landforms. % at the morphology.
+%%
+%When they sculpted by hand
+%their models tended to be descriptive -- 
+%differing substantially from the reference, but
+%accurately representing most of the landforms. 
+%%
+%Their performance improved 
+%when they sculpted projection-augmented models --
+%the resulting models
+%fit the reference better, 
+%had more defined topography, 
+%and accurately represented most of the landforms.
+%%
+%Table \ref{table:scatterplots} shows systematic errors
+%in the hand sculpted and projection-augmented models;
+%these models are vertically shifted due to scanning
+%and have low values along the borders
+%caused by slumping sand. 
+%While we used linear regression 
+%to vertically shift and rescale the difference in elevation, 
+%we did not mitigate the systematic errors
+%along the borders. 
+%%
+%Table \ref{table:coupling_experiment} shows 3D maps of cellular statistics 
+%and geospatial analyses for this experiment.
 
 % ---------------------------- TREE ---------------------------- 
 
@@ -2006,7 +2028,7 @@ Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images
 \label{table:3d_experts} 
 \end{table}
 
-% ---------------------------- TABLES ----------------------------
+% ---------------------------- TABLES ---------------------------- % <--------------------------------REVISE
 
 \begin{table}
 \tbl{Coupling experiment: percent cells}{
@@ -2039,18 +2061,164 @@ Augmented & 7121 & 19599 & 31401\\
 \label{table:distance} 
 \end{table}
 
-% RESULTS
 
-% ---------------------------- REVISIONS ---------------------------- 
-% 
-% Revised color table
-% 	Add reference to Brewer & Brewer / Color Brewer
+
+
+% ---------------------------- RESULTS ----------------------------
+
+
+% ---------------------------- PAIRWISE COMPARISON ----------------------------
+
+We used pairwise comparison to study 
+how performance varied between 
+novices and experts (Fig. \ref{fig:tree}).
 %
-% -------------------------------------------------------------------------- 
+After analyzing all participants performance 
+(Table \ref{table:coupling_experiment})
+we compared students with academics and professionals 
+(Table \ref{table:students} - \ref{table:professionals}). 
+Then we compared landscape architecture students with GIS students
+(Table \ref{table:landscape_students} - \ref{table:gis_students}).
+Last we compared academics and professionals 
+with and without 3D modeling expertise (Table \ref{table:3d_novices} - \ref{table:3d_experts}).
 
-% REFEREE 2:
-%- This is just personal preference, but I found the Figures of results in the previous 2016 TEI paper by Harmon, which show a 2D top-down view, more readable than the smaller 3D renderings in this article. But this is not a criticism, just personal preference. I was also interested in the choice of color scheme for the heat maps, some of which I also found harder to read than others. An example are the colors for the stdev. of difference in Table VI. The authors may have a good reason for these colors - the choice for mean difference colors for user feedback seems for instance very clear. Some may also be standard in the GIS community, in which case it would be helpful to include a reference.
+% ---------------------------- OVERVIEW ----------------------------
 
+Overall participants performed 
+worst with digital modeling, 
+better with analog modeling, 
+and best with projection-augmented modeling.
+%
+Table \ref{table:coupling_experiment} 
+compares participants' performance with each technology
+through 3D maps of cellular statistics 
+and geospatial analyses.
+%
+When digitally modeling with Rhinoceros 
+participants tended to 
+create very approximate massings of the topography
+with serious errors in the interior space and
+with indistinct landforms
+that only hinted at the morphology of the landscape.
+%
+When they sculpted by hand
+their models tended to be descriptive -- 
+differing substantially from the reference, but
+accurately representing most of the landforms. 
+%
+Their performance improved 
+when they sculpted projection-augmented models --
+the resulting models
+fit the reference better, 
+had more defined topography, 
+and accurately represented most of the landforms.
+
+% ---------------------------- GROUP OVERVIEW ----------------------------
+
+When participants are analyzed as groups 
+-- as GIS students, Landscape Architecture students, 
+academics and professionals without 3D modeling expertise, 
+and academics and professionals with 3D modeling expertise -- 
+these trends generally still hold, 
+albeit with some very important exceptions.
+%
+Unlike all other groups, 
+the 3D modeling experts performed extremely well 
+in the digital modeling task
+with a very low standard deviation of difference, 
+but still only hinted at the landforms 
+(Table \ref{table:3d_experts}). 
+%
+This means that even for expert 3D modelers,
+projection-augmented modeling 
+should be a better, faster tool 
+for quick modeling tasks. 
+%such as rapid ideation. 
+
+% ---------------------------- ALL PARTICIPANTS ----------------------------
+
+\paragraph{All participants}
+Table \ref{table:coupling_experiment}.
+
+% digital
+When digitally modeling with Rhino
+participants were relatively 
+consistent and accurate except in the interior space.
+The interior space -- the main valley and the ridge -- 
+tended to have serious errors.
+%
+They built very abstract massing models 
+approximating the general shape of the landscape
+without any detail. 
+%
+The slopes in these models 
+were consistently too low and gradual.
+They did not have enough curvature 
+to create distinct landforms. 
+%
+These models only hinted at 
+the morphology of landscape
+with a small cluster of valley cells
+and another small cluster of ridge cells.  
+Key features like the stream channel
+were not represented. 
+% observations...
+
+
+% analog
+When sculpting by hand 
+participants used very different modeling strategies 
+and as a result they built very different models
+as shown by the standard deviation of elevation.
+While inconsistent, 
+their models were relatively accurate
+and captured the key landforms.
+While they tended to over exaggerate the main ridge, 
+they did represent
+this ridge and most of the central valley.
+Due to slumping sand
+these models tended to be too low along the edges. 
+
+% observations
+	% examples: ...
+
+
+% augmented
+
+
+
+
+\paragraph{Students vs. academics and professionals}
+
+% Table \ref{table:students}
+% Table \ref{table:professionals)
+
+
+%   * Overview
+%      * Similar overall results, different pattern of errors, student performance a little worse
+%   * Digital
+%      * Students miss interior, ie. valley
+%      * Both miss ridge
+%   * Analog
+%      * Students have significant problems with slopes especially on main ridge
+%      * Pros have lesser problems with slopes and miss the island in the corner.
+%      * Both have problems with edges, but professionals worse
+%   * Augmented
+%      * Professionals perform much better, but more
+%      problems with edges
+%      * Pros have good landforms, but extras ridges along edge.
+
+\paragraph{Landscape architecture vs. GIS students}
+
+% Table \ref{table:landscape_students}
+% Table \ref{table:gis_students}
+
+\paragraph{Academics and professionals with and without 3D modeling expertise}
+
+% Table \ref{table:3d_novices}
+% Table \ref{table:3d_experts}
+
+% ---------------------------- OLD RESULTS ----------------------------
 \paragraph{Mean elevation}
 The mean digitally modeled elevation is a highly abstract massing model
 lacking any detail. 
@@ -2204,6 +2372,37 @@ worked in a more freeform manner
 when hand sculpting -- switching freely between
 adding, removing, pressing, pushing, pulling, or smoothing
 sand.
+
+
+% ADD TO OBSERVATIONS
+%The standard deviation of elevations represents the set's consistency.
+%%
+%When digitally modeling 
+%participants treated the lake very consistently, but 
+%varied substantially in their treatment of the highpoint.
+%%
+%We observed participants 
+%using similar digital modeling strategies 
+%in a relatively linear fashion -- 
+%they typically began by modeling the profiles in the elevation views,
+%then pulled up the relative high points, 
+%and finally pushed down the relative low points. 
+% %
+%They were very inconsistent 
+%when sculpting by hand,
+%varying greatly in their treatment 
+%everywhere except the valley and the lakeside.
+%%
+%We observed participants using 
+%a wide range of different modeling strategies
+%and techniques
+%when sculpting by hand. 
+%%
+%With projection-augmented modeling 
+%participants varied in their handling of relative high points, 
+%but were relatively consistent otherwise. 
+
+
 
 \paragraph{Interviews}
 
@@ -2772,7 +2971,7 @@ to be inaccurate and highly approximate,
 only abstractly representing the reference
 and hinting at landforms. 
 %
-Users' enhanced performance with projection augmented modeling 
+Users' enhanced performance with projection-augmented modeling 
 demonstrates that they can successfully 
 combine the physical and computational affordances 
 of analog and digital modeling. 
@@ -2799,6 +2998,27 @@ because the medium has a very fine, uniform grain size,
 a good balance of plasticity and adhesiveness,
 and thus can be sculpted into a smooth, continuous shape
 with fine details.
+
+% DISCUSSION
+%We hypothesize that 
+%for longer modeling tasks -- i.e.~ tasks longer than 10 minutes -- 
+%digital modeling should become more and more efficient. 
+%
+We hypothesize that the longer the modeling task
+the more the affordances of digital modeling
+-- precision, zooming, layering, snapping, etc.~--
+should help
+making the process more and more efficient. 
+%
+Based on our own experiences
+we further hypothesize that 
+hybrid approaches combining 
+digital modeling, digital fabrication, and tangible modeling 
+should be even more efficient and effective. 
+%for longer design and modeling problems.
+% examples...
+
+% discuss rapid ideation as quick modeling tasks
 
 % difference
 The results of the difference experiment show that 
@@ -3489,7 +3709,7 @@ We coupled Tangible Landscape with an immersive virtual environment so that user
 
 \subsection{Analog 3D modeling}\label{videos:analog}
 
-\subsection{Projection augmented 3D modeling with Tangible Landscape}\label{videos:augmented}
+\subsection{Projection-augmented 3D modeling with Tangible Landscape}\label{videos:augmented}
 
 \subsection{3D modeling with Tangible Landscape's difference analytic}\label{videos:difference}
 

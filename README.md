@@ -18,6 +18,13 @@ The data and results for this experiment are available on the Open Science Frame
 
 # TODO
 
+## IMPORTANT
+* Delete 1 LA student
+* Re-sample / re-interpolate reference DEMs
+* Redo bivariate scatterplots
+* Redo tables
+* Create figures for difference and water flow experiments
+
 ## Literature review
 * Detailed discussion of related work
    - Evaluate other systems
