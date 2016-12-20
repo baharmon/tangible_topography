@@ -105,41 +105,41 @@ default 192:192:192
 """
 
 dem_difference_colors_3d = """\
--42 blue
+42 blue
 0 192:192:192
-42 red
+-42 red
 nv 192:192:192
 default 192:192:192
 """
 
 dem_regression_difference_colors_3d = """\
--36 blue
+36 blue
 0 192:192:192
-36 red
+-36 red
 nv 192:192:192
 default 192:192:192
 """
 
 flow_difference_colors_3d = """\
--0.5 blue
+0.5 blue
 0 192:192:192
-0.5 red
+-0.5 red
 nv 192:192:192
 default 192:192:192
 """
 
 slope_difference_colors_3d = """\
--30 blue
+30 blue
 0 192:192:192
-30 red
+-30 red
 nv 192:192:192
 default 192:192:192
 """
 
 forms_difference_colors_3d = """\
--10 blue
+10 blue
 0 192:192:192
-10 red
+-10 red
 nv 192:192:192
 default 192:192:192
 """

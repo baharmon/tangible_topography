@@ -27,18 +27,18 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.9485741"
-     inkscape:cx="150.84992"
+     inkscape:cx="-47.342293"
      inkscape:cy="-24.807228"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1630"
+     inkscape:window-width="1636"
      inkscape:window-height="1005"
-     inkscape:window-x="50"
-     inkscape:window-y="1"
-     inkscape:window-maximized="1"
+     inkscape:window-x="45"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -68,7 +68,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -104,18 +104,12 @@
          id="flowPara3411-9"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:Lato;-inkscape-font-specification:'Lato, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">0.5</flowPara></flowRoot>    <image
        y="119.69862"
-       x="205.35716"
+       x="-560.35718"
        id="image3683"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAAArCAYAAACq/DdBAAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
-WXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AcdFAk3uJP3mgAAAB1pVFh0Q29tbWVudAAAAAAAQ3Jl
-YXRlZCB3aXRoIEdJTVBkLmUHAAAA4ElEQVR42u3XsQqDMBCA4bsSdOr7P6su16FLFB0EGyp836L2
-LIEMPyarqgJggBYRkZl2AvipqoqXbQCGfuH0BQK4U3+Cavvh+/29zvP292k6vt+/e2XWP1vv/9fb
-WNfz52U5n+3/1797ZWa9Z6y3+4hxpAKGERxAcADBARAcQHAABAcQHEBwAAQHEBwAwQEEBxAcAMEB
-BAdAcADBAQQHQHAAwQEQHEBwAMEBEBxAcAAEBxAcQHAABAcQHADBAQQHQHCAwbKqKjMjIqKq7Ahw
-b2S6vrSjAYAjFfBozVEKGOUDdd9pVwG3LT8AAAAASUVORK5CYII=
-"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAAArCAYAAACq/DdBAAAABmJLR0QA/wD/AP+gvaeTAAAACXBI WXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AcdFAk3uJP3mgAAAB1pVFh0Q29tbWVudAAAAAAAQ3Jl YXRlZCB3aXRoIEdJTVBkLmUHAAAA4ElEQVR42u3XsQqDMBCA4bsSdOr7P6su16FLFB0EGyp836L2 LIEMPyarqgJggBYRkZl2AvipqoqXbQCGfuH0BQK4U3+Cavvh+/29zvP292k6vt+/e2XWP1vv/9fb WNfz52U5n+3/1797ZWa9Z6y3+4hxpAKGERxAcADBARAcQHAABAcQHEBwAAQHEBwAwQEEBxAcAMEB BAdAcADBAQQHQHAAwQEQHEBwAMEBEBxAcAAEBxAcQHAABAcQHADBAQQHQHCAwbKqKjMjIqKq7Ahw b2S6vrSjAYAjFfBozVEKGOUDdd9pVwG3LT8AAAAASUVORK5CYII= "
        preserveAspectRatio="none"
        height="53.75"
-       width="355" />
+       width="355"
+       transform="scale(-1,1)" />
   </g>
 </svg>

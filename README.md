@@ -19,8 +19,6 @@ The data and results for this experiment are available on the Open Science Frame
 # TODO
 
 ## IMPORTANT
-* Delete 1 LA student
-* Re-sample / re-interpolate reference DEMs
 * Redo bivariate scatterplots
 * Redo tables
 * Create figures for difference and water flow experiments
@@ -38,16 +36,16 @@ The data and results for this experiment are available on the Open Science Frame
    - vs. AR Sandbox as novice system
 
 ## Implementation
-* Describe system implementation in greater detail
+* ~~Describe system implementation in greater detail~~
 * ~~Capturing distance~~
    - ~~Precision / accuracy~~
    - ~~Scanning res in x, y, z~~
    - ~~Noise~~
-* Sampling rate
-   - Filtering
+* ~~Sampling rate~~
+   - ~~Filtering~~
 * Lag
    - Lag due to analyses
-   - Table of analyses with speed benchmarks
+   - ~~Table of analyses with speed benchmarks~~
    - Discussion of frame rate and interaction
    - Tradeoffs
 
