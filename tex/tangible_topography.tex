@@ -1002,7 +1002,7 @@ and GRASS GIS \cite{GRASS_GIS_software}.
 \end{center}
 \end{figure}
 
-\subsection{System resolution and accuracy}
+\subsection{System resolution, accuracy, and speed}
 The spatial resolution of the system is determined by the depth camera parameters
 and the distance from camera to the model. Given Kinect's field of view of 70 $\times$ 60 degrees
 and depth resolution of 512 $\times$ 424 pixels, the spatial resolution ranges
@@ -1059,7 +1059,7 @@ Min & Max & Mean & Stdev &  \nth{1} Q & \nth{3} Q\\
 \ra{1.3}
 \begin{tabular}{l <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c}
 \toprule
-Size, Process & Study area & SECREF \\
+Size, Process & Small & Medium\\
 \midrule
 % Resolution & 6 $\times$ 6 m & 4.32 $\times$ 4.24 \\
 Physical size & 23.5 cm $\times$ 23.5 cm & 34 cm $\times$ 34 cm \\
@@ -1079,6 +1079,35 @@ Landforms & 0.034 $\pm$ 0.003 s & 0.084 $\pm$ 0.009 s \\
 \end{tabular}}
 \label{table:benchmark}
 \end{table}
+
+Tab.~\ref{table:benchmark} shows comparison of times for different point cloud processing
+methods (binning and interpolation) and analyses (e.g. water flow analysis).
+The small model is the size used in the study.
+The medium model corresponds to what we recommend as a basic size for Tangible Landscape beginners.
+The time needed to scan and obtain a model is under 1~s,
+however the subsequent one or more analyses may take more than 1~s.
+Considering computation of the water flow and the smaller model,
+the minimal total time needed for change to be reflected
+is the time of the interpolation 0.74~s plus the time of the water flow analysis 0.29 s
+which gives is 1.03~s.
+The maximum total time which considers that the person interacting with Tangible Landscape
+made a change right after the scan was performed is 2.06 s because it includes waiting
+for the previous scan to be processed.
+It must be noted that the system used for the study had worse performance than
+the current, reported system.
+% TODO: include the approx time for the old system
+Benchmarks were performed using
+System76 Oryx Pro with
+% 3.5 GHz Quad-Core
+6th Generation Intel Core processor i7-6700HQ (2.6 GHz, up to 3.5 GHz, 6 MB cache 4 cores, 8 threads),
+16 GB dual-channel DDR4 random-access memory (2 $\times$ 8 GB),
+% (RAM is in GB, not GiB)
+M.2 SSD storage (540 MB/s sequential read, 520 MB/s write), and
+NVIDIA GeForce GTX 1060
+running Ubuntu 16.04 LTS (64-bit),
+GRASS GIS 7.2, and
+Tangible Landscape 2c1ede9.
+
 
 \subsection{Fabrication}
 We typically use familiar, everyday materials 
