@@ -932,43 +932,56 @@ express ourselves in space and time.
 %- At the mounted distance of the Kinect, what is the scanning resolution in x,y, and z, and how much noise does the sensor produce? What is the sampling rate? Does the system filter and average the sensor data over time or drop frames and only use raw data?
 %- What is the system lag? The article mentions an improved subsequent system with a 2 second delay in the end, but does not state the delay for this system in the study. System lag seems like a critical factor for the projected feedback in the difference experiment and the water flow experiment. What are the observations of the authors in this regard? I suspect that a low framerate may be even helpful in some conditions, as it produces fewer distractions than a fast, noisy visual feedback.
 
-Tangible Landscape uses Microsoft Kinect to continuously capture the shape of the physical model
-as a point cloud and processes it into a raster-based DEM in GRASS GIS database.
+Tangible Landscape uses Microsoft Kinect
+to continuously capture the shape of the physical model
+as a point cloud.
+The point cloud is processed into a 
+raster-based digital elevation model (DEM) 
+in a GRASS GIS database.
 Since the scanner can be slightly tilted,
-we first ensure the scan is horizontally aligned by a calibration process, which derives
-a rotation matrix by scanning a horizontal surface of the table where the model lies.
-This rotation matrix is then applied for each scan.
-The point cloud is automatically trimmed to include only points on the physical model,
-smoothed and georeferenced based on the known
+we first ensure that the scan is horizontally aligned
+through a calibration process, which derives
+a rotation matrix by scanning the horizontal surface 
+of the table where the model will be placed.
+This rotation matrix is then applied to each scan.
+The point cloud is automatically trimmed 
+so that it only includes points on the physical model,
+smoothed, and georeferenced based on the known
 spatial extent of the area represented by the model.
-Georeferencing includes translation, rotation by 180\textdegree{} along z axis,
-and separate horizontal and vertical scaling, where vertical scaling takes into
-account possible vertical exaggeration of the physical model.
-The resulting terrain representation has real world dimensions
-and can be combined effortlessly with other GIS data, such as land cover or orthophotograph.
+Georeferencing includes translation, 
+rotation by 180\textdegree{} along the z-axis,
+horizontal scaling, and vertical scaling 
+which takes into account the vertical exaggeration 
+-- if any -- of the physical model.
+The resulting representation of the terrain 
+has real world dimensions
+and can be combined effortlessly with other GIS data, 
+such as land cover or orthophotographs.
 
-The DEM is then reconstructed from the point cloud either using interpolation method
-with regularized spline with tension \cite{Mitasova2005},
-or binning with cell values computed as the mean of points' z coordinates falling into that cell.
-Although binning results in noisier DEM, it is very fast,
-and can therefore be a better option for certain applications. 
-Multiple point clouds can be integrated to increase point density at the cost of increased
+The DEM is then reconstructed from the point cloud
+using either the regularized spline with tension 
+interpolation method \cite{Mitasova2005}
+or binning with cell values computed 
+as the mean of the z-coordinates of all of the points 
+falling into that cell.
+Although binning results in a noisier DEM, it is very fast,
+and may, therefore, be a better option for certain applications. 
+Multiple point clouds can be integrated 
+to increase point density at the cost of increased
 processing time.
 
-For each new DEM, a set of customizable analyses and geospatial workflows
+For each new DEM, 
+a set of customizable analyses and geospatial workflows
 specified in a Python file is run, and the display is updated.
-Tangible Landscape provides a library of geospatial functions built on top of
-GRASS GIS modules and an API for developing custom workflows.
+Tangible Landscape provides a library of geospatial functions 
+built on top of GRASS GIS modules 
+and an API for developing custom workflows.
 The modeled analyses as well as scanning parameters can be modified 
 as the system runs.
 
-
-
 Tangible Landscape has been implemented as a set of components 
 -- the \emph{r.in.kinect} add-on module \cite{r.in.kinect}
-%\footnote{\url{https://github.com/tangible-landscape/r.in.kinect}}
 and the \emph{Tangible Landscape} plugin \cite{grass-tangible-landscape}
-%\footnote{\url{https://github.com/tangible-landscape/grass-tangible-landscape}}
 --
 for the active development version of GRASS GIS (Fig.~\ref{fig:software_schema}). 
 The \emph{r.in.kinect} add-on module continuously imports and filters point cloud data from the \nth{2} generation Kinect into GRASS GIS as raster or vector maps. 
@@ -976,7 +989,6 @@ It has been implemented as a separate component so that it can easily be used fo
 The \emph{Tangible Landscape} plugin provides 
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
 The \emph{Tangible Landscape Immersive Extension} \cite{tangible-landscape-immersive-extension}
-%\footnote{\url{https://github.com/tangible-landscape/tangible-landscape-immersive-extension}}
 links Tangible Landscape with Blender, 
 an open source 3D modeling and animation program \cite{Blender} 
 enabling 3D rendering on screens or head-mounted displays.
@@ -987,7 +999,6 @@ Since many tasks in GIS are not appropriate for tangible interaction
 Tangible Landscape was designed to supplement, 
 not replace GRASS GIS's GUI, CLI, and scripting application program interface (API). 
 Tangible Landscape currently runs on Linux and Mac OSX.
-%with an unsupported branch for Windows. 
 Dependencies include the Point Cloud Library \cite{Rusu2011,PCL}, 
 OpenKinect's libfreenect2 \cite{OpenKinect}, 
 OpenCV \cite{OpenCV},  
@@ -1003,15 +1014,25 @@ and GRASS GIS \cite{GRASS_GIS_software}.
 \end{figure}
 
 \subsection{System resolution, accuracy, and speed}
-The spatial resolution of the system is determined by the depth camera parameters
-and the distance from camera to the model. Given Kinect's field of view of 70 $\times$ 60 degrees
-and depth resolution of 512 $\times$ 424 pixels, the spatial resolution ranges
-from 1.4 to 2.7 mm for distances from 0.5 to 1 m used typically by Tangible Landscape.
-For the experiment where the distance was approximately 0.6 m we used 2 mm resolution, which
-translated to 6 m in real world given the scale of the physical model.
-Kinect depth measurements suffer from noise quantified by \cite{Hamed2015}.
-We minimized the negative effects of noise by placing the model
-closer to the center of the camera and by smoothing the data using Moving Least
+The spatial resolution of the system 
+is determined by the depth camera parameters
+and the distance from the camera to the model. 
+Given the Kinect's 70 $\times$ 60 degrees field of view
+and 512 $\times$ 424 pixels depth resolution, 
+the spatial resolution ranges from 1.4 to 2.7 mm
+when the scanner is 0.5 to 1 m above the model. 
+%
+In the experiment the Kinect was mounted 
+approximately 0.6 m above the model
+so we used 2 mm resolution, which
+translated to 6 m in the real world 
+given the scale of the physical model.
+Kinect depth measurements suffer from noise 
+quantified by \cite{Hamed2015}.
+We minimized the negative effects of noise 
+by placing the model
+closer to the center of the camera 
+and by smoothing the data using Moving Least
 Squares reconstruction method \cite{Rusu2011}.
 
 In Fig.~\ref{fig:accuracy} and Table \ref{table:accuracy} 
@@ -1022,26 +1043,29 @@ and compared it with the original DEM.
 % 0.125" or 3.175 mm bit with 0.05" or 1.27 mm stepover with +- 0.01 mm positional accuracy
 % so could say 1.27 mm +- 0.01
 The routed model is sufficiently accurate for this comparison.
-We removed the systematic error (vertical shift) since it is removed
-during processing of the scans from the experiment and does not influence the results.
-The difference in Fig.~\ref{fig:accuracy} is given from a single frame,
+We removed the systematic error (vertical shift) 
+since it is removed during processing 
+of the scans from the experiment 
+and does not influence the results.
+The difference in Fig.~\ref{fig:accuracy} 
+is given from a single frame,
 and although it is possible to integrate multiple frames,
-we chose to construct the DEM from one frame for faster smoothing procedure.
+we chose to construct the DEM from one frame 
+for faster smoothing.
 
 % This table might not be needed given the histogram on the legend
 
 \begin{figure}
 \begin{center}
 		\includegraphics[width=0.6\textwidth]{images/precision/accuracy.png}
-	\caption{Accuracy assessment: difference between original DEM and the scanned DEM of a model representing the DEM.
-	The scanned DEM is higher then the original DEM in blue areas and lower in red areas. Legend values are in millimeters.
+	\caption{Accuracy assessment: the difference between original digital elevation model and the scanned elevation of a digitally fabricated physical model of the same landscape. The scanned elevation is higher then the original digital elevation model in blue areas and lower in red areas. Legend values are in millimeters.
 	}
 	\label{fig:accuracy}
 \end{center}
 \end{figure}
 
 \begin{table}
-\tbl{Scanning accuracy}{
+\tbl{Scanning accuracy (mm)}{
 \ra{1.3}
 \begin{tabular}{c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c <{\hspace{1em}} c}
 \toprule
@@ -1563,9 +1587,10 @@ The mean elevation is the average of each cell
 of all elevation maps in a given set of models.
 
 \paragraph{Standard deviation of elevation}
+The standard deviation of elevations 
+represents the set's consistency.
 We computed 
-the standard deviation of elevation
-for each set
+the standard deviation of elevation for each set
 with the module \textit{r.series} \cite{r.series}.
 This is the standard deviation of each cell 
 of all elevation maps in a given set of models.
@@ -1573,23 +1598,26 @@ We used a sequential color table from Color Brewer
 \cite{Brewer1994,ColorBrewer}.
 
 \paragraph{Mean difference}
-In order to compare participants' modeling performance between sets 
-we computed the difference 
+In order to compare participants' modeling performance 
+between sets we computed the difference 
 between the linearly regressed reference elevation and 
 the mean elevation for each set.
 %
-The difference between the reference and mean elevation maps should show
-where the mean elevation values for each set are too low or too high. 
+The difference between the reference 
+and mean elevation maps should show
+where the mean elevation values for each set 
+are too low or too high, 
+i.e.~where they needed to add (blue) 
+or remove (red) volume to match the reference. 
 %
-There were, however, systematic errors in the scanned models.
+There were, however, systematic errors 
+in the scanned models.
 %
 Table \ref{table:scatterplots} shows the vertical shift 
 in the hand sculpted and projection-augmented models 
 caused by scanning and georeferencing.
 %
 We used linear regression 
-%the linear regression of the reference and mean elevation maps
-%calculated with the module \textit{r.regression.line} \cite{r.regression.line}
 to vertically rescale and translate the reference elevation 
 in order to account for these systematic errors
 in the difference calculation,
@@ -1613,14 +1641,15 @@ where:
 
 
 \paragraph{Standard deviation of difference}
-
-We computed the standard deviation of difference
+In order to find 
+how consistently the models fit the reference landscape
+we computed the standard deviation of difference
 by first calculating the difference 
 between the linearly regressed reference elevation and 
 each modeled elevation map in a set
 to generate a set of difference maps.
 Then we calculated the standard deviation 
-for that set of difference maps. 
+for that set of difference maps.  
 
 %\begin{equation}
 %\label{eq:regressed_difference}
@@ -1663,9 +1692,10 @@ is spatially variable -- it depends on the visibility of the cell \cite{Jasiewic
 Landforms can be classified as flat, peak, ridge, shoulder, spur, slope, hollow, footslope, valley, or depression (Fig.~\ref{fig:geomorphons}).
 
 \paragraph{Mean minimum distance}
-We also computed the mean minimum distance between features 
-such as concentrated water flow, ridges, and valleys
-on the modeled landscapes and the reference landscape.
+We computed the mean minimum distance between cells
+with water flow, ridges, and valleys
+on the models and the reference landscape
+as a measure of positional accuracy. 
 
 \paragraph{Systematic errors}
 Table \ref{table:scatterplots} shows systematic errors
@@ -2077,7 +2107,7 @@ Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images
 \label{table:3d_experts} 
 \end{table}
 
-% ---------------------------- TABLES ---------------------------- % <--------------------------------REVISE
+% ---------------------------- TABLES ---------------------------- 
 
 \begin{table}
 \tbl{Coupling experiment: percent cells}{
@@ -2086,10 +2116,10 @@ Mean landforms \par \vspace{0.5em} \includegraphics[width=0.19\textwidth]{images
 \toprule
 Method & Concentrated flow & Ridges & Valleys \\
 \midrule
-Reference & 0.89 & 2.10 & 2.90\\
-Digital & 1.12 & 0.69 & 0.56\\
-Hand & 0.80 & 4.00 & 1.66\\
-Augmented & 0.77 & 4.13 & 1.48\\
+Reference & 1.16 & 2.10 & 2.90\\
+Digital & 1.34 & 0.69 & 0.49\\
+Hand & 0.97 & 3.85 & 1.48\\
+Augmented & 1.05 & 4.18 & 1.63\\
 \bottomrule
 \end{tabular}}
 \label{table:percent_cells} 
@@ -2102,9 +2132,9 @@ Augmented & 0.77 & 4.13 & 1.48\\
 \toprule
 Method & Concentrated flow & Ridges & Valleys \\
 \midrule
-Digital & 12916 & 110419 & 98806\\
-Hand & 10162 & 24005 & 676450\\
-Augmented & 7121 & 19599 & 31401\\
+Digital & 19303 & 105764 & 110017\\
+Hand & 12021 & 25238 & 70287\\
+Augmented & 11898 & 20110 & 30980\\
 \bottomrule
 \end{tabular}}
 \label{table:distance} 
@@ -2187,8 +2217,10 @@ for quick modeling tasks.
 % ---------------------------- ALL PARTICIPANTS ----------------------------
 
 \paragraph{All participants}
-Table \ref{table:coupling_experiment} 
-shows the results for all participants.
+Tables \ref{table:coupling_experiment},
+\ref{table:percent_cells}, 
+and \ref{table:distance}
+show the results for all participants. 
 %
 % DIGITAL
 When digitally modeling with Rhino
@@ -2326,19 +2358,35 @@ she could read the sand model `like braille\ldots
 I could feel the shape with my fingers.'
 
 % AUGMENTED
+Overall participants performed best
+with projection-augmented modeling
+building more accurate models 
+that represented the major landforms.
+%
+These models had the lowest mean minimum distance 
+for cells with concentrated water flow, ridges, and valleys
+(see Tables \ref{table:percent_cells} \& \ref{table:distance}). 
+%
+We observed participants using the same
+modeling techniques, strategies, and tool use
+as they did when sculpting by hand. 
+They worked in the same freeform manner, but 
+-- with the aid of the projected contours and elevation --
+had more consistent results 
+as shown by the standard deviation of elevations.
+%
+Overall, they had more accurate results
+-- albeit with systemic errors along the borders 
+due to slumping sand --
+as shown by the mean difference and
+standard deviation of differences. 
+%
+They correctly represented the main ridge and 
+the central valley, but tended to miss details
+like the y-shaped branch at the head of
+of the stream channel. 
 
-
-
-
-
-
-
-
-
-
-
-% augmented observations
-Another participant found that 
+One participant found that 
 with projection-augmented modeling 
 he was able to effectively combine 
 the affordances of hand sculpture 
@@ -2350,163 +2398,139 @@ in which the projected `contours were just a guide' --
 I felt with my hands to try to match the contours. 
 If I saw concavity in the contours 
 then I felt the sand and sculpted that concavity.
-Finding the relative height, however, was challenging -- it was subtle.'
-
-
-
+Finding the relative height, however, was challenging -- 
+it was subtle.'
 
 \paragraph{Students vs. academics and professionals}
-
-% Table \ref{table:students}
-% Table \ref{table:professionals)
-
-
-%   * Overview
-%      * Similar overall results, different pattern of errors, student performance a little worse
-%   * Digital
-%      * Students miss interior, ie. valley
-%      * Both miss ridge
-%   * Analog
-%      * Students have significant problems with slopes especially on main ridge
-%      * Pros have lesser problems with slopes and miss the island in the corner.
-%      * Both have problems with edges, but professionals worse
-%   * Augmented
-%      * Professionals perform much better, but more
-%      problems with edges
-%      * Pros have good landforms, but extras ridges along edge.
+%
+Table \ref{table:students} and table \ref{table:professionals}
+compare students' results 
+with academics and professionals. 
+% overview
+Overall the academics and professionals
+only performed slightly better than the students.
+% digital
+When digitally modeling both groups 
+built very approximate massing models
+that only hinted at the landforms. 
+While the professionals and academics 
+managed to create a small cluster of valleys cells
+in the central stream channel, 
+the students tended to miss this feature. 
+% analog
+When sculpting by hand
+both groups' performance improved dramatically;
+they built more accurate models
+as shown by the standard deviation of difference
+and better represented the landforms
+roughly capturing the main ridge and valley. 
+%
+With projection augmented modeling
+both groups' performance increased even more
+as shown by the low standard deviation of difference.
 
 \paragraph{Landscape architecture vs. GIS students}
-
-% Table \ref{table:landscape_students}
-% Table \ref{table:gis_students}
+%
+Table \ref{table:landscape_students} and
+Table \ref{table:gis_students}
+compare landscape architecture and GIS students' results.
+%
+% overview
+The GIS students built more abstract, approximate models
+than the landscape architecture students who tended to 
+over-exaggerate the shape of the landscape.
+%
+With each technology the GIS students' 
+performance improved;
+they built more and more accurate models 
+with more distinct landforms.
+The landscape architecture students' performance, however, 
+did not improve significantly between
+analog and projection-augmented modeling. 
+% digital 
+With digital modeling both groups
+had major errors along the ridge,
+but the GIS students also had serious problems
+with the interior space.
+The GIS students missed
+the central valley entirely, while the landscape students
+hinted at it with a small cluster of valley cells. 
+%
+When hand sculpting 
+both groups made major improvements.
+The GIS students began to form
+the main ridge and valley. 
+They tended to build too large a ridge
+with the highest point near its tip
+and significant errors on its slopes. 
+The landscape architecture students tended to 
+hand sculpt distorted, exaggerated landscapes 
+with extras landforms, 
+but roughly captured the y-shaped stream. 
+%
+With projection augmented modeling 
+the GIS students captured
+the central valley and ridge,
+correctly modeled steeper slopes,
+and had much less errors as shown by 
+the standard deviation of difference.
+%
+The landscape architecture students, however,
+did not make significant improvements 
+over their hand sculpted models. 
 
 \paragraph{Academics and professionals with and without 3D modeling expertise}
+%
+Table \ref{table:3d_novices} and Table \ref{table:3d_experts}
+compare landscape architecture academics and professionals 
+with and without 3D modeling expertise. 
+% overview
+While the other academics and professionals
+performed poorly with digital modeling, 
+better with analog modeling, 
+and best with projection augmented modeling,
+the expert 3D modelers built very accurate models
+with each technology, but represented the landforms
+best with projection augmented modeling.
+% digital
+While the rest of the academics and professionals 
+had major errors on the ridge 
+in the digital modeling task,
+the expert 3D modelers built accurate models 
+with very low mean difference and 
+standard deviation of difference. 
+The 3D experts worked faster
+and had time to rebuild denser grids of control points
+so that they could build more detailed,
+higher resolution models.
+Despite their accuracy their models 
+still only hinted at the landforms 
+with small clusters of valley and ridge cells. 
+% analog
+The 3D modeling experts represented 
+more complete landforms when sculpting by hand,
+capturing details like the y-shaped branch of the stream,
+but missed much of the ridge. 
+% augmented
+With projection augmented modeling 
+the expert 3D modelers performed even better
+successfully capturing
+the ridge, the valley, and its y-shaped branch
+with few anomalous features. 
+%
+They used the wooden modeling tool 
+to cut clean edges around their models
+minimizing systematic errors caused by slumping sand.
 
-% Table \ref{table:3d_novices}
-% Table \ref{table:3d_experts}
 
-% ---------------------------- OLD RESULTS ----------------------------
-\paragraph{Mean elevation}
-The mean digitally modeled elevation is a highly abstract massing model
-lacking any detail. 
-% 
-The mean hand sculpted elevation 
-is less abstract, more detailed, and more descriptive.
-%
-The mean projection-augmented elevation 
-is even more detailed and defined. 
 
-\paragraph{Standard deviation of elevations}
-The standard deviation of elevations represents the set's consistency.
-%
-When digitally modeling 
-participants treated the lake very consistently, but 
-varied substantially in their treatment of the highpoint.
-%
-We observed participants 
-using similar digital modeling strategies 
-in a relatively linear fashion -- 
-they typically began by modeling the profiles in the elevation views,
-then pulled up the relative high points, 
-and finally pushed down the relative low points. 
- %
-They were very inconsistent 
-when sculpting by hand,
-varying greatly in their treatment 
-everywhere except the valley and the lakeside.
-%
-We observed participants using 
-a wide range of different modeling strategies
-and techniques
-when sculpting by hand. 
-%
-With projection-augmented modeling 
-participants varied in their handling of relative high points, 
-but were relatively consistent otherwise. 
 
-\paragraph{Mean elevation difference}
-The difference between the linearly regressed reference and the mean elevation
-shows where participants 
-differed from the reference on average, i.e.~where they 
-needed to add (blue) or remove (red) volume to match the reference. 
-%
-The digitally modeled landscapes 
-had low values along the ridge,
-high values on the slopes around the ridge,
-and high values along the valley
-with no channel modeled.
-% 
-The hand sculpted landscapes 
-had high values on most slopes,
-accurate values along the ridge, 
-and low values along the borders.
-%
-The projection-augmented landscapes 
-had accurate values along the ridge,
-accurate values on some slopes, 
-low values on others, 
-and low values along the borders.
 
-\paragraph{Standard deviation of differences}
-The standard deviation of differences shows 
-how consistently the models fit the reference. 
-%
-The digitally modeled landscapes deviated the most from the reference
-with substantial errors along the ridge and valley. 
-%
-The hand sculpted landscapes 
-more consistently fit the reference
-and
-the projection-augmented landscapes 
-most consistently fit. 
 
-\paragraph{Mean slope}
-The reference landscape had 
-much steeper slopes and thus more 
-defined features
-than any of the models.
-%
-The digitally modeled landscapes
-were dominated by gentle slopes
-with steep slopes on only one side of the ridge.
-These models
-least accurately represented the slope and curvature.
-% 
-The hand sculpted landscapes 
-had steeper slopes
-that began to define key morphological features 
-like the ridge and valley.
-%
-The projection-augmented landscapes 
-had steep slopes along the ridge
-creating a well defined ridge-line. 
 
-\paragraph{Mean landforms}
-The digitally modeled landscapes
-represented the peak of the ridge
-and hinted at the valley, 
-but missed all of the other landforms.
-% 
-Both the hand sculpted and projection-augmented landscapes 
-accurately represented the ridge and its peak.
-They also represented most of the valley,
-but did not accurately capture its shape. 
-They had anomalous ridges and peaks 
-near the high point
-caused by slumping sand along the border.
 
-\paragraph{Minimum distance}
-We used
-the mean minimum distance between cells
-with water flow, ridges, and valleys
-on the models and the reference
-as a measure of positional accuracy. 
-%
-The projection-augmented landscapes 
-were the most accurate
-with the lowest mean minimum distance for cells with
-concentrated water flow, ridges, and valleys
-(see Tables \ref{table:percent_cells} \& \ref{table:distance}). 
+
+
 
 
 \section{Difference experiment}

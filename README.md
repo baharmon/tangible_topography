@@ -74,12 +74,12 @@ The data and results for this experiment are available on the Open Science Frame
 
 ## Results
 * ~~New figures~~
-* Update tables
+* ~~Update tables~~
 * Update scatterplots
-* Update discussion of results
-* Discuss role of tools, reference models, and reference contours
-* Observations of users' process with Rhino
-   - Rebuilding control points
+* ~~Update discussion of results~~
+* ~~Discuss role of tools, reference models, and reference contours~~
+* ~~Observations of users' process with Rhino~~
+   ~~- Rebuilding control points~~
 * Interviews
 
 ## Discussion
