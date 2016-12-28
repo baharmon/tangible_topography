@@ -1015,11 +1015,11 @@ and GRASS GIS \cite{GRASS_GIS_software}.
 
 \subsection{System resolution, accuracy, and speed}
 The spatial resolution of the system 
-is determined by the depth camera parameters
+is determined by the depth camera's parameters
 and the distance from the camera to the model. 
-Given the Kinect's 70 $\times$ 60 degrees field of view
+Given the Kinect's 70 $\times$ 60 degree field of view
 and 512 $\times$ 424 pixels depth resolution, 
-the spatial resolution ranges from 1.4 to 2.7 mm
+the spatial resolution of the system ranges from 1.4 to 2.7 mm
 when the scanner is 0.5 to 1 m above the model. 
 %
 In the experiment the Kinect was mounted 
@@ -1028,29 +1028,30 @@ so we used 2 mm resolution, which
 translated to 6 m in the real world 
 given the scale of the physical model.
 Kinect depth measurements suffer from noise 
-quantified by \cite{Hamed2015}.
+as quantified by Hamed et al. \cite{Hamed2015}
 We minimized the negative effects of noise 
 by placing the model
 closer to the center of the camera 
-and by smoothing the data using Moving Least
+and by smoothing the data using the Moving Least
 Squares reconstruction method \cite{Rusu2011}.
 
-In Fig.~\ref{fig:accuracy} and Table \ref{table:accuracy} 
-we show the accuracy of the experiment setup.
+Fig.~\ref{fig:accuracy} and Table \ref{table:accuracy} 
+show the accuracy of the experiment setup.
 We scanned a CNC routed model used in this study
 and compared it with the original DEM.
 % do we know the accuracy of cnc? 
 % 0.125" or 3.175 mm bit with 0.05" or 1.27 mm stepover with +- 0.01 mm positional accuracy
 % so could say 1.27 mm +- 0.01
-The routed model is sufficiently accurate for this comparison.
-We removed the systematic error (vertical shift) 
-since it is removed during processing 
-of the scans from the experiment 
+%The routed model is sufficiently accurate for this comparison.
+We removed the systematic error (i.e.~ the vertical shift) 
+since that is corrected 
+as part the analysis for the experiment
+%when processing the scans from the experiment 
 and does not influence the results.
-The difference in Fig.~\ref{fig:accuracy} 
-is given from a single frame,
-and although it is possible to integrate multiple frames,
-we chose to construct the DEM from one frame 
+The difference shown in Fig.~\ref{fig:accuracy} 
+was computed from a single frame. 
+Although it is possible to integrate multiple frames
+we chose to construct the DEM from a single frame 
 for faster smoothing.
 
 % This table might not be needed given the histogram on the legend
@@ -1104,26 +1105,52 @@ Landforms & 0.034 $\pm$ 0.003 s & 0.084 $\pm$ 0.009 s \\
 \label{table:benchmark}
 \end{table}
 
-Tab.~\ref{table:benchmark} shows comparison of times for different point cloud processing
-methods (binning and interpolation) and analyses (e.g. water flow analysis).
-The small model is the size used in the study.
-The medium model corresponds to what we recommend as a basic size for Tangible Landscape beginners.
-The time needed to scan and obtain a model is under 1~s,
-however the subsequent one or more analyses may take more than 1~s.
-Considering computation of the water flow and the smaller model,
-the minimal total time needed for change to be reflected
-is the time of the interpolation 0.74~s plus the time of the water flow analysis 0.29 s
-which gives is 1.03~s.
-The maximum total time which considers that the person interacting with Tangible Landscape
-made a change right after the scan was performed is 2.06 s because it includes waiting
-for the previous scan to be processed.
-It must be noted that the system used for the study had worse performance than
+Tangible Landscape's speed 
+-- typically ranging from approximately 2~fps to 0.5~fps -- 
+depends upon the size of the model, 
+the point cloud processing methods, 
+and the analyses chosen. 
+%
+Table~\ref{table:benchmark} compares
+times for different point cloud processing
+methods (binning and interpolation) 
+and analyses (e.g.~simulated water flow)
+for small and medium sized models.
+We used the small model size 
+-- 23.5~cm x 23.5~cm --
+in this study. 
+We recommend the medium model size 
+-- 34~cm x 34~cm --
+new users getting started with Tangible Landscape.
+%
+The time needed to scan and obtain a model is less than 1~s, 
+but the subsequent analyses may take more than 1~s.
+%Computing water flow over the smaller model 
+%requires at least 1.03~s for interpolation (0.74~s)
+%and water flow simulation (0.29~s). 
+It takes 1.03~s to
+compute water flow over the smaller model 
+with 0.74~s  for interpolation
+and 0.29~s for the water flow simulation.
+%
+If a user interacts with Tangible Landscape 
+immediately after a scan has been captured,
+then they will have to wait for that scan to be processed
+before their change will be processed
+potentially doubling the total processing time.
+%
+%The maximum total time which considers that the person interacting with Tangible Landscape
+%made a change right after the scan was performed is 2.06 s because it includes waiting
+%for the previous scan to be processed.
+The version of the system used in the study 
+had significantly lower performance than
 the current, reported system.
+%
 % TODO: include the approx time for the old system
-Benchmarks were performed using
+Benchmarks were performed using a
 System76 Oryx Pro with
 % 3.5 GHz Quad-Core
-6th Generation Intel Core processor i7-6700HQ (2.6 GHz, up to 3.5 GHz, 6 MB cache 4 cores, 8 threads),
+6th Generation Intel Core processor i7-6700HQ (2.6 GHz, up to 3.5 GHz, 6 MB cache, 4 cores, 8 threads),
 16 GB dual-channel DDR4 random-access memory (2 $\times$ 8 GB),
 % (RAM is in GB, not GiB)
 M.2 SSD storage (540 MB/s sequential read, 520 MB/s write), and
@@ -1131,6 +1158,8 @@ NVIDIA GeForce GTX 1060
 running Ubuntu 16.04 LTS (64-bit),
 GRASS GIS 7.2, and
 Tangible Landscape 2c1ede9.
+%
+% Discuss speed, effect of hands on interaction, etc
 
 
 \subsection{Fabrication}
@@ -2522,17 +2551,6 @@ They used the wooden modeling tool
 to cut clean edges around their models
 minimizing systematic errors caused by slumping sand.
 
-
-
-
-
-
-
-
-
-
-
-
 \section{Difference experiment}
 We conducted an experiment to study 
 how the difference analytic mediates 3D spatial performance 
@@ -3041,6 +3059,85 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 % Study how different geospatial analytics mediate users' 3D spatial performance when using a tangible interface for geospatial modeling
 % 
 
+\begin{table}
+\tbl{Interviews}{
+%\ra{1.3}
+\ra{2}
+\begin{tabular}{p{0.2\textwidth} p{ 0.8\textwidth}}
+\toprule
+Technology & Select comments\\
+\midrule
+%
+Digital
+%
+& Rhino has a long learning curve.\\
+& Understanding how Rhino works 
+-- i.e.~the underlying mathematical representation, NURBS -- is very important. 
+Once you understand that is a tension field 
+then you understand how to shape it, how to make it do what you want.\\
+%
+Analog 
+%
+& I worked additively, then subtractively, smoothing.
+The sculpting tool gave sharpness --
+the sharp edge let me smooth in a way my fingers couldn't.
+It felt like drawing or laying concrete.
+Feeling is important -- I could feel subtle changes in topography.\\
+& My sense of touch took away the mystery of topography.
+I could sculpt like reading braille. I could feel the shape with my fingers.
+It was intuitive and calming.\\
+& I have done lots of sculpture so
+I knew how to feel the shape of the model. 
+And the desk lamp cast shadows so I could visually perceive depth.\\
+%
+Augmented 
+%
+& The contours were just a guide. 
+My general strategy was additive. 
+I felt with my hands to try to match the contours. 
+If I saw concavity in the contours 
+then I felt the sand and sculpted that concavity.
+Finding the relative height, however, was challenging -- it was subtle.
+Most people don't understand contours. 
+They have to be taught. \\
+%
+Tangible Landscape
+% 
+& We all already understand how sand works. 
+We understand sand, but not necessarily these analytics 
+-- the difference analytic or the water flow simulation.\\
+& The water flow analytic reminds of me of playing 
+in creeks and grading streams as a kid. \\
+& The difference analytic was the best. 
+I tried to make it match. 
+I was constantly rebuilding to make it match.
+The water flow analytic was useful for thinking about form, 
+about what form does --  why water flows where it does.
+Seeing the flow takes away the mystery of topography.
+Our students tend to have a linear design process.
+Because Tangible Landscape gives immediate results 
+it encourages an iterative process. \\
+& Tangible Landscape let me tinker. 
+I could rapidly create, making new iterations. 
+I could try something, see and feel it -- directly experience it --
+and try again. Reinvent it.
+Tinkering like this is a learning process. Learning through doing.
+Tangible Landscape lowers the stakes so that you're not too invested.
+You're ready to fail. So you can intuitively explore, 
+while reflecting on what you've done,
+what you're doing.\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:interviews} 
+\end{table}
+
+
+
+
+
+
+
 
 
 % coupling
@@ -3191,9 +3288,9 @@ the OpenKinect project for drivers,
 the Point Cloud Library for point cloud processing, 
 and OpenCV for computer vision. 
 %
-This dramatically increased the speed of the system
-tripling the rate of feedback
-so that there is only approximately 2 seconds of lag. 
+%This dramatically increased the speed of the system
+%tripling the rate of feedback
+%so that there is only approximately 2 seconds of lag. 
 %
 Now that the analytics are faster 
 users should perform even better than they did in the experiments.
@@ -3201,7 +3298,9 @@ users should perform even better than they did in the experiments.
 As a test a member of our research team 
 performed the task for the difference experiment 
 using the new generation of Tangible Landscape
-and produced a very accurate model \cite{ncsu_geoforall_2016}. 
+and produced a very accurate model  
+(\ref{videos:new_difference}).
+%\cite{ncsu_geoforall_2016}. 
 
 % Embed video in online edition if possible / Include video in supplemental material
 
@@ -3807,6 +3906,9 @@ We coupled Tangible Landscape with an immersive virtual environment so that user
 \subsection{3D modeling with Tangible Landscape's difference analytic}\label{videos:difference}
 
 \subsection{3D modeling with Tangible Landscape's water flow analytic}\label{videos:water}
+
+\subsection{Good performance with Tangible Landscape's difference analytic}\label{videos:new_difference}
+\url{https://youtu.be/Q3elMIRCYSk}
 
 \vfill
 

@@ -41,6 +41,7 @@ The data and results for this experiment are available on the Open Science Frame
    - ~~Precision / accuracy~~
    - ~~Scanning res in x, y, z~~
    - ~~Noise~~
+   - Use vector text for the legend of the accuracy figure
 * ~~Sampling rate~~
    - ~~Filtering~~
 * Lag
