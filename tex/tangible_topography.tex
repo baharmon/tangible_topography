@@ -476,6 +476,8 @@ in order to understand if interfaces work as designed
 % REFEREE 2: 
 % This article presents a study of how tangible user interfaces can aid spatial modeling tasks. “Tangible Landscape” is the culmination of years of research, which have been published in articles and books, and the contribution of this article over such prior work is a study to compare the system to a graphical user interface for 3D modeling, and to investigate the effect of projected feedback. The results are interesting: study participants produce more detailed and defined models with this projection-augmented tangible interface. While the study tasks are domain-specific to GIS, its contribution is relevant for the wider HCI community: Various tangible user interfaces for 3D modeling have been proposed in the past, but only few studies exist to quantify how well they perform compared to graphical user interfaces. The sandbox form factor is well suited for such a comparison, as it has recently gained traction and public interest with versions of the UC Davis “AR Sandbox” being installed in many locations (see https://arsandbox.ucdavis.edu/#mapid), targeting mainly introductory classroom exercises and public science museums. In contrast, this “Tangible Landscape” system and study is designed for domain experts. I believe that TOCHI readers will be interested in the implications whether such TUI modeling systems can be suitable not only for novice users, but also for use by experts, and what functionality can support such modeling tasks.
 
+\subsection{Aims and objectives}
+
 Many of the theoretical underpinnings of tangibles 
 remain unproven and unexplored. 
 Do current approaches to tangible, embodied interfaces
@@ -2379,6 +2381,7 @@ which interrupted the modeling process
 and slowed down interaction.
 
 % interviews
+See table \ref{table:interviews} for select comments from interviews.
 One participant said that she felt anxious when digitally modeling,
 but felt calmer and more relaxed when hand sculpting sand. 
 She found hand sculpting to be more intuitive, saying that
@@ -2556,16 +2559,16 @@ We conducted an experiment to study
 how the difference analytic mediates 3D spatial performance 
 when using a tangible interface for GIS.
 
-\begin{figure}
-\begin{center}
-	\includegraphics[width=0.48\textwidth]{images/experiments/difference_1.jpg}
-	\includegraphics[width=0.48\textwidth]{images/experiments/difference_2.jpg}
-	\caption{Difference experiment: 
-	A participant sculpts the study landscape using Tangible Landscape's difference
-	analytic, which shows where to add sand (blue) and remove sand (red).}
-	\label{fig:diff}
-\end{center}
-\end{figure}
+%\begin{figure}
+%\begin{center}
+%	\includegraphics[width=0.48\textwidth]{images/experiments/difference_1.jpg}
+%	\includegraphics[width=0.48\textwidth]{images/experiments/difference_2.jpg}
+%	\caption{Difference experiment: 
+%	A participant sculpts the study landscape using Tangible Landscape's difference
+%	analytic, which shows where to add sand (blue) and remove sand (red).}
+%	\label{fig:diff}
+%\end{center}
+%\end{figure}
 
 \subsection{Methods}
 
@@ -2645,82 +2648,21 @@ We computed the slope and landforms of the mean elevation.
 We also filmed each session, 
 observed and took notes on participants' modeling processes, 
 and interviewed select participants.
-% 
-
-\subsection{Results}
-Participants tended to perform well with the difference analytic 
--- modeling simplified, but relatively accurate approximations of the landscape.
-Since these models were sculpted in sand
-their edges tend to slump.
-This caused artifacts in the analysis like
-low elevation values and steep slopes
-along the borders. 
-
-\paragraph{Per-cell statistics}
-Table \ref{table:difference_stats} shows maps of cellular statistics for this experiment.
-%  mean
-The mean elevation for this set of models
-has the approximate shape of the reference elevation, 
-but is much simpler, lacking many details. 
-% stdev
-The standard deviation of elevations shows that participants 
-consistently modeled the low point at the base of the secondary ridge
-in the same way, 
-but modeled the primary ridge in different ways. 
-% stdev diff
-The standard deviation of difference shows 
-how consistently the models fit the reference. 
-Overall participants performed well -- there was little deviation from the best fit. 
-Participants tended to perform poorly near the edges of models, especially in the corners.
-They also performed poorly with the valleys and the low point by the secondary ridge.
-
-\paragraph{Geospatial analyses}
-Table \ref{table:difference_experiment} shows geospatial analyses for this experiment.
-%
-The mean elevation difference shows that participants tended to add
-too little to the edges of the model,
-too much to primary ridge,
-and too much to the slope of the secondary ridge. 
-% slope
-The mean slope shows that participants tended to model 
-overly steep slopes for the primary ridge -- exaggerating its form --
-but tended not model steep enough slopes for the secondary ridge. 
-% landforms
-The mean landforms show that participants tended to 
-clearly capture the central ridge and its spurs,
-suggest the secondary ridge, 
-and miss the valleys (see Table \ref{table:difference_percent_cells}). 
-The secondary ridge has an inchoate form 
-with small clusters of ridge cells along a spur.
-Hollows -- transitions between slopes, footslopes, and valleys -- 
-on the mean landform map hint at valleys in the right locations.
-
-\paragraph{Interviews and observations}
-% understanding volume
-To successfully use the difference analytic 
-participants had to think about topography as volume.
-They had to either add or excavate sand to make the models match. 
-They described the process of modeling with the difference analytic
-as continual 'rebuilding to make it match.'
-% iterative process
-They described an iterative process of 
-continual refinement based on critical analysis 
--- similar to Sch{\"o}n's reflection-in-action \cite{Schon1983} --
-but enhanced by computational feedback 
-explaining that 
-`because Tangible Landscape gives immediate results it encourages an iterative process.' 
-
-% conclusions
-The difference analytic is intuitive -- 
-participants were able to learn how to use it effectively without training, 
-producing good, albeit exaggerated approximations of the landscape. 
-%
-Their models had key morphometric characteristics -- 
-the primary ridge, its spurs, the low point, 
-hints of the secondary ridge and some valleys -- 
-but these characteristics were either exaggerated or under-exaggerated.
 
 \begin{table}
+%
+\tbl{Difference experiment: a participant sculpts the study landscape using Tangible Landscape's difference analytic, which shows where to add sand (blue) and remove sand (red).}{
+\ra{1.3}
+\begin{tabular}{m{0.425\textwidth} m{0.425\textwidth}}
+%
+\includegraphics[width=0.425\textwidth]{images/experiments/difference_1.jpg} &
+\includegraphics[width=0.425\textwidth]{images/experiments/difference_2.jpg}\\
+%
+\end{tabular}}
+\label{fig:diff} 
+%
+\vspace*{1.25em}
+%
 \tbl{Difference experiment: maps of per-cell statistics draped over a 3D rendering of the topography for all participants}{
 \ra{1.3}
 \begin{tabular}{m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
@@ -2800,6 +2742,80 @@ Difference && 1.07 & 0.73 && 4.27 & 3.46 && 2.96 & 0.22\\
 %\label{table:difference_distance} 
 \end{table}
 
+\subsection{Results}
+Participants tended to perform well with the difference analytic 
+-- modeling simplified, but relatively accurate approximations of the landscape.
+Since these models were sculpted in sand
+their edges tend to slump.
+This caused artifacts in the analysis like
+low elevation values and steep slopes
+along the borders. 
+
+\paragraph{Per-cell statistics}
+Table \ref{table:difference_stats} shows maps of cellular statistics for this experiment.
+%  mean
+The mean elevation for this set of models
+has the approximate shape of the reference elevation, 
+but is much simpler, lacking many details. 
+% stdev
+The standard deviation of elevations shows that participants 
+consistently modeled the low point at the base of the secondary ridge
+in the same way, 
+but modeled the primary ridge in different ways. 
+% stdev diff
+The standard deviation of difference shows 
+how consistently the models fit the reference. 
+Overall participants performed well -- there was little deviation from the best fit. 
+Participants tended to perform poorly near the edges of models, especially in the corners.
+They also performed poorly with the valleys and the low point by the secondary ridge.
+
+\paragraph{Geospatial analyses}
+Table \ref{table:difference_experiment} shows geospatial analyses for this experiment.
+%
+The mean elevation difference shows that participants tended to add
+too little to the edges of the model,
+too much to primary ridge,
+and too much to the slope of the secondary ridge. 
+% slope
+The mean slope shows that participants tended to model 
+overly steep slopes for the primary ridge -- exaggerating its form --
+but tended not model steep enough slopes for the secondary ridge. 
+% landforms
+The mean landforms show that participants tended to 
+clearly capture the central ridge and its spurs,
+suggest the secondary ridge, 
+and miss the valleys (see Table \ref{table:difference_percent_cells}). 
+The secondary ridge has an inchoate form 
+with small clusters of ridge cells along a spur.
+Hollows -- transitions between slopes, footslopes, and valleys -- 
+on the mean landform map hint at valleys in the right locations.
+
+\paragraph{Interviews and observations}
+% understanding volume
+To successfully use the difference analytic 
+participants had to think about topography as volume.
+They had to either add or excavate sand to make the models match. 
+They described the process of modeling with the difference analytic
+as continual 'rebuilding to make it match.'
+% iterative process
+They described an iterative process of 
+continual refinement based on critical analysis 
+-- similar to Sch{\"o}n's reflection-in-action \cite{Schon1983} --
+but enhanced by computational feedback 
+explaining that 
+`because Tangible Landscape gives immediate results it encourages an iterative process.' 
+See table \ref{table:interviews} for select comments about this experiment.
+
+% conclusions
+The difference analytic is intuitive -- 
+participants were able to learn how to use it effectively without training, 
+producing good, albeit exaggerated approximations of the landscape. 
+%
+Their models had key morphometric characteristics -- 
+the primary ridge, its spurs, the low point, 
+hints of the secondary ridge and some valleys -- 
+but these characteristics were either exaggerated or under-exaggerated.
+
 \section{Water flow experiment}
 After a pilot study \cite{Harmon2016}
 we conducted an experiment to study 
@@ -2852,104 +2868,6 @@ and the standard deviation of difference for the set.
 Then we simulated water flow across the mean elevation for the set of models
 and computed the difference between the reference and mean water flow. 
 
-\subsection{Results}
-Participants tended to perform well with the water flow analytic 
--- approximately modeling all three streams.  
-
-\paragraph{Per-cell statistics}
-Table \ref{table:water_flow_stats} shows maps of cellular statistics for this experiment.
-%  mean
-The mean elevation for this set of models
-has under-exaggerated valleys in the right places, but exaggerated ridges. 
-The mean elevation has 19.08\% less valleys than the reference, but
-68.28\% more ridges (see Table \ref{table:water_flow_percent_cells}). 
-% stdev
-The standard deviation of elevations shows that participants 
-consistently modeled the streams, but
-varied greatly in their treatment of the primary ridge. 
-% stdev diff
-The standard deviation of difference shows that participants 
-performed well 
-with the greatest deviation from the reference
-in the corners and along the edges. 
-Again this is to be expected 
-as sand slumps along the borders. 
-
-\paragraph{Geospatial analyses}
-Table \ref{table:water_flow_experiment} shows geospatial analyses for this experiment.
-% water depth
-The mean water depth map shows all three streams, 
-simplified, but in the right locations. 
-The simplified stream channels lack micro-topography
-and thus the streams lack details. 
-Table \ref{table:water_flow_percent_cells} shows that 
-there was substantial concentrated flow (water depth $>=0.05$ ft) 
-in the streams, albeit 22\% less than in the reference.
-This is to be expected 
-since 
-water flow over the sculpted models was only computed over the model region, 
-while 
-the reference water flow 
-was computed over a larger region 
-with the entire contributing watershed 
-in order to produce an accurate representation 
-of water flow across the study landscape. 
-% depth difference
-The water depth difference map shows
-where water should be added (red) or removed (blue) 
-to match the reference
--- i.e.~where water should flow versus where it was modeled. 
-The mean water flow tightly fit the reference, 
-following similar, albeit simplified routes.
-
-\paragraph{Interviews and observations}
-% observations
-With the water flow analytic
-participants focused on accurately modeling the streams, 
-rather than the general shape of the topography. 
-As a result the primary ridge was inconsistently modeled and over-exaggerated,
-while the streams were consistently modeled,
-had high volumes of continuous water flow, 
-and flowed along the correct routes.
-
-% understanding water flow
-This experiment required abstract spatial thinking linking form and process. 
-Because water flow is controlled by the shape and gradient of the topography
-participants had to sculpt topographic form to drive water flow. 
-% interviews
-This modeling process, however, helped them understand topography better 
-because `seeing the flow takes away the mystery of topography.' 
-%
-We observed participants using an iterative modeling process 
-with the water flow analytic -- 
-they 
-\begin{enumerate*}[label=\alph*),font=\itshape]
-\item sculpted the topography, 
-\item observed how the water flow simulation changed, 
-\item critiqued their water flow and topography, 
-\item and continued to sculpt.
-\end{enumerate*}
-%
-Using the water flow analytic with this trial-and-error process
-participants were able to generate hypotheses, test hypotheses, and draw inferences 
-about the way that water flows over topography. 
-%
-%One participant described this trail-and-error process as tinkering --
-%`Tangible Landscape let me tinker. 
-%I could rapidly create, making new iterations. 
-%I could try something, see and feel it -- directly experience it --
-%and try again. Reinvent it.'
-%`Tangible Landscape lowers the stakes so that you're not too invested.
-%You're ready to fail. So you can intuitively explore, 
-%while reflecting on what you've done,
-%what you're doing.'
-
-%Participants suggested that the water flow analytic might be 
-%most useful for refining stream channels 
-%after modeling the topography with the difference analytic. 
-%% `More useful after modeling with the difference.' 
-%% i.e.~Build mass with difference, then refine with water flow
-%% a useful way of thinking about topography, but harder to model with
 
 \begin{table}
 \tbl{Water flow experiment: maps of per-cell statistics draped over a 3D rendering of the topography  for all participants}{
@@ -3028,6 +2946,181 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 %\label{table:flow_distance} 
 \end{table}
 
+\subsection{Results}
+Participants tended to perform well with the water flow analytic 
+-- approximately modeling all three streams.  
+
+\paragraph{Per-cell statistics}
+Table \ref{table:water_flow_stats} shows maps of cellular statistics for this experiment.
+%  mean
+The mean elevation for this set of models
+has under-exaggerated valleys in the right places, but exaggerated ridges. 
+The mean elevation has 19.08\% less valleys than the reference, but
+68.28\% more ridges (see Table \ref{table:water_flow_percent_cells}). 
+% stdev
+The standard deviation of elevations shows that participants 
+consistently modeled the streams, but
+varied greatly in their treatment of the primary ridge. 
+% stdev diff
+The standard deviation of difference shows that participants 
+performed well 
+with the greatest deviation from the reference
+in the corners and along the edges. 
+Again this is to be expected 
+as sand slumps along the borders. 
+
+\paragraph{Geospatial analyses}
+Table \ref{table:water_flow_experiment} shows geospatial analyses for this experiment.
+% water depth
+The mean water depth map shows all three streams, 
+simplified, but in the right locations. 
+The simplified stream channels lack micro-topography
+and thus the streams lack details. 
+Table \ref{table:water_flow_percent_cells} shows that 
+there was substantial concentrated flow (water depth $>=0.05$ ft) 
+in the streams, albeit 22\% less than in the reference.
+This is to be expected 
+since 
+water flow over the sculpted models was only computed over the model region, 
+while 
+the reference water flow 
+was computed over a larger region 
+with the entire contributing watershed 
+in order to produce an accurate representation 
+of water flow across the study landscape. 
+% depth difference
+The water depth difference map shows
+where water should be added (red) or removed (blue) 
+to match the reference
+-- i.e.~where water should flow versus where it was modeled. 
+The mean water flow tightly fit the reference, 
+following similar, albeit simplified routes.
+
+\paragraph{Interviews and observations}
+% observations
+With the water flow analytic
+participants focused on accurately modeling the streams, 
+rather than the general shape of the topography. 
+As a result the primary ridge was inconsistently modeled and over-exaggerated,
+while the streams were consistently modeled,
+had high volumes of continuous water flow, 
+and flowed along the correct routes.
+
+% understanding water flow
+This experiment required abstract spatial thinking linking form and process. 
+Because water flow is controlled by the shape and gradient of the topography
+participants had to sculpt topographic form to drive water flow. 
+% interviews
+This modeling process, however, helped them understand topography better 
+because 'seeing the flow took away the mystery of topography.'
+%
+We observed participants using an iterative modeling process 
+with the water flow analytic -- 
+they 
+\begin{enumerate*}[label=\alph*),font=\itshape]
+\item sculpted the topography, 
+\item observed how the water flow simulation changed, 
+\item critiqued their water flow and topography, 
+\item and continued to sculpt.
+\end{enumerate*}
+%
+Using the water flow analytic with this trial-and-error process
+participants were able to generate hypotheses, test hypotheses, and draw inferences 
+about the way that water flows over topography. 
+See table \ref{table:interviews} for select comments about this experiment.
+%
+%One participant described this trail-and-error process as tinkering --
+%`Tangible Landscape let me tinker. 
+%I could rapidly create, making new iterations. 
+%I could try something, see and feel it -- directly experience it --
+%and try again. Reinvent it.'
+%`Tangible Landscape lowers the stakes so that you're not too invested.
+%You're ready to fail. So you can intuitively explore, 
+%while reflecting on what you've done,
+%what you're doing.'
+
+%Participants suggested that the water flow analytic might be 
+%most useful for refining stream channels 
+%after modeling the topography with the difference analytic. 
+%% `More useful after modeling with the difference.' 
+%% i.e.~Build mass with difference, then refine with water flow
+%% a useful way of thinking about topography, but harder to model with
+
+\begin{table}
+\tbl{Interviews}{
+%\ra{1.3}
+\ra{2}
+\begin{tabular}{p{0.2\textwidth} p{ 0.8\textwidth}}
+\toprule
+Technology & Select comments\\
+\midrule
+%
+Digital
+%
+& Rhino has a long learning curve.\\
+& Understanding how Rhino works 
+-- i.e.~the underlying mathematical representation, NURBS -- is very important. 
+Once you understand that is a tension field 
+then you understand how to shape it, how to make it do what you want.\\
+%
+Analog 
+%
+& I worked additively, then subtractively, smoothing.
+The sculpting tool gave sharpness --
+the sharp edge let me smooth in a way my fingers couldn't.
+It felt like drawing or laying concrete.
+Feeling is important -- I could feel subtle changes in topography.\\
+& My sense of touch helped me to understand the topography.
+I could sculpt like reading braille. I could feel the shape with my fingers.
+It was intuitive and calming.\\
+& I have done lots of sculpture so
+I knew how to feel the shape of the model. 
+And the desk lamp cast shadows so I could visually perceive depth.\\
+%
+Augmented 
+%
+& The contours were just a guide. 
+My general strategy was additive. 
+I felt with my hands to try to match the contours. 
+If I saw concavity in the contours 
+then I felt the sand and sculpted that concavity.
+Finding the relative height, however, was challenging -- it was subtle.
+Most people don't understand contours. 
+They have to be taught. \\
+%
+Tangible Landscape
+% 
+& We all already understand how sand works. 
+We understand sand, but not necessarily these analytics 
+-- the difference analytic or the water flow simulation.\\
+& The water flow analytic reminds of me of playing 
+in creeks and grading streams as a kid.\\
+& Seeing the flow took away the mystery of topography.\\
+& The difference analytic was the best. 
+I tried to make it match. 
+I was constantly rebuilding to make it match.
+The water flow analytic was useful for thinking about form, 
+about what form does --  why water flows where it does.
+Seeing the flow takes away the mystery of topography.
+Our students tend to have a linear design process.
+Because Tangible Landscape gives immediate results 
+it encourages an iterative process. \\
+& Tangible Landscape let me tinker. 
+I could rapidly create, making new iterations. 
+I could try something, see and feel it -- directly experience it --
+and try again. Reinvent it.
+Tinkering like this is a learning process. Learning through doing.
+Tangible Landscape lowers the stakes so that you're not too invested.
+You're ready to fail. So you can intuitively explore, 
+while reflecting on what you've done,
+what you're doing.\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:interviews}
+\end{table}
+
+
 \section{Discussion}
 
 % ---------------------------- REVISIONS ---------------------------- 
@@ -3059,78 +3152,23 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 % Study how different geospatial analytics mediate users' 3D spatial performance when using a tangible interface for geospatial modeling
 % 
 
-\begin{table}
-\tbl{Interviews}{
-%\ra{1.3}
-\ra{2}
-\begin{tabular}{p{0.2\textwidth} p{ 0.8\textwidth}}
-\toprule
-Technology & Select comments\\
-\midrule
+
+% INTRO / SUMMARY
+
+
+
+
+\subsection{Coupling experiment} % REVISE TITLE
+
+% ANSWER TO RESEARCH QUESTION
+% Test whether coupling a physical and digital model of topography can improve 3D spatial performance
 %
-Digital
+The coupling experiment was designed to test whether 
+coupling a physical and digital model of topography 
+can improve 3D spatial performance. 
 %
-& Rhino has a long learning curve.\\
-& Understanding how Rhino works 
--- i.e.~the underlying mathematical representation, NURBS -- is very important. 
-Once you understand that is a tension field 
-then you understand how to shape it, how to make it do what you want.\\
-%
-Analog 
-%
-& I worked additively, then subtractively, smoothing.
-The sculpting tool gave sharpness --
-the sharp edge let me smooth in a way my fingers couldn't.
-It felt like drawing or laying concrete.
-Feeling is important -- I could feel subtle changes in topography.\\
-& My sense of touch took away the mystery of topography.
-I could sculpt like reading braille. I could feel the shape with my fingers.
-It was intuitive and calming.\\
-& I have done lots of sculpture so
-I knew how to feel the shape of the model. 
-And the desk lamp cast shadows so I could visually perceive depth.\\
-%
-Augmented 
-%
-& The contours were just a guide. 
-My general strategy was additive. 
-I felt with my hands to try to match the contours. 
-If I saw concavity in the contours 
-then I felt the sand and sculpted that concavity.
-Finding the relative height, however, was challenging -- it was subtle.
-Most people don't understand contours. 
-They have to be taught. \\
-%
-Tangible Landscape
-% 
-& We all already understand how sand works. 
-We understand sand, but not necessarily these analytics 
--- the difference analytic or the water flow simulation.\\
-& The water flow analytic reminds of me of playing 
-in creeks and grading streams as a kid. \\
-& The difference analytic was the best. 
-I tried to make it match. 
-I was constantly rebuilding to make it match.
-The water flow analytic was useful for thinking about form, 
-about what form does --  why water flows where it does.
-Seeing the flow takes away the mystery of topography.
-Our students tend to have a linear design process.
-Because Tangible Landscape gives immediate results 
-it encourages an iterative process. \\
-& Tangible Landscape let me tinker. 
-I could rapidly create, making new iterations. 
-I could try something, see and feel it -- directly experience it --
-and try again. Reinvent it.
-Tinkering like this is a learning process. Learning through doing.
-Tangible Landscape lowers the stakes so that you're not too invested.
-You're ready to fail. So you can intuitively explore, 
-while reflecting on what you've done,
-what you're doing.\\
-%
-\bottomrule
-\end{tabular}}
-\label{table:interviews} 
-\end{table}
+We found that it improved dramatically improved novices' performance\ldots
+% vs experts
 
 
 
@@ -3138,6 +3176,7 @@ what you're doing.\\
 
 
 
+% EXPERTS VS NOVICES
 
 
 % coupling
@@ -3210,6 +3249,7 @@ should be even more efficient and effective.
 
 % discuss rapid ideation as quick modeling tasks
 
+\subsection{Difference experiment} % REVISE TITLE
 % difference
 The results of the difference experiment show that 
 the difference analytic 
@@ -3240,6 +3280,7 @@ with colors assigned to specific values.
 The absolute color table helped -- it was much easier 
 to observe gradual, incremental progress throughout the modeling process.
 
+\subsection{Water flow experiment} % REVISE TITLE
 % water flow
 The results of the water flow experiment show 
 that the water flow simulation helped participants 
@@ -3257,6 +3298,7 @@ some of the cognitive work of sensing and manipulating
 3D form onto their bodies so that 
 they could focus on the water flow. 
 
+\subsection{Rapid iteration} % Rapid testing and iteration / Iterative process
 % metacognition
 Tangible Landscape enabled users 
 to model in an iterative process informed by spatial analytics. % computational analytics
@@ -3271,38 +3313,83 @@ participants did not suffer from too great a cognitive overload
 -- they must have been able to offload enough cognitive work onto their bodies
 to handle the analytic feedback, critique their performance, and re-strategize.
 
-The experiments helped us to refine the design of Tangible Landscape. 
+
+
+
+
+
+
+
+
+
+
+\subsection{Reflections on the design process} % \subsection{Our experiences and observations}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Describe our experiences and observations using TL
 %
+% -------------------------------------------------------------------------- 
+
+% Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift. I am sure that the authors have many lessons and observations to share that would frame the contribution of this study.
+
+
+
+
+
+
+
+
+
+
+
+
+% integrating research into design
+The experiments helped us to refine the design of Tangible Landscape. 
 We learned how users performed with different modes of analytic feedback, 
 gained insight about their experiences and needs,
 realized the importance of color tables, 
 and reaffirmed the need for speed -- the importance of fast feedback. 
-%
 This informed the development of the next generation of Tangible Landscape 
 and led to the redesign of the difference analytic. 
-
 After the experiments
 we developed the \nth{3} generation Tangible Landscape system
 using 
 the OpenKinect project for drivers,
 the Point Cloud Library for point cloud processing, 
 and OpenCV for computer vision. 
-%
-%This dramatically increased the speed of the system
-%tripling the rate of feedback
-%so that there is only approximately 2 seconds of lag. 
-%
-Now that the analytics are faster 
+This dramatically increased the speed of the system
+approximately doubling the rate of feedback.
+Now that the analytics are faster (see Table \ref{table:benchmark})
 users should perform even better than they did in the experiments.
-%
 As a test a member of our research team 
 performed the task for the difference experiment 
 using the new generation of Tangible Landscape
 and produced a very accurate model  
-(\ref{videos:new_difference}).
-%\cite{ncsu_geoforall_2016}. 
+(see Appendix \ref{videos:new_difference}).
 
-% Embed video in online edition if possible / Include video in supplemental material
+
+
+
+
+\subsection{Design guidelines}
+
+% ---------------------------- REVISIONS ---------------------------- 
+% 
+% Design Guidelines
+%	What are best practices when spatial modeling is the goal?
+%
+% -------------------------------------------------------------------------- 
+
+
+
+
+
+
+
+% cite Wilson et al. 2014, Best Practices in Scientific Computing
+
+% cite Dabbish et al. 2012, Social Coding in GitHub
 
 \subsection{Open science} 
 
@@ -3315,22 +3402,22 @@ and produced a very accurate model
 As a work of open science we invite readers to
 replicate or build upon this experiment by 
 using or adapting our tangible interface, experimental methodology, code, and data. 
-The python scripts for data processing and analysis used in this experiment 
-are available on GitHub at 
-\url{https://github.com/baharmon/tangible_topography}
-released under the GNU General Public License (GPL). 
+The python scripts for data processing and analysis
+are in Appendix \ref{appendix:scripts} and also
+on GitHub at \url{https://github.com/baharmon/tangible_topography}
+released under the GNU General Public License (GPL).
 See Appendix \ref{appendix:procedure}
 and the documentation in the GitHub repository 
 for detailed instructions for replicating this experiment. 
 The data used in this experiment 
 and the results -- 
 including data, renderings, photographs, and interview notes --
-are available on the Open Science Framework 
+are in Appendix \ref{appendix:data}
+and also on the Open Science Framework 
 at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
 While the rest of the software used in this research is free and open source, 
 Rhinoceros is proprietary software. 
-Open source 3D modeling programs like 
-Blender, however,
+Open source 3D modeling programs like Blender, however,
 could be substituted for Rhinoceros. 
 
 To build your own Tangible Landscape
@@ -3346,47 +3433,64 @@ Tangible Landscape's components are available at
 \url{https://github.com/tangible-landscape}
 under the GPL. 
 
-\subsection{Reflections on the design process} % \subsection{Our experiences and observations}
-
-% ---------------------------- REVISIONS ---------------------------- 
-% 
-% Describe our experiences and observations using TL
-%
-% -------------------------------------------------------------------------- 
-
-%- Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift. I am sure that the authors have many lessons and observations to share that would frame the contribution of this study.
-
-% REFERENCES
-% Karapanos 2012, Theories, Methods and Case Studies of Longitudinal HCI Research
-
-
-\subsection{Design Guidelines}
-
-% ---------------------------- REVISIONS ---------------------------- 
-% 
-% Design Guidelines
-%	What are best practices when spatial modeling is the goal?
-%
-% -------------------------------------------------------------------------- 
-
-
-
-
-
-
-
-
-
-
-
-% cite Wilson et al. 2014, Best Practices in Scientific Computing
-
-% cite Dabbish et al. 2012, Social Coding in GitHub
-
-
 \section{Future work}
+% design an effective tangible interface for geospatial modeling
+Our user experiments showed that Tangible Landscape is
+an effective tangible interface for geospatial modeling. 
+Based on the user experiments and 
+%a longitudinal study of our team's experiences with Tangible Landscape
+our own reflections and experiences with Tangible Landscape
+we have identified ways to improve the system.  
+% what do users want?
+Our users want more tools that are natural to use 
+so that they can do whatever they imagine
+with their existing skills. 
+They want a richer, more immersive experience. 
+They want larger models and easier, faster, cheaper ways to build models.
+% refine existing modes of interaction 
+We plan to 
+refine existing modes of interaction 
+with new methods for handling, processing, and filtering point clouds.
+% new modes of interaction
+By fusing color and depth data
+we will develop new modes of interaction including
+planting individual trees of a given species with a model tree
+and building structures with building blocks. 
+% integration with 3D rendering
+We plan to support new VR headsets and integrate 
+procedural plant generation, 3D tree libraries, and 3D building libraries
+for more immersive renderings. 
+% larger models
+We plan to support arrays of multiple 3D sensors
+for scanning larger models.
+% better ways to build physical models 
+We plan to design better ways to build physical models
+using in-situ robotic fabrication
+and plan to develop GRASS GIS modules 
+for 3D printing and CNC routing. 
+% improved system setup
+We also plan to improve the system setup
+so that it is modular, lighter, more portable, more adaptable, less expensive,
+and more aesthetic.
 %
+% future research
+Through the user experiments 
+and our own experiences
+we have also identified new research questions.
+How do tangible interfaces for geospatial modeling mediate learning?
+How can Tangible Landscape be used effectively in classrooms?
+
+% vision
+Our design process is also highly conceptual and vision-driven. 
+Inspired by 
+advances in pervasive sensing, robotics, and automated construction
+we have developed a new vision for Tangible Landscape 
+as a way to couple 
+physical models and digital models of landscapes 
+with real landscapes.
+
 \subsection{Future cognitive studies}
+\label{cog_sci}
 %
 This study focused on 3D spatial performance
 using geospatial analyses to assess modeling results. 
@@ -3407,6 +3511,7 @@ space-time cubes, 3D raster statistics and map algebra,
 vector flow fields, contour evolution, and animation.
 
 \subsection{Robotic fabrication and autonomous construction}
+\label{robotic_fab}
 %
 Emerging technologies are enabling ever closer coupling 
 of the physical and the digital 
@@ -3936,110 +4041,5 @@ We coupled Tangible Landscape with an immersive virtual environment so that user
 
 \vfill
 
-%\pagebreak
-%
-%\section{Interview notes}
-%%
-%\subsection{Interview I}
-%%
-%\paragraph{Digital modeling}
-%Understanding how Rhino works 
-%-- i.e.~the underlying mathematical representation, NURBS -- is very important. 
-%Once you understand that is a tension field 
-%then you understand how to shape it, how to make it do what you want.
-%%
-%\paragraph{Tangible modeling}
-%We all already understand how sand works. 
-%We understand sand, but not necessarily these analytics 
-%-- the difference analytic or the water flow simulation.
-%
-%\subsection{Interview II}
-%\paragraph{Digital modeling}
-%Working in Vue is like modeling in wax.
-%Working with multiple tools in Vue gave me more control, more options
-%than Rhino's gumball did. It is easier than Rhino.
-%Even though it is easy it is still very important to learn the tools.
-%I was exploring what the tools could do.
-%%
-%\paragraph{Analog, hand modeling}
-%I worked additively, then subtractively, smoothing.
-%The sculpting tool gave sharpness --
-%the sharp edge let me smooth in a way my fingers couldn't.
-%It felt like drawing or laying concrete.
-%Feeling is important -- I could feel subtle changes in topography.
-%%
-%\paragraph{Projection augmented modeling}
-%I worked additively. 
-%I sculpted with my fingers rather than the wooden modeling tool. 
-%The projection helped to orient me  
-%by defining features like the shoreline.
-%%
-%\paragraph{Tangible modeling}
-%The water flow analytic reminds of me of playing in creeks and grading streams as a kid. 
-%
-%\subsection{Interview III}
-%%
-%\paragraph{Digital modeling}
-%Digital modeling has a long learning curve. 
-%It was not intuitive. I was quite anxious. 
-%The interaction was quite abstract, quite indirect 
-%-- I was moving points to change the surface.
-%Working with the surface was like draping a fabric.
-%%
-%\paragraph{Analog, hand modeling}
-%My sense of touch took away the mystery of topography.
-%I could sculpt like reading braille. I could feel the shape with my fingers.
-%It was intuitive and calming. 
-%%
-%\paragraph{Projection augmented modeling}
-%With the projected maps draped over the sand
-%there were layers of systems, strata overlaid.
-%%
-%\paragraph{Tangible modeling}
-%The difference analytic was the best. 
-%I tried to make it match. 
-%I was constantly rebuilding to make it match.
-%The water flow analytic was useful for thinking about form, 
-%about what form does --  why water flows where it does.
-%Seeing the flow takes away the mystery of topography.
-%Our students tend to have a linear design process.
-%Because Tangible Landscape gives immediate results 
-%it encourages an iterative process.
-%
-%\subsection{Interview IV}
-%%
-%\paragraph{Digital modeling}
-%My strategy was to model the outside borders first. 
-%Then the interior. 
-%%
-%\paragraph{Analog, hand modeling}
-%I have done lots of sculpture so
-%I knew how to feel the shape of the model. 
-%And the desk lamp cast shadows so I could visually perceive depth.
-%%
-%\paragraph{Projection augmented modeling}
-%The contours were just a guide. 
-%My general strategy was additive. 
-%I felt with my hands to try to match the contours. 
-%If I saw concavity in the contours 
-%then I felt the sand and sculpted that concavity.
-%Finding the relative height, however, was challenging -- it was subtle.
-%Most people don't understand contours. 
-%They have to be taught. 
-%
-%\subsection{Interview IV}
-%%
-%\paragraph{Tangible modeling}
-%Tangible Landscape let me tinker. 
-%I could rapidly create, making new iterations. 
-%I could try something, see and feel it -- directly experience it --
-%and try again. Reinvent it.
-%Tinkering like this is a learning process. Learning through doing.
-%Tangible Landscape lowers the stakes so that you're not too invested.
-%You're ready to fail. So you can intuitively explore, 
-%while reflecting on what you've done,
-%what you're doing.
-%
-%\vfill
 
 \end{document}
