@@ -387,7 +387,18 @@ offloading these challenging cognitive tasks onto their bodies.
 %Wilson, A. Depth-Sensing Video Cameras for 3D Tangible Tabletop Interaction, Tabletop 2007.
 %
 %Woods, Terri L., et al. "Pilot Study Using the Augmented Reality Sandbox to Teach Topographic Maps and Surficial Processes in Introductory Geology Labs." Journal of Geoscience Education 64.3 (2016): 199-214.
+%
 
+
+% LIT REVIEW
+
+% Inner Garden, Roo2016
+% \cite{Roo2016}
+
+% PhoxelSpace
+% \cite{Ratti2004PhoxelSpace}
+
+% Cubetto, https://www.primotoys.com/
 
 With GIS users can computationally offload complex cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
@@ -1604,7 +1615,7 @@ The data from Rhinoceros was randomly resampled and re-interpolated
 to account for differences and irregularities in resolution, data density, and point spacing.
 
 For each set of models -- digital, analog, and augmented --
-we computed cellular statistics (i.e.~per cell statistics), 
+we computed raster statistics (i.e.~per cell statistics), 
 topographic and morphometric parameters, 
 and simulated water flow.
 
@@ -1816,7 +1827,7 @@ Mean &
 %we did not mitigate the systematic errors
 %along the borders. 
 %%
-%Table \ref{table:coupling_experiment} shows 3D maps of cellular statistics 
+%Table \ref{table:coupling_experiment} shows 3D maps of raster statistics 
 %and geospatial analyses for this experiment.
 
 % ---------------------------- TREE ---------------------------- 
@@ -2201,7 +2212,7 @@ and best with projection-augmented modeling.
 %
 Table \ref{table:coupling_experiment} 
 compares participants' performance with each technology
-through 3D maps of cellular statistics 
+through 3D maps of raster statistics 
 and geospatial analyses.
 %
 When digitally modeling with Rhinoceros 
@@ -2558,17 +2569,11 @@ minimizing systematic errors caused by slumping sand.
 We conducted an experiment to study 
 how the difference analytic mediates 3D spatial performance 
 when using a tangible interface for GIS.
-
-%\begin{figure}
-%\begin{center}
-%	\includegraphics[width=0.48\textwidth]{images/experiments/difference_1.jpg}
-%	\includegraphics[width=0.48\textwidth]{images/experiments/difference_2.jpg}
-%	\caption{Difference experiment: 
-%	A participant sculpts the study landscape using Tangible Landscape's difference
-%	analytic, which shows where to add sand (blue) and remove sand (red).}
-%	\label{fig:diff}
-%\end{center}
-%\end{figure}
+%
+This experiment was designed to explore how
+participants used the difference analytic 
+-- to study their modeling process,
+rather than compare their performance against other technologies.  
 
 \subsection{Methods}
 
@@ -2584,7 +2589,7 @@ when using a tangible interface for GIS.
 % Why did the study switch to another reference model for the Difference Experiment? It would have been interesting to compare user performance with the conditions in the coupling experiment. As it is presented as a standalone experiment and result, it is hard to evaluate its advantages compared to the other conditions, which would be really interesting given the positive user feedback.
 
 \paragraph{Difference analytic}
-The same 30 participants were asked to use 
+The same 18 participants were asked to use 
 Tangible Landscape's difference analytic to model 
 a different region of Lake Raleigh Woods
 with a large central ridge 
@@ -2630,7 +2635,7 @@ for a video demonstrating the 3D modeling task with the difference analytic (\re
 
 \paragraph{Data collection and analysis}
 The final scan of each model was stored in a GRASS GIS database for analysis. 
-We used cellular statistics, the difference in elevation, 
+We used raster statistics, the difference in elevation, 
 topographic parameters, and morphometric parameters
 to compare the reference elevation and the set of modeled elevations. 
 We computed 
@@ -2639,7 +2644,7 @@ the standard deviation of elevations,
 and the standard deviation of difference for the set.
 To find the standard deviation of differences 
 we first computed the difference between the reference elevation and each elevation 
-and then used cellular statistics to find the standard deviation of these differences.
+and then used raster statistics to find the standard deviation of these differences.
 We also computed the difference between the 
 reference elevation and the mean elevation for the set. 
 The reference elevation used in the difference calculation was rescaled and shifted based on the linear regression of the reference and mean elevation.
@@ -2647,7 +2652,7 @@ We computed the slope and landforms of the mean elevation.
 
 We also filmed each session, 
 observed and took notes on participants' modeling processes, 
-and interviewed select participants.
+and interviewed landscape architecture professionals and academics.
 
 \begin{table}
 %
@@ -2723,7 +2728,7 @@ Method && \multicolumn{2}{c}{Concentrated flow} & \phantom{abc}& \multicolumn{2}
 \phantom{abc} & \multicolumn{2}{c}{Valleys}\\
 \cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
 && Reference & Mean && Reference & Mean && Reference & Mean\\ \midrule
-Difference && 1.07 & 0.73 && 4.27 & 3.46 && 2.96 & 0.22\\
+Difference && 1.94 & 0.90 && 4.27 & 2.93 && 2.96 & 0.13\\
 \bottomrule
 \end{tabular}}
 \label{table:difference_percent_cells} 
@@ -2742,17 +2747,64 @@ Difference && 1.07 & 0.73 && 4.27 & 3.46 && 2.96 & 0.22\\
 %\label{table:difference_distance} 
 \end{table}
 
+\begin{table}
+\tbl{Difference experiment: comparison of 3D modeling novices and experts}{
+\ra{1.3}
+\begin{tabular}{m{0.12\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Stdev.~ of differences} & \multicolumn{1}{c}{Slope} & \multicolumn{1}{c}{Landforms}\\
+\midrule
+%
+Reference & 
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/dem_difference_4.png}
+&
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/slope_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/forms_4.png}\\
+%
+3D novices & 
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/mean_dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/stdev_regression_difference_series_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/mean_slope_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/mean_forms_4.png}\\
+%
+3D experts & 
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/mean_dem_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/stdev_regression_difference_series_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/mean_slope_4.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/mean_forms_4.png}\\
+%
+& 
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_4.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/stdev_diff_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/slope_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/forms_legend.pdf}}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:difference_comparison} 
+\end{table}
+
 \subsection{Results}
-Participants tended to perform well with the difference analytic 
+Participants performed well with the difference analytic 
 -- modeling simplified, but relatively accurate approximations of the landscape.
-Since these models were sculpted in sand
+Participants with expertise in 3D modeling 
+performed even better than other participants 
+-- more accurately modeling the elevation and slopes, 
+but not the landforms. 
+Since these models were sculpted in sand,
 their edges tend to slump.
-This caused artifacts in the analysis like
+This caused systematic artifacts in the analysis like
 low elevation values and steep slopes
 along the borders. 
+Based on interviews and observations
+we found that the difference analytic enabled
+a rapid, iterative process 
+of modeling, learning from computational feedback, 
+re-remodeling, etc\ldots.
 
 \paragraph{Per-cell statistics}
-Table \ref{table:difference_stats} shows maps of cellular statistics for this experiment.
+Table \ref{table:difference_stats} shows maps of raster statistics for this experiment.
 %  mean
 The mean elevation for this set of models
 has the approximate shape of the reference elevation, 
@@ -2765,12 +2817,16 @@ but modeled the primary ridge in different ways.
 % stdev diff
 The standard deviation of difference shows 
 how consistently the models fit the reference. 
-Overall participants performed well -- there was little deviation from the best fit. 
-Participants tended to perform poorly near the edges of models, especially in the corners.
-They also performed poorly with the valleys and the low point by the secondary ridge.
+Overall participants performed well -- 
+there was little deviation from the best fit. 
+Participants tended to perform poorly 
+near the edges of models, especially in the corners.
+They also performed poorly with the valleys 
+and the low point by the secondary ridge.
 
 \paragraph{Geospatial analyses}
-Table \ref{table:difference_experiment} shows geospatial analyses for this experiment.
+Table \ref{table:difference_experiment} 
+shows geospatial analyses for this experiment.
 %
 The mean elevation difference shows that participants tended to add
 too little to the edges of the model,
@@ -2782,13 +2838,26 @@ overly steep slopes for the primary ridge -- exaggerating its form --
 but tended not model steep enough slopes for the secondary ridge. 
 % landforms
 The mean landforms show that participants tended to 
-clearly capture the central ridge and its spurs,
-suggest the secondary ridge, 
-and miss the valleys (see Table \ref{table:difference_percent_cells}). 
-The secondary ridge has an inchoate form 
-with small clusters of ridge cells along a spur.
+clearly capture the central ridge and its spurs and
+the secondary ridge and its valley, but missed the 
+other valleys.
+(sees Tables \ref{table:difference_experiment}-\ref{table:difference_percent_cells}). 
 Hollows -- transitions between slopes, footslopes, and valleys -- 
-on the mean landform map hint at valleys in the right locations.
+on the mean landform map hint at these other 
+valleys in the right locations.
+
+% 3D experts vs. novices
+Table \ref{table:difference_comparison} compares the performance of 
+landscape architecture academics and professionals 
+with and without 3D modeling experience. 
+The 3D modeling experts built more accurate models
+with a lower standard deviation of differences 
+and more accurate slopes. 
+Since they did not, however, exaggerate the central ridge
+and did not smooth its slopes, 
+they did not clearly represent this landform. 
+The others built more exaggerated models 
+that more clearly captured the main ridge.
 
 \paragraph{Interviews and observations}
 % understanding volume
@@ -2803,7 +2872,8 @@ continual refinement based on critical analysis
 -- similar to Sch{\"o}n's reflection-in-action \cite{Schon1983} --
 but enhanced by computational feedback 
 explaining that 
-`because Tangible Landscape gives immediate results it encourages an iterative process.' 
+`because Tangible Landscape gives immediate results 
+it encourages an iterative process.' 
 See table \ref{table:interviews} for select comments about this experiment.
 
 % conclusions
@@ -2811,10 +2881,11 @@ The difference analytic is intuitive --
 participants were able to learn how to use it effectively without training, 
 producing good, albeit exaggerated approximations of the landscape. 
 %
-Their models had key morphometric characteristics -- 
+Their models tended to have key morphometric characteristics -- 
 the primary ridge, its spurs, the low point, 
-hints of the secondary ridge and some valleys -- 
-but these characteristics were either exaggerated or under-exaggerated.
+the secondary ridge, and one of the valleys -- 
+but these characteristics tended to be 
+either exaggerated or under-exaggerated.
 
 \section{Water flow experiment}
 After a pilot study \cite{Harmon2016}
@@ -2822,10 +2893,18 @@ we conducted an experiment to study
 how water flow analytics 
 in a tangible interface for GIS
 mediate 3D spatial performance.
+%
+This experiment was designed to study whether
+participants could link form and process
+using the water flow analytic -- to assess
+how well they could understand the relationship 
+between topographic form 
+and the flow of water 
+when using Tangible Landscape.
 
 \subsection{Methods}
 \paragraph{Water flow analytic}
-The same 30 participants were asked to model water flow 
+The same 18 participants were asked to model water flow 
 across another region of Lake Raleigh Woods
 using Tangible Landscape with the water flow analytic.
 This region has a central ridge 
@@ -2859,8 +2938,10 @@ for a video demonstrating the 3D modeling task with the water flow analytic (\re
 \end{figure}
 
 \paragraph{Data collection and analysis}
-The final scan of each model was stored in a GRASS GIS database for analysis. 
-We used cellular statistics, simulated water flow, and the difference in simulated water depth 
+The final scan of each model was stored 
+in a GRASS GIS database for analysis. 
+We used raster statistics, simulated water flow, 
+and the difference in simulated water depth 
 to compare water flow across the study landscape and the set of models.
 We computed the mean elevation,
 the standard deviation of elevations, 
@@ -2927,7 +3008,7 @@ method && \multicolumn{2}{c}{concentrated flow} & \phantom{abc}& \multicolumn{2}
 \phantom{abc} & \multicolumn{2}{c}{valleys}\\
 \cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
 && reference & mean && reference & mean && reference & mean\\ \midrule
-water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
+water flow && 3.28 & 2.26 && 1.18 & 2.99 && 4.77 & 3.70\\
 \bottomrule
 \end{tabular}}
 \label{table:water_flow_percent_cells} 
@@ -2946,17 +3027,61 @@ water flow && 2.55 & 1.99 && 1.18 & 3.72 && 4.77 & 3.86\\
 %\label{table:flow_distance} 
 \end{table}
 
+\begin{table}
+\tbl{Water flow experiment: comparison of 3D modeling novices and experts}{
+\ra{1.3}
+\begin{tabular}{m{0.12\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth} m{0.24\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Stdev.~ of differences} & \multicolumn{1}{c}{Water depth} & \multicolumn{1}{c}{Depth difference}\\
+\midrule
+%
+Reference & 
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/dem_difference_5.png}
+&
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/depth_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/dem_difference_5.png}\\
+%
+3D novices & 
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/mean_dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/stdev_regression_difference_series_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/mean_depth_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_novices/mean_depth_difference_5.png}\\
+%
+3D experts & 
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/mean_dem_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/stdev_regression_difference_series_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/mean_depth_5.png} &
+\includegraphics[width=0.24\textwidth]{images/render_3d/3d_experts/mean_depth_difference_5.png}\\
+%
+& 
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/elevation_legend_5.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/stdev_diff_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/depth_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.22\textwidth]{images/legends/depth_diff_legend.pdf}}\\
+%
+\bottomrule
+\end{tabular}}
+\label{table:water_flow_comparison} 
+\end{table}
+
+
 \subsection{Results}
-Participants tended to perform well with the water flow analytic 
--- approximately modeling all three streams.  
+Participants performed well with the water flow analytic 
+-- approximately modeling two of the three streams.  
+Participants with expertise in 3D modeling performed 
+better than the others with more accurate models
+that captured all three streams.
 
 \paragraph{Per-cell statistics}
-Table \ref{table:water_flow_stats} shows maps of cellular statistics for this experiment.
+Table \ref{table:water_flow_stats} shows maps of raster statistics for this experiment.
 %  mean
 The mean elevation for this set of models
-has under-exaggerated valleys in the right places, but exaggerated ridges. 
-The mean elevation has 19.08\% less valleys than the reference, but
-68.28\% more ridges (see Table \ref{table:water_flow_percent_cells}). 
+has under-exaggerated valleys and 
+over-exaggerated ridges in the right places. 
+The mean elevation has 22.43\% less valley cells than the reference, 
+but 153.40\% more ridge cells
+(see Table \ref{table:water_flow_percent_cells}). 
 % stdev
 The standard deviation of elevations shows that participants 
 consistently modeled the streams, but
@@ -2970,19 +3095,20 @@ Again this is to be expected
 as sand slumps along the borders. 
 
 \paragraph{Geospatial analyses}
-Table \ref{table:water_flow_experiment} shows geospatial analyses for this experiment.
+Table \ref{table:water_flow_experiment} 
+shows geospatial analyses for this experiment.
 % water depth
-The mean water depth map shows all three streams, 
-simplified, but in the right locations. 
+The mean water depth map shows two of the streams 
+and hints of the third.
+The streams are simplified, but in the right locations. 
 The simplified stream channels lack micro-topography
-and thus the streams lack details. 
+and thus details. 
 Table \ref{table:water_flow_percent_cells} shows that 
 there was substantial concentrated flow (water depth $>=0.05$ ft) 
-in the streams, albeit 22\% less than in the reference.
-This is to be expected 
-since 
-water flow over the sculpted models was only computed over the model region, 
-while 
+in the streams, albeit 31.10\% less than in the reference.
+This is to be expected since 
+water flow over the sculpted models 
+was only computed over the model region, while 
 the reference water flow 
 was computed over a larger region 
 with the entire contributing watershed 
@@ -2996,12 +3122,24 @@ to match the reference
 The mean water flow tightly fit the reference, 
 following similar, albeit simplified routes.
 
+% 3D experts vs. novices
+Table \ref{table:water_flow_comparison} compares the performance of 
+landscape architecture academics and professionals 
+with and without 3D modeling experience. 
+With the water flow analytic
+the 3D modeling experts built more accurate models
+with a lower standard deviation of differences 
+and captured all of the streams,
+while the others only captured two of the streams
+and hinted at the third.
+
 \paragraph{Interviews and observations}
 % observations
 With the water flow analytic
 participants focused on accurately modeling the streams, 
 rather than the general shape of the topography. 
-As a result the primary ridge was inconsistently modeled and over-exaggerated,
+As a result the primary ridge was 
+inconsistently modeled and over-exaggerated,
 while the streams were consistently modeled,
 had high volumes of continuous water flow, 
 and flowed along the correct routes.
@@ -3095,7 +3233,6 @@ We understand sand, but not necessarily these analytics
 -- the difference analytic or the water flow simulation.\\
 & The water flow analytic reminds of me of playing 
 in creeks and grading streams as a kid.\\
-& Seeing the flow took away the mystery of topography.\\
 & The difference analytic was the best. 
 I tried to make it match. 
 I was constantly rebuilding to make it match.
@@ -3145,111 +3282,134 @@ what you're doing.\\
 %- Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift. I am sure that the authors have many lessons and observations to share that would frame the contribution of this study.
 
 
+
 % RESEARCH QUESTIONS
 %
 % Design an effective tangible interface for geospatial modeling
+%
 % Test whether coupling a physical and digital model of topography can improve 3D spatial performance
+%
 % Study how different geospatial analytics mediate users' 3D spatial performance when using a tangible interface for geospatial modeling
-% 
+ 
+ 
+% ADD SUMMARY
 
-
-% INTRO / SUMMARY
-
-
-
-
-\subsection{Coupling experiment} % REVISE TITLE
-
-% ANSWER TO RESEARCH QUESTION
-% Test whether coupling a physical and digital model of topography can improve 3D spatial performance
+\subsection{Coupling physical and digital models} 
 %
 The coupling experiment was designed to test whether 
 coupling a physical and digital model of topography 
 can improve 3D spatial performance. 
 %
-We found that it improved dramatically improved novices' performance\ldots
-% vs experts
-
-
-
-
-
-
-
-% EXPERTS VS NOVICES
-
-
-% coupling
-The results of the coupling experiment show that 
-coupling a physical and digital model of topography 
-can improve 3D spatial performance. 
+We found that 
+both novices and experts were able to take advantage
+of the affordances of both digital and analog modeling
+with projection-augmented modeling. 
+% novices
+All participants' without expertise in 3D modeling 
+performed significantly better 
+with projected-augmented modeling.
 %
-The projection-augmented models tended
-to more accurately fit the reference, 
-accurately represent landforms, 
-have more defined topography
-than the other models. 
+They were able to combine 
+the extra layers of data afforded by digital modeling
+with the intuitive interaction, speed, and detail
+afforded by analog modeling 
+to model more accurate landscapes
+with distinct landforms. 
 %
-The hand sculpted models tended
-to less accurately fit the reference, but
-were still very descriptive 
--- accurately representing the landforms. 
+% experts
+The expert 3D modelers performed well in the digital modeling task, 
+but given the time constraints and limited palette of digital modeling tools
+were not able to form well defined morphological features. 
 %
-The digitally sculpted models tended
-to be inaccurate and highly approximate,
-only abstractly representing the reference
-and hinting at landforms. 
-%
-Users' enhanced performance with projection-augmented modeling 
-demonstrates that they can successfully 
-combine the physical and computational affordances 
-of analog and digital modeling. 
+With projection-augmented modeling, however,
+they were able to work faster, refine their models sooner,
+and build distinct ridges and valleys. 
 
-Since we used a NURBS based 3D modeling program 
-for digital sculpting
-the results were constrained to smooth, circular shapes %isotropic
-formed by splines.
+% intuition 
+While the novices' performance demonstrates 
+that projection-augmented modeling can be intuitive 
+-- enabling high performance without training or experience --
+the experts' performance shows that the technology
+affords faster interaction. 
+% 
+Intuitive interaction means that users are able to act, 
+to do what they want to do, 
+to make what they want to make 
+quickly and reliably
+without training, experience, or even having to consciously think about it. 
 %
-%In the pilot study we also tested Vue's terrain editor,
-%a triangulated irregular network based 3D modeling program 
-%for intuitive terrain sculpting \cite{Vue},
-%and determined that the results were 
-%less smooth with sharper transitions and
-%had obvious triangular artifacts.
-%%were constrained to composite shapes
-%%composed of different sized triangles.
-%The triangulated structure caused
-%exaggerated slopes and discontinuous water flow. 
+The 3D modeling novices
+were able to build more accurate models
+with projection-augmented modeling.
+Drawing on embodied cognition 
+they were able to feel the 3D shape of their model, 
+while they struggled 
+to read curvature, judge distance, 
+and estimate size and shape based on distance 
+visually using the graphical user interface. 
 %
-The models sculpted in polymer-enriched sand 
-were much less constrained 
-because the medium has a very fine, uniform grain size,
-a good balance of plasticity and adhesiveness,
-and thus can be sculpted into a smooth, continuous shape
-with fine details.
+They were also able to work faster, 
+knowing automatically, subconsciously how to act, 
+how to feel and shape things with their hands,
+while they struggled to find buttons, remember keyboard shortcuts,
+and understand the graphical user interface. 
 
-% DISCUSSION
-%We hypothesize that 
-%for longer modeling tasks -- i.e.~ tasks longer than 10 minutes -- 
-%digital modeling should become more and more efficient. 
+% speed
+Intuitive interaction mattered less for the 3D modeling experts
+because they had already acquired the knowledge and skills needed.
+They still performed better with projection-augmented modeling
+because they were able to work faster and refine their models earlier. 
 %
-We hypothesize that the longer the modeling task
-the more the affordances of digital modeling
--- precision, zooming, layering, snapping, etc.~--
-should help
-making the process more and more efficient. 
+Based on observations during the study we conclude that
+even without real-time analytics
+the tangible interface is faster for 3D modeling experts
+because it affords an almost instantaneous transition
+between tools -- between fingertips, palms, 
+the arches of hands, the blades of hands, 
+the blade of a knife, and the tip of a knife.
+%
+It is also faster because it affords more feedback 
+by combining kinaesthetic sensing of physical form with computer graphics 
+so users do not have to spend as much time trying to understand the space. 
+
+While previous studies of tangible interaction 
+have shown that tangible interfaces 
+can be faster and more reliable than graphical interfaces 
+for simple spatial tasks \cite{Huang2004,Couture2008},
+this study shows that tangible interfaces can be 
+more intuitive, faster, and more reliable for complex spatial tasks.
+% rapid iteration
+While research on tangibles has focused on novices and intuition,
+we have found that tangible interfaces can be useful 
+for experts as well as novices
+if they have the capabilities, tools, and precision that experts need. 
+A well designed tangible interface for spatial modeling 
+should be more effective than a digital modeling program 
+for short exploratory modeling tasks
+because it affords faster modeling. 
+With faster modeling experts can explore more ideas,
+rapidly iterating through many designs. 
+This ability to work quickly and rapidly iterate 
+is the key to ideation. 
+
+% efficiency 
+We hypothesize, however, that digital modeling 
+becomes increasingly efficient as tasks become longer.
+The longer the modeling task
+the more the basic affordances of digital modeling
+-- precision, zooming, layering, snapping, copying and pasting, etc.~--
+should help make the process more and more efficient. 
 %
 Based on our own experiences
 we further hypothesize that 
 hybrid approaches combining 
 digital modeling, digital fabrication, and tangible modeling 
-should be even more efficient and effective. 
-%for longer design and modeling problems.
+should be even more efficient and effective
+for longer, more complex problems.
 % examples...
 
-% discuss rapid ideation as quick modeling tasks
+\subsection{How tangible geospatial analytics mediate users' 3D spatial performance} 
 
-\subsection{Difference experiment} % REVISE TITLE
 % difference
 The results of the difference experiment show that 
 the difference analytic 
@@ -3257,14 +3417,16 @@ enabled an iterative modeling process
 successfully combining the affordances of physical modeling
 with near real-time computational feedback. 
 %
-Participants tended to perform well without training 
-successfully managing to %rapidly parse and 
+Participants tended to perform well without training; 
+they managed to quickly learn and 
 understand the analytic
-and use it to adaptively sculpt.
+and successfully used it to adaptively sculpt
+accurate models.
 %
 This suggests that they were able to offload the cognitive work 
 of manipulation onto their bodies, while cognitively 
-parsing a rapidly changing, graphical representation of the difference in volume.
+parsing a rapidly changing, graphical representation 
+of the difference in volume.
 
 We observed, however, that some participants had trouble understanding
 the color table for the difference analytic. 
@@ -3280,14 +3442,12 @@ with colors assigned to specific values.
 The absolute color table helped -- it was much easier 
 to observe gradual, incremental progress throughout the modeling process.
 
-\subsection{Water flow experiment} % REVISE TITLE
 % water flow
 The results of the water flow experiment show 
 that the water flow simulation helped participants 
 understand the relationship between form and process.
 We observed participants using an iterative process
 to adaptively sculpt based on the simulated water flow. 
-%By iteratively sculpting the topography to direct water flow
 Through this trial and error process 
 participants learned how
 topographic form controls the flow of water.
@@ -3298,32 +3458,43 @@ some of the cognitive work of sensing and manipulating
 3D form onto their bodies so that 
 they could focus on the water flow. 
 
-\subsection{Rapid iteration} % Rapid testing and iteration / Iterative process
-% metacognition
+% iterative process and metacognition
 Tangible Landscape enabled users 
-to model in an iterative process informed by spatial analytics. % computational analytics
-%
+to model in an iterative process informed by spatial analytics.
 We theorize that users offloaded the cognitive work 
 of sensing and manipulating 3D form onto their bodies,
 successfully parsed the projected graphics,
 and metacognitively adapted their modeling strategy.
-%
 Given the accuracy of their models 
 participants did not suffer from too great a cognitive overload 
 -- they must have been able to offload enough cognitive work onto their bodies
 to handle the analytic feedback, critique their performance, and re-strategize.
 
+% 3D expertise
+With both analytics the 3D modeling experts 
+performed better than all of the others
+including other experienced academics and professionals. 
+%
+First of all this shows that 
+tangible interfaces for geospatial modeling with real-time analytics 
+can be effective tools for experts. 
+%
+It also suggests that advanced spatial abilities and skills
+developed with digital tools can be transferred
+to tangible interfaces. 
+%
+If these abilities are transferable, 
+then tangible interfaces 
+-- given their intuitive, embodied nature --
+may be a fast and effective way to train them.
+%
+Future research is needed to explore
+spatial learning and transfer
+using tangible interfaces. 
 
+% discuss interviews
 
-
-
-
-
-
-
-
-
-\subsection{Reflections on the design process} % \subsection{Our experiences and observations}
+\subsection{Reflections on the design process} 
 
 % ---------------------------- REVISIONS ---------------------------- 
 % 
