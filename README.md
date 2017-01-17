@@ -18,11 +18,6 @@ The data and results for this experiment are available on the Open Science Frame
 
 # TODO
 
-## IMPORTANT
-* Redo bivariate scatterplots
-* Redo tables
-* Create figures for difference and water flow experiments
-
 ## Literature review
 * Detailed discussion of related work
    - Evaluate other systems
@@ -92,27 +87,26 @@ The data and results for this experiment are available on the Open Science Frame
    - What can others learn from this work
    - Infer and speculate what findings mean for other tangible interfaces
 * ~~Discuss tool use~~
-* Our experiences and observations
-   - ...
-* What are best practices when spatial modeling is the goal?
-   - modes of interaction should be analogous to ubiquitous tasks
-   - intuitive interaction for novices
-   - intuitive interaction for experts too, but offering more tools and options is more important
-   - for experts offer as many tools as possible so that they have the entire palette they want / expect
-   - draw on existing resources as a backend (ie. GIS)
+* ~~Our experiences and observations~~
+* ~~What are best practices when spatial modeling is the goal?~~
+   - ~~modes of interaction should be analogous to ubiquitous tasks~~
+   - ~~intuitive interaction for novices~~
+   - ~~intuitive interaction for experts too, but offering more tools and options is more important~~
+   - ~~for experts offer as many tools as possible so that they have the entire palette they want / expect~~
+   - ~~draw on existing resources as a backend (ie. GIS)~~
 
 ## Conclusion
-Make stronger conclusions that answer research questions
-* Tangibles can be intuitive
-* Tangibles can enhance spatial performance
-   - in terms of speed, accuracy, and process (iterative, reflective...)
-* Tangibles can enable cognitive offloading
-* Sophisticated spatial abilities may be transferable between technologies
-* Tangibles can be powerful tools for experiments
-   - Tangibles have focused on intuitive interaction for novices
-   - Tangibles, however, can improve experts performance
-   - Advanced spatial thinking skills (3d modeling and process-form interaction) developed with digital tools are transferable
-   - Tangibles as spatial teaching tools
+~~Make stronger conclusions that answer research questions~~
+* ~~Tangibles can be intuitive~~
+* ~~Tangibles can enhance spatial performance~~
+   - ~~in terms of speed, accuracy, and process (iterative, reflective...)~~
+* ~~Tangibles can enable cognitive offloading~~
+* ~~Sophisticated spatial abilities may be transferable between technologies~~
+* ~~Tangibles can be powerful tools for experiments~~
+   - ~~Tangibles have focused on intuitive interaction for novices~~
+   - ~~Tangibles, however, can improve experts performance~~
+   - ~~Advanced spatial thinking skills (3d modeling and process-form interaction) developed with digital tools are transferable~~
+   - ~~Tangibles as spatial teaching tools~~
 
 ## Appendices
 * Mapsets

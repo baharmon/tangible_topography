@@ -390,16 +390,7 @@ offloading these challenging cognitive tasks onto their bodies.
 %
 
 
-% LIT REVIEW
-
-% Inner Garden, Roo2016
-% \cite{Roo2016}
-
-% PhoxelSpace
-% \cite{Ratti2004PhoxelSpace}
-
-% Cubetto, https://www.primotoys.com/
-
+% LITERATURE REVIEW
 With GIS users can computationally offload complex cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
 %
@@ -412,13 +403,14 @@ by combining these physical and computational affordances.
 %
 There are already many tangible interfaces for geospatial modeling.
 %
-%Tangible interfaces for geospatial modeling 
+% tangible interfaces for geospatial modeling 
 These include 
-augmented architectural models (Table~\ref{table:review_a}), 
-augmented clay (Table~\ref{table:review_b}),  
-augmented sandboxes (Table~\ref{table:review_c}), 
-and actuated pin tables (Table~\ref{table:review_d}).
+augmented architectural models (Table~\ref{table:aug_arch}), 
+augmented clay (Table~\ref{table:aug_clay}),  
+augmented sandboxes (Table~\ref{table:aug_sand}), 
+and actuated pin tables (Table~\ref{table:shape_changing}).
 
+% projection augmented interfaces
 Projection-augmented tangible interfaces 
 couple a physical and digital model
 through a cycle of 3D sensing or object recognition,
@@ -444,36 +436,207 @@ have two feedback loops --
 there is passive, kinaesthetic feedback from grasping the physical model 
 and active, graphical feedback from computation.
 
+
+% augmented architectural modeling interfaces
+
+	% urp
+	% collaborative design platform
+
+% augmented clay interfaces
+
+	% illuminating clay
+	% tangible geospatial modeling system
+
+% augmented sandbox interfaces
+
+	% sandscape
+	% phoxelspace
+	% hakoniwa
+	% sandystation
+	% ar sandbox
+	% rapid landscape prototyping machine
+	% tangible landscape
+	% ares
+	% inner garden
+
+% actuated pin tables / shape changing interfaces
 Actuated pin tables
 like Relief \cite{Leithinger2009}
 are a type of transformable tangible interface \cite{Ishii2012} 
 or shape changing interface \cite{Rasmussen2012}
 that can physically change shape based on computation.
-%which use `physical change of shape as input or output' \cite{Rasmussen2012}. 
-%
+% physical feedback
 These tangible interfaces 
 have a third feedback loop --
 the physical model
 can be computationally transformed
 for active, kinaesthetic feedback. 
+% other shape changing interfaces
+	% quimo
+	% see rasmussen's review
 
+
+	% xenovision mark iii dynamic sand table
+	% northrop grumman terrrain table
+	% relief
+	% recompose
+	% tangible cityscape
+	% inform
+	
+
+
+% others	
+	% sandcanvas
+	% geotui
+	% quimo
+
+
+
+
+% research on tangibles 
 Research on tangible interfaces for geospatial modeling 
 has focused on the design of new technologies and prototypes
 rather than studying how they
 are used. 
 %
 A review of tangible interfaces for geospatial modeling 
-(Tables~\ref{table:review_a}-\ref{table:review_d})
+(Tables~\ref{table:aug_sand}-\ref{table:shape_changing})
 shows that there have been 
 relatively few case studies \cite{Ishii2002,Tateosian2010,Petrasova2015} 
-or qualitative user studies \cite{Shamonsky2003}
-and only a single quantitive pilot study \cite{Harmon2016}.
+qualitative user studies \cite{Shamonsky2003,Woods2016}
+and quantitive studies \cite{Harmon2016,Harmon2016a,SchmidtDaly2016}.
 %
 A review of shape-changing interfaces 
 also found that there were relatively few user studies
 and called for `more, high-quality data on user experience'
 in order to understand if interfaces work as designed
 \cite{Rasmussen2012}.
+
+% LIT REVIEW TABLES
+
+\begin{table}
+\tbl{Augmented sandbox interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & \mbox{User studies} & Publications\\
+\midrule
+%
+SandScape & Sculpting &&& \cite{Ishii2004}\\
+&&&& \cite{Ratti2004}\\
+%
+PhoxelSpace & Sculpting &&& \cite{Ratti2004PhoxelSpace}\\
+%
+Hakoniwa & Sculpting &&& \cite{Kikukawa2013}\\
+& Sound\\
+%
+SandyStation & Sculpting &&&\\ 
+%
+Augmented Reality Sandbox & Sculpting && Survey\textsuperscript{\textsection} & \cite{Woods2016}\textsuperscript{\textsection}\\
+& Gesture\\
+%
+Rapid Landscape Prototyping Machine & Machining &&& \cite{Robinson2014}\\
+%
+Tangible Landscape & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Petrasova2014}\\
+& Object detection && Quantitative experiments\textsuperscript{\textdagger} & \cite{Petrasova2015}\textsuperscript{\textasteriskcentered}\\
+& Sketching &&& \cite{Harmon2016}\textsuperscript{\textdagger}\\
+&&&& \cite{Harmon2016a}\textsuperscript{\textdagger}\\
+%
+The Augmented REality Sandtable (ARES) & Sculpting && Quantitative experiments\textsuperscript{\textdagger} & \cite{Amburn2015}\\
+& Gesture &&& \cite{SchmidtDaly2016}\textsuperscript{\textdagger}\\
+%
+Inner Garden & Sculpting &&& \cite{Roo2016}\\
+& Breathing\\
+& Emotion\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:aug_sand} 
+\end{table}
+%
+\begin{table}
+\tbl{Augmented architectural modeling interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & \mbox{User studies} & Publications\\
+\midrule
+%
+Urp & Object detection && \mbox{Case studies\textsuperscript{\textasteriskcentered}} & \cite{Underkoffler1999}\\
+&&&& \cite{Ishii2002}\textsuperscript{\textasteriskcentered}\\
+%
+Collaborative Design Platform & Object detection &&& \cite{Schubert2011}\\
+& Touch &&& \cite{Schubert2011a}\\
+& Sketching &&&  \cite{Schubert2012}\\
+%&&&& \cite{Schubert2013}\\
+%&&&& \cite{Schubert2014a}\\
+&&&& \cite{Schubert2014}\\
+&&&& \cite{Schubert2015}\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:aug_arch} 
+%
+\vspace*{1.5em}
+%
+\tbl{Augmented clay interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & \mbox{User studies} & Publications\\
+\midrule
+%
+Illuminating Clay & Sculpting && Protocol analysis\textsuperscript{\textdaggerdbl} & \cite{Piper2002a}\\
+&&&& \cite{Piper2002b}\\
+&&&& \cite{fielding-piper2002}\\
+&&&& \cite{Shamonsky2003}\textsuperscript{\textdaggerdbl}\\
+&&&& \cite{Ishii2004}\\
+&&&& \cite{Ratti2004}\\
+%
+Tangible Geospatial Modeling System & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Mitasova2006}\\
+&&&& \cite{Tateosian2010}\textsuperscript{\textasteriskcentered}\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:aug_clay} 
+%
+\vspace*{1.5em}
+%
+\tbl{Actuated pin table interfaces}{
+\ra{1.5}
+\begin{tabulary}{1.0\textwidth}{LLCLL}
+\toprule
+System & \mbox{Interaction} & GIS & \mbox{User studies} & Publications\\
+\midrule
+%
+XenoVision Mark III Dynamic Sand Table & Sculpting &&&\\
+%
+Northrop Grumman Terrain Table & Sculpting &&&\\
+%
+Relief & Sculpting &&& \cite{Leithinger2009}\\
+&&&& \cite{Leithinger2010}\\
+%
+Recompose & Sculpting &&& \cite{Leithinger2011}\\
+& Gesture &&& \cite{Blackshaw2011}\\
+%
+Tangible CityScape & Gesture &&&\\
+% 
+Inform & Sculpting &&& \cite{Follmer2013}\\
+& Gesture\\
+& Object detection\\
+%
+\bottomrule
+\end{tabulary}}
+\label{table:shape_changing} 
+\end{table}
+
+
+
+
+
+
+
+
 
 % RESEARCH QUESTIONS
 
@@ -521,113 +684,6 @@ Our research objectives were to:
 \item Study how different geospatial analytics mediate users' 3D spatial performance when using a tangible interface for geospatial modeling
 \end{itemize}
 
-
-\begin{table}
-\tbl{Augmented architectural modeling interfaces}{
-\ra{1.5}
-\begin{tabulary}{1.0\textwidth}{LLCLL}
-\toprule
-System & \mbox{Interaction} & GIS & User studies & Publications\\
-\midrule
-%
-Urp & Object detection && \mbox{Case studies\textsuperscript{\textasteriskcentered}} & \cite{Underkoffler1999}\\
-&&&& \cite{Ishii2002}\textsuperscript{\textasteriskcentered}\\
-%
-Collaborative Design Platform & Object detection &&& \cite{Schubert2011}\\
-& Touch &&& \cite{Schubert2011a}\\
-& Sketching &&&  \cite{Schubert2012}\\
-&&&& \cite{Schubert2014}\\
-&&&& \cite{Schubert2015}\\
-%&&&& \cite{Schubert2013}\\
-%&&&& \cite{Schubert2014a}\\
-%
-\bottomrule
-\end{tabulary}}
-\label{table:review_a} 
-%
-\vspace*{1.5em}
-%
-\tbl{Augmented clay interfaces}{
-\ra{1.5}
-\begin{tabulary}{1.0\textwidth}{LLLCLL}
-\toprule
-System & \mbox{Interaction} & GIS & User studies & Publications\\
-\midrule
-%
-Illuminating Clay & Sculpting && Protocol analysis\textsuperscript{\textdaggerdbl} & \cite{Piper2002a}\\
-&&&& \cite{Piper2002b}\\
-&&&& \cite{fielding-piper2002}\\
-&&&& \cite{Shamonsky2003}\textsuperscript{\textdaggerdbl}\\
-&&&& \cite{Ishii2004}\\
-&&&& \cite{Ratti2004}\\
-%
-Tangible Geospatial Modeling System & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Mitasova2006}\\
-&&&& \cite{Tateosian2010}\textsuperscript{\textasteriskcentered}\\
-%
-\bottomrule
-\end{tabulary}}
-\label{table:review_b} 
-%
-\vspace*{1.5em}
-%
-\tbl{Augmented sandbox interfaces}{
-\ra{1.5}
-\begin{tabulary}{1.0\textwidth}{LLLCLL}
-\toprule
-System & \mbox{Interaction} & GIS & User studies & Publications\\
-\midrule
-%
-SandScape& Sculpting &&& \cite{Ishii2004}\\
-&&&& \cite{Ratti2004}\\
-%
-SandyStation & Sculpting &&&\\ 
-%
-Augmented Reality Sandbox & Sculpting &&& \cite{Reed2014}\\
-& Gesture\\
-%
-Rapid Landscape Prototyping Machine & Machining &&& \cite{Robinson2014}\\
-%
-Tangible Landscape & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Petrasova2014}\\
-& Object detection && Quantitative experiments\textsuperscript{\textdagger} & \cite{Petrasova2015}\textsuperscript{\textasteriskcentered}\\
-& Sketching &&& \cite{Harmon2016}\textsuperscript{\textdagger}\\
-%&&&& \cite{Harmon2016a}\\
-%
-The Augmented REality Sandtable (ARES) & Sculpting &&& \cite{Amburn2015}\\
-& Gesture\\
-%
-\bottomrule
-\end{tabulary}}
-\label{table:review_c} 
-\end{table}
-%
-\begin{table}
-\tbl{Actuated pin table interfaces}{
-\ra{1.5}
-\begin{tabulary}{1.0\textwidth}{LLCLL}
-\toprule
-System & \mbox{Interaction} & GIS & User studies & Publications\\
-\midrule
-%
-XenoVision Mark III Dynamic Sand Table & Sculpting &&&\\
-%
-Northrop Grumman Terrain Table & Sculpting &&&\\
-%
-Relief & Sculpting &&& \cite{Leithinger2009}\\
-&&&& \cite{Leithinger2010}\\
-%
-Recompose & Sculpting &&& \cite{Leithinger2011}\\
-& Gesture &&& \cite{Blackshaw2011}\\
-%
-Tangible CityScape & Gesture &&&\\
-% 
-Inform & Sculpting &&& \cite{Follmer2013}\\
-& Gesture\\
-& Object detection\\
-%
-\bottomrule
-\end{tabulary}}
-\label{table:review_d} 
-\end{table}
 
 \section{Tangible Landscape}
 
@@ -799,7 +855,7 @@ helps users understand how the system works
 and encourages play. 
 Users can, for example, 
 place their hands on the model and create simulated lakes between their fingers
-(Fig.~\ref{fig:hands}) \cite{ncsu_geoforall_2016b}. 
+(Fig.~\ref{fig:hands}). %\cite{ncsu_geoforall_2016b}. 
 
 \begin{figure}
 \begin{center}
@@ -3400,6 +3456,11 @@ the more the basic affordances of digital modeling
 -- precision, zooming, layering, snapping, copying and pasting, etc.~--
 should help make the process more and more efficient. 
 %
+Affordances like zooming 
+that are challenging to develop for augmented sandbox interfaces
+have, however, already been implemented in 
+shape changing interfaces like Tangible CityScape \cite{Tang2013}.
+%
 Based on our own experiences
 we further hypothesize that 
 hybrid approaches combining 
@@ -3409,7 +3470,6 @@ for longer, more complex problems.
 % examples...
 
 \subsection{How tangible geospatial analytics mediate users' 3D spatial performance} 
-
 % difference
 The results of the difference experiment show that 
 the difference analytic 
@@ -3504,23 +3564,177 @@ using tangible interfaces.
 
 % Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift. I am sure that the authors have many lessons and observations to share that would frame the contribution of this study.
 
+\begin{figure}
+\begin{center}
+		\includegraphics[width=\textwidth]{images/case_studies/coffee_and_viz.jpg}
+	\caption{Attendees playing games with Tangible Landscape at an interactive seminar hosted by NCSU's Library exploring how serious, analytical games can be used to explore real world problems like coastal flooding and the spread of invasive species. See Fig.~\ref{fig:coastal} - \ref{fig:termites} for examples of the serious games played at this event.}
+	\label{fig:coffee_and_viz}
+\end{center}
+\end{figure}
 
+Since we began designing and developing Tangible Landscape 
+we have demonstrated and used various iterations of the system live 
+during lab tours,
+in classes such as 
+GIS for Designers and the Landscape Dynamics Seminar
+in NCSU's Department of Landscape Architecture,  
+at conferences such as
+FOSS4G NA 2016 \cite{Petrasova2016a,Harmon2016e},
+USIALE 
+and ACM SIGSPATIAL 2016 \cite{Tabrizian2016}, 
+in public exhibitions at the City of Raleigh Museum and 
+the North Carolina Museum of Natural Sciences,
+and at special events 
+such as NCSU Library's Coffee \& Viz seminar on serious gaming
+\cite{Harmon2016d} (Fig.~\ref{fig:coffee_and_viz}). 
+%
+At these events
+we observed how diverse groups of users 
+interacted with the system
+as we continued to develop it. 
+%
+During tours 
+we observed that many users had trouble understanding 
+how Tangible Landscape worked
+until they actually tried it themselves. 
+%
+Once users saw their own hands scanned
+and rendered as part of the topography
+with simulated water flowing between their fingers
+or ponding in the palms of their hands
+they intuitively understood how to interact with the system
+(Fig.~\ref{fig:hands}).
+%
+Early in the design process
+we considered 
+arms and hands captured by the 3D sensor
+to be confusing, disruptive artifacts
+that obfuscated the real data, 
+interrupting the desired interaction. 
+%
+We tried to deal with these artifacts
+by ignoring scans with large changes
+(i.e.~an arm reaching across the model), 
+masking cells that were too high
+(i.e.~a hand hovering above the model),
+and speeding up the system to minimize lag
+so that a digitized hand would not 
+linger as topography for too long. 
+%
+However, 
+after observing users' first encounters with Tangible Landscape 
+during tours, exhibits, and other events
+we found that users more quickly grasped
+how the system worked 
+by trying it and seeing their hands digitized
+as part of the topography
+directing the flow of water. 
+%
+While sculpting a depression 
+and then seeing it fill with simulated water 
+is an intuitive interaction with a clear cause and effect,
+users appeared to learn how the system worked even faster 
+by instead cupping their hands to create simulated ponds
+in the hollow of their palms. 
+%
+This interaction is even more direct;
+we hypothesize that its immediacy and embodied nature
+helps users make the conceptual leap 
+that the physical and digital are coupled. 
+%
+For users to effectively see their hands digitized as topography
+there needs to be a little lag -- 
+their digitized hands should trail behind their real hands
+by a half second or so. 
 
-
-
-
-
-
-
-
-
+% structured vs. unstructured play
+We also observed that many users
+did not know what they should do 
+even though they understood 
+how to use the tangible interface. 
+%
+Some users hesitated to try the system,
+made a few indecisive moves, 
+and then gave up,
+while other users happily played in the sand 
+or with objects like markers or buildings blocks. 
+%
+While free, unstructured play suits some users,
+others would benefit from a more structured experience. 
+%
+Free, unstructured play is useful way
+to introduce a tangible interface like Tangible Landscape,
+but does not engage some users for long.
+%
+While
+Woods et al.~argue that 
+`effective classroom use of the AR sandbox required
+developing student modeling exercises that took advantage 
+of real-time feedback, virtual water, and physical modeling activities'
+\cite{Woods2016},
+we found that some Tangible Landscape users needed 
+an even more structured experience
+to learn effectively.
+%
+Even during classes and workshops
+in which we had assigned tasks
+like designing a network of hiking trails 
+many students and attendees 
+still had trouble deciding what to do. 
+%
+An objective was not enough; 
+they needed more feedback 
+and a way to judge their performance 
+-- metrics or even a score. 
+%
+When we demonstrated Tangible Landscape 
+for students or the general public
+we found that they needed 
+a challenge to hold their attention and 
+that simple rules and a score were enough
+to structure the experience. 
+%
+We designed two serious games 
+about coastal flooding and termite invasion as prototypes
+and tested them in an interactive workshop 
+as part of NCSU Library's Coffee \& Viz series
+\cite{Harmon2016d}.
+%
+Quick rounds with scores encouraged participants to 
+keep on playing, to try new things in hope of getting a better score.
+%
+While the structured experience of these serious games
+worked well with the general public,
+experts wanted more depth, feedback, and customizability 
+-- i.e.~a structured, yet open experience
+that would be engaging and 
+would encourage in-depth exploration.
+%
+Experts need to be able to 
+use many different modes of tangible interaction
+so that they can make use of their 
+extensive, well-developed skills.
+%
+Experts may also want to compare metrics 
+rather than see a simplified score
+so that they can make tradeoffs between alternatives.
+%
+When for example 
+we designed applications for geographers and ecologists 
+for managing termite invasions 
+and controlling the spread of sudden oak death
+they asked for dashboards with statistics and data visualizations 
+in addition to the projected maps
+so that they could study how different scenarios would affect 
+groups of impacted stakeholders with different values.  
 
 % integrating research into design
 The experiments helped us to refine the design of Tangible Landscape. 
 We learned how users performed with different modes of analytic feedback, 
 gained insight about their experiences and needs,
 realized the importance of color tables, 
-and reaffirmed the need for speed -- the importance of fast feedback. 
+and reaffirmed the need for speed -- 
+the importance of fast (but not too fast) feedback. 
 This informed the development of the next generation of Tangible Landscape 
 and led to the redesign of the difference analytic. 
 After the experiments
@@ -3540,21 +3754,120 @@ and produced a very accurate model
 (see Appendix \ref{videos:new_difference}).
 
 
+% \subsection{Design guidelines}
 
 
-
-\subsection{Design guidelines}
 
 % ---------------------------- REVISIONS ---------------------------- 
 % 
 % Design Guidelines
 %	What are best practices when spatial modeling is the goal?
+%	What are best practices for designing a tangible interface for experts?
 %
 % -------------------------------------------------------------------------- 
 
+%% FOR EXPERTS
+%\subsection{Designing a tangible interface for experts}
+%\begin{itemize}
+%%
+%\item Design for intuitive interaction
+%\item Design for creative exploration
+%\item Design structured experiences
+%\item Offer a wide variety of tools
+%\item Offer rich feedback and analytics
+%\item Collaborate with experts
+%\item Build on existing tools and technologies
+%%
+%\end{itemize}
+
+\subsection{Design guidelines}
+Based on our experience designing Tangible Landscape,
+the results of the experiments, and 
+our observations of users during tours, workshops, classes,
+and other events
+we propose the following guidelines for
+designing tangible interfaces for spatial modeling:
+
+\begin{itemize}
+%
+\item Modes of interaction should be analogous to ubiquitous tasks
+%
+\item Design intuitive interactions with simple feedback for novices
+%
+\item Design a wide variety of interactions and tools 
+with rich feedback for experts
+%
+\item Design free, playful experiences to encourage creative exploration 
+%
+\item Design structured experiences with objectives, rules, and feedback 
+to encourage continued engagement
+%
+\item Build on existing tools and technologies
+%
+\end{itemize}
+
+% interaction
+We recommend designing tangible interactions 
+that are analogous to ubiquitous, everyday tasks
+so that users will already subconsciously know what to do.
+% novices
+When designing for novices
+we recommend making 
+interactions as natural and intuitive as possible,
+while offering relatively simple feedback 
+like a water flow simulation.
+% experiences 
+Free, unstructured experiences will encourage creative exploration,
+but many users will be more engaged by more structured experiences
+with clear, well defined objectives, rules, feedback, and even scores.  
+% experts 
+Experts, however, need a wide array of tools available 
+so that they can intuitively use their diverse, existing skills
+and seamless switch between them.
+They need richer, more complex feedback
+so they can make critical, scientifically informed decisions. 
+% building on existing tools
+To efficiently develop the wide variety of tools and interactions 
+that experts need
+we recommend using existing libraries for scientific computing. 
+Using well documented, peer-reviewed, open source scientific models 
+makes it easier to develop new tangible geospatial interactions
+and know if they behave properly. 
+Building on the infrastructure of existing open source projects
+-- on their codebase, documentation, binaries, support, and community --
+helps one efficiently collaborate and involve expert users 
+in the design and development process 
+so that they can contribute their own scientific models to the project \cite{Petrasova2016}. 
+
+%* What are best practices when spatial modeling is the goal?
+%   - modes of interaction should be analogous to ubiquitous tasks
+%   - intuitive interaction for novices
+%   - intuitive interaction for experts too, but offering more tools and options is more important
+%   - for experts offer as many tools as possible so that they have the entire palette they want / expect
+%   - draw on existing resources as a backend (ie. GIS)
+
+
+% novices
+	% intuitive interaction
+	% structured vs. unstructured play
+
+% experts
+	% wide variety of tools
+	% customizability
+	% more analytics / modes of feedback
+		% dashboard with stats etc (not just a map)
 
 
 
+% findings
+	% need of experts vs. novices
+		% simple, highly intuitive interaction vs. 
+		% complex, multivalent interaction 
+		% with more feedback plus customization
+% other findings...
+	% design: portability, adaptability, re-configurability
+	% applications: backend, flexibility, re-use, new modes of interaction
+	% open source GIS as backend
 
 
 
@@ -3751,39 +4064,97 @@ robotic fabrication, robotic construction, and streaming field data.}
 % concept
 Tangible Landscape -- a tangible interface for GIS -- 
 enables natural 3D sketching. % 4D spatiotemporal sketching.
-%
 Users can intuitively interact with 
 spatial data and scientific models using their bodies. 
-% 
-% iterative process
 By affording both natural, embodied interaction and analytical feedback
 Tangible Landscape enables a
-rapid iterative modeling process.
-%
+rapid, iterative modeling process.
 Through this embodied process of reflection-in-action 
 users can 
 observe spatial patterns, forms, and processes, 
 generate and test hypotheses, 
 and draw inferences. 
-%
-% experiment / findings
-In a series of experiments we found that 
-Tangible Landscape can improve 3D spatial performance  
-enabling users to more accurately model 3D space. 
-%
-The experiments show that users 
+
+% tangibles can enhance spatial performance
+Through a series of experiments
+we found that tangible interfaces for spatial modeling
+can enhance 3D spatial performance 
+in terms of speed, accuracy, and process. 
+% coupling
+By comparing digital, analog, and projection-augmented modeling 
+we found that coupling digital and physical models as a tangible interface 
+can combine the affordances of digital and analog tools
+-- enabling an embodied modeling process enriched with digital data --
+so that users can model intuitively, quickly, and precisely. 
+Even 3D modeling experts 
+ performed better with the tangible interface 
+-- building more accurate models 
+that better represented the morphology of the landscape --
+ because they could work faster
+ creating and refining details sooner.
+% transfer
+They were able to transfer and effectively use the
+spatial skills and abilities they had developed through digital modeling
+with the tangible interface.
+% analytics
+We also found that tangible interaction with real-time geospatial analytics
+can encourage iterative modeling processes.
+With the real-time difference analytic and water flow simulation  
+users worked in rapid cycles of 
+sculpting and digitally informed critical analysis
+to build accurate models that
+correctly represented the topographic and hydrologic morphology.
+% cog offloading
+The experiments showed that users 
 were able to offload enough of the cognitive work 
 of sensing and manipulating space
 onto their bodies
 that they could understand the
 computational analytics
 and adaptively re-strategize.
-%
 % future research
 Further experiments are needed
 to explore the role of 
 spatial cognition, affect, motivation, and metacognition 
 in tangible modeling.
+
+% summary
+The experiments show that Tangible Landscape 
+works as theorized and designed -- 
+coupling a physical and digital model of a landscape
+enables users to 
+cognitively grasp topography,
+intuitively shape and interact with multidimensional space, 
+and offload enough cognitive work to understand 
+real-time geospatial analytics. 
+% users
+While novices should be able to effectively learn about 
+multidimensional space and
+rapidly improve their spatial abilities 
+with Tangible Landscape, 
+experts can effectively use it to 
+rapidly develop, prototype, and test 
+hypotheses about space and spatiotemporal processes.
+
+% tangibles for novices
+	% collaborative, intuitive, educational
+	% tangibles as spatial teaching tools
+% tangibles for experts
+	% spatial abilities may be transferable between technologies
+	% tangibles can be powerful tools for rapid prototyping
+% tangibles for learning
+	% spatial thinking skills developed with digital tools are transferable
+
+
+
+
+
+
+
+
+
+
+
 
 
 %% Appendix
