@@ -154,12 +154,9 @@ and qualitative methods
 we determined that Tangible Landscape 
 can improve 3D spatial performance. 
 %
-The participants produced more accurate models 
+Participants produced more accurate models 
 that better represented morphological features 
 with tangible modeling than they did with either digital or analog, hand modeling. 
-
-
-
 \end{abstract}
 
 %
@@ -372,50 +369,40 @@ offloading these challenging cognitive tasks onto their bodies.
 % The appeal of the contribution could be broadened by providing examples of similar systems for other application domains, such as volumetric data exploration (Ratti 2003) and music (Kikukawa 2013), gaming (Wilson 2007), and animation (Kazi 2011).
 % While not a continuous sand TUI, GeoTUI, as a study of a tangible user interface for GIS experts should be mentioned as well (Couture 2008).
 
-% REFERENCES
-%Nadine Couture, Guillaume Rivière, and Patrick Reuter. 2008. GeoTUI: a tangible user interface for geoscience. In Proceedings of the 2nd international conference on Tangible and embedded interaction (TEI '08). ACM, New York, NY, USA, 89-96. DOI=http://dx.doi.org/10.1145/1347390.1347411
-%
-%Kazi, Rubaiat Habib, et al. "SandCanvas: a multi-touch art medium inspired by sand animation." Proceedings of the SIGCHI Conference on Human Factors in Computing Systems. ACM, 2011.
-%
-%Kikukawa, Yuya, et al. "Hakoniwa: A sonification art installation consists of sand and woodblocks." (2013).
-%
-%Ratti, Carlo, et al. "PHOXEL-SPACE: an interface for exploring volumetric data with physical voxels." Proceedings of the 5th conference on Designing interactive systems: processes, practices, methods, and techniques. ACM, 2004.
-%
-%Tarah N. Schmidt-Daly, Jennifer M. Riley, Charles R. Amburn, Kelly S. Hale, and P. David Yacht
-%Video Game Play and Effect on Spatial Knowledge Tasks Using an Augmented Sand Table Proceedings of the Human Factors and Ergonomics Society Annual MeetingSeptember 2016 60: 1429-1433, doi:10.1177/1541931213601328
-%
-%Wilson, A. Depth-Sensing Video Cameras for 3D Tangible Tabletop Interaction, Tabletop 2007.
-%
-%Woods, Terri L., et al. "Pilot Study Using the Augmented Reality Sandbox to Teach Topographic Maps and Surficial Processes in Introductory Geology Labs." Journal of Geoscience Education 64.3 (2016): 199-214.
-%
-
-
 % LITERATURE REVIEW
 With GIS users can computationally offload complex cognitive tasks 
 like analyzing spatial patterns and simulating spatiotemporal processes.
-%
 Tangible interfaces for geospatial modeling should, 
 therefore, enhance users' spatial performance 
 -- their ability to sense, manipulate, and interact with multidimensional space -- 
 for challenging tasks 
 like sculpting topography and guiding the flow of water
 by combining these physical and computational affordances.
-%
 There are already many tangible interfaces for geospatial modeling.
-%
-% tangible interfaces for geospatial modeling 
 These include 
+actuated pin tables (Table~\ref{table:shape_changing}),
 augmented architectural models (Table~\ref{table:aug_arch}), 
-augmented clay (Table~\ref{table:aug_clay}),  
-augmented sandboxes (Table~\ref{table:aug_sand}), 
-and actuated pin tables (Table~\ref{table:shape_changing}).
+augmented clay (Table~\ref{table:aug_clay}), 
+and augmented sandboxes (Table~\ref{table:aug_sand}).
 
-% projection augmented interfaces
+Actuated pin tables
+like Relief \cite{Leithinger2009}
+are a type of transformable tangible interface \cite{Ishii2012}, 
+dynamic shape display \cite{Poupyrev2007},
+or shape changing interface \cite{Rasmussen2012}
+that use motor-driven pistons to actuate an array of pins
+that physically change the shape of a tabletop surface 
+based on computation.
+These tangible interfaces 
+have three feedback loops --
+users can feel the physical model for passive, kinaesthetic feedback,
+the model can be computationally transformed for active, kinaesthetic feedback,
+and users can see computationally generated, graphical feedback. 
+
 Projection-augmented tangible interfaces 
 couple a physical and digital model
 through a cycle of 3D sensing or object recognition,
 computation, and projection. 
-%
 Augmented architectural models
 like Urp \cite{Underkoffler1999} 
 and the Collaborative Design Platform \cite{Schubert2011}
@@ -423,138 +410,390 @@ are a type of
 `discrete tabletop tangible interface' \cite{Ishii2012}
 with physical models of buildings 
 that are augmented with projected analytics.
-%
 Augmented clay models 
 like Illuminating Clay \cite{Piper2002a} 
 and augmented sandboxes like Sandscape \cite{Ishii2004} 
 are types of 
 `deformable, continuous tangible interfaces' \cite{Ishii2012}
 that users can sculpt. 
-%
 These tangible interfaces 
 have two feedback loops -- 
 there is passive, kinaesthetic feedback from grasping the physical model 
 and active, graphical feedback from computation.
 
+\subsubsection{Actuated pin tables}
+% feelex
+Project FEELEX, an early prototype developed in 2001,
+used an array of 36 actuated pins to deform a 24~x~24~cm rubber sheet. 
+This computationally deformable rubber sheet
+was augmented with projected graphics
+to create a shape changing 3D display. % 2.5D
+% user studies
+User studies for FEELEX included
+observations of user behavior and
+shape recognition tests.
+They found that 85\% of subjects 
+used their entire hand to interact with the interface.
+On average subjects had 6~mm of error when perceiving shapes by touch
+\cite{Iwata2001}.
 
-% augmented architectural modeling interfaces
+% terrain table
+The XenoVision Mark III Dynamic Sand Table, developed in 2004, 
+and the Northrop Grumman Terrain Table, developed in 2006, 
+were large actuated pin tables designed for military geospatial applications
+that used thousands of pins
+to dynamically reshape a 1.32~x~1.02~m silicone surface representing topography. 
 
-	% urp
-	% collaborative design platform
-
-% augmented clay interfaces
-
-	% illuminating clay
-	% tangible geospatial modeling system
-
-% augmented sandbox interfaces
-
-	% sandscape
-	% phoxelspace
-	% hakoniwa
-	% sandystation
-	% ar sandbox
-	% rapid landscape prototyping machine
-	% tangible landscape
-	% ares
-	% inner garden
-
-% actuated pin tables / shape changing interfaces
-Actuated pin tables
-like Relief \cite{Leithinger2009}
-are a type of transformable tangible interface \cite{Ishii2012} 
-or shape changing interface \cite{Rasmussen2012}
-that can physically change shape based on computation.
-% physical feedback
-These tangible interfaces 
-have a third feedback loop --
-the physical model
-can be computationally transformed
-for active, kinaesthetic feedback. 
-% other shape changing interfaces
-	% quimo
-	% see rasmussen's review
-
-
-	% xenovision mark iii dynamic sand table
-	% northrop grumman terrrain table
-	% relief
-	% recompose
-	% tangible cityscape
-	% inform
-	
-
-
-% others	
-	% sandcanvas
-	% geotui
-	% quimo
-
-
-
-
-% research on tangibles 
-Research on tangible interfaces for geospatial modeling 
-has focused on the design of new technologies and prototypes
-rather than studying how they
-are used. 
+% mit
+The MIT Media Lab developed a family of actuated pin tables 
+-- Relief, Recompose, Tangible CityScape, and inFORM --
+to explore novel modes of interaction with
+dynamically changing affordances and constraints. 
 %
-A review of tangible interfaces for geospatial modeling 
-(Tables~\ref{table:aug_sand}-\ref{table:shape_changing})
-shows that there have been 
-relatively few case studies \cite{Ishii2002,Tateosian2010,Petrasova2015} 
-qualitative user studies \cite{Shamonsky2003,Woods2016}
-and quantitive studies \cite{Harmon2016,Harmon2016a,SchmidtDaly2016}.
+% relief
+Relief %, developed in 2009, 
+used an array to 125 actuated pins
+to deform a
+projection-augmented lycra surface representing topography \cite{Leithinger2009}. 
+% recompose
+A depth sensor was integrated into 
+the next generation of this system, Recompose,
+so that users could control the surface using gestures
+\cite{Leithinger2011,Blackshaw2011}.
+% 
+% inform
+inFORM 
+-- redesigned as an array of 900 polystyrene pins 
+forming a 381~x~381~mm
+3D projection-augmented surface -- 
+affords diverse modes of interaction 
+such as sculpting, gesture, 
+indirectly moving passive objects with pins, 
+and pressing user interface elements like buttons formed from pins.
+\cite{Follmer2013}. 
+% tangible cityscape
+The Tangible CityScape project used inFORM to
+physically model urban spaces 
+and analyze urban conditions like light and shadow.
+Building masses formed by pins would dynamically reshape
+when users could panned or zoomed with gestures. 
+
+% pros and cons
+While actuated pin tables afford highly intuitive,
+bi-directional physical interaction, 
+they are mechanically complex, relatively low resolution, 
+and challenging to maintain and transport. 
+The size of the actuators limits their resolution -- 
+Project FEELEX had 40~mm spacing between pins,
+FEELEX 2 had 8~mm spacing,
+Relief had 38~mm spacing, 
+and inFORM has 3.175~mm 
+between 9.525~mm\textsuperscript{2} pins.
+These systems tend to be small and expensive to build
+due to their mechanical complexity. 
+
+\subsubsection{Augmented architectural modeling interfaces}
+% urp
+Urp 
+-- a projection augmented interface 
+for urban design --
+used tag-based objection detection to digitize 
+physical models of buildings on a table. 
+Spatial analyses and simulations such as
+proximity, wind, shadow, and viewsheds 
+were computed and projected onto the tabletop
+in real-time so that users could
+rapidly test different spatial configurations of buildings
+\cite{Underkoffler1999}.
+As a case study Urp was used by a urban design class
+in the MIT School of Architecture and Planning.
+The researchers observed that it helped students to
+rapidly explore and test different configurations of space
+and effectively communicate their designs
+\cite{Ishii2002}. 
+
+% collaborative design platform
+The Collaborative Design Platform uses 
+a depth camera to digitize and track physical models of buildings
+on a rear-projection light table. 
+As users move polystyrene foam models of buildings,
+the models are 3D scanned 
+updating a digital 3D model of a city
+and analyzes like
+wind, light, shadow, accessibility, distance, and views
+are projected onto the table in realtime. 
+Views are also rendered in 3D 
+on a wall-mounted touch screen.
+Users can interact by 
+placing and moving physical models of buldings,
+touching the screen, or sketching with a digitizing pen
+\cite{Schubert2015}.
+
+\subsubsection{Augmented clay interfaces}
+% Illuminating Clay
+Illuminating Clay coupled a clay model and digital model of landscape 
+through a cycle of laser scanning, spatial modeling, and projection.
+By enriching physical models of urban spaces and landscapes 
+with spatial analyses  
+such as 
+elevation, aspect, slope, cast shadow, profile, curvature, 
+viewsheds, solar irradiation, and water direction
+it enabled
+intuitive form-finding, 
+streamlined analog and digital workflows, 
+and enabled multiple users to simultaneously interact in a natural way \cite{Ratti2004}. 
+Illuminating Clay had a very limited library of custom implemented spatial analyses. 
+Since many of analyses were adapted 
+from the open source GRASS GIS project \cite{Piper2002a} 
+there was a call for closer integration with GRASS GIS 
+in order to draw on its extensive libraries 
+for spatial computation \cite{Piper2002b}. 
+The effort to couple a physical landscape model with GRASS GIS \cite{Mitasova2006} 
+led to the development of 
+the Tangible Geospatial Modeling System
+ \cite{Tateosian2010}.
+
+% Tangible Geospatial Modeling System
+The Tangible Geospatial Modeling System
+coupled a physical model and GIS model of a landscape 
+through a cycle of laser scanning, 
+geospatial computation in GRASS GIS, and projection
+giving developers and users access to 
+a sophisticated library for 
+spatial modeling, simulation, visualization, and databasing.
+It enriched freeform hand modeling with geospatial simulations 
+like diffusive water flow and erosion-deposition 
+so that users could easily explore how 
+changes in topographic form affect landscape processes
+\cite{Tateosian2010}.
+
+\subsubsection{Augmented sandbox interfaces}
+% sandscape
+SandScape used infrared depth sensing
+to digitize a `sandbox' of 1~mm glass beads. 
+An infrared camera captured
+the intensity of infrared light 
+passing through the beads from below
+in real-time. 
+A digital elevation model  
+computed from the light intensity 
+and derived analyses 
+were projected back onto the sandbox for real-time feedback.
+SandScape was relatively low resolution due to
+the quality of the infrared sensing and the size of the glass beads 
+\cite{Ishii2004,Ratti2004}.  
+
+% phoxelspace
+Phoxel-Space adapted 
+SandScape and Illuminating Clay
+for physically interacting with voxels, 
+i.e.~volumetric pixels. 
 %
-A review of shape-changing interfaces 
-also found that there were relatively few user studies
-and called for `more, high-quality data on user experience'
-in order to understand if interfaces work as designed
-\cite{Rasmussen2012}.
+The system coupled a malleable physical model 
+-- built of media like clay, plasticine, cubic blocks, or glass beads --
+with a 3D raster dataset 
+using either a laser scanner or an IR camera. 
+%
+The researchers demonstrated how Phoxel-Space
+could be used to explore magnetic resonance imaging data,
+seismic velocity, and computational fluid dynamics 
+\cite{Ratti2004PhoxelSpace}.
+
+% ar sandbox
+The Augmented Reality Sandbox
+developed by the 
+UC Davis W.M. Keck Center for Active Visualization in the Earth Sciences 
+couples a sandbox with a digital model of a landscape 
+through a real-time cycle of 3D scanning with a Kinect sensor.
+Scans are statistically filtered to remove hands and tools, 
+reduce noise, and fill in areas with no data.
+The default filtering -- 30 frames -- results in 1 second of lag.
+The digital elevation model, contours, and simulated water flow
+based on the shallow water equations
+are projected back onto the sand model of the landscape
+\cite{Kreylos2012}.
+It was inspired by a Czech prototype called SandyStation.
+The code for this open source project, released 
+under the GNU General Public License,
+and blueprints for building the system are 
+available at \url{https://arsandbox.ucdavis.edu}.
+280 Augmented Reality Sandboxes 
+have already been built around the world
+\cite{Kreylos2017}.
+% Kinect 3D Video Capture Project, Vrui VR Toolkit, SARndbox
+
+% study
+Researchers at Eastern Carolina University
+built an Augmented Reality Sandbox 
+and conducted a qualitative pilot study
+examining the effect of the technology
+on learning and engagement 
+in geoscience education.
+12 students used the Augmented Reality Sandbox 
+to build terrain models from contours,
+model fluvial features and processes, and
+model coastal features and processes. 
+The researchers solicited feedback 
+with an exit survey and received 
+very positive feedback. 
+Students reported that the sandbox helped them learn 
+about topography, fluvial and coastal processes, 
+and process-form interactions 
+more effectively.
+Based on the survey and their observations
+the researchers hypothesized that augmented sandboxes
+could enable embodied learning
+and encourage the development of 
+scientific modeling skills \cite{Woods2016}. 
+
+% hakoniwa
+Hakoniwa -- a projection-augmented sandbox 
+for making generative music and art -- 
+was inspired by sandtray therapy. 
+The system was designed to 
+create a playful, embodied experience 
+that could be therapeutic. 
+As users built landscapes in the sandbox
+by sculpting sand and placing wooden blocks
+they created music and visual patterns 
+in real-time through a cycle of depth and color sensing, 
+image processing, audio generation, computer graphics, 
+and projection \cite{Kikukawa2013}. 
+The system evolved from PocoPoco 
+-- a tabletop tangible interface for making music \cite{Kanai2011}. 
+
+% rapid landscape prototyping machine
+The Landscape Morphologies Lab
+at the University of Southern California developed the 
+Rapid Landscape Prototyping Machine
+-- a projection-augmented sandbox with robotic fabrication --
+to design and test strategies for dust control and mitigation
+for Lake Owens, California. 
+The system used a 6-axis robotic arm 
+to digitally fabricate algorithmically generated 
+landscapes in a sandbox. 
+The sand models were digitized with a laser scanner,
+the point cloud was triangulated as a terrain mesh,
+and spatial analyses such as 
+viewsheds, aspect, and flooding
+were projected back onto the sandbox \cite{Robinson2014,Cantrell2016}
+
+% ares
+The Augmented REality Sandtable (ARES) 
+developed by the US Army Research Laboratory
+is designed for military training and simulation. 
+This system uses a depth camera to continually
+3D scan a sandbox and detect gestures.
+The digital elevation model and contour map derived from the scans 
+and military units created using gestures or tablet input
+are projected onto the sand model. 
+Units and buildings can be visualized in 3D using 
+tablets or augmented reality glasses. 
+The Augmented REality Sandtable 
+can be linked with other military software 
+to simulate scenarios 
+\cite{Amburn2015}.
+% study
+A user study comparing users' performance with 
+paper maps, Google Earth, and the Augmented REality Sandtable 
+found that the sandtable was the most effective technology.
+Participants 
+-- especially participants who were veteran video gamers --
+tended to perform better with the sandtable in
+landmark identification, distance estimation, and situational judgment
+tests \cite{SchmidtDaly2016}.
+
+% inner garden
+Inner Garden 
+-- a projection-augmented sandbox 
+for contemplation and self-reflection --
+couples a sand model of topography with
+simple digital environment with
+water, plants, clouds, and daylight
+through a cycle of 3D scanning with a Kinect, biometric sensing,
+computation, and projection. 
+%
+While a user sculpts topography in the sand
+creating a digital elevation model,
+their physiological and emotional state are monitored with 
+an electroencephalogram (EEG) and breathing sensor.
+%
+Their breath controls the simulated sea level and daylight,
+their level of frustration controls the simulated cloud cover,
+and their meditativeness controls simulated plant life
+\cite{Roo2016}.
+
+% tangible landscape
+Tangible Landscape is a projection-augmented sandbox  
+powered by a GIS for real-time geospatial analysis and simulation
+\cite{Petrasova2015}. 
+It evolved from 
+Illuminating Clay \cite{Piper2002a} and 
+the Tangible Geospatial Modeling System \cite{Tateosian2010}.
+While the Tangible Geospatial Modeling System 
+used an expensive laser scanner
+for 3D sensing \cite{Tateosian2010}, 
+Tangible Landscape 
+-- inspired by
+the open source Augmented Reality Sandbox \cite{Kreylos2012} --
+uses a low-cost 3D sensor 
+for real-time depth and color sensing. 
+The \nth{1} generation of Tangible Landscape \cite{Petrasova2014} 
+used the \nth{1} generation Kinect with structured light sensing \cite{Smisek2011}, 
+while the \nth{2}  \cite{Petrasova2015} and \nth{3} generations of Tangible Landscape 
+used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015}. 
+% user studies
+Two pilot studies have quantitatively 
+compared users' 3D spatial performance 
+with Tangible Landscape and digital 3D modeling programs.
+%
+The first pilot study found that participants tended to 
+more accurately model landscapes using 
+projection augmented modeling with Tangible Landscape
+than digital modeling with Rhinoceros \cite{Harmon2016b}.
+%
+The second pilot study found that participants tended to 
+more accurately model topography and hydrology
+using Tangible Landscape with the water flow analytic
+than Vue's terrain editor \cite{Harmon2016}. 
+%
+%In addition to demonstrating the potential of the augmented sandboxes
+%these pilot studies showed that different digital 3D modeling programs
+%have very different affordances and limitations 
+%that significantly affect users' performance. 
 
 % LIT REVIEW TABLES
 
 \begin{table}
-\tbl{Augmented sandbox interfaces}{
+\tbl{Actuated pin tables}{
 \ra{1.5}
-\begin{tabulary}{1.0\textwidth}{LLLCLL}
+\begin{tabulary}{1.0\textwidth}{LLCLL}
 \toprule
 System & \mbox{Interaction} & GIS & \mbox{User studies} & Publications\\
 \midrule
 %
-SandScape & Sculpting &&& \cite{Ishii2004}\\
-&&&& \cite{Ratti2004}\\
+XenoVision Mark III Dynamic Sand Table & Sculpting &&&\\
 %
-PhoxelSpace & Sculpting &&& \cite{Ratti2004PhoxelSpace}\\
+Northrop Grumman Terrain Table & Sculpting &&&\\
 %
-Hakoniwa & Sculpting &&& \cite{Kikukawa2013}\\
-& Sound\\
+Relief & Sculpting &&& \cite{Leithinger2009}\\
+&&&& \cite{Leithinger2010}\\
 %
-SandyStation & Sculpting &&&\\ 
+Recompose & Sculpting &&& \cite{Leithinger2011}\\
+& Gesture &&& \cite{Blackshaw2011}\\
 %
-Augmented Reality Sandbox & Sculpting && Survey\textsuperscript{\textsection} & \cite{Woods2016}\textsuperscript{\textsection}\\
+Tangible CityScape & Gesture &&&\\
+% 
+inFORM & Sculpting &&& \cite{Follmer2013}\\
 & Gesture\\
-%
-Rapid Landscape Prototyping Machine & Machining &&& \cite{Robinson2014}\\
-%
-Tangible Landscape & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Petrasova2014}\\
-& Object detection && Quantitative experiments\textsuperscript{\textdagger} & \cite{Petrasova2015}\textsuperscript{\textasteriskcentered}\\
-& Sketching &&& \cite{Harmon2016}\textsuperscript{\textdagger}\\
-&&&& \cite{Harmon2016a}\textsuperscript{\textdagger}\\
-%
-The Augmented REality Sandtable (ARES) & Sculpting && Quantitative experiments\textsuperscript{\textdagger} & \cite{Amburn2015}\\
-& Gesture &&& \cite{SchmidtDaly2016}\textsuperscript{\textdagger}\\
-%
-Inner Garden & Sculpting &&& \cite{Roo2016}\\
-& Breathing\\
-& Emotion\\
+& Object detection\\
 %
 \bottomrule
 \end{tabulary}}
-\label{table:aug_sand} 
-\end{table}
+\label{table:shape_changing} 
 %
-\begin{table}
+\vspace*{1.5em}
+%
 \tbl{Augmented architectural modeling interfaces}{
 \ra{1.5}
 \begin{tabulary}{1.0\textwidth}{LLCLL}
@@ -599,44 +838,48 @@ Tangible Geospatial Modeling System & Sculpting & \cmark & Case studies\textsupe
 \bottomrule
 \end{tabulary}}
 \label{table:aug_clay} 
+\end{table}
 %
-\vspace*{1.5em}
-%
-\tbl{Actuated pin table interfaces}{
+\begin{table}
+\tbl{Augmented sandbox interfaces}{
 \ra{1.5}
-\begin{tabulary}{1.0\textwidth}{LLCLL}
+\begin{tabulary}{1.0\textwidth}{LLLCLL}
 \toprule
 System & \mbox{Interaction} & GIS & \mbox{User studies} & Publications\\
 \midrule
 %
-XenoVision Mark III Dynamic Sand Table & Sculpting &&&\\
+SandScape & Sculpting &&& \cite{Ishii2004}\\
+&&&& \cite{Ratti2004}\\
 %
-Northrop Grumman Terrain Table & Sculpting &&&\\
+PhoxelSpace & Sculpting &&& \cite{Ratti2004PhoxelSpace}\\
 %
-Relief & Sculpting &&& \cite{Leithinger2009}\\
-&&&& \cite{Leithinger2010}\\
+SandyStation & Sculpting &&&\\ 
 %
-Recompose & Sculpting &&& \cite{Leithinger2011}\\
-& Gesture &&& \cite{Blackshaw2011}\\
-%
-Tangible CityScape & Gesture &&&\\
-% 
-Inform & Sculpting &&& \cite{Follmer2013}\\
+Augmented Reality Sandbox & Sculpting && Survey\textsuperscript{\textsection} & \cite{Woods2016}\textsuperscript{\textsection}\\
 & Gesture\\
+%
+Hakoniwa & Sculpting &&& \cite{Kikukawa2013}\\
 & Object detection\\
+& Sound\\
+%
+Rapid Landscape Prototyping Machine & Machining &&& \cite{Robinson2014}\\
+%
+Tangible Landscape & Sculpting & \cmark & Case studies\textsuperscript{\textasteriskcentered} & \cite{Petrasova2014}\\
+& Object detection && Quantitative experiments\textsuperscript{\textdagger} & \cite{Petrasova2015}\textsuperscript{\textasteriskcentered}\\
+& Sketching &&& \cite{Harmon2016}\textsuperscript{\textdagger}\\
+&&&& \cite{Harmon2016a}\textsuperscript{\textdagger}\\
+%
+The Augmented REality Sandtable (ARES) & Sculpting && Quantitative experiments\textsuperscript{\textdagger} & \cite{Amburn2015}\\
+& Gesture &&& \cite{SchmidtDaly2016}\textsuperscript{\textdagger}\\
+%
+Inner Garden & Sculpting &&& \cite{Roo2016}\\
+& Breathing\\
+& Emotion\\
 %
 \bottomrule
 \end{tabulary}}
-\label{table:shape_changing} 
+\label{table:aug_sand} 
 \end{table}
-
-
-
-
-
-
-
-
 
 % RESEARCH QUESTIONS
 
@@ -652,6 +895,26 @@ Inform & Sculpting &&& \cite{Follmer2013}\\
 
 \subsection{Aims and objectives}
 
+% research on tangibles 
+Research on tangible interfaces for geospatial modeling 
+has focused on the design of new technologies and prototypes
+rather than studying how they
+are used. 
+%
+A review of tangible interfaces for geospatial modeling 
+(Tables~\ref{table:aug_sand}-\ref{table:shape_changing})
+shows that there have been 
+relatively few case studies \cite{Ishii2002,Tateosian2010,Petrasova2015}, 
+qualitative user studies \cite{Shamonsky2003,Woods2016},
+and quantitive studies \cite{Harmon2016,Harmon2016a,SchmidtDaly2016}.
+%
+A review of shape-changing interfaces 
+also found that there were relatively few user studies
+and called for `more, high-quality data on user experience'
+in order to understand if interfaces work as designed
+\cite{Rasmussen2012}.
+
+% questions
 Many of the theoretical underpinnings of tangibles 
 remain unproven and unexplored. 
 Do current approaches to tangible, embodied interfaces
@@ -673,7 +936,7 @@ without suffering cognitive overload?
 
 In order to begin to answer some of these questions we 
 designed a tangible interface for geospatial modeling, 
-while simultaneously conducting an experiment
+while simultaneously conducting experiments
 to study how this tangible interface mediates spatial cognition.
 %
 Our research objectives were to:
@@ -727,7 +990,7 @@ of observation, hypothesis generation and testing, and inference.
 %
 Tangible Landscape is meant to fluidly, seamlessly combine
 computational science with exploratory modes of creative thinking.
-
+%
 Tangible Landscape is unique because it is the only 
 real-time tangible interface for spatial modeling that 
 \begin{enumerate*}
@@ -738,58 +1001,58 @@ real-time tangible interface for spatial modeling that
 \item and has been quantitatively tested in user experiments. 
 \end{enumerate*}
 
-\subsection{Evolution}
-Tangible Landscape evolved from 
-Illuminating Clay \cite{Piper2002a} and 
-the Tangible Geospatial Modeling System (TanGeoMS) \cite{Tateosian2010}. 
-% Illuminating Clay
-Illuminating Clay coupled a clay model and digital model of landscape 
-through a cycle of laser scanning, spatial modeling, and projection.
-By enriching physical models of urban spaces and landscapes 
-with spatial analyses  
-such as 
-elevation, aspect, slope, cast shadow, profile, curvature, 
-viewsheds, solar irradiation, and water direction
-it enabled
-intuitive form-finding, 
-streamlined analog and digital workflows, 
-and enabled multiple users to simultaneously interact in a natural way \cite{Ratti2004}. 
-Illuminating Clay had a very limited library of custom implemented spatial analyses. 
-Since many of analyses were adapted 
-from the open source GRASS GIS project \cite{Piper2002a} 
-there was a call for closer integration with GRASS GIS 
-in order to draw on its extensive libraries 
-for spatial computation \cite{Piper2002b}. 
-The effort to couple a physical landscape model with GRASS GIS \cite{Mitasova2006} 
-led to the development of 
-TanGeoMS \cite{Tateosian2010}.
-
-% Tangible Geospatial Modeling System
-TanGeoMS coupled a physical model and GIS model of a landscape 
-through a cycle of laser scanning, 
-geospatial computation in GRASS GIS, and projection
-giving developers and users access to 
-a sophisticated library for 
-spatial modeling, simulation, visualization, and databasing.
-It enriched freeform hand modeling with geospatial simulations 
-like diffusive water flow and erosion-deposition 
-so that users could easily explore how 
-changes in topographic form affect landscape processes. 
-
-% Augmented Reality Sandbox
-Tangible Landscape -- the next generation of this system -- was inspired by
-the open source Augmented Reality Sandbox \cite{Kreylos2012}
-which couples a sandbox with a digital model of a landscape 
-through a real-time cycle of 3D scanning with a Kinect sensor, spatial modeling and simulation, and projection.
-% TL
-While TanGeoMS used an expensive laser scanner
-for 3D sensing \cite{Tateosian2010}, 
-Tangible Landscape uses a low-cost 3D sensor %like the Kinect 
-for real-time depth and color sensing. 
-The \nth{1} generation of Tangible Landscape \cite{Petrasova2014} 
-used the \nth{1} generation Kinect with structured light sensing \cite{Smisek2011}, 
-while the \nth{2}  \cite{Petrasova2015} and \nth{3} generations of Tangible Landscape 
-used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015}. 
+%\subsection{Evolution}
+%Tangible Landscape evolved from 
+%Illuminating Clay \cite{Piper2002a} and 
+%the Tangible Geospatial Modeling System (TanGeoMS) \cite{Tateosian2010}. 
+%% Illuminating Clay
+%Illuminating Clay coupled a clay model and digital model of landscape 
+%through a cycle of laser scanning, spatial modeling, and projection.
+%By enriching physical models of urban spaces and landscapes 
+%with spatial analyses  
+%such as 
+%elevation, aspect, slope, cast shadow, profile, curvature, 
+%viewsheds, solar irradiation, and water direction
+%it enabled
+%intuitive form-finding, 
+%streamlined analog and digital workflows, 
+%and enabled multiple users to simultaneously interact in a natural way \cite{Ratti2004}. 
+%Illuminating Clay had a very limited library of custom implemented spatial analyses. 
+%Since many of analyses were adapted 
+%from the open source GRASS GIS project \cite{Piper2002a} 
+%there was a call for closer integration with GRASS GIS 
+%in order to draw on its extensive libraries 
+%for spatial computation \cite{Piper2002b}. 
+%The effort to couple a physical landscape model with GRASS GIS \cite{Mitasova2006} 
+%led to the development of 
+%TanGeoMS \cite{Tateosian2010}.
+%
+%% Tangible Geospatial Modeling System
+%TanGeoMS coupled a physical model and GIS model of a landscape 
+%through a cycle of laser scanning, 
+%geospatial computation in GRASS GIS, and projection
+%giving developers and users access to 
+%a sophisticated library for 
+%spatial modeling, simulation, visualization, and databasing.
+%It enriched freeform hand modeling with geospatial simulations 
+%like diffusive water flow and erosion-deposition 
+%so that users could easily explore how 
+%changes in topographic form affect landscape processes. 
+%
+%% Augmented Reality Sandbox
+%Tangible Landscape -- the next generation of this system -- was inspired by
+%the open source Augmented Reality Sandbox \cite{Kreylos2012}
+%which couples a sandbox with a digital model of a landscape 
+%through a real-time cycle of 3D scanning with a Kinect sensor, spatial modeling and simulation, and projection.
+%% TL
+%While TanGeoMS used an expensive laser scanner
+%for 3D sensing \cite{Tateosian2010}, 
+%Tangible Landscape uses a low-cost 3D sensor %like the Kinect 
+%for real-time depth and color sensing. 
+%The \nth{1} generation of Tangible Landscape \cite{Petrasova2014} 
+%used the \nth{1} generation Kinect with structured light sensing \cite{Smisek2011}, 
+%while the \nth{2}  \cite{Petrasova2015} and \nth{3} generations of Tangible Landscape 
+%used the \nth{2} generation Kinect with time-of-flight sensing \cite{Bamji2015}. 
 
 
 \subsection{Design}
@@ -845,7 +1108,7 @@ so that users can immersively visualize the modeled landscape
 at a human scale 
 (Table \ref{table:tl_vr}) \cite{Tabrizian2016}.
 %(Fig.~\ref{fig:drawing_trees}).
-
+%
 Because the model is continually scanned
 users' hands will be digitized as they sculpt or place objects. 
 Scanning users' hands as topography 
@@ -878,7 +1141,7 @@ place their hands on the model and create simulated lakes between their fingers
 \end{figure}
 
 \begin{table}
-\tbl{Collaboratively sculpting topography to create lakes, drawing trees with a laser pointer, and visualizing in VR.}{
+\tbl{Collaboratively sculpting topography to create lakes, drawing trees with a laser pointer, and visualizing in VR. Source: \cite{Tabrizian2016}.}{
 \ra{1.3}
 \begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
 \toprule
@@ -1008,9 +1271,10 @@ The point cloud is processed into a
 raster-based digital elevation model (DEM) 
 in a GRASS GIS database.
 Since the scanner can be slightly tilted,
-we first ensure that the scan is horizontally aligned
-through a calibration process, which derives
-a rotation matrix by scanning the horizontal surface 
+the scan is horizontally aligned
+through a calibration process in which
+a rotation matrix is derived 
+by scanning the horizontal surface 
 of the table where the model will be placed.
 This rotation matrix is then applied to each scan.
 The point cloud is automatically trimmed 
@@ -1019,33 +1283,33 @@ smoothed, and georeferenced based on the known
 spatial extent of the area represented by the model.
 Georeferencing includes translation, 
 rotation by 180\textdegree{} along the z-axis,
-horizontal scaling, and vertical scaling 
-which takes into account the vertical exaggeration 
+horizontal scaling, and vertical scaling
+to account for the vertical exaggeration 
 -- if any -- of the physical model.
 The resulting representation of the terrain 
 has real world dimensions
 and can be combined effortlessly with other GIS data, 
 such as land cover or orthophotographs.
 
-The DEM is then reconstructed from the point cloud
+The DEM is reconstructed from the point cloud
 using either the regularized spline with tension 
 interpolation method \cite{Mitasova2005}
 or binning with cell values computed 
 as the mean of the z-coordinates of all of the points 
 falling into that cell.
 Although binning results in a noisier DEM, it is very fast,
-and may, therefore, be a better option for certain applications. 
+and may, therefore, be a better option for some applications. 
 Multiple point clouds can be integrated 
 to increase point density at the cost of increased
 processing time.
-
-For each new DEM, 
+%
+For each new DEM 
 a set of customizable analyses and geospatial workflows
-specified in a Python file is run, and the display is updated.
+specified in a Python file is run and the display is updated.
 Tangible Landscape provides a library of geospatial functions 
 built on top of GRASS GIS modules 
 and an API for developing custom workflows.
-The modeled analyses as well as scanning parameters can be modified 
+The modeled analyses and scanning parameters can be modified 
 as the system runs.
 
 Tangible Landscape has been implemented as a set of components 
@@ -1059,7 +1323,7 @@ The \emph{Tangible Landscape} plugin provides
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
 The \emph{Tangible Landscape Immersive Extension} \cite{tangible-landscape-immersive-extension}
 links Tangible Landscape with Blender, 
-an open source 3D modeling and animation program \cite{Blender} 
+an open source 3D modeling and animation program \cite{Blender}, 
 enabling 3D rendering on screens or head-mounted displays.
 
 Users can develop new analyses for Tangible Landscape 
@@ -1091,13 +1355,13 @@ and 512 $\times$ 424 pixels depth resolution,
 the spatial resolution of the system ranges from 1.4 to 2.7 mm
 when the scanner is 0.5 to 1 m above the model. 
 %
-In the experiment the Kinect was mounted 
+In the experiments the Kinect was mounted 
 approximately 0.6 m above the model
 so we used 2 mm resolution, which
 translated to 6 m in the real world 
 given the scale of the physical model.
 Kinect depth measurements suffer from noise 
-as quantified by Hamed et al. \cite{Hamed2015}
+as quantified by Sarbolandi et al. \cite{Hamed2015}
 We minimized the negative effects of noise 
 by placing the model
 closer to the center of the camera 
@@ -1105,8 +1369,8 @@ and by smoothing the data using the Moving Least
 Squares reconstruction method \cite{Rusu2011}.
 
 Fig.~\ref{fig:accuracy} and Table \ref{table:accuracy} 
-show the accuracy of the experiment setup.
-We scanned a CNC routed model used in this study
+show the accuracy of the experimental setup.
+We scanned one of the CNC routed model used in this study
 and compared it with the original DEM.
 % do we know the accuracy of cnc? 
 % 0.125" or 3.175 mm bit with 0.05" or 1.27 mm stepover with +- 0.01 mm positional accuracy
@@ -1128,7 +1392,7 @@ for faster smoothing.
 \begin{figure}
 \begin{center}
 		\includegraphics[width=0.6\textwidth]{images/precision/accuracy.png}
-	\caption{Accuracy assessment: the difference between original digital elevation model and the scanned elevation of a digitally fabricated physical model of the same landscape. The scanned elevation is higher then the original digital elevation model in blue areas and lower in red areas. Legend values are in millimeters.
+	\caption{Accuracy assessment: the difference between original digital elevation model and the scanned elevation of a digitally fabricated physical model of the same landscape. The scanned elevation is higher than the original digital elevation model in blue areas and lower in red areas. Legend values are in millimeters.
 	}
 	\label{fig:accuracy}
 \end{center}
@@ -1190,7 +1454,7 @@ We used the small model size
 in this study. 
 We recommend the medium model size 
 -- 34~cm x 34~cm --
-new users getting started with Tangible Landscape.
+for new users getting started with Tangible Landscape.
 %
 The time needed to scan and obtain a model is less than 1~s, 
 but the subsequent analyses may take more than 1~s.
@@ -1219,7 +1483,7 @@ the current, reported system.
 Benchmarks were performed using a
 System76 Oryx Pro with
 % 3.5 GHz Quad-Core
-6th Generation Intel Core processor i7-6700HQ (2.6 GHz, up to 3.5 GHz, 6 MB cache, 4 cores, 8 threads),
+a \nth{6} generation Intel Core processor i7-6700HQ (2.6 GHz, up to 3.5 GHz, 6 MB cache, 4 cores, 8 threads),
 16 GB dual-channel DDR4 random-access memory (2 $\times$ 8 GB),
 % (RAM is in GB, not GiB)
 M.2 SSD storage (540 MB/s sequential read, 520 MB/s write), and
@@ -1259,7 +1523,7 @@ can be used as guides for hand sculpting terrain models.
 Users can project their target digital elevation model and contours 
 over their polymeric sand model as a static guide for sculpting. 
 Tangible Landscape can also dynamically compute the difference -- i.e.\ cut and fill --
-between the target digital elevation model and the scanned model that has been sculpted . 
+between the target digital elevation model and the scanned model that has been sculpted. 
 The difference can provide a real-time guide 
 where to add or remove sand in order to match the target digital elevation model (Fig.~\ref{fig:difference_sequence}). 
 
@@ -1410,7 +1674,7 @@ from around the world.
 Of these 2 were experts in 3D modeling with over 10 years of experience 
 using Rhinoceros and similar programs including Maya and 3ds Max. 
 These experts felt comfortable and proficient modeling a wide variety of geometries 
-and had developed unique, personalized, and highly adaptable workflow 
+and had developed unique, personalized, and highly adaptable workflows 
 (see Table~\ref{table:participants}).
 %An additional 12 participants took part in the study, 
 %but were discarded as they did not complete every task. 
@@ -1460,7 +1724,7 @@ Academics \& professionals & 6 & 0 & 2\\
 \paragraph{Experimental design}
 % tasks
 Participants were given three tasks -- 
-to digitally sculpt a model a landscape using the 3D modeling program Rhinoceros, 
+to digitally sculpt a model of a landscape using the 3D modeling program Rhinoceros, 
 to hand sculpt a model of a landscape in polymer-enriched sand,
 and to sculpt a model of a landscape using Tangible Landscape.
 % time limit 
@@ -1524,19 +1788,23 @@ to use as a reference during each task.
 \begin{center}
 	\includegraphics[height=108px]{images/experiments/art_rhino.jpg}
 	\includegraphics[height=108px]{images/experiments/rhino.png}
-	\caption{Coupling experiment - digital modeling:
+	\caption{Coupling experiment -- digital modeling.
 	A participant digitally sculpts the study landscape in Rhinoceros
 	using 3D contours as guides.}
 	\label{fig:rhino}
 	%
+	\vspace*{0.5em}
+	%
 	\includegraphics[width=\textwidth]{images/experiments/connie_analog_1.jpg}
-	\caption{Coupling experiment - analog modeling by hand:
+	\caption{Coupling experiment -- analog modeling by hand.
 	A participant sculpts the study landscape by hand
 	using a physical model as a reference.}
 	\label{fig:analog}
 	%
+	\vspace*{0.5em}
+	%
 	\includegraphics[width=\textwidth]{images/experiments/carla_proj_aug.jpg}
-	\caption{Coupling experiment - projection-augmented modeling:
+	\caption{Coupling experiment -- projection-augmented modeling.
 	A participant sculpts the study landscape using
 	the projected elevation and contour maps
 	as guides.}
@@ -1546,8 +1814,10 @@ to use as a reference during each task.
 
 
 \paragraph{Digital modeling}
-Participants had 10 minutes to digitally model the study landscape in Rhinoceros 5, 
-a non-uniform rational basis spline (NURBS) based 3D modeling program
+Participants had 10 minutes 
+to digitally model the study landscape in Rhinoceros 5, 
+a non-uniform rational basis spline 
+(NURBS) based 3D modeling program
 designed for precise freeform curve and surface modeling \cite{Rhino}.
 After 10 minutes of training 
 participants modeled the study landscape as a NURBS surface 
@@ -1555,23 +1825,25 @@ by vertically translating control points (Fig.~\ref{fig:rhino}).
 They started with a flat NURBS surface that was 
 divided into a 10 x 10 grid of control points.
 As a reference their model space also included 
-a locked 3D representation of the study landscape as contours. 
+a locked representation of the study landscape as 3D contours. 
 At any point participants could rebuild the surface 
 with a higher density of control points for finer, more nuanced control. 
 This method is relatively simple and 
 analogous to basic actions in sculpture -- pushing and pulling. 
 We developed and tested this method 
-as a simple, straightforward digital freeform surface modeling technique
+as a simple, straightforward technique for  
+digital freeform surface modeling
 that could be taught quickly, yet could produce an accurate model. 
 %  
 % timing / rebuilding
 Through testing we determined that 
 novice users took approximately 10 minutes
 to model the surface with a 10 x 10 grid of control points
-before wanting to building the surface with more control points.
+before wanting to rebuild the surface with more control points.
 %
 See Appendix \ref{appendix:videos}
-for videos demonstrating the training \ref{videos:training} and digital 3D modeling task (\ref{videos:digital}).
+for videos demonstrating the training (\ref{videos:training}) 
+and digital 3D modeling task (\ref{videos:digital}).
 
 % choice of 3d modeling program
 Different 3D modeling programs afford very different
@@ -1581,18 +1853,22 @@ Developing a simple, intuitive modeling technique
 drove the choice of software in this study. 
 %
 After testing 3D modeling workflows in 
-Rhinoceros, Vue, Maya, SketchUp, and Voxel Builder
-we chose Rhinoceros for this task because it 
+Rhinoceros, Vue, Maya, and SketchUp
+we chose Rhinoceros 5 for this task because it 
 is popular with designers such as architects, 
 has a wide variety of modeling tools,
 can precisely represent continuous surfaces, 
 and has plugins for importing and exporting geographic data. 
 %
-To make a fair comparison between digital, analog, and tangible modeling,
-the digital modeling technique needed to be relatively analogous to hand sculpting
--- i.e.~pushing and pulling rather than painting in 3D, drafting in 3D, or stacking voxels.
+To make a fair comparison 
+between digital, analog, and tangible modeling,
+the digital modeling technique 
+needed to be relatively analogous to hand sculpting
+-- i.e.~pushing and pulling rather than painting in 3D, 
+drafting in 3D, or stacking voxels.
 %
-There is an analogous modeling technique -- pulling and pushing vertices -- 
+There is an analogous modeling technique 
+-- pulling and pushing vertices -- 
 using the Sandbox tool in SketchUp \cite{SketchUp},
 but this creates a triangulated irregular network (TIN)
 rather than a continuous NURBS surface. 
@@ -1604,9 +1880,11 @@ and generates a TIN.
 TINs less accurately represent continuous surfaces like topography
 and would generate artifacts in our analyses. 
 %
-In another pilot study \cite{Harmon2016} we tested Vue's terrain editor. 
+In another pilot study \cite{Harmon2016} 
+we tested Vue's terrain editor. 
 We found that participants tended to 
-over-exaggerate distinct features in the landscape like stream channels, 
+over-exaggerate distinct features 
+in the landscape like stream channels, 
 while ignoring more subtle features like slopes.  
 We also determined that the resulting models
 had an obvious triangulated structure that caused
@@ -1614,7 +1892,7 @@ exaggerated slopes and discontinuous water flow
 in our analyses. 
 %
 While voxel modeling programs 
-%like Voxel Builder % http://voxelbuilder.com/
+like Voxel Builder % http://voxelbuilder.com/
 %and MagicaVoxel % https://ephtracy.github.io/
 and games like Minecraft \cite{Minecraft}
 are very intuitive to use,
@@ -1627,7 +1905,8 @@ like architecture and landscape architecture.
 \paragraph{Analog modeling}
 
 After a brief explanation and demonstration
-participants had 10 minutes to sculpt the study landscape in polymer-enriched sand 
+participants had 10 minutes to sculpt 
+the study landscape in polymer-enriched sand 
 by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).  
 They were given a CNC-routed model of the study landscape 
 as a reference, a sculpting tool, and a 3D scale. 
@@ -1652,7 +1931,7 @@ Participants were also given CNC routed reference model and
 a 3D scale ruled in map units. 
 After an explanation of the contour map, elevation color table, and legend,
 participants were shown how the 3D scale could be used to 
-measure the elevation of their scale models
+measure the elevation of their scale models.
 %
 See Appendix \ref{appendix:videos}
 for a video demonstrating the projection-augmented 3D modeling task (\ref{videos:augmented}).
@@ -1661,15 +1940,18 @@ for a video demonstrating the projection-augmented 3D modeling task (\ref{videos
 We used Tangible Landscape to scan the finished models 
 built using analog hand modeling and projection-augmented modeling.
 The scans were captured as point clouds, interpolated 
-as digital elevation models using the regularized spline with tension method,
-and stored as raster maps in a GRASS GIS database 
-The NURBS surfaces modeled in Rhinoceros were exported as raster elevation maps,
+as digital elevation models 
+using the regularized spline with tension method,
+and stored as raster maps in a GRASS GIS database. 
+The NURBS surfaces modeled in Rhinoceros 
+were exported as raster elevation maps,
 imported into GRASS GIS, randomly resampled, 
 re-interpolated using the regularized spline with tension method, 
 and stored as raster maps in a GRASS GIS database. 
-The data from Rhinoceros was randomly resampled and re-interpolated
-to account for differences and irregularities in resolution, data density, and point spacing.
-
+The data from Rhinoceros 
+was randomly resampled and re-interpolated to account for 
+differences and irregularities in resolution, data density, and point spacing.
+%
 For each set of models -- digital, analog, and augmented --
 we computed raster statistics (i.e.~per cell statistics), 
 topographic and morphometric parameters, 
@@ -1780,10 +2062,10 @@ with the module \textit{r.param.scale} \cite{r.param.scale}.
 \paragraph{Mean landforms}
 We identified landforms 
 for the mean digital elevation model for each set 
-using geomorphon,
+using geomorphons,
 a pattern recognition method for landform classification 
 based on the openness of the terrain
-implemented as the add-on module \textit{r.geomorphon} \cite{r.geomorphon}.
+and implemented as the add-on module \textit{r.geomorphon} \cite{r.geomorphon}.
 Geomorphon works effectively across spatial scales because 
 the neighborhood search size for pattern recognition 
 is spatially variable -- it depends on the visibility of the cell \cite{Jasiewicz2013}.  
@@ -2366,8 +2648,7 @@ steepen slopes and form valleys.
 The 3D modeling experts, however, 
 used unique modeling strategies
 developing their own techniques as they worked.
-One 
-working exclusively in the perspective viewport
+One worked exclusively in the perspective viewport
 continually orbited above and below the model 
 in order to compare the top and the bottom
 as he pushed and pulled points
@@ -2432,7 +2713,7 @@ the blade of their hands,
 or just their fingertips 
 depending on whether 
 they wanted to make a big move
-or a finetuned refinement.
+or a fine-tuned refinement.
 %
 While participants could select and transform
 a group of control points in Rhinoceros,
@@ -2448,7 +2729,7 @@ which interrupted the modeling process
 and slowed down interaction.
 
 % interviews
-See table \ref{table:interviews} for select comments from interviews.
+See Table \ref{table:interviews} for select comments from interviews.
 One participant said that she felt anxious when digitally modeling,
 but felt calmer and more relaxed when hand sculpting sand. 
 She found hand sculpting to be more intuitive, saying that
@@ -2502,7 +2783,7 @@ it was subtle.'
 
 \paragraph{Students vs. academics and professionals}
 %
-Table \ref{table:students} and table \ref{table:professionals}
+Table \ref{table:students} and Table \ref{table:professionals}
 compare students' results 
 with academics and professionals. 
 % overview
@@ -2705,7 +2986,6 @@ We also computed the difference between the
 reference elevation and the mean elevation for the set. 
 The reference elevation used in the difference calculation was rescaled and shifted based on the linear regression of the reference and mean elevation.
 We computed the slope and landforms of the mean elevation. 
-
 We also filmed each session, 
 observed and took notes on participants' modeling processes, 
 and interviewed landscape architecture professionals and academics.
@@ -2857,7 +3137,7 @@ Based on interviews and observations
 we found that the difference analytic enabled
 a rapid, iterative process 
 of modeling, learning from computational feedback, 
-re-remodeling, etc\ldots.
+re-remodeling, etc.
 
 \paragraph{Per-cell statistics}
 Table \ref{table:difference_stats} shows maps of raster statistics for this experiment.
@@ -2877,7 +3157,7 @@ Overall participants performed well --
 there was little deviation from the best fit. 
 Participants tended to perform poorly 
 near the edges of models, especially in the corners.
-They also performed poorly with the valleys 
+They also had trouble with the valleys 
 and the low point by the secondary ridge.
 
 \paragraph{Geospatial analyses}
@@ -2896,7 +3176,7 @@ but tended not model steep enough slopes for the secondary ridge.
 The mean landforms show that participants tended to 
 clearly capture the central ridge and its spurs and
 the secondary ridge and its valley, but missed the 
-other valleys.
+other valleys
 (sees Tables \ref{table:difference_experiment}-\ref{table:difference_percent_cells}). 
 Hollows -- transitions between slopes, footslopes, and valleys -- 
 on the mean landform map hint at these other 
@@ -2911,7 +3191,7 @@ with a lower standard deviation of differences
 and more accurate slopes. 
 Since they did not, however, exaggerate the central ridge
 and did not smooth its slopes, 
-they did not clearly represent this landform. 
+they did not cleanly represent this landform. 
 The others built more exaggerated models 
 that more clearly captured the main ridge.
 
@@ -2930,7 +3210,7 @@ but enhanced by computational feedback
 explaining that 
 `because Tangible Landscape gives immediate results 
 it encourages an iterative process.' 
-See table \ref{table:interviews} for select comments about this experiment.
+See Table \ref{table:interviews} for select comments about this experiment.
 
 % conclusions
 The difference analytic is intuitive -- 
@@ -2947,8 +3227,8 @@ either exaggerated or under-exaggerated.
 After a pilot study \cite{Harmon2016}
 we conducted an experiment to study 
 how water flow analytics 
-in a tangible interface for GIS
-mediate 3D spatial performance.
+mediate 3D spatial performance
+when using a tangible interface for GIS.
 %
 This experiment was designed to study whether
 participants could link form and process
@@ -3177,7 +3457,6 @@ to match the reference
 -- i.e.~where water should flow versus where it was modeled. 
 The mean water flow tightly fit the reference, 
 following similar, albeit simplified routes.
-
 % 3D experts vs. novices
 Table \ref{table:water_flow_comparison} compares the performance of 
 landscape architecture academics and professionals 
@@ -3199,14 +3478,13 @@ inconsistently modeled and over-exaggerated,
 while the streams were consistently modeled,
 had high volumes of continuous water flow, 
 and flowed along the correct routes.
-
 % understanding water flow
 This experiment required abstract spatial thinking linking form and process. 
 Because water flow is controlled by the shape and gradient of the topography
 participants had to sculpt topographic form to drive water flow. 
 % interviews
 This modeling process, however, helped them understand topography better 
-because 'seeing the flow took away the mystery of topography.'
+because `seeing the flow took away the mystery of topography.'
 %
 We observed participants using an iterative modeling process 
 with the water flow analytic -- 
@@ -3221,7 +3499,7 @@ they
 Using the water flow analytic with this trial-and-error process
 participants were able to generate hypotheses, test hypotheses, and draw inferences 
 about the way that water flows over topography. 
-See table \ref{table:interviews} for select comments about this experiment.
+See Table \ref{table:interviews} for select comments about this experiment.
 %
 %One participant described this trail-and-error process as tinkering --
 %`Tangible Landscape let me tinker. 
@@ -3464,7 +3742,7 @@ shape changing interfaces like Tangible CityScape \cite{Tang2013}.
 Based on our own experiences
 we further hypothesize that 
 hybrid approaches combining 
-digital modeling, digital fabrication, and tangible modeling 
+tangible modeling and digital fabrication
 should be even more efficient and effective
 for longer, more complex problems.
 % examples...
@@ -3580,7 +3858,7 @@ GIS for Designers and the Landscape Dynamics Seminar
 in NCSU's Department of Landscape Architecture,  
 at conferences such as
 FOSS4G NA 2016 \cite{Petrasova2016a,Harmon2016e},
-USIALE 
+US-IALE 2016, 
 and ACM SIGSPATIAL 2016 \cite{Tabrizian2016}, 
 in public exhibitions at the City of Raleigh Museum and 
 the North Carolina Museum of Natural Sciences,
@@ -3609,7 +3887,7 @@ Early in the design process
 we considered 
 arms and hands captured by the 3D sensor
 to be confusing, disruptive artifacts
-that obfuscated the real data, 
+that obfuscated the real data 
 interrupting the desired interaction. 
 %
 We tried to deal with these artifacts
@@ -3708,7 +3986,7 @@ worked well with the general public,
 experts wanted more depth, feedback, and customizability 
 -- i.e.~a structured, yet open experience
 that would be engaging and 
-would encourage in-depth exploration.
+encourage in-depth exploration.
 %
 Experts need to be able to 
 use many different modes of tangible interaction
@@ -3726,13 +4004,13 @@ and controlling the spread of sudden oak death
 they asked for dashboards with statistics and data visualizations 
 in addition to the projected maps
 so that they could study how different scenarios would affect 
-groups of impacted stakeholders with different values.  
+groups of impacted stakeholders who valued different things.  
 
 % integrating research into design
 The experiments helped us to refine the design of Tangible Landscape. 
 We learned how users performed with different modes of analytic feedback, 
 gained insight about their experiences and needs,
-realized the importance of color tables, 
+thought critically about colors, 
 and reaffirmed the need for speed -- 
 the importance of fast (but not too fast) feedback. 
 This informed the development of the next generation of Tangible Landscape 
@@ -3956,14 +4234,12 @@ for 3D printing and CNC routing.
 We also plan to improve the system setup
 so that it is modular, lighter, more portable, more adaptable, less expensive,
 and more aesthetic.
-%
 % future research
 Through the user experiments 
 and our own experiences
 we have also identified new research questions.
 How do tangible interfaces for geospatial modeling mediate learning?
 How can Tangible Landscape be used effectively in classrooms?
-
 % vision
 Our design process is also highly conceptual and vision-driven. 
 Inspired by 
@@ -4061,19 +4337,9 @@ robotic fabrication, robotic construction, and streaming field data.}
 
 % REFEREE 1: The comparison of the Augmented Landscape with a purely digital and a purely manual approach is interesting and has the potential for very useful conclusions. On page 4, the authors formulate a number of compelling questions - yet, most of them could not (yet) be addressed in the submitted paper.
 
-% concept
-Tangible Landscape -- a tangible interface for GIS -- 
-enables natural 3D sketching. % 4D spatiotemporal sketching.
-Users can intuitively interact with 
-spatial data and scientific models using their bodies. 
-By affording both natural, embodied interaction and analytical feedback
-Tangible Landscape enables a
-rapid, iterative modeling process.
-Through this embodied process of reflection-in-action 
-users can 
-observe spatial patterns, forms, and processes, 
-generate and test hypotheses, 
-and draw inferences. 
+%% concept
+%Tangible Landscape -- a tangible interface for GIS -- 
+%enables natural 3D sketching. % 4D spatiotemporal sketching.
 
 % tangibles can enhance spatial performance
 Through a series of experiments
@@ -4104,6 +4370,12 @@ users worked in rapid cycles of
 sculpting and digitally informed critical analysis
 to build accurate models that
 correctly represented the topographic and hydrologic morphology.
+% process
+Through this embodied process of reflection-in-action 
+users were able to
+observe spatial patterns, forms, and processes, 
+generate and test hypotheses, 
+and draw inferences. 
 % cog offloading
 The experiments showed that users 
 were able to offload enough of the cognitive work 
@@ -4119,7 +4391,8 @@ spatial cognition, affect, motivation, and metacognition
 in tangible modeling.
 
 % summary
-The experiments show that Tangible Landscape 
+The experiments show that Tangible Landscape,
+a tangible interface for GIS, 
 works as theorized and designed -- 
 coupling a physical and digital model of a landscape
 enables users to 
@@ -4127,6 +4400,9 @@ cognitively grasp topography,
 intuitively shape and interact with multidimensional space, 
 and offload enough cognitive work to understand 
 real-time geospatial analytics. 
+% process 
+With Tangible Landscape users can intuitively interact with 
+spatial data and scientific models using their bodies. 
 % users
 While novices should be able to effectively learn about 
 multidimensional space and
@@ -4136,6 +4412,7 @@ experts can effectively use it to
 rapidly develop, prototype, and test 
 hypotheses about space and spatiotemporal processes.
 
+
 % tangibles for novices
 	% collaborative, intuitive, educational
 	% tangibles as spatial teaching tools
@@ -4144,13 +4421,6 @@ hypotheses about space and spatiotemporal processes.
 	% tangibles can be powerful tools for rapid prototyping
 % tangibles for learning
 	% spatial thinking skills developed with digital tools are transferable
-
-
-
-
-
-
-
 
 
 
@@ -4320,7 +4590,7 @@ with the participant's name, the type of data, and the experiment number
 
 \subsection{Experiments}\label{appendix:experiments}
 Introduce the research and explain the experiment to each participants. 
-If they agree to take part in the experiment have them sign an informed consent form.
+If they agree to take part in the experiment have them sign an informed consent form. Shuffle the order of experiments for each participant.
 %
 \paragraph{Digital modeling}
 In the \nth{1} experiment participants will sit at a computer
@@ -4557,31 +4827,32 @@ We coupled Tangible Landscape with an immersive virtual environment so that user
 \subsection{Good performance with Tangible Landscape's difference analytic}\label{videos:new_difference}
 \url{https://youtu.be/Q3elMIRCYSk}
 
-\vfill
+%\vfill
 
-\clearpage
+%\clearpage
 
 \section{Scripts}\label{appendix:scripts}
 
+\subsection{analysis.py}
+\url{https://github.com/baharmon/tangible_topography}
 
 %The python scripts for data processing and analysis used in this experiment 
 %are available on GitHub at 
 %\url{https://github.com/baharmon/tangible_topography}
 %released under the GNU General Public License (GPL). 
 
-\vfill
+%\vfill
 
-\clearpage
+%\clearpage
 
 \section{Data}\label{appendix:data}
+\subsection{tangible\_topography\_mapset}
 
 %The data used in this experiment 
 %and the results -- 
 %including data, renderings, photographs, and interview notes --
 %are available on the Open Science Framework 
 %at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
-
-\vfill
 
 
 \end{document}
