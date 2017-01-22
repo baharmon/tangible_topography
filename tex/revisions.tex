@@ -1,0 +1,244 @@
+% !TEX encoding = UTF-8 Unicode
+
+% Compilation using 'acmsmall.cls' - version 1.3 (March 2012), Aptara Inc.
+% (c) 2010 Association for Computing Machinery (ACM)
+%
+% Questions/Suggestions/Feedback should be addressed to => "acmtexsupport@aptaracorp.com".
+% Users can also go through the FAQs available on the journal's submission webpage.
+%
+% Steps to compile: latex, bibtex, latex, latex
+
+
+\documentclass[prodmode,acmtochi]{acmsmall} % Aptara syntax
+
+% Package to generate and customize Algorithm as per ACM style
+\usepackage[ruled]{algorithm2e}
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+
+% Packages
+\usepackage[super]{nth}
+\usepackage[inline]{enumitem}
+\usepackage{moreenum}
+\usepackage{tabu}
+\usepackage{booktabs}
+\usepackage{array}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
+\newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
+
+\setlength\parindent{0pt}
+
+% Metadata Information
+\acmVolume{0}
+\acmNumber{0}
+\acmArticle{0}
+\acmYear{0}
+\acmMonth{0}
+
+% Copyright
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+% DOI
+\doi{0000001.0000001}
+
+%ISSN
+\issn{1234-56789}
+
+% Document starts
+\begin{document}
+
+% Page heads
+\markboth{B. Harmon et al.}{Cognitively Grasping Topography with Tangible Landscape}
+
+% Title portion
+\title{Cognitively Grasping Topography with Tangible Landscape}
+\author{BRENDAN ALEXANDER HARMON
+\affil{North Carolina State University}
+ANNA PETRASOVA
+\affil{North Carolina State University}
+VACLAV PETRAS
+\affil{North Carolina State University}
+HELENA MITASOVA
+\affil{North Carolina State University}
+ROSS ​KENDALL MEENTEMEYER
+\affil{North Carolina State University}
+EUGENE BRESSLER
+\affil{North Carolina State University}
+ART RICE
+\affil{North Carolina State University}}
+
+\maketitle
+
+\textbf{Revisions}
+
+\vspace*{3em}
+
+%Dear editors and reviewers,\\
+%
+%We have revised the paper 
+%\emph{Cognitively Grasping Topography with Tangible Landscape}. 
+%
+%\hrulefill \\
+
+\textbf{Provide more details in related work section 
+that differentiates your findings from related work.} \\
+
+We have added a detailed literature review to subsection 
+\textbf{1.2~Tangible interfaces for geospatial modeling}
+that details relevant TUIs and user studies.
+We discuss TUI including 
+Project FEELEX, 
+the XenoVision Mark III Dynamic Sand Table,  
+the Northrop Grumman Terrain Table, 
+Relief, Recompose, inFORM, Tangible CityScape,
+Urp, the Collaborative Design Platform, 
+Illuminating Clay, Tangible Geospatial Modeling System, 
+SandScape, Phoxel-Space, 
+the Augmented Reality Sandbox,
+Hakoniwa, the Augmented REality Sandtable,
+Inner Garden, and Tangible Landscape. \\
+
+\hrulefill \\
+
+\textbf{Add details on the system implementation.} \\
+
+In subsection \textbf{2.3~Implementation} 
+we explain how the process of calibration, scanning, filtering,
+terrain modeling, and analysis works. \\
+
+In subsection \textbf{2.4~System resolution, accuracy, and speed} 
+we quantify Tangible Landscape's resolution and
+assess its accuracy and speed.
+The accuracy assessment and benchmarks are presented 
+in Fig.~7, Table~VI, and Table~VII. \\
+
+We discuss the effect of lag on interaction 
+briefly in \textbf{2.2~Design} and in more detail in
+\textbf{6.3~Reflections on the design process}.\\
+
+We added a diagram of the system setup with measurements to 
+\textbf{Appendix A}. \\
+
+We briefly outline potential applications in 
+subsection  \textbf{2.6~Applications}. \\
+
+\hrulefill \\
+
+\textbf{Clarify user study details.} \\
+
+In subsection \textbf{3.1~Methods}
+in the paragraph \textbf{Participants} and Table VIII
+we describe the participants 
+and their experience with GIS and 3D modeling. \\
+
+In the paragraph \textbf{Experimental design}
+we describe the methodology for the Coupling experiment
+in more detail including time limits, counterbalancing, and interviews. \\
+
+In the paragraph \textbf{Digital modeling}
+we discuss in detail the choice of 3D modeling software
+comparing the pros and cons of different programs. \\
+
+\hrulefill \\
+
+\textbf{How proficient in Rhino were your participants?} \\
+
+After describing the participants in 
+subsection \textbf{3.1~Methods}
+in the paragraph \textbf{Participants},
+we recomputed the analyses
+to in order compare novices versus experts.
+We used pairwise comparison to compare their performance 
+(See Fig.~17). \\
+
+Subsection \textbf{3.2~Results} presents the new results 
+with new Tables X-XVI comparing novices versus experts. 
+In these tables we changed the color table for standard deviation
+and cited its source -- Color Brewer -- and references in publication. \\
+
+Table XXIII in Subsection \textbf{4.2~Results}
+presents the new results comparing novices versus experts
+for the difference experiment. \\
+
+Table XXVII in Subsection \textbf{5.2~Results}
+presents the new results comparing novices versus experts
+for the water flow experiment.  \\
+
+\hrulefill \\
+
+\textbf{It would be very interesting to find out more 
+about the qualitative feedback from users.} \\
+
+More feedback from interviews and observations are discussed in the subsections \textbf{3.2~Results}, \textbf{4.2~Results}, and \textbf{5.2~Results}.
+Table XXVIII compiles select comments from interviews. \\
+
+\hrulefill \\
+
+\textbf{Generalize on your findings.}\\
+
+In section \textbf{6~Discussion}
+we discuss the new results 
+comparing novices' and experts' performance and process, 
+draw generalized conclusions, and 
+hypothesize about the implications. \\
+
+To clearly address the research questions, the discussion
+is broken in discrete sections -- 
+subsection \textbf{6.1~Coupling physical and digital models}
+and 
+subsection \textbf{6.2~How tangible geospatial analytics mediate users’ 3D spatial performance} 
+-- addressing the questions. \\
+
+The revised results and discussion are reflected in the \textbf{8~Conclusion}.\\
+
+\hrulefill \\
+
+\textbf{Longitudinal results: As the functionality outlined in the study experiments has been part of the Tangible Landscape system for many years, the paper should balance the results of this short study with qualitative observations of experts that have been using it over a longer duration, and how their use patterns shift.}\\
+
+The authors' experiences and observations are discussed in 
+subsection \textbf{6.3~Reflections on the design process}.
+We discuss system lag / speed, digitizing hands and arms,
+and unstructured versus structured users experiences. \\
+
+\hrulefill \\
+
+\textbf{Best practices if spatial modeling is the target goal.}\\
+
+Subsection \textbf{6.4~Design guidelines} outlines best practices
+for design TUIs for spatial modeling. \\
+
+
+\hrulefill \\
+
+\textbf{Suggestions for Online Appendix Content} \\
+
+We added videos demonstrating each of the experiments 
+and showcasing applications with Tangible Landscape
+as supplemental content.\\
+
+We have also added code and data for running the experiment
+as supplemental content.\\
+
+
+
+%\hrulefill \\
+%
+%\textbf{Why did the study switch to another reference model 
+%for the Difference Experiment?}\\
+
+\bibliographystyle{ACM-Reference-Format-Journals}
+\bibliography{tangible_topography.bib}
+
+\end{document}
+

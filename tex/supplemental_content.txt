@@ -1,0 +1,63 @@
+VIDEOS
+-----------------------------------------------------------------------
+tl_vr.mp4
+Landscape design with Tangible Landscape and Virtual Reality
+https://youtu.be/pYbpEMjME1Y
+CC BY-SA 4.0
+
+tl_vr.mp4
+Viewshed analysis with Tangible Landscape
+https://youtu.be/tGFNHFoHMYM
+CC BY-SA 4.0
+
+tl_fire.mp4
+Wildfire spread modeling with Tangible Landscape
+https://youtu.be/EJc57GFJeZI
+CC BY-SA 4.0
+
+tl_futures.mp4
+Urban growth modeling with Tangible Landscape
+https://youtu.be/SeBoGwSqmRM
+CC BY-SA 4.0
+
+digital_training.mp4
+Training for digital 3D modeling
+CC BY-SA 4.0
+
+digital_modeling.mp4
+Digital 3D modeling with Rhinoceros
+CC BY-SA 4.0
+
+analog_modeling.mp4
+Analog 3D modeling
+CC BY-SA 4.0
+
+augmented_modeling.mp4
+Projection-augmented 3D modeling with Tangible Landscape
+CC BY-SA 4.0
+
+difference_modeling.mp4
+3D modeling with Tangible Landscape's difference analytic
+CC BY-SA 4.0
+
+water_flow_modeling.mp4
+3D modeling with Tangible Landscape's water flow analytic
+CC BY-SA 4.0
+
+tl_difference.mp4
+Good performance with Tangible Landscape's difference analytic
+CC BY-SA 4.0
+
+
+SCRIPTS
+-----------------------------------------------------------------------
+analysis.py
+Python scripts for analyzing the data from the experiment.
+GNU GPL
+
+
+DATA
+-----------------------------------------------------------------------
+tangible_topography_mapset
+GRASS GIS location with mapsets used in this study.
+CC0
