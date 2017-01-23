@@ -1,18 +1,8 @@
 % !TEX encoding = UTF-8 Unicode
 
-% Compilation using 'acmsmall.cls' - version 1.3 (March 2012), Aptara Inc.
-% (c) 2010 Association for Computing Machinery (ACM)
-%
-% Questions/Suggestions/Feedback should be addressed to => "acmtexsupport@aptaracorp.com".
-% Users can also go through the FAQs available on the journal's submission webpage.
-%
-% Steps to compile: latex, bibtex, latex, latex
+\documentclass[format=acmsmall, review=false, screen=true]{acmart}
 
-
-\documentclass[prodmode,acmtochi]{acmsmall} % Aptara syntax
-
-% Package to generate and customize Algorithm as per ACM style
-\usepackage[ruled]{algorithm2e}
+\usepackage[ruled]{algorithm2e} % For algorithms
 \renewcommand{\algorithmcfname}{ALGORITHM}
 \SetAlFnt{\small}
 \SetAlCapFnt{\small}
@@ -33,11 +23,7 @@
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{upquote}
-%\usepackage{minted}
-%\usemintedstyle{bw}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
-%\newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
-%\newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
 
 % Special characters
 \usepackage{gensymb}
@@ -46,22 +32,25 @@
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
 
-% Fix table of contents
-\makeatletter
-\newcommand\l@paragraph[2]{}
-\newcommand\l@subparagraph[2]{}
-\makeatother
+%% Fix table of contents
+%\makeatletter
+%\newcommand\l@paragraph[2]{}
+%\newcommand\l@subparagraph[2]{}
+%\makeatother
 
 % Metadata Information
+\acmJournal{TOCHI}
 \acmVolume{0}
 \acmNumber{0}
 \acmArticle{0}
-\acmYear{0}
+\acmYear{2017}
 \acmMonth{0}
+\copyrightyear{2017}
+%\acmArticleSeq{0}
 
 % Copyright
 %\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
+\setcopyright{acmlicensed}
 %\setcopyright{rightsretained}
 %\setcopyright{usgov}
 %\setcopyright{usgovmixed}
@@ -69,95 +58,110 @@
 %\setcopyright{cagovmixed}
 
 % DOI
-\doi{0000001.0000001}
+\acmDOI{0000001.0000001}
 
 %ISSN
-\issn{1234-56789}
+%\issn{1234-56789}
+
+% Paper history
+\received{September 2016}
+\received[revised]{January 2017}
+\received[accepted]{}
 
 % Document starts
 \begin{document}
-
-% Page heads
-\markboth{B. Harmon et al.}{Cognitively Grasping Topography with Tangible Landscape}
-
-% Title portion
-\title{Cognitively Grasping Topography with Tangible Landscape} 
-% Cognitively Grasping 3D Form with Tangible Landscape
-% Multidimensional Sketching with Tangible Landscape
-% Embodied Spatial Cognition in Tangible Computing
-% Cognitively Grasping Topography with Tangible Landscape
-% Tangible Landscape: Cognitively Grasping Topography
-% Tangible Landscape: a Tangible Interface for Geospatial Modeling
-% Tangible Landscape: Cognitively Grasping Topography with a Tangible Interface for Geospatial Modeling
-% Tangible Landscape: a 3D Sketching with a Tangible Interface for Geospatial Modeling
-% 
-\author{BRENDAN ALEXANDER HARMON
-\affil{North Carolina State University}
-% \orcid{0000-0002-6218-9318}
-ANNA PETRASOVA
-\affil{North Carolina State University}
-%\orcid{0000-0002-5120-5538}
-VACLAV PETRAS
-\affil{North Carolina State University}
-%0000-0001-5566-9236
-HELENA MITASOVA
-\affil{North Carolina State University}
-%\orcid{0000-0002-6906-3398}
-ROSS ​KENDALL MEENTEMEYER
-\affil{North Carolina State University}
-EUGENE BRESSLER
-\affil{North Carolina State University}
-ART RICE
-\affil{North Carolina State University}}
+%
+\title[Cognitively Grasping Topography with Tangible Landscape]{Cognitively Grasping Topography with Tangible Landscape}  
+\author{Brendan Alexander Harmon}
+\orcid{0000-0002-6218-9318}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Center for Geospatial Analytics}
+  %\streetaddress{2800 Faucette Drive}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27695}
+  \country{USA}}
+\author{Anna Petrasova}
+\orcid{0000-0002-5120-5538}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Center for Geospatial Analytics}
+  %\streetaddress{2800 Faucette Drive}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27695}
+  \country{USA}}
+\author{Vaclav Petras}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Center for Geospatial Analytics}
+  %\streetaddress{2800 Faucette Drive}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27695}
+  \country{USA}}
+\author{Helena Mitasova}
+\orcid{0000-0002-6906-3398}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Center for Geospatial Analytics}
+  %\streetaddress{2800 Faucette Drive}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27695}
+  \country{USA}}
+\author{Ross Kendall Meentemeyer}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Center for Geospatial Analytics}
+  %\streetaddress{2800 Faucette Drive}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27695}
+  \country{USA}}
+\author{Eugene Bressler}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Department of Landscape Architecture}
+  %\streetaddress{50 Pullen Road}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27607}
+  \country{USA}}
+\author{Art Rice}
+\affiliation{%
+  \institution{North Carolina State University}
+  \department{Department of Landscape Architecture}
+  %\streetaddress{50 Pullen Road}
+  \city{Raleigh}
+  \state{NC}
+  \postcode{27607}
+  \country{USA}}
+}
 
 \begin{abstract}
-%
-%Spatial thinking can be embodied 
-%-- people can functionally think about space with their bodies 
-%by kinaesthetically experiencing space, 
-%cognitively grasping objects, and 
-%physically simulating spatial transformations.
-%
 Tangible interfaces for spatial modeling
 combine embodied, kinaesthetic interaction with spatial computations. 
-%
 Theoretically this should enable users to 
 intuitively interact 
 with multidimensional digital models of space,
 offloading challenging cognitive tasks onto the body and 
 computationally enhancing how they think about space.
-% 
 We have designed Tangible Landscape 
 -- a tangible interface powered by a geographic information system (GIS) 
 that gives 3D spatial data an interactive, physical form so that 
 users can naturally sense and shape it.
-%
 Tangible Landscape couples a physical and a digital model of a landscape
 through real-time cycles of 
 physical manipulation, 3D scanning, spatial computation, and projected feedback.
-%
-%As users manipulate
-%a physical model of a landscape
-%the model is 3D scanned, the scan is imported into GIS 
-%for spatial modeling, analysis, and simulation, 
-%and the results are projected back onto the model.
-%
 Through a series of 
 3D modeling experiments 
 assessed using both
-quantitative %methods 
-%such as geospatial modeling
+quantitative
 and qualitative methods 
-%such as geospatial modeling and interviews
-%including semi-structured interviews and direct observation
-%to study how Tangible Landscape
-%mediates 3D spatial performance.
-%
-%We determined that tangible interfaces for geospatial modeling 
-%can improve 3D spatial performance.
 we determined that Tangible Landscape 
 can improve 3D spatial performance. 
-%
 Participants produced more accurate models 
 that better represented morphological features 
 with tangible modeling than they did with either digital or analog, hand modeling. 
@@ -191,18 +195,13 @@ with tangible modeling than they did with either digital or analog, hand modelin
 
 \keywords{Human-computer interaction, tangible interfaces, interaction design, physical computation, embodied cognition, spatial thinking, geospatial modeling}
 
-\acmformat{Brendan A. Harmon, Anna Petrasova, Vaclav Petras, Helena Mitasova, Ross K. Meentemeyer, Eugene H. Bressler, and Art Rice, 2016. Cognitively Grasping Topography with Tangible Landscape.}
-
-\begin{bottomstuff}
-Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University; B. A. Harmon, E. H. Bressler {and} A. Rice, Department of Landscape Architecture, North Carolina State University.
-\end{bottomstuff}
+\thanks{
+Author's addresses: B. A. Harmon {and} A. Petrasova {and} V. Petras {and} H. Mitasova {and} R. K. Meentemeyer, Center for Geospatial Analytics, North Carolina State University; B. A. Harmon, E. H. Bressler {and} A. Rice, Department of Landscape Architecture, North Carolina State University.}
 
 
 \maketitle
 
-%{\tableofcontents}
-%{\listoffigures}
-%{\listoftables}
+\renewcommand{\shortauthors}{B. Harmon et al.}
 
 \section{Introduction}
 
@@ -1361,7 +1360,7 @@ the spatial resolution of the system ranges from 1.4 to 2.7 mm
 when the scanner is 0.5 to 1 m above the model. 
 %
 In the experiments the Kinect was mounted 
-approximately 0.6 m above a 23.5~x~23.5~cm model
+approximately 0.6 m above the model
 so we used 2 mm resolution, which
 translated to 6 m in the real world 
 given the scale of the physical model.
