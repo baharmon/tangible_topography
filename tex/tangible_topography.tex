@@ -100,15 +100,16 @@ ANNA PETRASOVA
 VACLAV PETRAS
 \affil{North Carolina State University}
 %0000-0001-5566-9236
-HELENA MITASOVA
-\affil{North Carolina State University}
-%\orcid{0000-0002-6906-3398}
 ROSS ​KENDALL MEENTEMEYER
 \affil{North Carolina State University}
 EUGENE BRESSLER
 \affil{North Carolina State University}
 ART RICE
-\affil{North Carolina State University}}
+\affil{North Carolina State University}
+HELENA MITASOVA
+\affil{North Carolina State University}
+%\orcid{0000-0002-6906-3398}
+}
 
 \begin{abstract}
 %
@@ -436,9 +437,10 @@ to create a shape changing 3D display. % 2.5D
 User studies for FEELEX included
 observations of user behavior and
 shape recognition tests.
-They found that 85\% of subjects 
+They found that 85\% of their subjects 
 used their entire hand to interact with the interface.
 On average subjects had 6~mm of error when perceiving shapes by touch
+with their system
 \cite{Iwata2001}.
 
 % terrain table
@@ -446,7 +448,7 @@ The XenoVision Mark III Dynamic Sand Table, developed in 2004,
 and the Northrop Grumman Terrain Table, developed in 2006, 
 were large actuated pin tables designed for military geospatial applications
 that used thousands of pins
-to dynamically reshape a 1.32~x~1.02~m silicone surface representing topography. 
+to dynamically reshape 1.32~x~1.02~m silicone surfaces representing topography. 
 
 % mit
 The MIT Media Lab developed a family of actuated pin tables 
@@ -480,7 +482,7 @@ The Tangible CityScape project used inFORM to
 physically model urban spaces 
 and analyze urban conditions like light and shadow.
 Building masses formed by pins would dynamically reshape
-when users could panned or zoomed with gestures. 
+when users panned or zoomed with gestures. 
 
 % pros and cons
 While actuated pin tables afford highly intuitive,
@@ -491,7 +493,7 @@ The size of the actuators limits their resolution --
 Project FEELEX had 40~mm spacing between pins,
 FEELEX 2 had 8~mm spacing,
 Relief had 38~mm spacing, 
-and inFORM has 3.175~mm 
+and inFORM has 3.175~mm spacing
 between 9.525~mm\textsuperscript{2} pins.
 These systems tend to be small and expensive to build
 due to their mechanical complexity. 
@@ -522,8 +524,8 @@ a depth camera to digitize and track physical models of buildings
 on a rear-projection light table. 
 As users move polystyrene foam models of buildings,
 the models are 3D scanned 
-updating a digital 3D model of a city
-and analyzes like
+updating a digital 3D model of a city.
+Analyzes like
 wind, light, shadow, accessibility, distance, and views
 are projected onto the table in realtime. 
 Views are also rendered in 3D 
@@ -638,8 +640,8 @@ to build terrain models from contours,
 model fluvial features and processes, and
 model coastal features and processes. 
 The researchers solicited feedback 
-with an exit survey and received 
-very positive feedback. 
+with an exit survey. 
+%and received very positive feedback. 
 Students reported that the sandbox helped them learn 
 about topography, fluvial and coastal processes, 
 and process-form interactions 
@@ -1093,7 +1095,7 @@ geospatial analyses, models, and simulations,
 which are then projected back onto the physical model 
 -- all in real-time (Fig.~\ref{fig:system_schema}). 
 Users can tangibly interact with digital models and simulations
-by sculpting, placing objects, or sketching (Fig.~\ref{fig:interactions}) .
+by sculpting, placing objects, or sketching (Fig.~\ref{fig:interactions}).
 They can sculpt the model with their hands
 to shape topography, 
 create or move volumes
@@ -1289,8 +1291,8 @@ spatial extent of the area represented by the model.
 Georeferencing includes translation, 
 rotation by 180\textdegree{} along the z-axis,
 horizontal scaling, and vertical scaling
-to account for the vertical exaggeration 
--- if any -- of the physical model.
+to account for the vertical exaggeration, if any,
+ of the physical model.
 The resulting representation of the terrain 
 has real world dimensions
 and can be combined effortlessly with other GIS data, 
@@ -1328,7 +1330,7 @@ The \emph{Tangible Landscape} plugin provides
 utilities, a library of analyses, and a GUI dialog for tangible interaction in GRASS GIS.
 The \emph{Tangible Landscape Immersive Extension} \cite{tangible-landscape-immersive-extension}
 links Tangible Landscape with Blender, 
-an open source 3D modeling and animation program \cite{Blender}, 
+an open source 3D modeling and animation program \cite{Blender} 
 enabling 3D rendering on screens or head-mounted displays.
 
 Users can develop new analyses for Tangible Landscape 
@@ -1388,7 +1390,7 @@ as part the analysis for the experiment
 and does not influence the results.
 The difference shown in Fig.~\ref{fig:accuracy} 
 was computed from a single frame. 
-Although it is possible to integrate multiple frames
+Although it is possible to integrate multiple frames,
 we chose to construct the DEM from a single frame 
 for faster smoothing.
 
@@ -1480,11 +1482,13 @@ potentially doubling the total processing time.
 %The maximum total time which considers that the person interacting with Tangible Landscape
 %made a change right after the scan was performed is 2.06 s because it includes waiting
 %for the previous scan to be processed.
-The version of the system used in the study 
-had significantly lower performance than
-the current, reported system.
+%The version of the system used in the study 
+%had significantly lower performance than
+%the current, reported system.
+The current system, reported here,
+performs approximately twice as fast as
+the version used in this study.
 %
-% TODO: include the approx time for the old system
 Benchmarks were performed using a
 System76 Oryx Pro with
 % 3.5 GHz Quad-Core
@@ -1518,7 +1522,7 @@ Digital fabrication technologies
 like computer numeric control (CNC) manufacturing and 3D printing
 can be used to create molds for casting polymer-enriched sand 
 into precise yet deformable models (Fig.~\ref{fig:casting}). 
-Cast sand models can precisely represent complex forms 
+Cast sand models can precisely represent complex shapes and volumes 
 that are challenging to model by hand 
 and can easily be re-cast after use.
 
@@ -1596,8 +1600,13 @@ flood control, wildfire management, and coastal change and adaptation (Fig.~\ref
 Educational applications include
 spatial training and serious gaming.
 %
-See Appendix \ref{appendix:videos}
-for videos of landscape design (\ref{videos:tl_vr}), viewshed analysis (\ref{videos:viewshed}), wildfire spread (\ref{videos:fire}), and urban growth applications (\ref{videos:urban}).
+See Appendix \ref{appendix:application_videos}
+for videos of landscape design (\ref{videos:tl_vr}), 
+landscape planning (\ref{videos:flow}), 
+subsurface visualization (\ref{videos:subsurface}), 
+viewshed analysis (\ref{videos:viewshed}), 
+wildfire spread (\ref{videos:fire}), 
+and urban growth applications (\ref{videos:urban}).
 
 \section{Coupling experiment}
 After a pilot study \cite{Harmon2016b}
@@ -1846,7 +1855,7 @@ novice users took approximately 10 minutes
 to model the surface with a 10 x 10 grid of control points
 before wanting to rebuild the surface with more control points.
 %
-See Appendix \ref{appendix:videos}
+See Appendix \ref{appendix:experiment_videos}
 for videos demonstrating the training (\ref{videos:training}) 
 and digital 3D modeling task (\ref{videos:digital}).
 
@@ -1919,7 +1928,7 @@ Participants were shown how the 3D scale could be used to
 measure the height of the model. 
 A lamp on the table cast shadows across the model for hillshading.
 %
-See Appendix \ref{appendix:videos}
+See Appendix \ref{appendix:experiment_videos}
 for a video demonstrating the analog 3D modeling task (\ref{videos:analog}).
 
 \paragraph{Projection-augmented modeling}
@@ -1938,7 +1947,7 @@ After an explanation of the contour map, elevation color table, and legend,
 participants were shown how the 3D scale could be used to 
 measure the elevation of their scale models.
 %
-See Appendix \ref{appendix:videos}
+See Appendix \ref{appendix:experiment_videos}
 for a video demonstrating the projection-augmented 3D modeling task (\ref{videos:augmented}).
 
 \paragraph{Data collection and analysis}
@@ -2888,7 +2897,7 @@ The 3D experts worked faster
 and had time to rebuild denser grids of control points
 so that they could build more detailed,
 higher resolution models.
-Despite their accuracy their models 
+Despite their accuracy their digitally sculpted models 
 still only hinted at the landforms 
 with small clusters of valley and ridge cells. 
 % analog
@@ -2951,7 +2960,7 @@ in order to match the reference landscape (Fig.~\ref{fig:difference_sequence}).
 While this feedback should show participants what to do next, 
 it may provide too much data or be too challenging to rapidly parse.
 %
-See Appendix \ref{appendix:videos}
+See Appendix \ref{appendix:experiment_videos}
 for a video demonstrating the 3D modeling task with the difference analytic (\ref{videos:difference}).
 
 %\begin{minted}[fontsize=\small,fontfamily=tt]{python}
@@ -3265,7 +3274,7 @@ Participants could switch between the precomputed reference water flow
 -- i.e.~their target -- 
 and the water flow over their scanned model.
 %
-See Appendix \ref{appendix:videos}
+See Appendix \ref{appendix:experiment_videos}
 for a video demonstrating the 3D modeling task with the water flow analytic (\ref{videos:water}).
 
 \begin{figure}
@@ -3796,7 +3805,7 @@ participants learned how
 topographic form controls the flow of water.
 %
 Given that they accurately represented the streams without training
-they may have been able to offload 
+they must have been able to offload 
 some of the cognitive work of sensing and manipulating 
 3D form onto their bodies so that 
 they could focus on the water flow. 
@@ -3809,9 +3818,8 @@ of sensing and manipulating 3D form onto their bodies,
 successfully parsed the projected graphics,
 and metacognitively adapted their modeling strategy.
 Given the accuracy of their models 
-participants did not suffer from too great a cognitive overload 
--- they must have been able to offload enough cognitive work onto their bodies
-to handle the analytic feedback, critique their performance, and re-strategize.
+participants did not suffer from too great a cognitive overload;
+they were parse the analytic feedback, critique their performance, and re-strategize.
 
 % 3D expertise
 With both analytics the 3D modeling experts 
@@ -3945,7 +3953,7 @@ or with objects like markers or buildings blocks.
 While free, unstructured play suits some users,
 others would benefit from a more structured experience. 
 %
-Free, unstructured play is useful way
+Free, unstructured play is a useful way
 to introduce a tangible interface like Tangible Landscape,
 but does not engage some users for long.
 %
@@ -4282,8 +4290,8 @@ Emerging technologies are enabling ever closer coupling
 of the physical and the digital 
 bridging real and virtual geographies. 
 %
-With advances in sensor networking like 
-the internet of things and pervasive sensing 
+With advances in sensor networking 
+%like the internet of things and pervasive sensing 
 physical things and environmental processes
 can be digitally tracked, sensed, and analyzed  
 -- giving the physical a digital presence \cite{Ratti2009,Resch2011}. 
@@ -4300,7 +4308,7 @@ for construction, earthmoving, and precision agriculture.
 Tangible interfaces for GIS have the potential to 
 tie these emerging technologies together 
 seamlessly linking physical models, digital models, and real geographies. 
-
+%
 In the future we intend to extend Tangible Landscape to 
 seamlessly, bidirectionally link 
 a physical model, a digital model, and a real landscape.
@@ -4312,7 +4320,7 @@ to link real and virtual geographies via a tangible interface.
 %
 We would stream real-time topographic data 
 from sensors in the field -- such as unmanned aerial vehicles --
-to a GIS for interpolation as a digital elevation model. 
+to a GIS. %for interpolation as a digital elevation model. 
 %
 A robotic arm would then rapidly update the physical model 
 based on changes to the digital elevation model. 
@@ -4432,33 +4440,20 @@ hypotheses about space and spatiotemporal processes.
 
 
 
-%% Appendix
-%\appendix
+% Appendix
+\appendix
+
 %\section*{APPENDIX}
 %\setcounter{section}{1}
-%In this appendix \ldots
 
 % Appendix
-\appendixhead{HARMON}
+%\appendixhead{HARMON}
 
-%% Acknowledgments
-%\begin{acks}
-%\ldots
-%\end{acks}
 
-% Bibliography
-\bibliographystyle{ACM-Reference-Format-Journals}
-\bibliography{tangible_topography.bib}
-
-% History dates
-%\received{}{}{}
-
-% Electronic Appendix
-\elecappendix
-
-\medskip
+%\medskip
 
 \section{How to build Tangible Landscape}\label{appendix:howto}
+\setcounter{section}{1}
 
 \begin{table}[H]
 \tbl{Hardware}{
@@ -4734,7 +4729,7 @@ See Appendix \ref{appendix:guidelines} for semi-structured interview guidelines.
 Copy the scanned maps from the \emph{data} mapset 
 to a new \emph{analysis} mapset for processing. 
 Open a session of GRASS GIS 
-in the appropriate location (i.e.~\emph{experiment{\_ncspf}}) 
+in the appropriate location (i.e.~\emph{tangible\_topography\_mapset}) 
 with the \emph{analysis} mapset.
 Create new directories \emph{results} and \emph{render\_3d} 
 inside the location directory.
@@ -4801,33 +4796,77 @@ Understand how tangible interfaces for geospatial modeling change how users mode
 
 \clearpage
 
-\section{Videos}\label{appendix:videos}
+\section{Videos: Applications}\label{appendix:application_videos}
+\url{https://www.youtube.com/playlist?list=PLiNYVMuYqTHXzgHK0Y_yQ7v9EsnnMaMwg}\\
+
+\noindent
+A collection of videos demonstrating applications for Tangible Landscape.
 
 \subsection{Landscape design with Tangible Landscape and Virtual Reality}\label{videos:tl_vr}
 \url{https://youtu.be/pYbpEMjME1Y}\\
 
-We coupled Tangible Landscape with an immersive virtual environment so that users can virtually walk around the modeled landscape and visualize it at a human-scale. Now as users shape topography, draw trees, define viewpoints, or route a walkthrough, they can see the results on the projection-augmented model, rendered on a display, or rendered on a head-mounted display.
+\noindent
+We coupled Tangible Landscape with an immersive virtual environment so that users can virtually walk around the modeled landscape and visualize it at a human-scale. As users shape topography, draw trees, define viewpoints, or route a walkthrough, they can see the results on the projection-augmented model, rendered on a display, or rendered on a head-mounted display.
+
+\subsection{Landscape planning with Tangible Landscape}\label{videos:flow}
+\url{https://youtu.be/Cd3cCQTGer4}\\
+
+\noindent
+As users sculpt a physical model -- building dams, forming depressions, and carving stream channels in polymeric sand -- they see simulated water flow and ponding update in real-time. Computed using the modules r.sim.water and r.fill.dir in GRASS GIS.
+
+\subsection{Subsurface visualization with Tangible Landscape}\label{videos:subsurface}
+\url{https://youtu.be/__fWppH9aqQ}\\
+
+\noindent
+Users visualize subsurface properties such as the percentage of soil moisture by digging to excavate soil or placing markers to take soil core samples. 
 
 \subsection{Viewshed analysis with Tangible Landscape}\label{videos:viewshed}
-\url{https://youtu.be/tGFNHFoHMYM}
+\url{https://youtu.be/tGFNHFoHMYM}\\
+
+\noindent
+Users place markers on a physical model to digitize viewpoints and compute viewsheds in real-time. Viewshed are computed using the module r.viewshed in GRASS GIS.
 
 \subsection{Wildfire spread modeling with Tangible Landscape}\label{videos:fire}
-\url{https://youtu.be/EJc57GFJeZI}
+\url{https://youtu.be/EJc57GFJeZI}\\
+
+\noindent
+Users interact with a fire spread simulation by removing fuel from a physical model of a landscape to create firebreaks. Fire spread is computed using the modules r.ros and r.spread in GRASS GIS.
 
 \subsection{Urban growth modeling with Tangible Landscape}\label{videos:urban}
-\url{https://youtu.be/SeBoGwSqmRM}
+\url{https://youtu.be/SeBoGwSqmRM}\\
+
+\noindent
+Users collaboratively interact with the FUTURES urban growth simulation by delineating protected areas (with green sand) and areas where they want future development to occur (with red sand). Participants can also draw new roads, which will attract more development.
+
+\vfill
+
+\clearpage
+
+\section{Videos: User Experiments}\label{appendix:experiment_videos}
+\url{https://www.youtube.com/playlist?list=PLiNYVMuYqTHVCISj3CS9Og2Q5GZZ8o065}\\
+
+\noindent
+A collection of videos demonstrating 
+the training and user experiments in this study. 
 
 \subsection{Training for digital 3D modeling}\label{videos:training}
+\url{https://youtu.be/dSyrHAuu698}
 
 \subsection{Digital 3D modeling with Rhinoceros}\label{videos:digital}
+\url{https://youtu.be/vA1xwMSaGV4}
 
 \subsection{Analog 3D modeling}\label{videos:analog}
+\url{https://youtu.be/STYHUHNaWdY}
 
 \subsection{Projection-augmented 3D modeling with Tangible Landscape}\label{videos:augmented}
+\url{https://youtu.be/1uEvzMJWh_E}
 
 \subsection{3D modeling with Tangible Landscape's difference analytic}\label{videos:difference}
+\url{https://youtu.be/VXmW9-yASVU}
 
-\subsection{3D modeling with Tangible Landscape's water flow analytic}\label{videos:water}
+\subsection{3D modeling with Tangible Landscape's water flow analytic}
+\label{videos:water}
+\url{https://youtu.be/61hsXgb3MLY}
 
 \subsection{Good performance with Tangible Landscape's difference analytic}\label{videos:new_difference}
 \url{https://youtu.be/Q3elMIRCYSk}
@@ -4839,12 +4878,15 @@ We coupled Tangible Landscape with an immersive virtual environment so that user
 \section{Scripts}\label{appendix:scripts}
 
 \subsection{analysis.py}
-\url{https://github.com/baharmon/tangible_topography}
+\url{https://github.com/baharmon/tangible_topography}\\
 
-%The python scripts for data processing and analysis used in this experiment 
-%are available on GitHub at 
-%\url{https://github.com/baharmon/tangible_topography}
-%released under the GNU General Public License (GPL). 
+\noindent
+The python scripts for data processing, analysis, and rendering 
+used in this experiment 
+are available on GitHub 
+%at \url{https://github.com/baharmon/tangible_topography}
+%released 
+under the GNU General Public License (GPL). 
 
 %\vfill
 
@@ -4852,12 +4894,36 @@ We coupled Tangible Landscape with an immersive virtual environment so that user
 
 \section{Data}\label{appendix:data}
 \subsection{tangible\_topography\_mapset}
+\url{https://osf.io/82gst/}\\
 
-%The data used in this experiment 
-%and the results -- 
-%including data, renderings, photographs, and interview notes --
-%are available on the Open Science Framework 
-%at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
+\noindent
+The data used in this experiment 
+and the results 
+including analyses and renderings % photographs, and interview notes 
+are available on the Open Science Framework 
+%at \url{https://osf.io/82gst/} 
+under the Creative Commons Zero license. 
+The data is stored in a GRASS GIS location
+with a collection of mapsets with GIS data
+and directories with renderings.
 
+\vfill
+
+%% Acknowledgments
+%\begin{acks}
+%\ldots
+%\end{acks}
+
+% Bibliography
+\bibliographystyle{ACM-Reference-Format-Journals}
+\bibliography{tangible_topography.bib}
+
+% History dates
+%\received{}{}{}
+
+% Electronic Appendix
+%\elecappendix
+
+%\appendixhead{HARMON}
 
 \end{document}
