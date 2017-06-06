@@ -1,0 +1,211 @@
+% !TEX encoding = UTF-8 Unicode
+
+% Compilation using 'acmsmall.cls' - version 1.3 (March 2012), Aptara Inc.
+% (c) 2010 Association for Computing Machinery (ACM)
+%
+% Questions/Suggestions/Feedback should be addressed to => "acmtexsupport@aptaracorp.com".
+% Users can also go through the FAQs available on the journal's submission webpage.
+%
+% Steps to compile: latex, bibtex, latex, latex
+
+
+\documentclass[prodmode,acmtochi]{acmsmall} % Aptara syntax
+
+% Package to generate and customize Algorithm as per ACM style
+\usepackage[ruled]{algorithm2e}
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+
+% Packages
+\usepackage[super]{nth}
+\usepackage[inline]{enumitem}
+\usepackage{moreenum}
+\usepackage{tabu}
+\usepackage{booktabs}
+\usepackage{array}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\newcommand{\urlhttp}[1]{\href{http://#1}{\nolinkurl{#1}}}
+\newcommand{\urlhttps}[1]{\href{https://#1}{\nolinkurl{#1}}}
+
+% Metadata Information
+\acmVolume{0}
+\acmNumber{0}
+\acmArticle{0}
+\acmYear{0}
+\acmMonth{0}
+
+% Copyright
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+% DOI
+\doi{0000001.0000001}
+
+%ISSN
+\issn{1234-56789}
+
+% Document starts
+\begin{document}
+
+% Page heads
+\markboth{B. Harmon et al.}{Cognitively Grasping Topography with Tangible Landscape}
+
+% Title portion
+\title{Cognitively Grasping Topography with Tangible Landscape}
+\author{BRENDAN ALEXANDER HARMON
+\affil{North Carolina State University}
+ANNA PETRASOVA
+\affil{North Carolina State University}
+VACLAV PETRAS
+\affil{North Carolina State University}
+HELENA MITASOVA
+\affil{North Carolina State University}
+ROSS ​KENDALL MEENTEMEYER
+\affil{North Carolina State University}
+EUGENE BRESSLER
+\affil{North Carolina State University}
+ART RICE
+\affil{North Carolina State University}}
+
+\maketitle
+
+\textbf{Cover letter}
+
+\vspace*{1em}
+
+Dear Editors,\\
+
+I would like to submit this paper 
+%-- Cognitively Grasping Topography with Tangible Landscape --
+to ACM Transactions on Computer-Human Interaction. 
+%
+This paper 
+reviews existing research and design work about 
+tangible interfaces for spatial modeling,  
+describes the design of a new system, 
+and describes a series of 
+laboratory-based user experiments
+using quantitative and qualitative methods
+to assess 3D spatial performance.
+
+
+
+\paragraph{Relationship to similar publications about Tangible Landscape}
+
+% technology
+This paper describes the third generation of Tangible Landscape,
+a tangible interface for geospatial modeling. 
+% the first generation of the system
+% technical description
+% case studies
+The first generation of this system was described in the paper 
+\emph{GIS-based environmental modeling with tangible interaction and dynamic visualization} \cite{Petrasova2014}
+and the second generation of the system was described in the book
+\emph{Tangible Modeling with Open Source GIS}
+\cite{Petrasova2015}. 
+%
+These publications described the design of the systems, the technical implementation and the underlying algorithms, and detailed case studies, but did not include user experiments.
+%
+The coupling of Tangible Landscape with VR
+has already been described in a demo paper titled
+\emph{Immersive Tangible Geospatial Modeling}
+that has been accepted for ACM SIGSPATIAL 2016 \cite{Tabrizian2016}. 
+%
+There have been substantial innovations 
+in the third generation of this system 
+including 
+faster interaction, 
+new modes of interaction, 
+and a fully open source implementation. 
+%
+While these technical and design innovations 
+are described for the first time in this paper,
+the user experiments are the most unique, innovative part of this research. 
+
+\paragraph{Relationship to similar publications about user experiments}
+
+The user experiments described in this paper 
+address important basic research questions 
+about spatial performance in tangible interaction.
+%
+The experiments used novel methods such as geospatial modeling 
+to spatially analyze and quantitatively assess 3D spatial performance. 
+%These spatial analytics are an important contribution to HCI research methods.
+%
+Two of the three user experiments described in this research 
+are based on pilot studies 
+--
+\emph{Embodied Spatial Thinking in Tangible Computing}
+\cite{Harmon2016b}
+and
+\emph{Tangible Landscape: cognitively grasping the flow of water}
+\cite{Harmon2016c}
+--
+with fewer participants, less sophisticated methods, and only preliminary findings.
+% 
+The methods and results described in this paper 
+differ substantially from these pilot studies. 
+New methods include statistical transformations, 
+cellular statistics, morphological analysis, differencing, and 3D visualization. 
+%
+This research also includes qualitative methods 
+that were not used in the pilot studies.
+
+
+
+
+
+% pilot studies
+
+
+
+
+
+%First, the statement should describe the relationship of your TOCHI submission to your mostly closely related prior papers (or currently submitted papers). This description should clearly state the unique contribution of the current submission relative to the authors’ prior publications, or, if the paper has no relation whatsoever to prior papers, the statement should clearly say that.
+
+
+
+
+% Bibliography
+\bibliographystyle{ACM-Reference-Format-Journals}
+\bibliography{tangible_topography.bib}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
