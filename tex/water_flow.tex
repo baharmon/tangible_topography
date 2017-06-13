@@ -1,0 +1,72 @@
+% ---------------------------- WATER FLOW ---------------------------- 
+
+\begin{table*}[h]
+\small\sf\centering
+%
+\caption{Water flow experiment: A participant sculpts the study landscape using Tangible Landscape's water flow analytic.}
+\vspace*{1em}
+\ra{1.3}
+\begin{tabular}{m{0.5\textwidth}}
+\includegraphics[width=0.5\textwidth]{images/experiments/tl_water.jpg}\\
+\end{tabular}
+\label{fig:flow_sequence} 
+%
+\vspace*{1.5em}
+%
+\caption{Water flow experiment: maps of of per-cell statistics and geospatial analyses draped over a 3D rendering of the topography for all participants, 3D modeling novices, and 3D experts}
+\vspace*{1em}
+\ra{1.3}
+\begin{tabular}{m{0.1\textwidth} m{0.2\textwidth} m{0.2\textwidth} m{0.2\textwidth} m{0.2\textwidth}}
+\toprule
+& \multicolumn{1}{c}{Elevation} & \multicolumn{1}{c}{Stdev.~ of differences} & \multicolumn{1}{c}{Water depth} & \multicolumn{1}{c}{Depth difference}\\
+\midrule
+%
+Reference & 
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/dem_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/dem_difference_5.png}
+&
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/depth_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/dem_difference_5.png}\\
+%
+Mean & 
+\includegraphics[width=0.2\textwidth]{images/render_3d/participants/mean_dem_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/participants/stdev_regression_difference_series_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/participants/mean_depth_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/participants/mean_depth_difference_5.png}\\
+%
+3D novices & 
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_novices/mean_dem_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_novices/stdev_regression_difference_series_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_novices/mean_depth_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_novices/mean_depth_difference_5.png}\\
+%
+3D experts & 
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/mean_dem_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/stdev_regression_difference_series_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/mean_depth_5.png} &
+\includegraphics[width=0.2\textwidth]{images/render_3d/3d_experts/mean_depth_difference_5.png}\\
+%
+& 
+\multicolumn{1}{c}{\includegraphics[width=0.2\textwidth]{images/legends/elevation_legend_5.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.2\textwidth]{images/legends/stdev_diff_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.2\textwidth]{images/legends/depth_legend.pdf}} &
+\multicolumn{1}{c}{\includegraphics[width=0.2\textwidth]{images/legends/depth_diff_legend.pdf}}\\
+%
+\bottomrule
+\end{tabular}
+\label{table:water_flow_experiment} 
+%
+\vspace*{1.5em}
+%
+\caption{Water flow experiment: percent cells}
+\ra{1.3}
+\begin{tabularx}{\textwidth}{YYYYYYYYYY}\toprule
+Method && \multicolumn{2}{c}{Concentrated flow} & \phantom{abc}& \multicolumn{2}{c}{Ridges} &
+\phantom{abc} & \multicolumn{2}{c}{Valleys}\\
+\cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-10}
+&& Reference & Mean && Reference & Mean && Reference & Mean\\ \midrule
+\mbox{Water flow} && 3.28 & 2.26 && 1.18 & 2.99 && 4.77 & 3.70\\
+\bottomrule
+\end{tabularx}
+\label{table:water_flow_percent_cells} 
+\end{table*}
