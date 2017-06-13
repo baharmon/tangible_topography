@@ -1,69 +1,56 @@
 % sage_latex_guidelines.tex V1.10, 24 June 2016
 
 \documentclass[Afour,sageh,times]{sagej}
-
 \usepackage{moreverb,url}
-
 \usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
-
 \newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 % customizations
+\usepackage[super]{nth}
+\usepackage[inline]{enumitem}
+\usepackage{moreenum}
 \usepackage{tabulary}
 \usepackage{tabu}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage[super]{nth}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{upquote}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
+% special characters
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+% ---------------------------- METADATA ---------------------------- 
+
 \def\volumeyear{2017}
-
 \begin{document}
-
 \runninghead{Harmon et~al.}
-
 \title{Tangibly modeling landscapes}
 %\title{Tangible Landscape}
 %\title{Tangible Landscape Architectural Modeling}
 %\title{Tangible Landscape Modeling}
-
 \author{Brendan A Harmon\affilnum{1,2}, Anna Petrasova\affilnum{1}, Vaclav Petras\affilnum{1}, Helena Mitasova\affilnum{1}, and Ross Meentemeyer\affilnum{1}}
-
 \affiliation{\affilnum{1}Center for Geospatial Analytics, North Carolina State University, USA\\
 \affilnum{2}College of Design, North Carolina State University, USA}
-
 \corrauth{Brendan A Harmon, 
 Center for Geospatial Analytics,
 North Carolina State University,
 Raleigh, NC 27615, USA.}
-
 \email{brendan.harmon@gmail.com}
 
-%\begin{abstract}
-%Tangible interfaces for spatial modeling
-%combine embodied, kinaesthetic interaction with spatial computations. 
-%Theoretically this should enable users to 
-%intuitively interact 
-%with multidimensional digital models of space,
-%offloading challenging cognitive tasks onto the body and 
-%computationally enhancing how they think about space.
-%We have designed Tangible Landscape 
-%-- a tangible interface powered by a geographic information system (GIS) 
-%that gives 3D spatial data an interactive, physical form so that 
-%users can naturally sense and shape it.
-%Tangible Landscape couples a physical and a digital model of a landscape
-%through real-time cycles of 
-%physical manipulation, 3D scanning, spatial computation, and projected feedback.
-%Through a series of 
-%3D modeling experiments 
-%assessed using both
-%quantitative and qualitative methods 
-%we determined that Tangible Landscape 
-%can improve 3D spatial performance. 
-%Participants produced more accurate models 
-%that better represented morphological features 
-%with tangible modeling than they did with either digital or analog, hand modeling.
-%\end{abstract}
+% ---------------------------- ABSTRACT ---------------------------- 
 
 \begin{abstract}
 We present Tangible Landscape 
@@ -81,7 +68,7 @@ physical manipulation, 3D scanning, spatial computation, and projected feedback.
 Natural 3D sketching and real-time analytical feedback should aid
 landscape architects in the design of high performance, process-based landscapes.
 %
-We conducted a study to assess the effectiveness of 
+We conducted a series of studies to assess the effectiveness of 
 tangible modeling for landscape architects.
 %
 Landscape architecture students, academics, and professionals 
@@ -129,53 +116,354 @@ GIS tends to play a limited, often preliminary role in the creative design proce
 %
 While GIS has been used extensively in landscape planning 
 to model scenarios \cite{Steinitz2004,Baker2004,Steinitz2012},
-it is primarily used just for preliminary research and mapping
-in landscape architecture.
+in landscape architecture
+it is primarily used for preliminary research and mapping.
 %
 If, however, geospatial analysis, modeling, and simulation
 could be seamlessly integrated into the creative design process 
 then designers could rapidly develop design ideas
 while quantitively testing them. 
 %
-Rigorously testing design concepts with quantitive measures of performance 
-could drive the development of new concepts 
-in a rapid, fluid creative process.
+In such a rapid, fluid creative process
+the rigorous testing of design concepts 
+with quantitive measures of performance 
+could drive the development of new concepts.
+%
 Simulation for example could inspire ideation 
-linking designed form and environmental processes. 
+linking designed form with environmental processes. 
+
+% TANGIBLES
+When using a graphical user interface (GUI) 
+-- the paradigmatic mode of interaction for both CAD and GIS --  
+intention is translated from physical input 
+using devices like a mouse and keyboard 
+to digital data rendered visually as text and graphics. 
+%
+Positing that graphical interaction is unintuitive
+because of this disconnect between 
+intention, physical action, and purely visual feedback,
+researchers have been developing tangible user interfaces 
+to give digital data interactive physical form 
+\cite{Dourish2001,Ishii2008}. 
+%
+Theoretically tangible interfaces should embody cognition 
+-- grounding higher cognitive processes in bodily experience --
+by enabling users to kinaesthetically sense and interact with digital data
+\cite{Kirsh2013}.
+%
+Tangible, embodied interaction should be highly intuitive 
+since it 
+uses existing motor schemas,  
+offloads cognitive work onto the body,
+and seamlessly connects intention, action, and feedback.
 
 % TANGIBLES FOR LANDSCAPE ARCHITECTURE
+The MIT Media Lab developed two prototypes 
+-- Illuminating Clay and SandScape -- 
+that coupled a physical and digital model of a landscape
+through a cycle of 3D scanning, geospatial computation, and projection
+to combine the affordances of intuitive sculpting by hand
+with quantitative geospatial analysis \cite{Piper2002a}. 
+%
+These systems were designed to 
+'streamline the landscape design process 
+and result in a more effective use of GIS, 
+especially when distributed decision-making and discussion 
+with non-experts are involved' \cite{Ratti2004}.
+%
+Recent advances in sensors and computer vision
+have fueled the development of 
+%new tangible interfaces including systems 
+systems for tangibly modeling landscapes such as 
+Efecto Mariposa \cite{Vivo2011} and
+the Augmented Reality Sandbox \cite{Kreylos2012}, 
+Sedimachine \cite{Cantrell2014}, and
+the Rapid Landscape Prototyping Machine \cite{Robinson2014}.
 
-%The MIT Media Lab developed 
+\subsection{Tangible Landscape}
+Inspired by Illuminating Clay, 
+the Tangible Geospatial Modeling System \cite{Mitasova2006,Tateosian2010}, 
+and the Augmented Reality Sandbox, 
+we have develop Tangible Landscape 
+-- a tangible interface for geospatial modeling
+powered by an open source GIS \cite{Petrasova2015}. 
+%
+% TL premise: algorithmic design of landscapes
+% Conceptually Tangible Landscape is meant to... 
+%
+With Tangible Landscape
+designers can sculpt a terrain model in polymeric sand,
+and can digitize points, areas, and volumes by placing 
+color-coded markers, patches of felt, or building blocks. 
+%
+These interactions are captured by a Kinect sensor, 
+processed in GRASS GIS, 
+and the resulting geospatial computations
+are projected back onto the physical model, 
+all in real-time (Fig.~\ref{fig:system_diagram}).
+%
+The geospatial data can also be automatically
+3D modeled and rendered in Blender 
+on a monitor or head-mounted display
+so that designers can 
+immersively explore different views \cite{Tabrizian2016}.
+%
+For example
+as users sculpt topography,
+simulated water flow can be projected back onto the model in real-time
+so that they understand how they are affecting 
+physical processes in landscape.
+Then as they draw planting areas 
+using a laser pointer or patches of colored felt,
+the trees can be rendered in 3D on a display %. 
+%As they place markers to designate waypoints on a trail,
+%the optimal walking route can be computed and projected onto the model
+%along with charts showing metrics like distance and slope
+(Fig.~\ref{table:tl_demo}). 
 
+Tangible Landscape 
+is unique since it powered by a GIS
+with extensive libraries for geospatial computation
+and has a wide range of real-time interactions including 
+3D sculpting, 3D sketching, color recognition, and object recognition.
+%
+Given its versatility 
+there are many possible design applications
+including terrain modeling, hydrological modeling, flood prevention,
+trail planning, viewshed analysis, and planting design. 
 
-% CONCEPT / BRIEF HISTORY
+% TL DIAGRAM
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.45\textwidth]{images/diagrams/rendered_diagram.png}
+        \caption{Tangible Landscape: a real-time cycle of 3D scanning, geospatial computation and 3D modeling, and 3D rendering and projection.}
+        \label{fig:system_diagram}
+    \end{center}
+\end{figure}
 
-% Tangibles
-	% theory
+% TL DEMO
+\begin{table*}
+\caption{Collaboratively sculpting topography to create lakes, drawing trees with a laser pointer, and visualizing with 3D renderings.} %Source: \cite{Tabrizian2016}.
+\ra{1.3}
+\begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
+\toprule
+\multicolumn{1}{c}{Sculpting}  & \multicolumn{1}{c}{Drawing and visualization}\\
+\midrule
+%
+\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_lakes_2.png} &
+\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_1.png}\\
+%
+\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_2.png} &
+\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_2.png}\\
+%
+\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_3.png} &
+\includegraphics[width=0.49\textwidth]{images/immersive/trees_with_oculus_1.png}\\
+%
+\bottomrule
+\end{tabular}
+\label{table:tl_demo} 
+\end{table*}
 
-% Tangible for landscape
-	% Illuminating Clay
-		% GIS
-		% objectives
-
-% TL
+%% TL DEMO V2
+%\begin{table*}
+%\caption{Sculpting topography to create lakes, 
+%drawing trees with a laser pointer, 
+%and visualizing with 3D renderings.} 
+%\ra{1.3}
+%\begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
+%\toprule
+%\multicolumn{1}{c}{Sculpting and views}  & \multicolumn{1}{c}{Drawing and immersion}\\
+%\midrule
+%%
+%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_2.jpg} &
+%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_8.jpg}\\
+%%
+%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_4.jpg} &
+%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_9.jpg}\\
+%%
+%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_5.jpg} &
+%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_10.jpg}\\
+%%
+%\bottomrule
+%\end{tabular}
+%\label{table:tl_demo} 
+%\end{table*}
 
 % RESEARCH QUESTIONS
+\subsection{Research objectives}
+Many of the theoretical underpinnings of tangibles 
+remain unproven and unexplored. 
+Do current approaches to tangible, embodied interfaces
+really work as theorized? 
+Can designers really model more intuitively and 
+design more effectively with tangibles?
+And how do tangibles mediate the design process?
+%
+In order to assess the effectiveness 
+of tangible modeling for landscape architects 
+we conducted a series of user studies
+assessing how well participants performed
+basic landscape design tasks 
+-- topographic modeling, cut-and-fill analysis, and water flow modeling --
+using Tangible Landscape.\\
+
+Our research objectives were to:
+%
+\begin{itemize}
+% Performance
+\item Assess how well landscape architects could perform basic design tasks using
+a tangible interface for landscape modeling
+% Process
+\item Study how tangible interaction mediated
+landscape architects' design process
+\end{itemize}
+
+\clearpage
+
+% ---------------------------- TOPOGRAPHIC ---------------------------- 
+
+\section{Topographic modeling}
+
+% describe topographic modeling and its role in landscape architecture
+% how is it typically done?
+% how is it done by hand - clay models, contours models, etc.
+% brief discussion of digital methods and software 
+
+%Grading -- earth moving --
+%and thus
+%topographic modeling are an important part of landscape architecture
+
+We conducted a topographic modeling experiment 
+comparing 
+digital 3D modeling with Rhinoceros, 
+analog modeling by hand, 
+and tangible modeling with Tangible Landscape. 
+
+%% digital
+%Digital modeling with a GUI affords precise transformations and
+%dynamic modes of visualization such as 
+%3D orbiting, zooming, and ray traced shading,
+%but is not embodied.
+%% analog
+%Theoretically analog modeling -- modeling by hand or with tools -- 
+%should be embodied, 
+%affording subconscious, kinaesthetic sensing and manipulation of form. 
+%By sensing form subconsciously with the body
+%users should have more cognitive resources for critiquing their work 
+%and strategizing their next moves. 
+%% 
+%tangible modeling 
+%couples digital mapping with physical modeling.
+%Theoretically it should combine affordances of both -- 
+%enabling enriched visualization and physical sensing and manipulation -- 
+%to offer more feedback.
+%While more feedback may help users 
+%better assess and critique their performance 
+%so they can strategize their next moves,
+%too much feedback may be a cognitive overload 
+%resulting in distraction, frustration, and demotivation. 
+%Physical sensing and manipulation, however, should offload 
+%some of this cognitive work onto the body.
+%
 
 
-% TL
-	% premise: algorithmic design of landscapes
-	% evolution: from illuminated clay
-	% design / concept: 
 
 
 
 
 
 
-%% tangibles overview
-%Tangibles – tangible user interfaces – are systems that couple physical objects with digital data for more natural, embodied interaction (Dourish 2001). Tangibles give digital data an interactive, physical form and presence that users can kinaesthetically sense and manipulate. Advances in sensors, machine vision, and robotics have radically accelerated the development of tangibles – including tangibles designed for designers. Recent prototypes for tangible design include the Collaborative Design Platform (Schubert 2011, Schubert 2012) and CityScope (MIT Media Lab 2017) for urban design and Tangible Landscape (Petrasova et al. 2015), the Rapid Landscape Prototyping Machine (Robinson 2014), and Cyborg Ecologies (Responsive Artifacts and Environments Lab 2017) for landscape architecture. 
-%% (ACADIA)
+
+\subsection{Methods}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Training for digital 3D modeling: \\
+\noindent \url{https://youtu.be/dSyrHAuu698}
+
+%Digital 3D modeling with Rhinoceros: \\
+\noindent \url{https://youtu.be/vA1xwMSaGV4}
+
+%Analog 3D modeling: \\
+\noindent \url{https://youtu.be/STYHUHNaWdY}
+
+%Tangible modeling: \\
+\noindent  \url{https://youtu.be/1uEvzMJWh_E}
+
+
+
+% See Supplemental Material for more detailed methodolgy
+
+\subsection{Results}
+
+\begin{figure*}%[h]
+\begin{center}
+\resizebox {\textwidth} {!} {\input{comparison.tikz}}
+\caption{Pairwise comparison of the mean digital elevation models by category of participants}
+\label{fig:comparison}
+\end{center}
+\end{figure*}
+
+% See Supplemental Material for more detailed comparison
+
+%\include{topographic}
+
+% ---------------------------- CUT-FILL ---------------------------- 
+\section{Cut-and-fill analysis}
+\subsection{Methods}
+
+\url{https://youtu.be/Q3elMIRCYSk}
+
+\subsection{Results}
+
+%\include{cut_fill}
+
+% ---------------------------- WATER FLOW ---------------------------- 
+\section{Water flow modeling}
+\subsection{Methods}
+
+\url{https://youtu.be/61hsXgb3MLY}
+
+\subsection{Results}
+
+%\include{water_flow}
+
+% ---------------------------- DISCUSSION ---------------------------- 
+\section{Discussion}
+
+
+% REFLECTIONS
+
+% reflect on design implications
+% performative design, parametric / generative design
+% performance, process-based
+% physical processes as design inspiration / media
+% co-evolution
+% cyborg ecologies vs cthuthonic
+
+%With computational modeling, analysis and simulation designers can generate novel forms, explore parametric variations, and quantitatively test the performance of their designs. (ACADIA)
+
+ %
+%With this technology landscape architects and spatial scientists can collaboratively design through a seamless, rapid iterative process of intuitive ideation, geocomputational analysis, realistic rendering, and critical analysis. (ACADIA)
+
+
+
+% ---------------------------- CONCLUSION ---------------------------- 
+
+\section{Conclusion}
+
+
+
 
 %%INTERACTION AND PERFORMANCE
 %
@@ -189,65 +477,14 @@ linking designed form and environmental processes.
 %physical processes like the flow of water 
 %can play a generative role. 
 
-
-% study of effectiveness
-% claims by ishii, ratti, etc
-
-% then
-% reflect on design implications
-% performative design, parametric / generative design
-% performance, process-based
-% physical processes as design inspiration / media
-% co-evolution
-% cyborg ecologies vs cthuthonic
-
 %With computational modeling, analysis and simulation designers can generate novel forms, explore parametric variations, and quantitatively test the performance of their designs. (ACADIA)
 
-
-
-
-
-
-
-
- % CONCEPT
  %
 %With this technology landscape architects and spatial scientists can collaboratively design through a seamless, rapid iterative process of intuitive ideation, geocomputational analysis, realistic rendering, and critical analysis. (ACADIA)
 
 
 
 
-
-\clearpage
-
-
-
-% ---------------------------- INTRO ---------------------------- 
-
-\section{Introduction}
-
-% ---------------------------- TOPOGRAPHIC ---------------------------- 
-
-\section{Topographic modeling}
-\subsection{Methods}
-\subsection{Results}
-
-% ---------------------------- CUT-FILL ---------------------------- 
-\section{Cut-and-fill analysis}
-\subsection{Methods}
-\subsection{Results}
-
-% ---------------------------- WATER FLOW ---------------------------- 
-\section{Water flow modeling}
-\subsection{Methods}
-\subsection{Results}
-
-% ---------------------------- DISCUSSION ---------------------------- 
-\section{Discussion}
-
-% ---------------------------- CONCLUSION ---------------------------- 
-
-\section{Conclusion}
 
 
 \clearpage
@@ -265,86 +502,89 @@ enhancing spatial performance.
 %Tangible Landscape -- a tangible interface for GIS -- 
 %enables natural 3D sketching. % 4D spatiotemporal sketching.
 
-% tangibles can enhance spatial performance
-Through a series of experiments
-we found that tangible interfaces for spatial modeling
-can enhance 3D spatial performance 
-in terms of speed, accuracy, and process. 
-% coupling
-By comparing digital, analog, and projection-augmented modeling 
-we found that coupling digital and physical models as a tangible interface 
-can combine the affordances of digital and analog tools
--- enabling an embodied modeling process enriched with digital data --
-so that users can model intuitively, quickly, and precisely. 
-Even 3D modeling experts 
- performed better with the tangible interface 
--- building more accurate models 
-that better represented the morphology of the landscape --
- because they could work faster
- creating and refining details sooner.
-% transfer
-They were able to transfer and effectively use the
-spatial skills and abilities they had developed through digital modeling
-with the tangible interface.
-% analytics
-We also found that tangible interaction with real-time geospatial analytics
-can encourage iterative modeling processes.
-With the real-time difference analytic and water flow simulation  
-users worked in rapid cycles of 
-sculpting and digitally informed critical analysis
-to build accurate models that
-correctly represented the topographic and hydrologic morphology.
-% process
-Through this embodied process of reflection-in-action 
-users were able to
-observe spatial patterns, forms, and processes, 
-generate and test hypotheses, 
-and draw inferences. 
-% cog offloading
-The experiments showed that users 
-were able to offload enough of the cognitive work 
-of sensing and manipulating space
-onto their bodies
-that they could understand the
-computational analytics
-and adaptively re-strategize.
-% future research
-Further experiments are needed
-to explore the role of 
-spatial cognition, affect, motivation, and metacognition 
-in tangible modeling.
-
-% summary
-The experiments show that Tangible Landscape,
-a tangible interface for GIS, 
-works as theorized and designed -- 
-coupling a physical and digital model of a landscape
-enables users to 
-cognitively grasp topography,
-intuitively shape and interact with multidimensional space, 
-and offload enough cognitive work to understand 
-real-time geospatial analytics. 
-% process 
-With Tangible Landscape users can intuitively interact with 
-spatial data and scientific models using their bodies. 
-% users
-While novices should be able to effectively learn about 
-multidimensional space and
-rapidly improve their spatial abilities 
-with Tangible Landscape, 
-experts can effectively use it to 
-rapidly develop, prototype, and test 
-hypotheses about space and spatiotemporal processes.
-
-
+%% tangibles can enhance spatial performance
+%Through a series of experiments
+%we found that tangible interfaces for spatial modeling
+%can enhance 3D spatial performance 
+%in terms of speed, accuracy, and process. 
+%% coupling
+%By comparing digital, analog, and projection-augmented modeling 
+%we found that coupling digital and physical models as a tangible interface 
+%can combine the affordances of digital and analog tools
+%-- enabling an embodied modeling process enriched with digital data --
+%so that users can model intuitively, quickly, and precisely. 
+%Even 3D modeling experts 
+% performed better with the tangible interface 
+%-- building more accurate models 
+%that better represented the morphology of the landscape --
+% because they could work faster
+% creating and refining details sooner.
+%% transfer
+%They were able to transfer and effectively use the
+%spatial skills and abilities they had developed through digital modeling
+%with the tangible interface.
+%% analytics
+%We also found that tangible interaction with real-time geospatial analytics
+%can encourage iterative modeling processes.
+%With the real-time difference analytic and water flow simulation  
+%users worked in rapid cycles of 
+%sculpting and digitally informed critical analysis
+%to build accurate models that
+%correctly represented the topographic and hydrologic morphology.
+%% process
+%Through this embodied process of reflection-in-action 
+%users were able to
+%observe spatial patterns, forms, and processes, 
+%generate and test hypotheses, 
+%and draw inferences. 
+%% cog offloading
+%The experiments showed that users 
+%were able to offload enough of the cognitive work 
+%of sensing and manipulating space
+%onto their bodies
+%that they could understand the
+%computational analytics
+%and adaptively re-strategize.
+%% future research
+%Further experiments are needed
+%to explore the role of 
+%spatial cognition, affect, motivation, and metacognition 
+%in tangible modeling.
+%
+%% summary
+%The experiments show that Tangible Landscape,
+%a tangible interface for GIS, 
+%works as theorized and designed -- 
+%coupling a physical and digital model of a landscape
+%enables users to 
+%cognitively grasp topography,
+%intuitively shape and interact with multidimensional space, 
+%and offload enough cognitive work to understand 
+%real-time geospatial analytics. 
+%% process 
+%With Tangible Landscape users can intuitively interact with 
+%spatial data and scientific models using their bodies. 
+%% users
+%While novices should be able to effectively learn about 
+%multidimensional space and
+%rapidly improve their spatial abilities 
+%with Tangible Landscape, 
+%experts can effectively use it to 
+%rapidly develop, prototype, and test 
+%hypotheses about space and spatiotemporal processes.
 
 
+% QUOTE
+%'bridge the division between physical and digital forms and potentially to revolutionize the current design process' \cite{Ishii2004}.
 
 
+% ------------------- SUPPLEMENTAL MATERIALS ----------------------- 
 
+%https://us.sagepub.com/en-us/nam/supplementary-files-on-sage-journals-sj-guidelines-for-authors
 
+% ------------------- GUIDELINES ----------------------- 
 
-
+%https://us.sagepub.com/en-us/nam/international-journal-of-architectural-computing/journal202464#submission-guidelines
 
 
 
