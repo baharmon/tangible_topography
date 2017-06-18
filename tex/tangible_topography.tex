@@ -1,10 +1,6 @@
 % sage_latex_guidelines.tex V1.10, 24 June 2016
 
 \documentclass[Afour,sageh,times]{sagej}
-\usepackage{moreverb,url}
-\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
-\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
-T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 % customizations
 \usepackage[super]{nth}
@@ -22,6 +18,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{tabularx}
+\usepackage{newclude}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
@@ -31,6 +28,13 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
+
+% sage packages and commands
+\usepackage{moreverb,url}
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
 
 % ---------------------------- METADATA ---------------------------- 
 
@@ -176,13 +180,14 @@ have fueled the development of
 %new tangible interfaces including systems 
 systems for tangibly modeling landscapes such as 
 Efecto Mariposa \cite{Vivo2011} and
-the Augmented Reality Sandbox \cite{Kreylos2012}, 
+the Augmented Reality Sandbox \cite{Kreylos2012,ARsandbox}, 
 Sedimachine \cite{Cantrell2014}, and
 the Rapid Landscape Prototyping Machine \cite{Robinson2014}.
 
 \subsection{Tangible Landscape}
 Inspired by Illuminating Clay, 
-the Tangible Geospatial Modeling System \cite{Mitasova2006,Tateosian2010}, 
+the Tangible Geospatial Modeling System 
+\cite{Mitasova2006,Tateosian2010}, 
 and the Augmented Reality Sandbox, 
 we have develop Tangible Landscape 
 -- a tangible interface for geospatial modeling
@@ -235,7 +240,9 @@ trail planning, viewshed analysis, and planting design.
 % TL DIAGRAM
 \begin{figure}
     \begin{center}
-        \includegraphics[width=0.45\textwidth]{images/diagrams/rendered_diagram.png}
+        \includegraphics[width=0.45\textwidth]{images/diagrams/rendered_diagram_2.pdf}
+        %\includegraphics[width=0.25\textheight]{images/diagrams/rendered_diagram_2.pdf}
+        %\includegraphics[width=0.32\textheight]{images/diagrams/rendered_diagram_3.pdf}
         \caption{Tangible Landscape: a real-time cycle of 3D scanning, geospatial computation and 3D modeling, and 3D rendering and projection.}
         \label{fig:system_diagram}
     \end{center}
@@ -323,120 +330,540 @@ landscape architects' design process
 % ---------------------------- TOPOGRAPHIC ---------------------------- 
 
 \section{Topographic modeling}
-
-% describe topographic modeling and its role in landscape architecture
-% how is it typically done?
-% how is it done by hand - clay models, contours models, etc.
-% brief discussion of digital methods and software 
-
-%Grading -- earth moving --
-%and thus
-%topographic modeling are an important part of landscape architecture
-
-We conducted a topographic modeling experiment 
+%
+One of the primary tasks of landscape architects is to design earthworks
+\cite{Petschek2008,Strom2013}. 
+% topographic data
+Landscape architects work with topographic models 
+derived from data collected by field surveys, airborne lidar, 
+or photogrammetry with unmanned aerial systems.
+% designing landforms
+They design new landforms 
+using analog methods -- such as 
+drawing contours maps by hand and
+hand sculpting physical topographic models in clay --
+and digital methods -- such as 
+drawing digital contour maps in CAD,
+digitally sculpting surfaces in 3D modeling software. 
+% analog
+Analog methods for topographic modeling are typically used 
+in the early, conceptual phases of the design process because 
+they are considered more intuitive, but less precise than digital methods.
+% digital
+Digital methods for topographic modeling, on the other hand, 
+can afford precise transformations and
+dynamic modes of visualization such as 
+3D orbiting, zooming, and ray traced shading.
+% tangible
+Theoretically tangible topographic modeling 
+should combine affordances of both -- 
+enabling natural sensing and manipulation
+with enriched visualization.
+% experiment
+To assess the effectiveness tangibles
+we conducted a topographic modeling experiment
 comparing 
 digital 3D modeling with Rhinoceros, 
 analog modeling by hand, 
 and tangible modeling with Tangible Landscape. 
 
-%% digital
-%Digital modeling with a GUI affords precise transformations and
-%dynamic modes of visualization such as 
-%3D orbiting, zooming, and ray traced shading,
-%but is not embodied.
-%% analog
-%Theoretically analog modeling -- modeling by hand or with tools -- 
-%should be embodied, 
-%affording subconscious, kinaesthetic sensing and manipulation of form. 
-%By sensing form subconsciously with the body
-%users should have more cognitive resources for critiquing their work 
-%and strategizing their next moves. 
-%% 
-%tangible modeling 
-%couples digital mapping with physical modeling.
-%Theoretically it should combine affordances of both -- 
-%enabling enriched visualization and physical sensing and manipulation -- 
-%to offer more feedback.
-%While more feedback may help users 
-%better assess and critique their performance 
-%so they can strategize their next moves,
-%too much feedback may be a cognitive overload 
-%resulting in distraction, frustration, and demotivation. 
-%Physical sensing and manipulation, however, should offload 
-%some of this cognitive work onto the body.
-%
-
-
-
-
-
-
-
-
-
 \subsection{Methods}
+% overview
+In this experiment 
+18 participants tried to accurately model a study landscape 
+digitally, by hand, and with Tangible Landscape. 
+% tasks
+Participants were given three tasks -- 
+to digitally sculpt a model of a landscape using the 3D modeling program Rhinoceros, 
+to hand sculpt a model of a landscape in polymer-enriched sand,
+and to sculpt a model of a landscape using Tangible Landscape.
+% time limit 
+They had 10 minutes to complete each task. 
+The time limit was calibrated based on 
+the time it took the research team 
+to comfortably complete each task. 
+% counterbalancing / order of tasks
+The modeling tasks were reordered for each participant
+to partially account for learning and fatigue
+by counterbalancing the experiment using a Latin square design.
+% assessment
+Participants were asked to model the same landscape for each task 
+so that their performance could be quantitatively assessed 
+using spatial modeling, statistics, analysis, and simulation.
+Their modeling processes were qualitatively assessed 
+through direct observation
+supported by photographic and video documentation. 
+% interviews
+After completing the tasks
+the academics and professionals 
+were interviewed. 
+We intended to conduct semi-structured interviews 
+with all of the participants, but
+the students were too tired by the end of the experiment. 
+% psychometric tests
+Psychometric tests were not used
+to assess spatial ability because
+these do not address 
+geographic scales,
+spatial relations,
+domain-specific knowledge and abilities 
+\cite{Lee2009,Bednarz2011,Wakabayashi2011},
+or embodied cognitive ability. 
+
+% participants
+\paragraph{Participants}
+In order to compare the performance of novices and experts
+we used graduate students, faculty, and professionals 
+in architecture, landscape architecture, or geographic information science
+for this study (see Table~\ref{table:participants}).
+Of the 12 graduate students 6 were in the \nth{2} semester of the 
+Master of Landscape Architecture program 
+at North Carolina State University.
+These students were just beginning to learn to read and manipulate contour lines 
+in the class Landform, Site Grading, and Development Systems. 
+%They had no experience with GIS, 3 credit hours of training in digital representation, 
+%and no experience with Rhinoceros.
+The other 6 graduate students were in the \nth{2} semester of the 
+Master of Geospatial Information Science and Technology program 
+at North Carolina State University.
+%They had at least 9 credits hours of training in GIS, but 
+%had no experience with contour maps, digital terrain modeling, or 3D modeling.
+The other 6 participants were either landscape architecture faculty 
+with professional experience or practicing professionals in landscape architecture 
+from around the world. 
+Of these 2 were experts in 3D modeling with over 10 years of experience 
+using Rhinoceros and similar programs including Maya and 3ds Max. 
+These experts felt comfortable and proficient modeling a wide variety of geometries 
+and had developed unique, personalized, and highly adaptable workflows.
+
+\begin{table}
+\caption{Participants}
+\ra{1.3}
+\begin{tabular}{l <{\hspace{1em}} c <{\hspace{1em}} c}
+\toprule
+Group & No. & \mbox{3D expertise}\\
+\midrule
+Students & 12 & 0\\
+Academics \& professionals & 6 & 2\\
+\bottomrule
+\end{tabular}
+\label{table:participants} 
+\end{table}
+
+% digital modeling
+\paragraph{Digital modeling}
+Participants had 10 minutes 
+to digitally model the study landscape in Rhinoceros 5, 
+a non-uniform rational basis spline 
+(NURBS) based 3D modeling program
+designed for precise freeform curve and surface modeling \cite{Rhino}.
+After 10 minutes of training 
+participants modeled the study landscape as a NURBS surface 
+by vertically translating control points (Fig.~\ref{fig:rhino}). 
+They started with a flat NURBS surface that was 
+divided into a 10 x 10 grid of control points.
+As a reference their model space also included 
+a locked representation of the study landscape as 3D contours. 
+At any point participants could rebuild the surface 
+with a higher density of control points for finer, more nuanced control. 
+This method is relatively simple and 
+analogous to basic actions in sculpture -- pushing and pulling. 
+We developed and tested this method 
+as a simple, straightforward technique for  
+digital freeform surface modeling
+that could be taught quickly, yet could produce an accurate model. 
+Through testing we determined that 
+novice users took approximately 10 minutes
+to model the surface with a 10 x 10 grid of control points
+before wanting to rebuild the surface with more control points.
+% videos
+See \url{https://youtu.be/dSyrHAuu698}
+for a video demonstrating the training
+and \url{https://youtu.be/vA1xwMSaGV4}
+for a video demonstrating the digital 3D modeling task.
+
+% choice of 3d modeling program
+Different 3D modeling programs afford very different
+interactions, modeling tools, data structures, and modes of representations. 
+Developing a simple, intuitive modeling technique 
+drove the choice of software in this study. 
+After testing 3D modeling workflows in 
+Rhinoceros, Vue, Maya, and SketchUp
+we chose Rhinoceros 5 for this task because it 
+is popular with designers such as architects, 
+has a wide variety of modeling tools,
+can precisely represent continuous surfaces, 
+and has plugins for importing and exporting geographic data. 
+To make a fair comparison 
+between digital, analog, and tangible modeling,
+the digital modeling technique 
+needed to be relatively analogous to hand sculpting
+-- i.e.~pushing and pulling rather than painting in 3D, 
+drafting in 3D, or stacking voxels.
+
+% analog modeling
+\paragraph{Analog modeling}
+After a brief explanation and demonstration
+participants had 10 minutes to sculpt 
+the study landscape in polymer-enriched sand 
+by hand or with a wooden sculpting tool (Fig.~\ref{fig:analog}).  
+They were given a CNC-routed model of the study landscape 
+as a reference, a sculpting tool, and a 3D scale. 
+Participants were shown how the 3D scale could be used to 
+measure the height of the model. 
+A lamp on the table cast shadows across the model for hillshading.
+% videos
+See \url{https://youtu.be/STYHUHNaWdY}
+for a video demonstrating the analog 3D modeling task.
+
+% tangible modeling
+\paragraph{Tangible modeling}
+After a minute long explanation and demonstration
+participants had 10 minutes to sculpt
+a projection-augmented, polymer-enriched sand model
+of the study landscape 
+either by hand or with a wooden sculpting tool 
+(Fig.~\ref{fig:proj_aug}). 
+Tangible Landscape was used to project 
+an elevation map of the study landscape
+with contours and a legend
+onto participants' sand models as guide for sculpting. 
+Participants were also given CNC routed reference model and 
+a 3D scale ruled in map units. 
+After an explanation of the contour map, elevation color table, and legend,
+participants were shown how the 3D scale could be used to 
+measure the elevation of their scale models.
+% videos
+See \url{https://youtu.be/1uEvzMJWh_E}
+for a video demonstrating the tangible modeling task.
+
+% data collection and analysis
+\paragraph{Data collection and analysis}
+We used Tangible Landscape to scan the finished models 
+built using analog hand modeling and tangible modeling.
+The scans were captured as point clouds, interpolated 
+as digital elevation models 
+using the regularized spline with tension method,
+and stored as raster maps in a GRASS GIS database. 
+The NURBS surfaces modeled in Rhinoceros 
+were exported as raster elevation maps,
+imported into GRASS GIS, randomly resampled, 
+re-interpolated using the regularized spline with tension method, 
+and stored as raster maps in a GRASS GIS database. 
+The data from Rhinoceros 
+was randomly resampled and re-interpolated to account for 
+differences and irregularities in resolution, data density, and point spacing.
+For each set of models -- digital, analog, and augmented --
+we computed raster statistics (i.e.~per cell statistics), 
+topographic and morphometric parameters, 
+and simulated water flow.
+%
+% supplemental materials
+Refer to the supplemental materials 
+for more detailed description of the methodology
+used in this study
+\ref{appendix:methodology}.
 
 
 
-
-
-
-
-
-
-
-
-
-
-%Training for digital 3D modeling: \\
-\noindent \url{https://youtu.be/dSyrHAuu698}
-
-%Digital 3D modeling with Rhinoceros: \\
-\noindent \url{https://youtu.be/vA1xwMSaGV4}
-
-%Analog 3D modeling: \\
-\noindent \url{https://youtu.be/STYHUHNaWdY}
-
-%Tangible modeling: \\
-\noindent  \url{https://youtu.be/1uEvzMJWh_E}
-
-
-
-% See Supplemental Material for more detailed methodolgy
-
+% ---------------------------
 \subsection{Results}
 
-\begin{figure*}%[h]
-\begin{center}
-\resizebox {\textwidth} {!} {\input{comparison.tikz}}
+% overall results
+Overall participants performed best with tangible modeling.
+%
+The 3D maps of raster statistics and geospatial analyses in
+Table \ref{table:topography} 
+show participants' performance with each technology.
+%
+When digitally modeling with Rhinoceros 
+participants tended to 
+create very approximate massings of the topography
+with serious errors in the interior space and
+with indistinct landforms
+that only hinted at the morphology of the landscape.
+%
+When they sculpted by hand
+their models tended to be descriptive -- 
+differing substantially from the reference, but
+accurately representing most of the landforms. 
+%
+Their performance improved 
+with tangible modeling --
+the resulting models
+fit the reference better, 
+had more defined topography, 
+and accurately represented most of the landforms.
+
+% group results
+We used pairwise comparison to study 
+how performance varied between 
+novices and experts (Fig. \ref{fig:comparison}).
+After analyzing all participants' performance
+we compared students with academics and professionals. 
+Then we compared landscape architecture students with GIS students.
+Finally we compared academics and professionals 
+with and without 3D modeling expertise.
+%
+When participants are analyzed as groups 
+-- as GIS students, Landscape Architecture students, 
+academics and professionals without 3D modeling expertise, 
+and academics and professionals with 3D modeling expertise -- 
+these trends generally still hold, 
+albeit with some very important exceptions.
+%
+Unlike all other groups, 
+the 3D modeling experts performed extremely well 
+in the digital modeling task
+with a very low standard deviation of difference, 
+but still only hinted at the landforms. 
+They, however, performed even better with tangible modeling,
+accurately representing the landforms. 
+%
+See to the supplemental materials for more details
+\ref{appendix:topographic_results}.
+%
+These results show 
+tangible modeling should be 
+should be a better, faster tool 
+for quick modeling tasks such as rapid ideation. 
+for both novices and experts.
+
+\begin{figure*}[t]
+%\begin{center}
+\resizebox {\textwidth} {!} {\include*{comparison.tikz}}
 \caption{Pairwise comparison of the mean digital elevation models by category of participants}
 \label{fig:comparison}
-\end{center}
+%\end{center}
 \end{figure*}
 
-% See Supplemental Material for more detailed comparison
-
-%\include{topographic}
+\include*{topographic}
 
 % ---------------------------- CUT-FILL ---------------------------- 
 \section{Cut-and-fill analysis}
-\subsection{Methods}
+% grading
+When `grading' or earthmoving
+landscape architects and civil engineers
+seek to balance their sediment budget 
+-- using as much cut (earth removed) 
+as fill (earth deposited) --
+to minimize the cost of transporting sediment to and from
+the construction site.
+% difference method
+Because of the importance 
+of balancing sediment budgets
+we designed a real-time analytic 
+for Tangible Landscape that 
+maps the difference in elevation
+before and after modification
+to facilitate cut-and-fill analysis. 
+% experiment
+To test the effectiveness of this real-time analytic
+we conducted a cut-and-fill experiment.
 
-\url{https://youtu.be/Q3elMIRCYSk}
+\subsection{Methods}
+In the cut-and-fill experiment 
+the same 18 participants were asked to use 
+Tangible Landscape's difference analytic to model 
+another study landscape
+with a large central ridge 
+flanked by valleys 
+and a smaller, secondary ridge.
+Participants had 10 minutes to model this region
+in polymer-enriched sand using Tangible Landscape 
+with the difference analytic (Table~\ref{fig:diff}). 
+The difference between the reference elevation 
+and the participant's modeled elevation
+was computed in near real-time and projected onto the sand 
+as an interactive guide.
+The linear regression of the reference and scanned elevation maps 
+was used to correct shifts in scanning and georeferencing. 
+The difference showed where sand needs to added (blue) or removed (red) 
+in order to match the reference landscape.
+While this feedback should show users what to do next, 
+it may provide too much data 
+or be too challenging to rapidly parse and understand.
+% video
+See \url{https://youtu.be/Q3elMIRCYSk}
+for a video demonstrating the 3D modeling task 
+with the difference analytic.
+
+\paragraph{Data collection and analysis}
+The final scan of each model was stored in a 
+GRASS GIS database for analysis. 
+We used raster statistics, the difference in elevation, 
+topographic parameters, and morphometric parameters
+to compare the reference elevation 
+and the set of modeled elevations. 
+We computed 
+the mean elevation,
+the standard deviation of elevations, 
+and the standard deviation of difference for the set.
+To find the standard deviation of differences 
+we first computed the difference 
+between the reference elevation and each elevation 
+and then used raster statistics 
+to find the standard deviation of these differences.
+We also computed the difference between the 
+reference elevation and the mean elevation for the set. 
+The reference elevation used in the difference calculation 
+was rescaled and shifted based on the 
+linear regression of the reference and mean elevation.
+We computed the slope and landforms of the mean elevation. 
+We also filmed each session, 
+observed and took notes on participants' modeling processes, 
+and interviewed participants.
 
 \subsection{Results}
+% table
+The 3D maps of raster statistics and geospatial analyses in
+Tables~\ref{table:difference_comparison}-\ref{table:difference_percent_cells} 
+show participants' performance with the difference analytic.
+% overview of results
+Participants performed well with the difference analytic 
+-- modeling simplified, 
+but relatively accurate approximations of the landscape.
+Participants with expertise in 3D modeling 
+performed even better than other participants 
+-- more accurately modeling the elevation and slopes,
+but not the landforms. 
+Since these models were sculpted in sand,
+their edges tend to slump.
+This caused systematic artifacts in the analysis like
+low elevation values and steep slopes
+along the borders. 
+Based on interviews and observations
+we found that the difference analytic enabled
+a rapid, iterative process 
+of modeling, learning from computational feedback, 
+re-remodeling, etc.
 
-%\include{cut_fill}
+%  mean
+The mean elevation for this set of models
+has the approximate shape of the reference elevation, 
+but is much simpler, lacking many details. 
+% stdev diff
+The standard deviation of difference shows 
+how consistently the models fit the reference. 
+Overall participants performed well -- 
+there was little deviation from the best fit. 
+Participants tended to perform poorly 
+near the edges of models, especially in the corners.
+They also had trouble with the valleys 
+and the low point by the secondary ridge.
+% slope
+The mean slope shows that participants tended to model 
+overly steep slopes for the primary ridge -- exaggerating its form --
+but tended not model steep enough slopes for the secondary ridge. 
+% landforms
+The mean landforms show that participants tended to 
+clearly capture the central ridge and its spurs and
+the secondary ridge and its valley, but missed the 
+other valleys.
+Hollows -- transitions between slopes, footslopes, and valleys -- 
+on the mean landform map hint at these other 
+valleys in the right locations.
+% experts
+The 3D modeling experts built more accurate models
+with a lower standard deviation of differences 
+and more accurate slopes. 
+Since they did not, however, exaggerate the central ridge
+and did not smooth its slopes, 
+they did not cleanly represent this landform. 
+The others built more exaggerated models 
+that more clearly captured the main ridge.
+
+% understanding volume
+To successfully use the difference analytic 
+participants had to think about topography as volume.
+They had to either add or excavate sand to make the models match. 
+One of the participants 
+described modeling with the difference analytic
+as a continual process of 'rebuilding to make it match.'
+% iterative process
+When interviewed
+participants described an iterative process of 
+continual refinement based on critical analysis 
+-- similar to Sch{\"o}n's reflection-in-action \cite{Schon1983} --
+but enhanced by computational feedback,
+explaining that 
+`because Tangible Landscape gives immediate results 
+it encourages an iterative process.' 
+See Table \ref{table:interviews} for select comments about this experiment.
+
+% conclusions
+The difference analytic is intuitive -- 
+participants were able to learn how to use it effectively without training, 
+producing good, albeit exaggerated approximations of the landscape. 
+%
+Their models tended to have key morphometric characteristics -- 
+the primary ridge, its spurs, the low point, 
+the secondary ridge, and one of the valleys -- 
+but these characteristics tended to be 
+either over- or under-exaggerated.
+
+\include*{cut_fill}
+
+%See to the supplemental materials for more details
+%\ref{appendix:cut_fill_results}.
+
 
 % ---------------------------- WATER FLOW ---------------------------- 
 \section{Water flow modeling}
+
+After a pilot study \cite{Harmon2016}
+we conducted an experiment to study 
+how water flow analytics 
+mediate 3D spatial performance
+when using a tangible interface for GIS.
+%
+This experiment was designed to study whether
+participants could link form and process
+using the water flow analytic -- to assess
+how well they could understand the relationship 
+between topographic form 
+and the flow of water 
+when using Tangible Landscape.
+
+The same 18 participants were asked to model water flow 
+across another region of Lake Raleigh Woods
+using Tangible Landscape with the water flow analytic.
+This region has a central ridge 
+flanked by a large stream on one side 
+and a small stream on the other.  
+A third, smaller stream bisects the ridge.
+Participants had 10 minutes to model water flow across this region
+by sculpting polymer-enriched sand using Tangible Landscape 
+with the water flow analytic. 
+They sculpted sand models of the topography
+to direct the simulated flow of water.  
+Water flow was simulated in near real-time 
+as a diffusive wave approximation of shallow water flow.
+The module \textit{r.sim.water} \cite{r.sim.water}
+uses a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}.
+Participants could switch between the precomputed reference water flow 
+-- i.e.~their target -- 
+and the water flow over their scanned model.
+%
+See \url{https://youtu.be/61hsXgb3MLY}
+for a video demonstrating the 3D modeling task 
+with the water flow analytic.
+
+
+
+
 \subsection{Methods}
 
-\url{https://youtu.be/61hsXgb3MLY}
+
 
 \subsection{Results}
 
-%\include{water_flow}
+\include*{water_flow}
+
+\include*{interviews}
+
+
+
 
 % ---------------------------- DISCUSSION ---------------------------- 
 \section{Discussion}
@@ -463,7 +890,9 @@ and tangible modeling with Tangible Landscape.
 \section{Conclusion}
 
 
-
+% EARTHWORKS, WATER, and EROSION
+% Design implications, importance of topographic modeling in landscape architecture
+% complex interaction of form and process
 
 %%INTERACTION AND PERFORMANCE
 %
@@ -578,13 +1007,25 @@ enhancing spatial performance.
 %'bridge the division between physical and digital forms and potentially to revolutionize the current design process' \cite{Ishii2004}.
 
 
-% ------------------- SUPPLEMENTAL MATERIALS ----------------------- 
+% ---------------------------- SUPPLEMENTAL MATERIAL ---------------------------- 
 
 %https://us.sagepub.com/en-us/nam/supplementary-files-on-sage-journals-sj-guidelines-for-authors
+
+\begin{sm}
+%\include{supplemental_material}
+\end{sm}
+
 
 % ------------------- GUIDELINES ----------------------- 
 
 %https://us.sagepub.com/en-us/nam/international-journal-of-architectural-computing/journal202464#submission-guidelines
+
+
+
+
+
+
+
 
 
 
@@ -667,7 +1108,8 @@ enhancing spatial performance.
 
 % ---------------------------- BIBLIOGRAPHY ---------------------------- 
 
-%\bibliographystyle{SageV} %Vancouver (numbered)
-%\bibliography{tangible_topography.bib} 
+%\bibliographystyle{SageH}
+\bibliographystyle{SageV}
+\bibliography{tangible_topography.bib} 
 
 \end{document}
