@@ -1,6 +1,6 @@
 % sage_latex_guidelines.tex V1.10, 24 June 2016
 
-\documentclass[Afour,sageh,times]{sagej}
+\documentclass[Afour,sagev,times]{sagej} %sageh
 
 % customizations
 \usepackage[super]{nth}
@@ -18,7 +18,7 @@
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{tabularx}
-\usepackage{newclude}
+\usepackage{import} %\usepackage{newclude}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
@@ -60,39 +60,37 @@ Raleigh, NC 27615, USA.}
 We present Tangible Landscape 
 -- a technology for rapidly and intuitively designing landscapes
 informed by geospatial modeling, analysis, and simulation.
-%
-Tangible Landscape is a tangible interface powered by a geographic information system 
+Tangible Landscape is a tangible interface 
+powered by a geographic information system 
 that gives 3D spatial data an interactive, physical form so that 
 users can naturally sense and shape it.
-%
 It couples a physical and a digital model of a landscape
 through real-time cycles of 
-physical manipulation, 3D scanning, spatial computation, and projected feedback.
-% 
+physical manipulation, 3D scanning, 
+spatial computation, and projected feedback.
 Natural 3D sketching and real-time analytical feedback should aid
-landscape architects in the design of high performance, process-based landscapes.
-%
+landscape architects in the design of 
+high performance, process-based landscapes.
 We conducted a series of studies to assess the effectiveness of 
 tangible modeling for landscape architects.
-%
 Landscape architecture students, academics, and professionals 
 were given a series of fundamental landscape design tasks 
 -- topographic modeling, cut-and-fill analysis, and water flow modeling. 
-%
-Their performance was assessed using both qualitative and quantitative methods.
-%
+Their performance was assessed 
+using both qualitative and quantitative methods.
 With tangible modeling the participants
 effectively modeled topography and water flow 
 producing more accurate models 
 that better represented morphological features 
 than they did with either digital or analog, hand modeling.
-%
 When tangibly modeling
 they used a rapid, iterative process informed by geospatial analytics 
 that enhanced their performance.  
 \end{abstract}
 
-\keywords{Human-computer interaction, tangible interfaces, embodied cognition, geospatial modeling, topographic modeling, hydrological modeling}
+\keywords{Human-computer interaction, tangible interfaces, 
+embodied cognition, geospatial modeling, topographic modeling, 
+hydrological modeling}
 
 \maketitle
 
@@ -100,84 +98,73 @@ that enhanced their performance.
 
 \section{Introduction}
 
-% GIS IN LANDSCAPE ARCHITECTURE
+% GIS and CAD in landscape architecture
 Landscape architects use 
 geographic information systems (GIS) to map and analyze landscapes
-and computer aided design (CAD) software % 3D modeling software
+and computer aided design (CAD) software
 to computationally represent and design landscapes.
-%
 While GIS can quantitatively model, analyze, simulate, and visualize 
 complex spatial and temporal phenomena,
-these systems can be unintuitive, challenging to use, and creatively constraining
+these systems can be unintuitive, 
+challenging to use, and creatively constraining
 due to the complexity of the software, 
 the complex workflows, 
 and the limited modes of interaction and visualization 
 \cite{Ratti2004}. 
-%
 Due to the complex, time consuming workflows 
 needed to link geospatial analysis with computer aided design 
-GIS tends to play a limited, often preliminary role in the creative design process.
-%
+GIS tends to play a limited, 
+often preliminary role in the creative design process
 While GIS has been used extensively in landscape planning 
 to model scenarios \cite{Steinitz2004,Baker2004,Steinitz2012},
 in landscape architecture
 it is primarily used for preliminary research and mapping.
-%
 If, however, geospatial analysis, modeling, and simulation
 could be seamlessly integrated into the creative design process 
 then designers could rapidly develop design ideas
 while quantitively testing them. 
-%
 In such a rapid, fluid creative process
 the rigorous testing of design concepts 
 with quantitive measures of performance 
 could drive the development of new concepts.
-%
 Simulation for example could inspire ideation 
 linking designed form with environmental processes. 
 
-% TANGIBLES
+% tangibles
 When using a graphical user interface (GUI) 
 -- the paradigmatic mode of interaction for both CAD and GIS --  
 intention is translated from physical input 
 using devices like a mouse and keyboard 
 to digital data rendered visually as text and graphics. 
-%
 Positing that graphical interaction is unintuitive
 because of this disconnect between 
 intention, physical action, and purely visual feedback,
 researchers have been developing tangible user interfaces 
 to give digital data interactive physical form 
 \cite{Dourish2001,Ishii2008}. 
-%
 Theoretically tangible interfaces should embody cognition 
 -- grounding higher cognitive processes in bodily experience --
 by enabling users to kinaesthetically sense and interact with digital data
 \cite{Kirsh2013}.
-%
 Tangible, embodied interaction should be highly intuitive 
-since it 
-uses existing motor schemas,  
+since it uses existing motor schemas,  
 offloads cognitive work onto the body,
 and seamlessly connects intention, action, and feedback.
 
-% TANGIBLES FOR LANDSCAPE ARCHITECTURE
+% tangibles for landscape architecture
 The MIT Media Lab developed two prototypes 
 -- Illuminating Clay and SandScape -- 
 that coupled a physical and digital model of a landscape
 through a cycle of 3D scanning, geospatial computation, and projection
 to combine the affordances of intuitive sculpting by hand
 with quantitative geospatial analysis \cite{Piper2002a}. 
-%
 These systems were designed to 
 'streamline the landscape design process 
 and result in a more effective use of GIS, 
 especially when distributed decision-making and discussion 
 with non-experts are involved' \cite{Ratti2004}.
-%
 Recent advances in sensors and computer vision
 have fueled the development of 
-%new tangible interfaces including systems 
 systems for tangibly modeling landscapes such as 
 Efecto Mariposa \cite{Vivo2011} and
 the Augmented Reality Sandbox \cite{Kreylos2012,ARsandbox}, 
@@ -192,27 +179,22 @@ and the Augmented Reality Sandbox,
 we have develop Tangible Landscape 
 -- a tangible interface for geospatial modeling
 powered by an open source GIS \cite{Petrasova2015}. 
-%
 % TL premise: algorithmic design of landscapes
 % Conceptually Tangible Landscape is meant to... 
-%
 With Tangible Landscape
 designers can sculpt a terrain model in polymeric sand,
 and can digitize points, areas, and volumes by placing 
 color-coded markers, patches of felt, or building blocks. 
-%
 These interactions are captured by a Kinect sensor, 
 processed in GRASS GIS, 
 and the resulting geospatial computations
 are projected back onto the physical model, 
 all in real-time (Fig.~\ref{fig:system_diagram}).
-%
 The geospatial data can also be automatically
 3D modeled and rendered in Blender 
 on a monitor or head-mounted display
 so that designers can 
 immersively explore different views \cite{Tabrizian2016}.
-%
 For example
 as users sculpt topography,
 simulated water flow can be projected back onto the model in real-time
@@ -226,18 +208,15 @@ the trees can be rendered in 3D on a display %.
 %along with charts showing metrics like distance and slope
 (Fig.~\ref{table:tl_demo}). 
 
-Tangible Landscape 
-is unique since it powered by a GIS
+Tangible Landscape is unique since it powered by a GIS
 with extensive libraries for geospatial computation
 and has a wide range of real-time interactions including 
 3D sculpting, 3D sketching, color recognition, and object recognition.
-%
-Given its versatility 
-there are many possible design applications
+Given its versatility there are many possible design applications
 including terrain modeling, hydrological modeling, flood prevention,
 trail planning, viewshed analysis, and planting design. 
 
-% TL DIAGRAM
+% TL diagram
 \begin{figure}
     \begin{center}
         \includegraphics[width=0.45\textwidth]{images/diagrams/rendered_diagram_2.pdf}
@@ -248,9 +227,10 @@ trail planning, viewshed analysis, and planting design.
     \end{center}
 \end{figure}
 
-% TL DEMO
+% TL demo
 \begin{table*}
-\caption{Collaboratively sculpting topography to create lakes, drawing trees with a laser pointer, and visualizing with 3D renderings.} %Source: \cite{Tabrizian2016}.
+\caption{Collaboratively sculpting topography to create lakes, 
+drawing trees with a laser pointer, and visualizing with 3D renderings.}
 \ra{1.3}
 \begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
 \toprule
@@ -271,7 +251,7 @@ trail planning, viewshed analysis, and planting design.
 \label{table:tl_demo} 
 \end{table*}
 
-%% TL DEMO V2
+%% TL demo V2
 %\begin{table*}
 %\caption{Sculpting topography to create lakes, 
 %drawing trees with a laser pointer, 
@@ -296,7 +276,6 @@ trail planning, viewshed analysis, and planting design.
 %\label{table:tl_demo} 
 %\end{table*}
 
-% RESEARCH QUESTIONS
 \subsection{Research objectives}
 Many of the theoretical underpinnings of tangibles 
 remain unproven and unexplored. 
@@ -305,7 +284,7 @@ really work as theorized?
 Can designers really model more intuitively and 
 design more effectively with tangibles?
 And how do tangibles mediate the design process?
-%
+% experiments
 In order to assess the effectiveness 
 of tangible modeling for landscape architects 
 we conducted a series of user studies
@@ -317,15 +296,13 @@ using Tangible Landscape.\\
 Our research objectives were to:
 %
 \begin{itemize}
-% Performance
-\item Assess how well landscape architects could perform basic design tasks using
-a tangible interface for landscape modeling
-% Process
+% performance
+\item Assess how well landscape architects could perform 
+basic design tasks using a tangible interface for landscape modeling
+% process
 \item Study how tangible interaction mediated
 landscape architects' design process
 \end{itemize}
-
-\clearpage
 
 % ---------------------------- TOPOGRAPHIC ---------------------------- 
 
@@ -374,7 +351,8 @@ In this experiment
 digitally, by hand, and with Tangible Landscape. 
 % tasks
 Participants were given three tasks -- 
-to digitally sculpt a model of a landscape using the 3D modeling program Rhinoceros, 
+to digitally sculpt a model of a landscape 
+using the 3D modeling program Rhinoceros, 
 to hand sculpt a model of a landscape in polymer-enriched sand,
 and to sculpt a model of a landscape using Tangible Landscape.
 % time limit 
@@ -421,13 +399,9 @@ Master of Landscape Architecture program
 at North Carolina State University.
 These students were just beginning to learn to read and manipulate contour lines 
 in the class Landform, Site Grading, and Development Systems. 
-%They had no experience with GIS, 3 credit hours of training in digital representation, 
-%and no experience with Rhinoceros.
 The other 6 graduate students were in the \nth{2} semester of the 
 Master of Geospatial Information Science and Technology program 
 at North Carolina State University.
-%They had at least 9 credits hours of training in GIS, but 
-%had no experience with contour maps, digital terrain modeling, or 3D modeling.
 The other 6 participants were either landscape architecture faculty 
 with professional experience or practicing professionals in landscape architecture 
 from around the world. 
@@ -459,7 +433,7 @@ a non-uniform rational basis spline
 designed for precise freeform curve and surface modeling \cite{Rhino}.
 After 10 minutes of training 
 participants modeled the study landscape as a NURBS surface 
-by vertically translating control points (Fig.~\ref{fig:rhino}). 
+by vertically translating control points. 
 They started with a flat NURBS surface that was 
 divided into a 10 x 10 grid of control points.
 As a reference their model space also included 
@@ -564,11 +538,8 @@ for more detailed description of the methodology
 used in this study
 \ref{appendix:methodology}.
 
-
-
 % ---------------------------
 \subsection{Results}
-
 % overall results
 Overall participants performed best with tangible modeling.
 %
@@ -631,13 +602,14 @@ for both novices and experts.
 
 \begin{figure*}[t]
 %\begin{center}
-\resizebox {\textwidth} {!} {\include*{comparison.tikz}}
-\caption{Pairwise comparison of the mean digital elevation models by category of participants}
+\resizebox {\textwidth} {!} {\input{comparison.tikz}}
+\caption{Pairwise comparison of the mean digital elevation models 
+by category of participants}
 \label{fig:comparison}
 %\end{center}
 \end{figure*}
 
-\include*{topographic}
+\input{topographic}
 
 % ---------------------------- CUT-FILL ---------------------------- 
 \section{Cut-and-fill analysis}
@@ -678,7 +650,8 @@ was computed in near real-time and projected onto the sand
 as an interactive guide.
 The linear regression of the reference and scanned elevation maps 
 was used to correct shifts in scanning and georeferencing. 
-The difference showed where sand needs to added (blue) or removed (red) 
+The difference showed where 
+sand needs to added (blue) or removed (red) 
 in order to match the reference landscape.
 While this feedback should show users what to do next, 
 it may provide too much data 
@@ -802,7 +775,7 @@ the secondary ridge, and one of the valleys --
 but these characteristics tended to be 
 either over- or under-exaggerated.
 
-\include*{cut_fill}
+\input{cut_fill}
 
 %See to the supplemental materials for more details
 %\ref{appendix:cut_fill_results}.
@@ -811,12 +784,26 @@ either over- or under-exaggerated.
 % ---------------------------- WATER FLOW ---------------------------- 
 \section{Water flow modeling}
 
+% importance of modeling water flow
+Water, like earth, is another key medium of landscape architecture.
+It can be challenging to understand, much less intentionally direct
+the flow of water because this process
+unfolds in time and space, 
+driven by gravity and momentum and
+controlled by the morphological shape and gradient of topography.
+% simulation
+We implemented a real-time water flow simulation 
+for Tangible Landscape 
+so that users can sculpt topography 
+and immediately see how that changes 
+the simulated flow and dispersion of water
+across the landscape.
+% experiment
 After a pilot study \cite{Harmon2016}
 we conducted an experiment to study 
-how water flow analytics 
-mediate 3D spatial performance
-when using a tangible interface for GIS.
-%
+how effectively landscape architects
+can use this real-time, tangible water flow simulation.
+% form and process
 This experiment was designed to study whether
 participants could link form and process
 using the water flow analytic -- to assess
@@ -825,45 +812,136 @@ between topographic form
 and the flow of water 
 when using Tangible Landscape.
 
+\subsection{methods}
 The same 18 participants were asked to model water flow 
-across another region of Lake Raleigh Woods
-using Tangible Landscape with the water flow analytic.
-This region has a central ridge 
+across another study landscape
+using Tangible Landscape 
+with the real-time water flow simulation 
+(Table~\ref{fig:flow_sequence}).
+This study region has a central ridge 
 flanked by a large stream on one side 
 and a small stream on the other.  
 A third, smaller stream bisects the ridge.
-Participants had 10 minutes to model water flow across this region
-by sculpting polymer-enriched sand using Tangible Landscape 
-with the water flow analytic. 
-They sculpted sand models of the topography
+Participants had 10 minutes to model water flow across this region.
+Using Tangible Landscape
+they sculpted polymer-enriched sand models of the topography
 to direct the simulated flow of water.  
 Water flow was simulated in near real-time 
 as a diffusive wave approximation of shallow water flow.
 The module \textit{r.sim.water} \cite{r.sim.water}
-uses a path sampling technique to solve the shallow water flow continuity equation \cite{Mitasova2004}.
-Participants could switch between the precomputed reference water flow 
--- i.e.~their target -- 
+uses a path sampling technique to solve 
+the shallow water flow continuity equation \cite{Mitasova2004}.
+Participants could switch between 
+the precomputed reference water flow -- i.e.~their target -- 
 and the water flow over their scanned model.
 %
 See \url{https://youtu.be/61hsXgb3MLY}
 for a video demonstrating the 3D modeling task 
-with the water flow analytic.
+with the water flow simulation.
 
-
-
-
-\subsection{Methods}
-
-
+\paragraph{Data collection and analysis}
+The final scan of each model was stored 
+in a GRASS GIS database for analysis. 
+We used raster statistics, simulated water flow, 
+and the difference in simulated water depth 
+to compare water flow across the study landscape 
+and the set of models.
+We computed the mean elevation,
+the standard deviation of elevations, 
+and the standard deviation of difference for the set.
+Then we simulated water flow across 
+the mean elevation for the set of models
+and computed the difference 
+between the reference and mean water flow. 
 
 \subsection{Results}
+% table
+The 3D maps of raster statistics, simulations, and geospatial analyses in
+Table~\ref{table:water_flow_experiment} 
+show participants' performance with the water flow simulation.
+% overview of results
+While all participants performed well in this task
+-- typically capturing two of the three streams -- 
+participants with expertise in 3D modeling performed the best.
+These experts built more accurate models
+that captured all three streams.
 
-\include*{water_flow}
+% mean elevation
+The mean elevation for this set of models
+has under-exaggerated valleys and 
+over-exaggerated ridges in the right places. 
+The mean elevation has 22.43\% less valley cells than the reference, 
+but 153.40\% more ridge cells
+(see Table \ref{table:water_flow_percent_cells}). 
+% stdev diff
+The standard deviation of difference 
+shows that participants performed well 
+with the greatest deviation from the reference
+in the corners and along the edges. 
+Again this is to be expected 
+as sand slumps along the borders. 
 
-\include*{interviews}
+% water depth
+The mean water depth map shows two of the streams 
+and hints of the third.
+The streams are simplified, but in the right locations. 
+The simplified stream channels lack micro-topography
+and thus details. 
+Table \ref{table:water_flow_percent_cells} shows that 
+there was substantial concentrated flow (water depth $>=0.05$ ft) 
+in the streams, albeit 31.10\% less than in the reference.
+This is to be expected since 
+water flow over the sculpted models 
+was only computed over the model region, while 
+the reference water flow 
+was computed over a larger region 
+with the entire contributing watershed 
+in order to produce an accurate representation 
+of water flow across the study landscape. 
+% depth difference
+The water depth difference map shows
+where water should be added (red) or removed (blue) 
+to match the reference
+-- i.e.~where water should flow versus where it was modeled. 
+The mean water flow tightly fits the reference, 
+following similar, albeit simplified routes.
 
+% observations
+With the water flow simulation
+participants focused on accurately modeling the streams, 
+rather than the general shape of the topography. 
+As a result the primary ridge was 
+inconsistently modeled and over-exaggerated,
+while the streams consistently 
+had continuous, concentrated flow 
+along the correct routes.
+% understanding water flow
+This experiment required abstract spatial thinking linking form and process. 
+Because water flow is controlled by the shape and gradient of the topography
+participants had to sculpt topographic form to drive water flow. 
+% interviews
+This modeling process, however, helped them understand topography better 
+because `seeing the flow took away the mystery of topography.'
+%
+We observed participants using an iterative modeling process 
+with the water flow simulation -- 
+they 
+\begin{enumerate*}[label=\alph*),font=\itshape]
+\item sculpted the topography, 
+\item observed how the water flow simulation changed, 
+\item critiqued their water flow and topography, 
+\item and continued to sculpt.
+\end{enumerate*}
+%
+Through this simulation-driven trial-and-error process 
+participants were able 
+to generate hypotheses, test hypotheses, and draw inferences 
+about the way that water flows over topography. 
+See Table \ref{table:interviews} for select comments about this experiment.
 
+\input{water_flow}
 
+\input{interviews}
 
 % ---------------------------- DISCUSSION ---------------------------- 
 \section{Discussion}
@@ -883,12 +961,24 @@ with the water flow analytic.
  %
 %With this technology landscape architects and spatial scientists can collaboratively design through a seamless, rapid iterative process of intuitive ideation, geocomputational analysis, realistic rendering, and critical analysis. (ACADIA)
 
+%% open source
+%The algorithms used in GRASS GIS are 
+%based on peer-reviewed scientific publications 
+%and have been 
+%transparently implemented 
+%with free, publicly available, version controlled source code. 
+%Open, transparent algorithms are needed to fully reproduce computational science \cite{Rocchini2012}. 
 
 
 % ---------------------------- CONCLUSION ---------------------------- 
 
 \section{Conclusion}
 
+This study demonstrates that tangible landscape modeling
+can be an effective design tool for landscape architects.
+It enables a rapid, iterative design process 
+informed by real-time geospatial analytics and 
+enhances 3D spatial performance.
 
 % EARTHWORKS, WATER, and EROSION
 % Design implications, importance of topographic modeling in landscape architecture
@@ -910,19 +1000,6 @@ with the water flow analytic.
 
  %
 %With this technology landscape architects and spatial scientists can collaboratively design through a seamless, rapid iterative process of intuitive ideation, geocomputational analysis, realistic rendering, and critical analysis. (ACADIA)
-
-
-
-
-
-
-\clearpage
-
-\section{Conclusion}
-This study proves that tangible landscape modeling
-can be an effective landscape design tool
-enabling a rapid, iterative design process and
-enhancing spatial performance.
 
 % role in design process
 % design process
@@ -1015,89 +1092,13 @@ enhancing spatial performance.
 %\include{supplemental_material}
 \end{sm}
 
-
 % ------------------- GUIDELINES ----------------------- 
 
 %https://us.sagepub.com/en-us/nam/international-journal-of-architectural-computing/journal202464#submission-guidelines
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% ---------------------------- TEMPLATE ---------------------------- 
-
-%\section{Template}
-%\begin{enumerate}
-%\item[(i)] ...
-%\item[(ii)] ...
-%\item[(iii)] ...
-%\end{enumerate}
-%
-%\begin{figure*}
-%%\setlength{\fboxsep}{0pt}%
-%%\setlength{\fboxrule}{0pt}%
-%\begin{center}
-%\end{center}
-%\caption{...}
-%\label{F1}
-%\end{figure*}
-%
-%Figure~\ref{F1}. You must select options for the trim/text area and
-%the reference style of the journal you are submitting to.
-%The choice of \verb+options+ are listed in Table~\ref{T1}.
-%
-%\begin{table}[h]
-%\small\sf\centering
-%\caption{Table.\label{T1}}
-%\begin{tabular}{lll}
-%\toprule
-%Header 1 & Header 2 & Header 3\\
-%\midrule
-%\texttt{...}& ... & ....\\
-%\bottomrule
-%\end{tabular}\\ %[15pt] % for vspace between tabulars
-%\end{table}
-
-
-
-
-% ---------------------------- ENDNOTES ---------------------------- 
-
-%\subsection{Endnotes}
-%Most \textit{SAGE} journals use endnotes rather than footnotes, so any notes should be coded as \verb+\endnote{<Text>}+.
-%Place the command \verb+\theendnotes+ just above the Reference section to typeset the endnotes.
-%To avoid any confusion for papers that use Vancouver style references,  footnotes/endnotes should be edited into the text.
-
-
-% ---------------------------- SUPPLEMENTAL MATERIAL ---------------------------- 
-
-%\begin{verbatim}
-%\begin{sm}
-%To typeset a
-%  "Supplemental material" section.
-%\end{sm}
-%\end{verbatim}
-
 % ---------------------------- ACKNOWLEDGEMENTS---------------------------- 
 
-% Gene Bressler
-
-% Art Rice
-
 % GRASS GIS Dev Community
-
 % Blender Dev Community
 
 %\begin{acks}
@@ -1107,6 +1108,8 @@ enhancing spatial performance.
 %\end{acks}
 
 % ---------------------------- BIBLIOGRAPHY ---------------------------- 
+
+\clearpage
 
 %\bibliographystyle{SageH}
 \bibliographystyle{SageV}
