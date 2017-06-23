@@ -30,7 +30,8 @@
 \newcommand{\xmark}{\ding{55}}
 
 % sage packages and commands
-\usepackage{moreverb,url}
+\usepackage{moreverb}
+\usepackage[hyphens]{url}
 \usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
 \newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -65,22 +66,26 @@ powered by a geographic information system
 that gives 3D spatial data an interactive, physical form so that 
 users can naturally sense and shape it.
 It couples a physical and a digital model of a landscape
-through real-time cycles of 
+through a real-time cycle of 
 physical manipulation, 3D scanning, 
 spatial computation, and projected feedback.
 Natural 3D sketching and real-time analytical feedback should aid
 landscape architects in the design of 
-high performance, process-based landscapes.
+high performance landscapes 
+that account for physical and ecological processes. 
 We conducted a series of studies to assess the effectiveness of 
 tangible modeling for landscape architects.
 Landscape architecture students, academics, and professionals 
 were given a series of fundamental landscape design tasks 
 -- topographic modeling, cut-and-fill analysis, and water flow modeling. 
-Their performance was assessed 
-using both qualitative and quantitative methods.
-With tangible modeling the participants
-effectively modeled topography and water flow 
-producing more accurate models 
+We assessed their performance
+using qualitative and quantitative methods 
+including interviews, raster statistics, morphometric analyses, 
+and geospatial simulation.
+The participants
+effectively modeled topography and water flow
+with tangible modeling; 
+they built more accurate models 
 that better represented morphological features 
 than they did with either digital or analog, hand modeling.
 When tangibly modeling
@@ -88,9 +93,9 @@ they used a rapid, iterative process informed by geospatial analytics
 that enhanced their performance.  
 \end{abstract}
 
-\keywords{Human-computer interaction, tangible interfaces, 
-embodied cognition, geospatial modeling, topographic modeling, 
-hydrological modeling}
+\keywords{Human-computer interaction, tangible interfaces, tangible interaction,
+landscape architecture, geospatial modeling, 
+topographic modeling, hydrological modeling}
 
 \maketitle
 
@@ -109,14 +114,14 @@ these systems can be unintuitive,
 challenging to use, and creatively constraining
 due to the complexity of the software, 
 the complex workflows, 
-and the limited modes of interaction and visualization 
-\cite{Ratti2004}. 
+and the limited modes of interaction and visualization. 
+\cite{Ratti2004}
 Due to the complex, time consuming workflows 
 needed to link geospatial analysis with computer aided design 
 GIS tends to play a limited, 
-often preliminary role in the creative design process
+often preliminary role in the creative design process.
 While GIS has been used extensively in landscape planning 
-to model scenarios \cite{Steinitz2004,Baker2004,Steinitz2012},
+to model scenarios. \cite{Steinitz2004,Baker2004,Steinitz2012}
 in landscape architecture
 it is primarily used for preliminary research and mapping.
 If, however, geospatial analysis, modeling, and simulation
@@ -140,12 +145,12 @@ Positing that graphical interaction is unintuitive
 because of this disconnect between 
 intention, physical action, and purely visual feedback,
 researchers have been developing tangible user interfaces 
-to give digital data interactive physical form 
-\cite{Dourish2001,Ishii2008}. 
+to give digital data interactive physical form. 
+\cite{Dourish2001,Ishii2008} 
 Theoretically tangible interfaces should embody cognition 
 -- grounding higher cognitive processes in bodily experience --
-by enabling users to kinaesthetically sense and interact with digital data
-\cite{Kirsh2013}.
+by enabling users to kinaesthetically sense and interact with digital data.
+\cite{Kirsh2013}
 Tangible, embodied interaction should be highly intuitive 
 since it uses existing motor schemas,  
 offloads cognitive work onto the body,
@@ -157,19 +162,20 @@ The MIT Media Lab developed two prototypes
 that coupled a physical and digital model of a landscape
 through a cycle of 3D scanning, geospatial computation, and projection
 to combine the affordances of intuitive sculpting by hand
-with quantitative geospatial analysis \cite{Piper2002a}. 
+with quantitative geospatial analysis. \cite{Piper2002a}
 These systems were designed to 
-'streamline the landscape design process 
+`streamline the landscape design process 
 and result in a more effective use of GIS, 
 especially when distributed decision-making and discussion 
-with non-experts are involved' \cite{Ratti2004}.
+with non-experts are involved.' \cite{Ratti2004}
 Recent advances in sensors and computer vision
 have fueled the development of 
 systems for tangibly modeling landscapes such as 
-Efecto Mariposa \cite{Vivo2011} and
-the Augmented Reality Sandbox \cite{Kreylos2012,ARsandbox}, 
-Sedimachine \cite{Cantrell2014}, and
-the Rapid Landscape Prototyping Machine \cite{Robinson2014}.
+Efecto Mariposa, \cite{Vivo2011}
+the Augmented Reality Sandbox, 
+\cite{Kreylos2012,ARsandbox}
+Sedimachine, \cite{Cantrell2014} and
+the Rapid Landscape Prototyping Machine. \cite{Robinson2014}
 
 \subsection{Tangible Landscape}
 Inspired by Illuminating Clay, 
@@ -178,12 +184,12 @@ the Tangible Geospatial Modeling System
 and the Augmented Reality Sandbox, 
 we have develop Tangible Landscape 
 -- a tangible interface for geospatial modeling
-powered by an open source GIS \cite{Petrasova2015}. 
+powered by an open source GIS. \cite{Petrasova2015}
 % TL premise: algorithmic design of landscapes
 % Conceptually Tangible Landscape is meant to... 
 With Tangible Landscape
-designers can sculpt a terrain model in polymeric sand,
-and can digitize points, areas, and volumes by placing 
+designers can sculpt a terrain model in polymeric sand
+and can digitize points, areas, or volumes by placing 
 color-coded markers, patches of felt, or building blocks. 
 These interactions are captured by a Kinect sensor, 
 processed in GRASS GIS, 
@@ -194,7 +200,7 @@ The geospatial data can also be automatically
 3D modeled and rendered in Blender 
 on a monitor or head-mounted display
 so that designers can 
-immersively explore different views \cite{Tabrizian2016}.
+immersively explore different views. \cite{Tabrizian2016}
 For example
 as users sculpt topography,
 simulated water flow can be projected back onto the model in real-time
@@ -206,7 +212,7 @@ the trees can be rendered in 3D on a display %.
 %As they place markers to designate waypoints on a trail,
 %the optimal walking route can be computed and projected onto the model
 %along with charts showing metrics like distance and slope
-(Fig.~\ref{table:tl_demo}). 
+(Table~\ref{table:tl_demo}). 
 
 Tangible Landscape is unique since it powered by a GIS
 with extensive libraries for geospatial computation
@@ -222,7 +228,7 @@ trail planning, viewshed analysis, and planting design.
         \includegraphics[width=0.45\textwidth]{images/diagrams/rendered_diagram_2.pdf}
         %\includegraphics[width=0.25\textheight]{images/diagrams/rendered_diagram_2.pdf}
         %\includegraphics[width=0.32\textheight]{images/diagrams/rendered_diagram_3.pdf}
-        \caption{Tangible Landscape: a real-time cycle of 3D scanning, geospatial computation and 3D modeling, and 3D rendering and projection.}
+        \caption{Tangible Landscape: a real-time cycle of 3D scanning, geospatial computation and 3D modeling, and projection and 3D rendering.}
         \label{fig:system_diagram}
     \end{center}
 \end{figure}
@@ -308,8 +314,8 @@ landscape architects' design process
 
 \section{Topographic modeling}
 %
-One of the primary tasks of landscape architects is to design earthworks
-\cite{Petschek2008,Strom2013}. 
+One of the primary tasks of landscape architects is to design earthworks.
+\cite{Petschek2008,Strom2013}
 % topographic data
 Landscape architects work with topographic models 
 derived from data collected by field surveys, airborne lidar, 
@@ -335,7 +341,7 @@ dynamic modes of visualization such as
 Theoretically tangible topographic modeling 
 should combine affordances of both -- 
 enabling natural sensing and manipulation
-with enriched visualization.
+with enriched visualization and quantitative analysis.
 % experiment
 To assess the effectiveness tangibles
 we conducted a topographic modeling experiment
@@ -347,14 +353,18 @@ and tangible modeling with Tangible Landscape.
 \subsection{Methods}
 % overview
 In this experiment 
-18 participants tried to accurately model a study landscape 
+18 participants tried to accurately model 
+the topography of a study landscape 
 digitally, by hand, and with Tangible Landscape. 
 % tasks
 Participants were given three tasks -- 
-to digitally sculpt a model of a landscape 
-using the 3D modeling program Rhinoceros, 
-to hand sculpt a model of a landscape in polymer-enriched sand,
-and to sculpt a model of a landscape using Tangible Landscape.
+to digitally sculpt the landscape 
+using the 3D modeling program Rhinoceros 
+(Fig.~\ref{fig:digital}), 
+to hand sculpt the landscape in polymer-enriched sand
+(Fig.~\ref{fig:analog}), 
+and to tangibly model the landscape using Tangible Landscape
+(Fig.~\ref{fig:tangible}). 
 % time limit 
 They had 10 minutes to complete each task. 
 The time limit was calibrated based on 
@@ -384,8 +394,8 @@ to assess spatial ability because
 these do not address 
 geographic scales,
 spatial relations,
-domain-specific knowledge and abilities 
-\cite{Lee2009,Bednarz2011,Wakabayashi2011},
+domain-specific knowledge and abilities,
+\cite{Lee2009,Bednarz2011,Wakabayashi2011}
 or embodied cognitive ability. 
 
 % participants
@@ -397,17 +407,20 @@ for this study (see Table~\ref{table:participants}).
 Of the 12 graduate students 6 were in the \nth{2} semester of the 
 Master of Landscape Architecture program 
 at North Carolina State University.
-These students were just beginning to learn to read and manipulate contour lines 
+These students were just beginning 
+to learn to read and manipulate contour lines 
 in the class Landform, Site Grading, and Development Systems. 
 The other 6 graduate students were in the \nth{2} semester of the 
 Master of Geospatial Information Science and Technology program 
 at North Carolina State University.
-The other 6 participants were either landscape architecture faculty 
-with professional experience or practicing professionals in landscape architecture 
+The remaining 6 participants were 
+either landscape architecture faculty with professional experience 
+or practicing professionals in landscape architecture 
 from around the world. 
 Of these 2 were experts in 3D modeling with over 10 years of experience 
 using Rhinoceros and similar programs including Maya and 3ds Max. 
-These experts felt comfortable and proficient modeling a wide variety of geometries 
+These experts felt comfortable and proficient 
+modeling a wide variety of geometries 
 and had developed unique, personalized, and highly adaptable workflows.
 
 \begin{table}
@@ -424,13 +437,41 @@ Academics \& professionals & 6 & 2\\
 \label{table:participants} 
 \end{table}
 
+\begin{figure}
+\begin{center}
+	\includegraphics[width=0.48\textwidth]{images/experiments/art_rhino.jpg}
+	\caption{Digital modeling -- 
+	a participant digitally sculpts the study landscape in Rhinoceros
+	using 3D contours as guides.}
+	\label{fig:digital}
+	%
+	\vspace*{0.5em}
+	%
+	\includegraphics[width=0.48\textwidth]{images/experiments/connie_analog_1.jpg}
+	\caption{Analog modeling -- 
+	a participant sculpts the study landscape by hand
+	using a physical model as a reference.}
+	\label{fig:analog}
+	%
+	\vspace*{0.5em}
+	%
+	\includegraphics[width=0.48\textwidth]{images/experiments/carla_proj_aug.jpg}
+	\caption{Tangible modeling --
+	a participant sculpts the study landscape using
+	the projected elevation and contour maps
+	as guides.}
+	\label{fig:tangible}
+\end{center}
+\label{fig:methods}
+\end{figure}
+
 % digital modeling
 \paragraph{Digital modeling}
 Participants had 10 minutes 
 to digitally model the study landscape in Rhinoceros 5, 
 a non-uniform rational basis spline 
 (NURBS) based 3D modeling program
-designed for precise freeform curve and surface modeling \cite{Rhino}.
+designed for precise freeform curve and surface modeling. \cite{Rhino}
 After 10 minutes of training 
 participants modeled the study landscape as a NURBS surface 
 by vertically translating control points. 
@@ -472,8 +513,8 @@ To make a fair comparison
 between digital, analog, and tangible modeling,
 the digital modeling technique 
 needed to be relatively analogous to hand sculpting
--- i.e.~pushing and pulling rather than painting in 3D, 
-drafting in 3D, or stacking voxels.
+-- i.e.~pushing and pulling rather than 
+digitally painting in 3D, drafting in 3D, or stacking voxels.
 
 % analog modeling
 \paragraph{Analog modeling}
@@ -496,8 +537,7 @@ After a minute long explanation and demonstration
 participants had 10 minutes to sculpt
 a projection-augmented, polymer-enriched sand model
 of the study landscape 
-either by hand or with a wooden sculpting tool 
-(Fig.~\ref{fig:proj_aug}). 
+either by hand or with a wooden sculpting tool.
 Tangible Landscape was used to project 
 an elevation map of the study landscape
 with contours and a legend
@@ -514,7 +554,7 @@ for a video demonstrating the tangible modeling task.
 % data collection and analysis
 \paragraph{Data collection and analysis}
 We used Tangible Landscape to scan the finished models 
-built using analog hand modeling and tangible modeling.
+built using analog and tangible modeling.
 The scans were captured as point clouds, interpolated 
 as digital elevation models 
 using the regularized spline with tension method,
@@ -556,7 +596,7 @@ that only hinted at the morphology of the landscape.
 %
 When they sculpted by hand
 their models tended to be descriptive -- 
-differing substantially from the reference, but
+differing substantially from the reference model, but
 accurately representing most of the landforms. 
 %
 Their performance improved 
@@ -564,7 +604,7 @@ with tangible modeling --
 the resulting models
 fit the reference better, 
 had more defined topography, 
-and accurately represented most of the landforms.
+and accurately represented landforms.
 
 % group results
 We used pairwise comparison to study 
@@ -577,34 +617,34 @@ Finally we compared academics and professionals
 with and without 3D modeling expertise.
 %
 When participants are analyzed as groups 
--- as GIS students, Landscape Architecture students, 
+-- as GIS students, landscape architecture students, 
 academics and professionals without 3D modeling expertise, 
 and academics and professionals with 3D modeling expertise -- 
 these trends generally still hold, 
 albeit with some very important exceptions.
 %
 Unlike all other groups, 
-the 3D modeling experts performed extremely well 
+the 3D modeling experts performed well 
 in the digital modeling task
 with a very low standard deviation of difference, 
-but still only hinted at the landforms. 
+although they only hinted at the landforms. 
 They, however, performed even better with tangible modeling,
-accurately representing the landforms. 
+accurately representing all of the landforms. 
 %
-See to the supplemental materials for more detailed results
-\ref{appendix:topographic_results}.
+%See to the supplemental materials for more detailed results
+%\ref{appendix:topographic_results}.
 %
 These results show 
-tangible modeling should be 
-should be a better, faster tool 
-for quick modeling tasks such as rapid ideation. 
-for both novices and experts.
+tangible modeling is intuitive 
+and should be -- even for experts -- 
+a better, faster tool 
+for quick modeling tasks such as rapid ideation.
 
 \begin{figure*}[t]
 %\begin{center}
 \resizebox {\textwidth} {!} {\input{comparison.tikz}}
 \caption{Pairwise comparison of the mean digital elevation models 
-by category of participants}
+by category of participants.}
 \label{fig:comparison}
 %\end{center}
 \end{figure*}
@@ -619,8 +659,8 @@ landscape architects and civil engineers
 seek to balance their sediment budget 
 -- using as much cut (earth removed) 
 as fill (earth deposited) --
-to minimize the cost of transporting sediment to and from
-the construction site.
+to minimize the cost of transporting sediment 
+to and from construction sites.
 % difference method
 Because of the importance 
 of balancing sediment budgets
@@ -628,7 +668,8 @@ we designed a real-time analytic
 for Tangible Landscape that 
 maps the difference in elevation
 before and after modification
-to facilitate cut-and-fill analysis. 
+to assess topographic change and
+facilitate cut-and-fill analysis. 
 % experiment
 To test the effectiveness of this real-time analytic
 we conducted a cut-and-fill experiment.
@@ -803,7 +844,7 @@ can use this real-time, tangible water flow simulation.
 % form and process
 This experiment was designed to study whether
 participants could link form and process
-using the water flow analytic -- to assess
+using the water flow simulation -- to assess
 how well they could understand the relationship 
 between topographic form 
 and the flow of water 
@@ -827,7 +868,7 @@ Water flow was simulated in near real-time
 as a diffusive wave approximation of shallow water flow.
 The module \textit{r.sim.water} \cite{r.sim.water}
 uses a path sampling technique to solve 
-the shallow water flow continuity equation \cite{Mitasova2004}.
+the shallow water flow continuity equation. \cite{Mitasova2004}
 Participants could switch between 
 the precomputed reference water flow -- i.e.~their target -- 
 and the water flow over their scanned model.
@@ -877,7 +918,6 @@ shows that participants performed well.
 The greatest deviation from the reference
 was in the corners and along the edges
 where the sand slumped.
-
 % water depth
 The mean water depth map shows two of the streams 
 and hints of the third.
@@ -904,7 +944,7 @@ The mean water flow tightly fits the reference,
 following similar, albeit simplified routes.
 
 % observations
-With the water flow simulation
+With the tangible water flow simulation
 participants focused on accurately modeling the streams, 
 rather than the general shape of the topography. 
 As a result the primary ridge was 
@@ -943,7 +983,8 @@ See Table \ref{table:interviews} for select comments about this experiment.
 % ---------------------------- DISCUSSION ---------------------------- 
 \section{Discussion}
 
-\subsection{Tangible interaction}
+%\subsection{Tangible interaction}
+
 % topographic
 The topographic modeling experiment
 shows that tangible modeling was 
@@ -1005,39 +1046,50 @@ then tangible interfaces
 -- given their intuitive, embodied nature --
 may be a fast and effective way to train them.
 
-\subsection{Open science} 
+%\subsection{Open science} 
+
 % open source / open science
 As a work of open science we invite readers to
 replicate or build upon this experiment by 
 using or adapting our tangible interface, 
 experimental methodology, code, and data. 
-The python scripts for data processing and analysis are 
-on GitHub at \url{https://github.com/baharmon/tangible_topography}
-released under the GNU General Public License (GPL).
-The data used in this experiment 
-and the results -- 
-including data, renderings, photographs, and interview notes -- are 
-on the Open Science Framework 
-at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
+%
+See the supplemental material 
+for links to the
+code,
+data and results, 
+project website,
+and videos.
+%
+All code is released under the GNU General Public License (GPL)
+and all results  
+-- including data, renderings, photographs, and interview notes --
+are released under Creative Commons Zero license.
 
-% Supplemental Material \ref{appendix:data}
-%\ref{appendix:procedure}
-%\ref{appendix:code}
+%The python scripts for data processing and analysis are 
+%on GitHub at \url{https://github.com/baharmon/tangible_topography}
+%released under the GNU General Public License (GPL).
+%The data used in this experiment 
+%and the results -- 
+%including data, renderings, photographs, and interview notes -- are 
+%on the Open Science Framework 
+%at \url{https://osf.io/82gst/} under the Creative Commons Zero license.
+%
+%
+%%build-your-own
+%To build your own Tangible Landscape
+%visit the project website at \url{http://tangible-landscape.github.io/}, 
+%see the documentation in the GitHub repository 
+%including the Wiki at \url{https://github.com/tangible-landscape/grass-tangible-landscape/wiki},
+%and refer to the book Tangible Modeling with Open Source GIS. \cite{Petrasova2015}
+%GRASS GIS is available at
+%\url{https://grass.osgeo.org/} 
+%under the GPL. 
+%Tangible Landscape's components are available at
+%\url{https://github.com/tangible-landscape}
+%under the GPL. 
 
-%build-your-own
-To build your own Tangible Landscape
-visit the project website at \url{http://tangible-landscape.github.io/}, 
-see the documentation in the GitHub repository 
-including the Wiki at \url{https://github.com/tangible-landscape/grass-tangible-landscape/wiki},
-and refer to the book Tangible Modeling with Open Source GIS \cite{Petrasova2015}.
-GRASS GIS is available at
-\url{https://grass.osgeo.org/} 
-under the GPL. 
-Tangible Landscape's components are available at
-\url{https://github.com/tangible-landscape}
-under the GPL. 
 
-% refer to Supplemental Material \ref{appendix:howto},
 
 %\subsection{Future work}
 %% improvements
@@ -1094,7 +1146,7 @@ landscape architects can naturally sketch or model in 3D,
 while learning from real-time geospatial analytics.
 %
 As this study shows
-Landscape architects can
+landscape architects can
 rapidly and accurately model topography, 
 analyze topographic change, 
 and direct the flow of water 
@@ -1104,13 +1156,14 @@ They can work in a rapid, iterative design process,
 quickly giving their ideas form and quantitatively testing them.
 
 % design implications
-Furthermore with tangible modeling 
+With tangible modeling 
 and real-time geospatial simulations 
-landscape architects can design 
+landscape architects should be able design 
 high performance, process-based landscapes.
 %
-They can intuitively explore and manipulate
-the complex interactions between 
+Tangible modeling enables
+the intuitive exploration and manipulation
+of the complex interactions between 
 geomorphological and ecological
 form and process. 
 %
@@ -1125,9 +1178,9 @@ could play a generative role in landscape architecture.
 
 %https://us.sagepub.com/en-us/nam/supplementary-files-on-sage-journals-sj-guidelines-for-authors
 
-%\begin{sm}
-%%\include{supplemental_material}
-%\end{sm}
+\begin{sm}
+\input{supplemental_material}
+\end{sm}
 
 % ------------------- GUIDELINES ----------------------- 
 
