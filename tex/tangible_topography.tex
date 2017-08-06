@@ -42,59 +42,20 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \def\volumeyear{2017}
 \begin{document}
 \runninghead{Harmon et~al.}
-\title{Tangibly modeling high performance landscapes}
-%\title{Tangibly modeling landscapes for performance}
-%\title{Tangibly modeling landscapes}
-%\title{Tangible landscape architecture}
-%\title{Tangible landscape architectural Modeling}
-%\title{Tangible landscape modeling}
-\author{Brendan Harmon\affilnum{1,2}, Anna Petrasova\affilnum{1}, Vaclav Petras\affilnum{1}, Helena Mitasova\affilnum{1}, and Ross Meentemeyer\affilnum{1}}
-\affiliation{\affilnum{1}Center for Geospatial Analytics, North Carolina State University, USA\\
-%\affilnum{2}College of Design, North Carolina State University, USA}
-\affilnum{2}Robert Reich School of Landscape Architecture, Louisiana State University, USA}
+\title{Tangible topographic modeling for landscape architects}
+\author{Brendan Harmon\affilnum{1,2}, Anna Petrasova\affilnum{2}, Vaclav Petras\affilnum{2}, Helena Mitasova\affilnum{2}, and Ross Meentemeyer\affilnum{2}}
+\affiliation{\affilnum{1}Robert Reich School of Landscape Architecture, Louisiana State University, USA\\
+\affilnum{2}Center for Geospatial Analytics, North Carolina State University, USA}
 \corrauth{Brendan A Harmon, 
-Center for Geospatial Analytics,
-North Carolina State University,
-Raleigh, NC 27695, USA.}
+Robert Reich School of Landscape Architecture,
+Louisiana State University,
+Baton Rouge, LA 70803, USA.}
 \email{brendan.harmon@gmail.com}
 
 % ---------------------------- ABSTRACT ---------------------------- 
 
 \begin{abstract}
-We present Tangible Landscape 
--- a technology for rapidly and intuitively designing landscapes
-informed by geospatial modeling, analysis, and simulation.
-Tangible Landscape is a tangible interface 
-powered by a geographic information system 
-that gives 3D spatial data an interactive, physical form so that 
-users can naturally sense and shape it.
-It couples a physical and a digital model of a landscape
-through a real-time cycle of 
-physical manipulation, 3D scanning, 
-spatial computation, and projected feedback.
-Natural 3D sketching and real-time analytical feedback should aid
-landscape architects in the design of 
-high performance landscapes 
-that account for physical and ecological processes. 
-We conducted a series of studies to assess the effectiveness of 
-tangible modeling for landscape architects.
-Landscape architecture students, academics, and professionals 
-were given a series of fundamental landscape design tasks 
--- topographic modeling, cut-and-fill analysis, and water flow modeling. 
-We assessed their performance
-using qualitative and quantitative methods 
-including interviews, raster statistics, morphometric analyses, 
-and geospatial simulation.
-With tangible modeling participants
-built more accurate models 
-that better represented morphological features 
-than they did with either digital or analog, hand modeling.
-When tangibly modeling
-they worked in a rapid, iterative process
-informed by real-time geospatial analytics and simulations.  
-With the aid of real-time simulations 
-they were able to quickly understand and then manipulate
-how complex topography controls the flow of water.
+We present Tangible Landscape -- a technology for rapidly and intuitively designing landscapes informed by geospatial modeling, analysis, and simulation. Tangible Landscape is a tangible interface powered by a geographic information system that gives 3D spatial data an interactive, physical form so that users can naturally sense and shape it. It couples a physical and a digital model of a landscape through a real-time cycle of physical manipulation, 3D scanning, spatial computation, and projected feedback. Natural 3D sketching and real-time analytical feedback should aid landscape architects in the design of high performance landscapes that account for physical and ecological processes. We conducted a series of studies to assess the effectiveness of tangible modeling for landscape architects. Landscape architecture students, academics, and professionals were given a series of fundamental landscape design tasks -- topographic modeling, cut-and-fill analysis, and water flow modeling. We assessed their performance using qualitative and quantitative methods including interviews, raster statistics, morphometric analyses, and geospatial simulation. With tangible modeling participants built more accurate models that better represented morphological features than they did with either digital or analog modeling. When tangibly modeling they worked in a rapid, iterative process informed by real-time geospatial analytics and simulations. With the aid of real-time simulations they were able to quickly understand and then manipulate how complex topography controls the flow of water.
 \end{abstract}
 
 \keywords{Human-computer interaction, tangible interfaces, tangible interaction,
@@ -219,8 +180,6 @@ and the Augmented Reality Sandbox,
 we have develop Tangible Landscape 
 -- a tangible interface for geospatial modeling
 powered by an open source GIS. \cite{Petrasova2015}
-% TL premise: algorithmic design of landscapes
-% Conceptually Tangible Landscape is meant to... 
 With Tangible Landscape
 designers can sculpt a terrain model in polymeric sand
 and can digitize points, areas, or volumes by placing 
@@ -240,12 +199,9 @@ as users sculpt topography,
 simulated water flow can be projected back onto the model in real-time
 so that they understand how they are affecting 
 physical processes in landscape.
-Then as they draw planting areas 
-using a laser pointer or patches of colored felt,
-the trees can be rendered in 3D on a display %. 
-%As they place markers to designate waypoints on a trail,
-%the optimal walking route can be computed and projected onto the model
-%along with charts showing metrics like distance and slope
+Then as they create planting areas 
+with colored push-pins or patches of felt,
+the trees can be rendered in 3D on a display
 (Table~\ref{table:tl_demo}). 
 
 Tangible Landscape is unique since it powered by a GIS
@@ -253,68 +209,64 @@ with extensive libraries for geospatial computation
 and has a wide range of real-time interactions including 
 3D sculpting, 3D sketching, color recognition, and object recognition.
 Given its versatility there are many possible design applications
-including terrain modeling, hydrological modeling, flood prevention,
-trail planning, viewshed analysis, and planting design. 
+including terrain modeling, hydrological modeling, erosion control, 
+flood prevention, trail planning, viewshed analysis, solar analysis, 
+and planting design. 
 
-% TL diagram
 \begin{figure}
     \begin{center}
         \includegraphics[width=0.45\textwidth]{images/diagrams/rendered_diagram_2.pdf}
-        %\includegraphics[width=0.25\textheight]{images/diagrams/rendered_diagram_2.pdf}
-        %\includegraphics[width=0.32\textheight]{images/diagrams/rendered_diagram_3.pdf}
         \caption{Tangible Landscape: a real-time cycle of 3D scanning, geospatial computation and 3D modeling, and projection and 3D rendering.}
         \label{fig:system_diagram}
     \end{center}
 \end{figure}
 
-% TL demo
-\begin{table*}
-\caption{Collaboratively sculpting topography to create lakes, 
-drawing trees with a laser pointer, and visualizing with 3D renderings.}
-\ra{1.3}
-\begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
-\toprule
-\multicolumn{1}{c}{Sculpting}  & \multicolumn{1}{c}{Drawing and visualization}\\
-\midrule
-%
-\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_lakes_2.png} &
-\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_1.png}\\
-%
-\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_2.png} &
-\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_2.png}\\
-%
-\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_3.png} &
-\includegraphics[width=0.49\textwidth]{images/immersive/trees_with_oculus_1.png}\\
-%
-\bottomrule
-\end{tabular}
-\label{table:tl_demo} 
-\end{table*}
-
-%% TL demo V2
 %\begin{table*}
-%\caption{Sculpting topography to create lakes, 
-%drawing trees with a laser pointer, 
-%and visualizing with 3D renderings.} 
+%\caption{Collaboratively sculpting topography to create lakes, 
+%drawing trees with a laser pointer, and visualizing with 3D renderings.}
 %\ra{1.3}
 %\begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
 %\toprule
-%\multicolumn{1}{c}{Sculpting and views}  & \multicolumn{1}{c}{Drawing and immersion}\\
+%\multicolumn{1}{c}{Sculpting}  & \multicolumn{1}{c}{Drawing and visualization}\\
 %\midrule
 %%
-%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_2.jpg} &
-%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_8.jpg}\\
+%\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_lakes_2.png} &
+%\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_1.png}\\
 %%
-%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_4.jpg} &
-%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_9.jpg}\\
+%\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_2.png} &
+%\includegraphics[width=0.49\textwidth]{images/immersive/drawing_trees_2.png}\\
 %%
-%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_5.jpg} &
-%\includegraphics[width=0.49\textwidth]{images/immersive/tl_vr_demo_10.jpg}\\
+%\includegraphics[width=0.49\textwidth]{images/immersive/sculpting_landforms_3.png} &
+%\includegraphics[width=0.49\textwidth]{images/immersive/trees_with_oculus_1.png}\\
 %%
 %\bottomrule
 %\end{tabular}
 %\label{table:tl_demo} 
 %\end{table*}
+
+\begin{table*}
+\caption{Sculpting topography to create lakes, 
+planting trees with felt and push-pins, 
+and exploring views with Tangible Landscape.}
+\ra{1.3}
+\begin{tabular}{m{0.49\textwidth} m{0.49\textwidth}}
+\toprule
+\multicolumn{1}{c}{Sculpting}  & \multicolumn{1}{c}{3D planting and visualization}\\
+\midrule
+%
+\includegraphics[width=0.49\textwidth]{images/3d_planting/initial_conditions.jpg} &
+\includegraphics[width=0.49\textwidth]{images/3d_planting/planting_4.jpg}\\
+%
+\includegraphics[width=0.49\textwidth]{images/3d_planting/sculpting_4.jpg} &
+\includegraphics[width=0.49\textwidth]{images/3d_planting/specimen_planting_3.jpg}\\
+%
+\includegraphics[width=0.49\textwidth]{images/3d_planting/view_landform_1.jpg} &
+\includegraphics[width=0.49\textwidth]{images/3d_planting/view_specimen_planting_6.jpg}\\
+%
+\bottomrule
+\end{tabular}
+\label{table:tl_demo} 
+\end{table*}
 
 \subsection{Research objectives}
 Many of the theoretical underpinnings of tangibles 
@@ -360,7 +312,7 @@ using analog methods -- such as
 drawing contours maps by hand and
 hand sculpting physical topographic models in clay --
 and digital methods -- such as 
-drawing digital contour maps in CAD,
+drawing digital contour maps in CAD and
 digitally sculpting surfaces in 3D modeling software. 
 % analog
 Analog methods for topographic modeling are typically used 
@@ -368,12 +320,13 @@ in the early, conceptual phases of the design process because
 they are considered more intuitive, but less precise than digital methods.
 % digital
 Digital methods for topographic modeling, on the other hand, 
-can afford precise transformations and
-dynamic modes of visualization such as 
-3D orbiting, zooming, and ray traced shading.
+can afford precise transformations, 
+quantitative calculations, 
+and dynamic modes of visualization such as 
+zooming, 3D orbiting, and ray traced shading.
 % tangible
 Theoretically tangible topographic modeling 
-should combine affordances of both -- 
+should combine the affordances of both -- 
 enabling natural sensing and manipulation
 with enriched visualization and quantitative analysis.
 % experiment
@@ -971,7 +924,7 @@ in order to produce an accurate representation
 of water flow across the study landscape. 
 % depth difference
 The water depth difference map shows
-where water should be added (red) or removed (blue) 
+where there should be more (red) or less (blue) water
 to match the reference
 -- i.e.~where water should flow versus where it was modeled. 
 The mean water flow tightly fits the reference, 
@@ -1080,8 +1033,7 @@ then tangible interfaces
 -- given their intuitive, embodied nature --
 may be a fast and effective way to train them.
 
-%\subsection{Open science} 
-
+\subsection{Open science} 
 % open source / open science
 As a work of open science we invite readers to
 replicate or build upon this experiment by 
@@ -1098,7 +1050,7 @@ and videos.
 All code is released under the GNU General Public License (GPL)
 and all results  
 -- including data, renderings, photographs, and interview notes --
-are released under Creative Commons Zero license.
+are released under the Creative Commons Zero license.
 
 %The python scripts for data processing and analysis are 
 %on GitHub at \url{https://github.com/baharmon/tangible_topography}
@@ -1122,8 +1074,6 @@ are released under Creative Commons Zero license.
 %Tangible Landscape's components are available at
 %\url{https://github.com/tangible-landscape}
 %under the GPL. 
-
-
 
 %\subsection{Future work}
 %% improvements
@@ -1218,22 +1168,8 @@ could play a generative role in landscape architecture.
 
 %https://us.sagepub.com/en-us/nam/international-journal-of-architectural-computing/journal202464#submission-guidelines
 
-% ---------------------------- ACKNOWLEDGEMENTS---------------------------- 
-
-% GRASS GIS Dev Community
-% Blender Dev Community
-
-%\begin{acks}
-%This class file was developed by Sunrise Setting Ltd,
-%Brixham, Devon, UK.\\
-%Website: \url{http://www.sunrise-setting.co.uk}
-%\end{acks}
-
 % ---------------------------- BIBLIOGRAPHY ---------------------------- 
 
-%\clearpage
-
-%\bibliographystyle{SageH}
 \bibliographystyle{SageV}
 \bibliography{tangible_topography.bib} 
 

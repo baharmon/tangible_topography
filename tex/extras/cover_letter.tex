@@ -1,0 +1,136 @@
+% !TEX encoding = UTF-8 Unicode
+
+% sage_latex_guidelines.tex V1.10, 24 June 2016
+
+\documentclass[Afour,sagev,times]{sagej}
+
+% customizations
+\usepackage[super]{nth}
+\usepackage[inline]{enumitem}
+\usepackage{moreenum}
+\usepackage{tabulary}
+\usepackage{tabu}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[super]{nth}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{upquote}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{import} 
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+% special characters
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+% sage packages and commands
+\usepackage{moreverb}
+\usepackage[hyphens]{url}
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
+% ---------------------------- METADATA ---------------------------- 
+
+\def\volumeyear{2017}
+\begin{document}
+\runninghead{Harmon et~al.}
+\title{Tangible topographic modeling for landscape architects}
+\author{Brendan Harmon\affilnum{1,2}, Anna Petrasova\affilnum{2}, Vaclav Petras\affilnum{2}, Helena Mitasova\affilnum{2}, and Ross Meentemeyer\affilnum{2}}
+\affiliation{\affilnum{1}Robert Reich School of Landscape Architecture, Louisiana State University, USA\\
+\affilnum{2}Center for Geospatial Analytics, North Carolina State University, USA}
+\corrauth{Brendan A Harmon, 
+Robert Reich School of Landscape Architecture,
+Louisiana State University,
+Baton Rouge, LA 70803, USA.}
+\email{brendan.harmon@gmail.com}
+
+% ---------------------------- BODY ---------------------------- 
+
+\maketitle
+
+\section{Cover letter}
+
+Dear Editors,
+
+I would like to submit this paper 
+to SAGE's International Journal of Architectural Computing. 
+%
+This paper reviews existing research and design work about 
+tangible interfaces for landscape architecture,  
+introduces our tangible interface -- Tangible Landscape --
+and describes a series of laboratory-based user experiments
+using quantitative and qualitative methods
+to assess 3D spatial performance for key landscape design tasks.
+
+\paragraph{Relationship to similar publications about Tangible Landscape}
+
+% technology
+This paper introduces
+for the third generation of Tangible Landscape,
+a tangible interface for geospatial modeling. 
+The first generation of this system was described in the paper 
+\emph{GIS-based environmental modeling with tangible interaction and dynamic visualization} \cite{Petrasova2014}
+and the second generation of the system was described in the book
+\emph{Tangible Modeling with Open Source GIS}
+\cite{Petrasova2015}. 
+The coupling of Tangible Landscape with VR
+has already been described in a demo paper titled
+\emph{Immersive Tangible Geospatial Modeling}
+that has been published in ACM SIGSPATIAL 2016 \cite{Tabrizian2016}
+and in the conference paper 
+\emph{Tangible Immersion for Ecological Design}
+accepted for ACADIA 2017 \cite{Tabrizian2017}. 
+These publications described the design of the systems, 
+the technical implementation and the underlying algorithms, 
+and detailed case studies, but did not include user experiments.
+%
+This paper has the first complete user study for Tangible Landscape.
+
+\paragraph{Relationship to similar publications about user experiments}
+
+The user study described in this paper 
+addresses important basic research questions 
+about 3D modeling and tangible interaction
+in landscape architecture.
+%
+The experiments used novel methods such as geospatial modeling 
+to spatially analyze and quantitatively assess 3D spatial performance. 
+%
+Two of the three user experiments described in this research 
+are based on pilot studies 
+--
+\emph{Embodied Spatial Thinking in Tangible Computing}
+\cite{Harmon2016b}
+and
+\emph{Tangible Landscape: cognitively grasping the flow of water}
+\cite{Harmon2016c}
+--
+with fewer participants, less sophisticated methods, and only preliminary findings.
+% 
+The methods and results described in this paper 
+differ substantially from these pilot studies. 
+New methods include statistical transformations, 
+cellular statistics, morphological analysis, and 3D visualization. 
+%
+This research also includes qualitative methods 
+that were not used in the pilot studies.
+
+% ---------------------------- BIBLIOGRAPHY ---------------------------- 
+
+\bibliographystyle{SageV}
+\bibliography{../tangible_topography.bib}
+
+\end{document}
+
+
+
