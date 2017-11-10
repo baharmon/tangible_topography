@@ -13,6 +13,7 @@
 \usepackage[super]{nth}
 \usepackage{listings}
 \usepackage{float}
+\usepackage[mode=buildnew]{standalone}
 \usepackage{tikz}
 \usepackage{upquote}
 \usepackage{graphicx}
@@ -627,13 +628,27 @@ and should be -- even for experts --
 a better, faster tool 
 for quick modeling tasks such as rapid ideation.
 
+%\begin{figure*}[t]
+%%\begin{center}
+%\resizebox {\textwidth} {!} {\input{comparison.tikz}}
+%\caption{Pairwise comparison of the mean digital elevation models 
+%by category of participants.}
+%\label{fig:comparison}
+%%\end{center}
+%\end{figure*}
+
+%\begin{figure*}[t]
+%\includestandalone[width=\textwidth]{comparison}
+%\caption{Pairwise comparison of the mean digital elevation models 
+%by category of participants.}
+%\label{fig:comparison}
+%\end{figure*}
+
 \begin{figure*}[t]
-%\begin{center}
-\resizebox {\textwidth} {!} {\input{comparison.tikz}}
+\includegraphics[width=\textwidth]{tangible_topography-figure0.pdf}
 \caption{Pairwise comparison of the mean digital elevation models 
 by category of participants.}
 \label{fig:comparison}
-%\end{center}
 \end{figure*}
 
 \input{topographic}
