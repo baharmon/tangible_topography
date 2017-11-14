@@ -56,7 +56,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 % ---------------------------- ABSTRACT ---------------------------- 
 
 \begin{abstract}
-We present Tangible Landscape -- a technology for rapidly and intuitively designing landscapes informed by geospatial modeling, analysis, and simulation. Tangible Landscape is a tangible interface powered by a geographic information system that gives 3D spatial data an interactive, physical form so that users can naturally sense and shape it. It couples a physical and a digital model of a landscape through a real-time cycle of physical manipulation, 3D scanning, spatial computation, and projected feedback. Natural 3D sketching and real-time analytical feedback should aid landscape architects in the design of high performance landscapes that account for physical and ecological processes. We conducted a series of studies to assess the effectiveness of tangible modeling for landscape architects. Landscape architecture students, academics, and professionals were given a series of fundamental landscape design tasks -- topographic modeling, cut-and-fill analysis, and water flow modeling. We assessed their performance using qualitative and quantitative methods including interviews, raster statistics, morphometric analyses, and geospatial simulation. With tangible modeling participants built more accurate models that better represented morphological features than they did with either digital or analog modeling. When tangibly modeling they worked in a rapid, iterative process informed by real-time geospatial analytics and simulations. With the aid of real-time simulations they were able to quickly understand and then manipulate how complex topography controls the flow of water.
+We present Tangible Landscape -- a technology for rapidly and intuitively designing landscapes informed by geospatial modeling, analysis, and simulation. Tangible Landscape is a tangible interface powered by a geographic information system that gives 3D spatial data an interactive, physical form so that users can naturally sense and shape it. It couples a physical and a digital model of a landscape through a real-time cycle of physical manipulation, 3D scanning, spatial computation, and projected feedback. Natural 3D sketching and real-time analytical feedback should aid landscape architects in the design of high performance landscapes that account for physical and ecological processes. We conducted a series of studies to assess the effectiveness of tangible modeling for landscape architects. Landscape architecture students, academics, and professionals were given a series of fundamental landscape design tasks -- topographic modeling, cut-and-fill analysis, and water flow modeling. Their performance was assessed using qualitative and quantitative methods including interviews, raster statistics, morphometric analyses, and geospatial simulation. With tangible modeling participants built more accurate models that better represented morphological features than they did with either digital or analog modeling. When tangibly modeling they worked in a rapid, iterative process informed by real-time geospatial analytics and simulations. With the aid of real-time simulations they were able to quickly understand and then manipulate how complex topography controls the flow of water.
 \end{abstract}
 
 \keywords{Human-computer interaction, tangible interfaces, tangible interaction,
@@ -125,10 +125,10 @@ it is primarily used for preliminary research and mapping.
 If, however, geospatial analysis, modeling, and simulation
 could be seamlessly integrated into the creative design process 
 then designers could rapidly develop design ideas
-while quantitively testing them. 
+while quantitatively testing them. 
 In such a rapid, fluid creative process
 the rigorous testing of design concepts 
-with quantitive measures of performance 
+with quantitative measures of performance 
 could drive the development of new concepts.
 
 % tangibles
@@ -270,32 +270,70 @@ and exploring views with Tangible Landscape.}
 \end{table*}
 
 \subsection{Research objectives}
-Many of the theoretical underpinnings of tangibles 
-remain unproven and unexplored. 
-Do current approaches to tangible, embodied interfaces
-really work as theorized? 
-Can designers really model more intuitively and 
-design more effectively with tangibles?
-And how do tangibles mediate the design process?
-% experiments
+%
+The aim of this research was to test whether
+sandbox-style tangibles could be an effective tool
+for landscape design. 
+%
+Our research objectives were 
+to assess how well landscape architects could:
+\begin{enumerate*}[label=\alph*),font=\itshape]
+\item model topography, 
+\item analyze cut-and-fill, 
+\item and model water flow
+\end{enumerate*}
+using a sandbox-style tangible interface for landscape modeling.
+%
 In order to assess the effectiveness 
 of tangible modeling for landscape architects 
 we conducted a series of user studies
 assessing how well participants performed
-basic landscape design tasks 
--- topographic modeling, cut-and-fill analysis, and water flow modeling --
-using Tangible Landscape.\\
+these basic landscape design tasks 
+%-- topographic modeling, cut-and-fill analysis, and water flow modeling --
+using Tangible Landscape.
 
-Our research objectives were to:
+There have been very few 
+case studies, \cite{Ishii2002,Tateosian2010,Petrasova2015}
+qualitative user studies, 
+\cite{Shamonsky2003,Woods2016}
+and quantitative studies \cite{Schmidt-daly2016b}
+about sandbox-style tangibles.
 %
-\begin{itemize}
-% performance
-\item Assess how well landscape architects could perform 
-basic design tasks using a tangible interface for landscape modeling
-% process
-\item Study how tangible interaction mediated
-landscape architects' design process
-\end{itemize}
+While the quantitative study by
+Schmidt-Daly et al.~\cite{Schmidt-daly2016b} 
+assessed both learning and task performance,
+it did not assess the unique and most important 
+affordance of sandbox-style tangibles --
+freeform 3D sculpting. 
+% 
+Sandbox-stye tangibles uniquely afford
+the ability to sculpt digitally augmented, 
+freeform 3D volumes
+with ones bare hands. 
+%
+While there are standard, validated
+pre- and post-tests for assessing learning
+in human-computer interaction,
+methods for assessing task performance 
+are specific to the task
+(see for example Cuendet et al.~\cite{Cuendet2012}).
+%
+Furthermore,
+in a pilot study we found that the only 
+validated test for reading topography -- the
+Topographic Map Assessment test
+\cite{Newcombe2015} --
+was too easy for landscape architects.
+%
+Therefore, we developed 
+new, spatially-explicit methods
+for assessing performance
+in freeform 3D modeling tasks.
+%
+We used raster statistics, 
+morphometric analyses, and geospatial simulation
+to assess the spatial accuracy, pattern and distribution
+of the results for each task. 
 
 % ---------------------------- TOPOGRAPHIC ---------------------------- 
 
@@ -559,12 +597,6 @@ For each set of models -- digital, analog, and tangible --
 we computed raster statistics (i.e.~per cell statistics), 
 topographic and morphometric parameters, 
 and simulated water flow.
-%
-%% supplemental materials
-%Refer to the supplemental materials 
-%for more detailed description of the methodology
-%used in this study
-%\ref{appendix:methodology}.
 
 % ---------------------------
 \subsection{Results}
@@ -618,9 +650,6 @@ with a very low standard deviation of difference,
 although they only hinted at the landforms. 
 They, however, performed even better with tangible modeling,
 accurately representing all of the landforms. 
-%
-%See to the supplemental materials for more detailed results
-%\ref{appendix:topographic_results}.
 %
 These results show 
 tangible modeling is intuitive 
@@ -817,10 +846,6 @@ either over- or under-exaggerated.
 
 \input{cut_fill}
 
-%See to the supplemental materials for more details
-%\ref{appendix:cut_fill_results}.
-
-
 % ---------------------------- WATER FLOW ---------------------------- 
 \section{Water flow modeling}
 
@@ -984,8 +1009,6 @@ See Table \ref{table:interviews} for select comments about this experiment.
 
 % ---------------------------- DISCUSSION ---------------------------- 
 \section{Discussion}
-
-%\subsection{Tangible interaction}
 
 % topographic
 The topographic modeling experiment
@@ -1173,15 +1196,82 @@ could play a generative role in landscape architecture.
 
 % ---------------------------- SUPPLEMENTAL MATERIAL ---------------------------- 
 
-%https://us.sagepub.com/en-us/nam/supplementary-files-on-sage-journals-sj-guidelines-for-authors
-
 \begin{sm}
-\input{supplemental_material}
+%\input{supplemental_material}
+\noindent
+\textbf{Python scripts for data processing and analysis:}
+details omitted for double-blind peer reviewing
+%\url{https://github.com/baharmon/tangible_topography}
+
+\noindent
+\textbf{Methods, data, and results}
+details omitted for double-blind peer reviewing
+%\url{https://osf.io/82gst/}
+
+\noindent
+\textbf{Website:}
+details omitted for double-blind peer reviewing
+%\url{http://tangible-landscape.github.io/}
+
+\noindent
+\textbf{GitHub:} 
+details omitted for double-blind peer reviewing
+%\url{https://github.com/tangible-landscape}
+
+\noindent
+\textbf{Wiki:}
+details omitted for double-blind peer reviewing
+%\url{https://github.com/tangible-landscape/grass-tangible-landscape/wiki}
+
+\noindent
+\textbf{Videos:}
+details omitted for double-blind peer reviewing
+%\url{youtube.com/c/NCSUGeoForAllLab} 
+
+\vspace*{1em}
+%
+\noindent \textbf{Semi-structured interview guidelines}\label{appendix:guidelines} \\
+
+\textbf{Interview goals}
+\begin{itemize}
+\item Map participants' analog, hand modeling processes
+\item Map participants' digital modeling processes
+\item Map participants' tangible modeling processes
+\item Map participants' tangible modeling processes with the cut-and-fill analytic
+\item Map participants' tangible modeling processes with the water flow analytic
+\end{itemize}
+
+\textbf{\emph{Topic:} Modeling process}
+\begin{itemize}
+\item Please describe your modeling process with each technology
+\item Did you work additively or subtractively? A mix?
+\item Did you work in a linear or an iterative, exploratory process?
+\item How did this technology aid you? What did it let you to do?
+\item Did this technology constrain you in any way?
+\end{itemize}
+
+\textbf{\emph{Topic:} Intuition}
+\begin{itemize}
+\item How intuitive was it? 
+\item Could you model what you intended?
+\item Did you have to think about how to modeling? Or could you just act?
+\end{itemize}
+
+\textbf{\emph{Topic:} Metacognition}
+\begin{itemize}
+\item We asked you to sculpt a model of the study landscape. Please describe your thought process while sculpting. 
+\item Did you strategize about how to model? If so what was your modeling strategy? 
+\item Did your modeling strategy evolve as you worked?
+\end{itemize}
+
+\textbf{\emph{Topic:} perception and experience}
+\begin{itemize}
+\item How did it feel to sculpt a 3D model with this technology?
+\item Was it stressful? Was it fun?
+\item Did the technology change how you perceived distance, depth, form, or volume?  
+\end{itemize}
+
 \end{sm}
-
-% ------------------- GUIDELINES ----------------------- 
-
-%https://us.sagepub.com/en-us/nam/international-journal-of-architectural-computing/journal202464#submission-guidelines
 
 % ---------------------------- BIBLIOGRAPHY ---------------------------- 
 
